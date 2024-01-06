@@ -1,25 +1,24 @@
 #<BS> Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ config, pkgs, ... }:
-
 {
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  config,
+  pkgs,
+  ...
+}: {
+  nix.settings.experimental-features = ["nix-command" "flakes"];
   programs.hyprland.enable = true;
-  programs.zsh = {
-	enable = true;
-	ohMyZsh = { 
-		enable = true;
-		plugins = ["git" "zsh-autosuggestions" "zsh-autocomplete" "sudo"];
-		theme = "powerlevel10k";
-};
-};
 
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  programs.fish.enable = true;
+
+  fonts.packages = with pkgs; [
+    (nerdfonts.override {fonts = ["FiraCode" "Iosevka"];})
+  ];
+
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   # Enable OpenGL
   hardware.opengl = {
@@ -30,7 +29,6 @@
   services.xserver.videoDrivers = ["nvidia"];
 
   hardware.nvidia = {
-
     # Modesetting is required.
     modesetting.enable = true;
 
@@ -42,15 +40,15 @@
 
     # Use the NVidia open source kernel module (not to be confused with the
     # independent third-party "nouveau" open source driver).
-    # Support is limited to the Turing and later architectures. Full list of 
-    # supported GPUs is at: 
-    # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus 
+    # Support is limited to the Turing and later architectures. Full list of
+    # supported GPUs is at:
+    # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus
     # Only available from driver 515.43.04+
     # Currently alpha-quality/buggy, so false is currently the recommended setting.
     open = false;
 
     # Enable the Nvidia settings menu,
-	# accessible via `nvidia-settings`.
+    # accessible via `nvidia-settings`.
     nvidiaSettings = true;
 
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
@@ -61,16 +59,16 @@
   #boot.loader.efi.canTouchEfiVariables = true;
 
   boot.loader = {
-  	efi = {
-	      canTouchEfiVariables = true;
+    efi = {
+      canTouchEfiVariables = true;
       # assuming /boot is the mount point of the  EFI partition in NixOS (as the installation section recommends).
       efiSysMountPoint = "/boot";
-	};
-  	grub = {
-  	enable = true;
-	devices = [ "nodev" ];
-	useOSProber = true;
-	};
+    };
+    grub = {
+      enable = true;
+      devices = ["nodev"];
+      useOSProber = true;
+    };
   };
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -137,24 +135,26 @@
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
+  users.defaultUserShell = pkgs.fish;
   users.users.nmarks = {
     isNormalUser = true;
     description = "Natalie Marks";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = ["networkmanager" "wheel"];
     packages = with pkgs; [
       firefox
       kate
       vim
       discord
       kitty
-      
-    #  thunderbird
+      lua-language-server
+      #  thunderbird
     ];
   };
+
   programs.neovim = {
-	enable = true;
-	defaultEditor = true;
-};
+    enable = true;
+    defaultEditor = true;
+  };
   environment.variables.EDITOR = "nvim";
 
   # Allow unfree packages
@@ -163,18 +163,33 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    fish
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
     git
+    unzip
+    ripgrep
+    clang
+    fd
+    cargo
+    python3
+    python311Packages.pynvim
+    python311Packages.pip
+    steam
+    ruby
+    julia
+    xclip
+    nodePackages.npm
+    go
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
-   programs.mtr.enable = true;
-   programs.gnupg.agent = {
-     enable = true;
-     enableSSHSupport = true;
-   };
+  programs.mtr.enable = true;
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+  };
 
   # List services that you want to enable:
 
@@ -194,5 +209,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.05"; # Did you read the comment?
-
 }

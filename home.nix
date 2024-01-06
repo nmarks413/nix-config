@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "nmarks";
@@ -18,6 +20,14 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
+    stylua
+    alejandra
+    webcord
+    btop
+    neofetch
+    #zsh-autosuggestions
+    #zsh-autocomplete
+    #zsh-powerlevel10k
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
@@ -35,14 +45,54 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
   ];
+
   programs.neovim = {
-  	viAlias = true;
-	vimAlias = true;
+    viAlias = true;
+    vimAlias = true;
+    extraPackages = with pkgs; [
+      lua-language-server
+      nil
+      alejandra
+    ];
   };
   #Link neovim config into nix
-  xdg.configFile.nvim.source = ./nvim;
+  #xdg.configFile.nvim.source = ./nvim;
 
+  programs.kitty = {
+    enable = true;
+    theme = "Catppuccin-Mocha";
+    extraConfig = "font_family Iosevka NF
+                   italic_font auto
+                   bold_italic_font  auto
+                   bold_font  auto";
+  };
 
+  programs.fish = {
+    enable = true;
+
+    plugins = [
+      {
+        name = "tide";
+        src = pkgs.fishPlugins.tide.src;
+      }
+    ];
+  };
+
+  /*
+    programs.zsh = {
+    oh-my-zsh = {
+      enable = true;
+      plugins = [ "git" "extract"];
+    };
+    enableAutosuggestions = true;
+    enableCompletion = true;
+    syntaxHighlighting.enable = true;
+
+    plugins = [
+      {name = "powerlevel10k";src = pkgs.zsh-powerlevel10k;file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";}
+    ];
+  };
+  */
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
@@ -70,7 +120,9 @@
   #
   # if you don't want to manage your shell through Home Manager.
   home.sessionVariables = {
-    # EDITOR = "emacs";
+    EDITOR = "nvim";
+    TERMINAL = "kitty";
+    BROWSER = "firefox";
   };
 
   # Let Home Manager install and manage itself.
