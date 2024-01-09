@@ -25,6 +25,7 @@
     webcord
     btop
     neofetch
+    direnv
     #zsh-autosuggestions
     #zsh-autocomplete
     #zsh-powerlevel10k
@@ -45,6 +46,12 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
   ];
+
+  programs.direnv = {
+    enable = true;
+    #enableFishIntegration = true;
+    nix-direnv.enable = true;
+  };
 
   programs.neovim = {
     viAlias = true;
@@ -76,6 +83,9 @@
         src = pkgs.fishPlugins.tide.src;
       }
     ];
+    shellAliases = {
+      hm-update = "git add home.nix ; git commit -m 'updated home-manager config'; git push origin main; home-manager switch --flake ~/.dotfiles/#nmarks";
+    };
   };
 
   /*
