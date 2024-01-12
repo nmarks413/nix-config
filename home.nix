@@ -21,11 +21,11 @@
   # environment.
   home.packages = with pkgs; [
     stylua
-    alejandra
     webcord
     btop
     neofetch
     direnv
+    R
     #zsh-autosuggestions
     #zsh-autocomplete
     #zsh-powerlevel10k
@@ -60,6 +60,7 @@
       lua-language-server
       nil
       alejandra
+      r-languageserver
     ];
   };
   #Link neovim config into nix
