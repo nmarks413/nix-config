@@ -52,7 +52,6 @@
       lua-language-server
       nil
       alejandra
-      r-languageserver
       texlab
       typst-fmt
       typst-lsp
