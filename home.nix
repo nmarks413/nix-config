@@ -26,6 +26,8 @@
     neofetch
     direnv
     R
+    typst
+    typst-live
     #zsh-autosuggestions
     #zsh-autocomplete
     #zsh-powerlevel10k
@@ -57,10 +59,14 @@
     viAlias = true;
     vimAlias = true;
     extraPackages = with pkgs; [
+      #LSP + formatters/linters
       lua-language-server
       nil
       alejandra
       r-languageserver
+      texlab
+      typst-fmt
+      typst-lsp
     ];
   };
   #Link neovim config into nix
