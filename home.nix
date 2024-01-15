@@ -47,6 +47,15 @@
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
+
+      #LSP + formatters/linters
+      lua-language-server
+      nil
+      alejandra
+      r-languageserver
+      texlab
+      typst-fmt
+      typst-lsp
   ];
 
   programs.direnv = {
@@ -59,14 +68,6 @@
     viAlias = true;
     vimAlias = true;
     extraPackages = with pkgs; [
-      #LSP + formatters/linters
-      lua-language-server
-      nil
-      alejandra
-      r-languageserver
-      texlab
-      typst-fmt
-      typst-lsp
     ];
   };
   #Link neovim config into nix
