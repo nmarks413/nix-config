@@ -48,13 +48,14 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
 
-      #LSP + formatters/linters
-      lua-language-server
-      nil
-      alejandra
-      texlab
-      typst-fmt
-      typst-lsp
+    #LSP + formatters/linters
+    lua-language-server
+    nil
+    alejandra
+    statix
+    texlab
+    typst-fmt
+    typst-lsp
   ];
 
   programs.direnv = {
