@@ -95,6 +95,8 @@
     ];
     shellAliases = {
       hm-update = "git add home.nix ; git commit -m 'updated home-manager config'; git push origin main; home-manager switch --flake ~/.dotfiles/#nmarks";
+      sys-update = "git add configuration.nix ; git commit -m 'updated system config'; git push origin main; sudo nixos-rebuild switch --flake ~/.dotfiles/#nmarks";
+      full-update = "sys-update hm-update";
     };
   };
 
