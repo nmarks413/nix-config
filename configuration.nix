@@ -11,6 +11,8 @@
 
   programs.fish.enable = true;
 
+  services.tailscale.enable = true;
+
   fonts.packages = with pkgs; [
     (nerdfonts.override {fonts = ["FiraCode" "Iosevka"];})
   ];
@@ -66,19 +68,17 @@
     };
     grub = {
       enable = true;
-      devices = ["nodev"];
-      useOSProber = true;
+      device = "nodev";
+      theme = pkgs.nixos-grub2-theme;
+      #useOSProber = true;
     };
   };
-  networking.hostName = "nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Enable networking
-  networking.networkmanager.enable = true;
 
   # Set your time zone.
   time.timeZone = "America/Los_Angeles";
@@ -140,6 +140,7 @@
     isNormalUser = true;
     description = "Natalie Marks";
     extraGroups = ["networkmanager" "wheel"];
+    # openssh.authorizedKeys.keyFiles = ["~/.ssh/id_ed25519.pub"];
     packages = with pkgs; [
       firefox
       kate
@@ -147,6 +148,7 @@
       discord
       kitty
       lua-language-server
+      texlive.combined.scheme-full
       #  thunderbird
     ];
   };
@@ -181,6 +183,7 @@
     xclip
     nodePackages.npm
     go
+    tailscale
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -196,8 +199,16 @@
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
+  networking = {
+    hostName = "nixos"; # Define your hostname.
+    # wireless.enable = true; # Enables wireless support via wpa_supplicant.
+    networkmanager.enable = true;
+    firewall = {
+      allowedTCPPorts = [22];
+      enable = true;
+    };
+  };
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
