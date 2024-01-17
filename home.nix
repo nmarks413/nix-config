@@ -28,6 +28,8 @@
     R
     typst
     typst-live
+    tmux
+    zellij
     #zsh-autosuggestions
     #zsh-autocomplete
     #zsh-powerlevel10k
