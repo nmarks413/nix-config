@@ -30,6 +30,7 @@
     typst-live
     tmux
     zellij
+    distrobox
     #zsh-autosuggestions
     #zsh-autocomplete
     #zsh-powerlevel10k
