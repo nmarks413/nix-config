@@ -31,6 +31,7 @@
     tmux
     zellij
     distrobox
+    podman
     #zsh-autosuggestions
     #zsh-autocomplete
     #zsh-powerlevel10k
