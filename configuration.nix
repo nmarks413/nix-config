@@ -210,7 +210,10 @@
       allowedTCPPorts = [22];
       enable = true;
     };
-    interfaces.enp11s0.wakeOnLan.policy = [" magic "];
+    interfaces.enp11s0.wakeOnLan = {
+      enable = true;
+      policy = [" magic "];
+    };
   };
   # Open ports in the firewall.
   # networking.firewall.allowedUDPPorts = [ ... ];
