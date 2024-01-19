@@ -185,7 +185,7 @@
     go
     tailscale
     ethtool
-    grub
+    grub2
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
