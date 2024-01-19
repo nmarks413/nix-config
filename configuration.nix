@@ -184,6 +184,7 @@
     nodePackages.npm
     go
     tailscale
+    ethtool
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -207,6 +208,7 @@
       allowedTCPPorts = [22];
       enable = true;
     };
+    interfaces.enp11s0.wakeOnLan.policy = [" magic "];
   };
   # Open ports in the firewall.
   # networking.firewall.allowedUDPPorts = [ ... ];
