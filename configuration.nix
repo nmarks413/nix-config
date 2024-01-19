@@ -212,7 +212,7 @@
     };
     interfaces.enp11s0.wakeOnLan = {
       enable = true;
-      policy = [" magic "];
+      policy = "magic";
     };
   };
   # Open ports in the firewall.
