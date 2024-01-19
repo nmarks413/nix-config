@@ -68,7 +68,7 @@
     };
     grub = {
       enable = true;
-      device = "nodev";
+      #device = "/dev/sdb";
       theme = pkgs.nixos-grub2-theme;
       #useOSProber = true;
     };
