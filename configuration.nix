@@ -61,17 +61,18 @@
   #boot.loader.efi.canTouchEfiVariables = true;
 
   boot.loader = {
+    systemd-boot.enable = true;
     efi = {
       canTouchEfiVariables = true;
       # assuming /boot is the mount point of the  EFI partition in NixOS (as the installation section recommends).
       efiSysMountPoint = "/boot";
     };
-    grub = {
-      enable = true;
-      device = "/dev/sdb";
-      theme = pkgs.nixos-grub2-theme;
-      useOSProber = true;
-    };
+    # grub = {
+    #   enable = true;
+    #   device = "/dev/sdb1";
+    #   theme = pkgs.nixos-grub2-theme;
+    #   useOSProber = true;
+    # };
   };
 
   # Configure network proxy if necessary
