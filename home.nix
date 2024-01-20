@@ -52,6 +52,10 @@
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
+    #for fun
+    cowsay
+    cmatrix
+    hyfetch
 
     #LSP + formatters/linters
     lua-language-server
