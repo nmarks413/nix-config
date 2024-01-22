@@ -33,6 +33,7 @@
     distrobox
     podman
     qemu
+    vimgolf
     #zsh-autosuggestions
     #zsh-autocomplete
     #zsh-powerlevel10k
