@@ -34,6 +34,7 @@
     podman
     qemu
     vimgolf
+    lazygit
     #zsh-autosuggestions
     #zsh-autocomplete
     #zsh-powerlevel10k
