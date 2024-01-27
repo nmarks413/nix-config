@@ -38,6 +38,7 @@
     rustup
     pkg-config
     openssl
+    openssl.dev
     #zsh-autosuggestions
     #zsh-autocomplete
     #zsh-powerlevel10k
