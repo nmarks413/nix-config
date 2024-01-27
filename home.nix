@@ -35,6 +35,7 @@
     qemu
     vimgolf
     lazygit
+    rustup
     #zsh-autosuggestions
     #zsh-autocomplete
     #zsh-powerlevel10k
