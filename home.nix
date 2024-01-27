@@ -54,6 +54,8 @@
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
+    # for cmpm17
+    binwalk
     #for fun
     cowsay
     cmatrix
