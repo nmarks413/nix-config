@@ -36,6 +36,7 @@
     vimgolf
     lazygit
     rustup
+    file
     #zsh-autosuggestions
     #zsh-autocomplete
     #zsh-powerlevel10k
