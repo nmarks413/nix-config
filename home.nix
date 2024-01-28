@@ -62,6 +62,8 @@
     cowsay
     cmatrix
     hyfetch
+    bat
+    eza
 
     #LSP + formatters/linters
     lua-language-server
