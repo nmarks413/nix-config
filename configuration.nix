@@ -13,6 +13,9 @@
 
   services.tailscale.enable = true;
 
+  virtualisation.libvirtd.enable = true;
+  programs.virt-manager.enable = true;
+
   fonts.packages = with pkgs; [
     (nerdfonts.override {fonts = ["FiraCode" "Iosevka"];})
   ];
