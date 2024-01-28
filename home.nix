@@ -1,8 +1,18 @@
 {
+  inputs,
   config,
   pkgs,
   ...
 }: {
+  wayland.windowManager.hyprland = {
+    enable = true;
+    # ...
+    plugins = [
+      inputs.hyprland-plugins.packages.${pkgs.system}.hyprbars
+      # ...
+    ];
+  };
+
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "nmarks";
