@@ -47,6 +47,7 @@
     lazygit
     rustup
     file
+    steam-run
     #zsh-autosuggestions
     #zsh-autocomplete
     #zsh-powerlevel10k
