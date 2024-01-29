@@ -6,6 +6,8 @@
   pkgs,
   ...
 }: {
+  nixpkgs.config.allowUnfree = true;
+
   nix.settings.experimental-features = ["nix-command" "flakes"];
   programs.hyprland.enable = true;
 
@@ -153,6 +155,7 @@
       kitty
       lua-language-server
       texlive.combined.scheme-full
+      steam-run
       #  thunderbird
     ];
   };
@@ -164,8 +167,6 @@
   environment.variables.EDITOR = "nvim";
 
   # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
