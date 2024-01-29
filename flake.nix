@@ -8,6 +8,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # hyprland.url = "github:hyprwm/Hyprland";
+    # hyprland-plugins = {
+    #   url = "github:hyprwm/hyprland-plugins";
+    #   inputs.hyprland.follows = "hyprland";
+    # };
     # use the following for unstable:
     # nixpkgs.url = "nixpkgs/nixos-unstable";
 
@@ -15,23 +20,27 @@
     # nixpkgs.url = "nixpkgs/{BRANCH-NAME}"
   };
 
-  outputs = { self, home-manager, nixpkgs, ... }:
-    let
-      system = "x86_64-linux";
-      lib = nixpkgs.lib;
-      pkgs = nixpkgs.legacyPackages.${system};
-    in {
-      nixosConfigurations = {
-        nmarks = lib.nixosSystem {
-	  inherit system;
-          modules = [ ./configuration.nix ];
+  outputs = {
+    self,
+    home-manager,
+    nixpkgs,
+    ...
+  }: let
+    system = "x86_64-linux";
+    lib = nixpkgs.lib;
+    pkgs = nixpkgs.legacyPackages.${system};
+  in {
+    nixosConfigurations = {
+      nmarks = lib.nixosSystem {
+        inherit system;
+        modules = [./configuration.nix];
       };
     };
-      homeConfigurations = {
-        nmarks = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          modules = [ ./home.nix ];
-        };
+    homeConfigurations = {
+      nmarks = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        modules = [./home.nix];
       };
+    };
   };
 }
