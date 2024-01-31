@@ -52,7 +52,7 @@
     rustup
     file
     itch
-    qbittorent
+    qbittorrent
     #zsh-autosuggestions
     #zsh-autocomplete
     #zsh-powerlevel10k
