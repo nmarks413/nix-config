@@ -73,6 +73,7 @@
     # '')
     # for cmpm17
     binwalk
+    exiftool
     #for fun
     cowsay
     cmatrix
