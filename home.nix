@@ -82,6 +82,7 @@
     bat
     eza
     ollama
+    sl
 
     #LSP + formatters/linters
     lua-language-server
