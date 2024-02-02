@@ -92,6 +92,9 @@
     texlab
     typst-fmt
     typst-lsp
+    rust-analyzer
+    clippy
+    rustfmt
   ];
 
   programs.direnv = {
