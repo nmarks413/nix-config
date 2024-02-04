@@ -20,7 +20,9 @@
     keyboards = {
       default = {
         settings = {
-          capslock = "escape";
+          main = {
+            capslock = "escape";
+          };
         };
       };
     };
