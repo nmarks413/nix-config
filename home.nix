@@ -53,6 +53,7 @@
     file
     itch
     qbittorrent
+    deno
     #zsh-autosuggestions
     #zsh-autocomplete
     #zsh-powerlevel10k
@@ -95,7 +96,6 @@
     rust-analyzer
     clippy
     rustfmt
-    denolsp
   ];
 
   programs.direnv = {
