@@ -95,7 +95,7 @@
     typst-lsp
     #rust-analyzer
     #clippy
-    rustfmt
+    #rustfmt
   ];
 
   programs.direnv = {
