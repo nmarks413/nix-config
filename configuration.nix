@@ -15,6 +15,13 @@
 
   services.tailscale.enable = true;
 
+  services.keyd = {
+    enable = true;
+    settings = {
+      capslock = "esc";
+    };
+  };
+
   virtualisation.libvirtd.enable = true;
   programs.virt-manager.enable = true;
 
