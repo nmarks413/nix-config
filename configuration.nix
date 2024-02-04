@@ -17,8 +17,12 @@
 
   services.keyd = {
     enable = true;
-    settings = {
-      capslock = "esc";
+    keyboards = {
+      default = {
+        settings = {
+          capslock = "esc";
+        };
+      };
     };
   };
 
