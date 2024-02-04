@@ -95,6 +95,7 @@
     rust-analyzer
     clippy
     rustfmt
+    denolsp
   ];
 
   programs.direnv = {
