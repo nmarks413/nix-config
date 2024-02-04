@@ -20,7 +20,7 @@
     keyboards = {
       default = {
         settings = {
-          capslock = "esc";
+          capslock = "escape";
         };
       };
     };
