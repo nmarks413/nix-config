@@ -94,7 +94,7 @@
     typst-fmt
     typst-lsp
     #rust-analyzer
-    clippy
+    #clippy
     rustfmt
   ];
 
