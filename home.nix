@@ -93,7 +93,7 @@
     texlab
     typst-fmt
     typst-lsp
-    rust-analyzer
+    #rust-analyzer
     clippy
     rustfmt
   ];
