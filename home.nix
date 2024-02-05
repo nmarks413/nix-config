@@ -55,6 +55,7 @@
     qbittorrent
     deno
     lutris
+    wine
     #zsh-autosuggestions
     #zsh-autocomplete
     #zsh-powerlevel10k
