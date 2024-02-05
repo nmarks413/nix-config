@@ -54,6 +54,7 @@
     itch
     qbittorrent
     deno
+    lutris
     #zsh-autosuggestions
     #zsh-autocomplete
     #zsh-powerlevel10k
