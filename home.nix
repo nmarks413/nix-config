@@ -54,8 +54,10 @@
     itch
     qbittorrent
     deno
+    #Gaming
     lutris
     wine
+    dxvk_2
     #zsh-autosuggestions
     #zsh-autocomplete
     #zsh-powerlevel10k
