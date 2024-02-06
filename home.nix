@@ -59,7 +59,7 @@
     wine
     dxvk_2
     mangohud
-    vulkantools
+    vulkan-tools
     #zsh-autosuggestions
     #zsh-autocomplete
     #zsh-powerlevel10k
