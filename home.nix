@@ -58,6 +58,7 @@
     lutris
     wine
     dxvk_2
+    mangohud
     #zsh-autosuggestions
     #zsh-autocomplete
     #zsh-powerlevel10k
@@ -125,6 +126,8 @@
                    bold_italic_font  auto
                    bold_font  auto";
   };
+
+  programs.mangohud.enable = true;
 
   programs.fish = {
     enable = true;
