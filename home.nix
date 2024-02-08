@@ -54,6 +54,7 @@
     itch
     qbittorrent
     deno
+    imagemagick
     #Gaming
     lutris
     wine
