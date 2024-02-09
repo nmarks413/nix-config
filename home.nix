@@ -55,6 +55,7 @@
     qbittorrent
     deno
     imagemagick
+    pkg-config
     #Gaming
     lutris
     wine
