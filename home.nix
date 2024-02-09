@@ -57,6 +57,7 @@
     imagemagick
     pkg-config
     cairo
+    cairo-lang
     #Gaming
     lutris
     wine
