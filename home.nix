@@ -56,7 +56,7 @@
     deno
     imagemagick
     pkg-config
-    python311Packages.pycairo
+    mpv
     #Gaming
     lutris
     wine
