@@ -56,8 +56,7 @@
     deno
     imagemagick
     pkg-config
-    cairo
-    cairo-lang
+    python311Packages.pycairo
     #Gaming
     lutris
     wine
