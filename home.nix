@@ -56,6 +56,7 @@
     deno
     imagemagick
     pkg-config
+    cairo
     #Gaming
     lutris
     wine
