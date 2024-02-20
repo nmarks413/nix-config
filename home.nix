@@ -57,6 +57,7 @@
     imagemagick
     pkg-config
     mpv
+    openconnect
     #productivty
     todoist-electron
     #Gaming
