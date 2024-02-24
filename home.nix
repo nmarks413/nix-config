@@ -63,7 +63,8 @@
     todoist-electron
     #Gaming
     lutris
-    wine
+    wineWowPackages.stable
+    winetricks
     dxvk_2
     mangohud
     vulkan-tools
