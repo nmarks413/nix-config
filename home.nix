@@ -57,6 +57,7 @@
     imagemagick
     pkg-config
     mpv
+    comma
     openconnect
     #productivty
     todoist-electron
