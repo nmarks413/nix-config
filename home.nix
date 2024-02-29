@@ -59,6 +59,7 @@
     mpv
     comma
     openconnect
+    gnumake
     #productivty
     todoist-electron
     #Gaming
