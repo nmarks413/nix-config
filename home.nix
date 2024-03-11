@@ -60,6 +60,7 @@
     comma
     openconnect
     gnumake
+    (pkgs.callPackage ./zed.nix {})
     #productivty
     todoist-electron
     #Gaming
