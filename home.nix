@@ -31,9 +31,9 @@
     allowUnfree = true;
   };
 
-  imports = [
-    ./zed-editor.nix
-  ];
+  # imports = [
+  #   ./zed-editor.nix
+  # ];
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
