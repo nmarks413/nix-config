@@ -82,6 +82,20 @@
 
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
     package = config.boot.kernelPackages.nvidiaPackages.stable;
+    #Fixes a glitch
+    nvidiaPersistenced = true;
+
+    #Required for amdgpu and nvidia gpu pairings
+    # modesetting.enable = true;
+
+    prime = {
+      # offload.enable = true;
+      #sync.enable = true;
+
+      amdgpuBusId = "PCI:0f:00.0";
+
+      nvidiaBusId = "PCI:01:00.0";
+    };
   };
   # Bootloader.
   #boot.loader.systemd-boot.enable = true;
