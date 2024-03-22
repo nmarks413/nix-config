@@ -74,6 +74,7 @@
     dxvk_2
     mangohud
     vulkan-tools
+    asdf-vm
     # for cmpm17
     binwalk
     exiftool
@@ -138,6 +139,7 @@
       sys-update = "git add configuration.nix ; git commit -m 'updated system config'; git push origin main; sudo nixos-rebuild switch --flake ~/.dotfiles/#nmarks";
       full-update = "sys-update; hm-update";
     };
+    shellInit = "source '$HOME/.nix-profile/share/asdf-vm/asdf.fish' ";
   };
 
   /*
