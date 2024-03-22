@@ -64,7 +64,7 @@
     comma
     openconnect
     gnumake
-    zed-editor
+    # zed-editor
     #productivty
     todoist-electron
     #Gaming
