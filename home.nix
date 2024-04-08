@@ -90,6 +90,7 @@
     stack
     haskell-language-server
     ghc
+    ormolu
     #LSP + formatters/linters
     lua-language-server
     nil
