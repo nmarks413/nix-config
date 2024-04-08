@@ -88,6 +88,7 @@
     sl
     #CSE114 (Haskell stuff)
     stack
+    haskell-language-server
     #LSP + formatters/linters
     lua-language-server
     nil
