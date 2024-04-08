@@ -86,6 +86,8 @@
     eza
     ollama
     sl
+    #CSE114 (Haskell stuff)
+    stack
     #LSP + formatters/linters
     lua-language-server
     nil
