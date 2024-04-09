@@ -212,7 +212,7 @@
     git
     unzip
     ripgrep
-    clang
+    clang14
     fd
     cargo
     python3
