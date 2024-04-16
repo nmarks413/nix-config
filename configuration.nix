@@ -26,6 +26,28 @@
     };
   };
 
+  services.caddy = {
+    enable = true;
+
+    virtualHosts."10.154.1.147".extraConfig = ''
+      tls internal
+      reverse_proxy localhost:30000
+      encode zstd gzip
+    '';
+
+    virtualHosts."10.154.1.105".extraConfig = ''
+      tls internal
+      reverse_proxy localhost:30000
+      encode zstd gzip
+    '';
+
+    virtualHosts."pathfinder2e.duckdns.org".extraConfig = ''
+      tls internal
+      reverse_proxy localhost:30000
+      encode zstd gzip
+    '';
+  };
+
   services.flatpak.enable = true;
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
