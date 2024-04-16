@@ -29,21 +29,47 @@
   services.caddy = {
     enable = true;
 
-    virtualHosts."10.154.1.147".extraConfig = ''
-      tls internal
-      reverse_proxy localhost:30000
-      encode zstd gzip
-    '';
+    # virtualHosts."10.154.1.147".extraConfig = ''
+    #   tls internal
+    #   reverse_proxy localhost:30000
+    #   encode zstd gzip
+    # '';
 
-    virtualHosts."10.154.1.105".extraConfig = ''
-      tls internal
-      reverse_proxy localhost:30000
-      encode zstd gzip
-    '';
+    # virtualHosts."10.154.1.105".extraConfig = ''
+    #   tls internal
+    #   reverse_proxy localhost:30000
+    #   encode zstd gzip
+    # '';
+    #
+    # virtualHosts."pathfinder2e.duckdns.org".extraConfig = ''
+    #   reverse_proxy localhost:30000
+    #   encode zstd gzip
+    # '';
 
-    virtualHosts."pathfinder2e.duckdns.org".extraConfig = ''
-      reverse_proxy localhost:30000
-      encode zstd gzip
+    extraConfig = ''
+          # This replaces the existing content in /etc/caddy/Caddyfile
+
+      # A CONFIG SECTION FOR YOUR IP AND HOSTNAME
+
+      {
+          default_sni 10.154.1.105
+      }
+
+      10.154.1.105 {
+          # PROXY ALL REQUEST TO PORT 30000
+          tls internal
+          reverse_proxy localhost:30000
+          encode zstd gzip
+      }
+
+      pathfinder2e.duckdns.org {
+          # PROXY ALL REQUEST TO PORT 30000
+          reverse_proxy localhost:30000
+          encode zstd gzip
+      }
+
+      # Refer to the Caddy docs for more information:
+      # https://caddyserver.com/docs/caddyfile
     '';
   };
 
