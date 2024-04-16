@@ -64,6 +64,7 @@
     comma
     openconnect
     gnumake
+    (pkgs.callpackage discord/default.nix {})
     # zed-editor
     #productivty
     todoist-electron
