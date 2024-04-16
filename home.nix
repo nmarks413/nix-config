@@ -36,7 +36,7 @@
   # ];
 
   imports = [discord/default.nix];
-  discord.enable = true;
+  sys.discord.enable = true;
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
