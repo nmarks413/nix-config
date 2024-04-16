@@ -42,7 +42,6 @@
     '';
 
     virtualHosts."pathfinder2e.duckdns.org".extraConfig = ''
-      tls internal
       reverse_proxy localhost:30000
       encode zstd gzip
     '';
