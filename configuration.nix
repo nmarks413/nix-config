@@ -307,7 +307,7 @@
     # wireless.enable = true; # Enables wireless support via wpa_supplicant.
     networkmanager.enable = true;
     firewall = {
-      allowedTCPPorts = [22];
+      allowedTCPPorts = [22 80 443];
       enable = true;
     };
     interfaces.enp11s0.wakeOnLan = {
