@@ -35,6 +35,8 @@
   #   ./zed-editor.nix
   # ];
 
+  imports = [discord/default.nix];
+
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
@@ -64,7 +66,7 @@
     comma
     openconnect
     gnumake
-    (pkgs.callPackage discord/default.nix {})
+    # (pkgs.callPackage discord/default.nix {})
     # zed-editor
     #productivty
     todoist-electron
