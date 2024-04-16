@@ -187,7 +187,6 @@
       firefox
       kate
       vim
-      discord
       kitty
       lua-language-server
       texlive.combined.scheme-full
