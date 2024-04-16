@@ -88,7 +88,7 @@
     lib = nixpkgs.lib;
   in {
     homeConfigurations = {
-      user = home-manager.lib.homeManagerConfiguration {
+      nmarks = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [./home.nix];
         extraSpecialArgs = {
@@ -101,7 +101,7 @@
       };
     };
     nixosConfigurations = {
-      system = lib.nixosSystem {
+      nmarks = lib.nixosSystem {
         system = systemSettings.system;
         modules = [./configuration.nix];
         specialArgs = {
