@@ -93,6 +93,8 @@
     eza
     ollama
     sl
+    fallout-ce
+    fallout2-ce
     #CSE114 (Haskell stuff)
     stack
     haskell-language-server
