@@ -19,6 +19,7 @@
 
   systemd.services.duckdns = {
     enable = true;
+    path = [pkgs.nix];
     script = ''echo url="https://www.duckdns.org/update?domains=pathfinder2e&token=9c1ffa47-7496-4975-ba2b-a6928b28c500&ip=" | curl -k -o ~/duckdns/duck.log -K -'';
     serviceConfig = {
       Type = "oneshot";
