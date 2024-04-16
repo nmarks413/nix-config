@@ -67,8 +67,11 @@
     comma
     openconnect
     gnumake
-    # (pkgs.callPackage discord/default.nix {})
-    # zed-editor
+
+    #getting foundry to work!
+    node
+    caddy
+    pm2
     #productivty
     todoist-electron
     #Gaming
