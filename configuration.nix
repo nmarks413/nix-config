@@ -8,6 +8,24 @@
 }: {
   nixpkgs.config.allowUnfree = true;
 
+  systemd.timers.duckdns = {
+    wantedBy = ["timers.target"];
+    timerConfig = {
+      OnBootSec = "5m";
+      OnUnitActiveSec = "5m";
+      Unit = "duckdns.service";
+    };
+  };
+
+  systemd.services.duckdns = {
+    enable = true;
+    script = ''echo url="https://www.duckdns.org/update?domains=pathfinder2e&token=9c1ffa47-7496-4975-ba2b-a6928b28c500&ip=" | curl -k -o ~/duckdns/duck.log -K -'';
+    serviceConfig = {
+      Type = "oneshot";
+      User = "root";
+    };
+  };
+
   services.flatpak.enable = true;
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
@@ -16,8 +34,6 @@
   programs.fish.enable = true;
 
   services.tailscale.enable = true;
-
-  discord.enable = true;
 
   services.keyd = {
     enable = true;
