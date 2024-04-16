@@ -17,6 +17,8 @@
 
   services.tailscale.enable = true;
 
+  discord.enable = true;
+
   services.keyd = {
     enable = true;
     keyboards = {
