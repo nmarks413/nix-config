@@ -69,7 +69,7 @@
     gnumake
 
     #getting foundry to work!
-    node
+    nodejs_21
     caddy
     pm2
     #productivty
