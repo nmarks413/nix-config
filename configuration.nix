@@ -51,10 +51,6 @@
 
       # A CONFIG SECTION FOR YOUR IP AND HOSTNAME
 
-      {
-          default_sni 10.154.1.105
-      }
-
       10.154.1.105 {
           # PROXY ALL REQUEST TO PORT 30000
           tls internal
