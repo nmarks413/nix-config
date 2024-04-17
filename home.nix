@@ -68,7 +68,7 @@
     openconnect
     gnumake
     kdeconnect
-    signal
+    signal-desktop
     #getting foundry to work!
     nodejs_21
     caddy
