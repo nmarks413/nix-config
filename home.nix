@@ -98,7 +98,7 @@
     #CSE114 (Haskell stuff)
     stack
     haskell-language-server
-    haskellPackages-haskell-language-server
+    haskellPackages.haskell-language-server
     ghc
     ormolu
     #LSP + formatters/linters
