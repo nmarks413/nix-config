@@ -68,6 +68,7 @@
     openconnect
     gnumake
     kdeconnect
+    signal
     #getting foundry to work!
     nodejs_21
     caddy
