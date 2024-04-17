@@ -97,8 +97,7 @@
     fallout2-ce
     #CSE114 (Haskell stuff)
     stack
-    # haskell-language-server
-    haskellPackages.haskell-language-server
+    haskell-language-server
     ghc
     ormolu
     #LSP + formatters/linters
