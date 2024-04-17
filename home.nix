@@ -97,7 +97,7 @@
     fallout2-ce
     #CSE114 (Haskell stuff)
     stack
-    haskell-language-server
+    (haskell-language-server.override {supportedGhcVersions = ["90" "94"];})
     ghc
     ormolu
     #LSP + formatters/linters
