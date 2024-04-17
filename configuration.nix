@@ -288,12 +288,27 @@
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
+  programs.kdeconnect.enable = true;
+
   networking = {
     hostName = "nixos"; # Define your hostname.
     # wireless.enable = true; # Enables wireless support via wpa_supplicant.
     networkmanager.enable = true;
     firewall = {
       allowedTCPPorts = [22 80 443];
+      #KDE Connect
+      # allowedTCPPortRanges = [
+      #   {
+      #     from = 1714;
+      #     to = 1764;
+      #   }
+      # ];
+      # allowedUDPPortRanges = [
+      #   {
+      #     from = 1714;
+      #     to = 1764;
+      #   }
+      # ];
       enable = true;
     };
     interfaces.enp11s0.wakeOnLan = {
