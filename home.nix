@@ -98,7 +98,7 @@
     #CSE114 (Haskell stuff)
     stack
     (haskell-language-server.override {supportedGhcVersions = ["94" "947"];})
-    ghc947
+    haskell.compiler.ghc947
     ormolu
     #LSP + formatters/linters
     lua-language-server
