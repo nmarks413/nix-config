@@ -67,7 +67,7 @@
     comma
     openconnect
     gnumake
-
+    kdeconnect
     #getting foundry to work!
     nodejs_21
     caddy
