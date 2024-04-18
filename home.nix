@@ -58,7 +58,7 @@
     lazygit
     rustup
     file
-    itch
+    # itch : THIS IS BROKEN FOR SOME REASON, need to pin it??
     qbittorrent
     deno
     imagemagick
