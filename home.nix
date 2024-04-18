@@ -69,6 +69,7 @@
     gnumake
     kdeconnect
     signal-desktop
+    zed-editor
     #getting foundry to work!
     nodejs_21
     caddy
