@@ -71,7 +71,7 @@
     signal-desktop
     zed-editor
     #getting foundry to work!
-    nodejs_21
+    #nodejs_21
     caddy
     pm2
     #productivty
