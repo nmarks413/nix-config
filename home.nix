@@ -110,6 +110,7 @@
     texlab
     typst-fmt
     typst-lsp
+    clangd
     #rust-analyzer
     #clippy
     #rustfmt
