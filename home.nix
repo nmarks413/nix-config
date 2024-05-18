@@ -114,6 +114,8 @@
     #rust-analyzer
     #clippy
     #rustfmt
+    #runpod
+    docker
   ];
 
   programs.direnv = {
