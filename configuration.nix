@@ -57,6 +57,9 @@
 
   services.flatpak.enable = true;
 
+  virtualisation.docker.enable = true;
+  users.users.nmarks.extraGroups = ["docker"];
+
   nix.settings.experimental-features = ["nix-command" "flakes"];
   programs.hyprland.enable = true;
 
