@@ -58,7 +58,6 @@
   services.flatpak.enable = true;
 
   virtualisation.docker.enable = true;
-  users.users.nmarks.extraGroups = ["docker"];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
   programs.hyprland.enable = true;
@@ -231,7 +230,7 @@
   users.users.nmarks = {
     isNormalUser = true;
     description = "Natalie Marks";
-    extraGroups = ["networkmanager" "wheel"];
+    extraGroups = ["networkmanager" "wheel" "docker"];
     # openssh.authorizedKeys.keyFiles = ["~/.ssh/id_ed25519.pub"];
     packages = with pkgs; [
       firefox
