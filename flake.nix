@@ -18,6 +18,8 @@
       inputs.hyprland.follows = "hyprland";
       #flake = false;
     };
+
+    inputs.foundryvtt.url = "github:reckenrode/nix-foundryvtt";
   };
   outputs = {
     self,
@@ -105,6 +107,7 @@
         system = systemSettings.system;
         modules = [./configuration.nix];
         specialArgs = {
+          inherit inputs;
           inherit pkgs-stable;
           inherit systemSettings;
           inherit userSettings;
