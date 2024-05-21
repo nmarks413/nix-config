@@ -73,6 +73,7 @@
     #getting foundry to work!
     #nodejs_21
     caddy
+    cloudflared
     pm2
     #productivty
     todoist-electron
