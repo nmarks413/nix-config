@@ -2,6 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 {
+  inputs,
   config,
   pkgs,
   ...
@@ -26,6 +27,13 @@
     };
   };
 
+  services.foundryvtt = {
+    enable = true;
+    hostName = "pathfinder2.duckdns.org";
+    proxySSL = true;
+    proxyPort = 443;
+  };
+
   services.caddy = {
     enable = true;
 
@@ -45,14 +53,17 @@
     #   reverse_proxy localhost:30000
     #   encode zstd gzip
     # '';
-
-    extraConfig = ''
-      pathfinder2e.duckdns.org {
-          # PROXY ALL REQUEST TO PORT 30000
-          reverse_proxy localhost:30000
-          encode zstd gzip
-      }
+    virtualHosts."pathfinder2e.duckdns.org".extraConfig = ''
+      reverse_proxy localhost:30000
     '';
+
+    # extraConfig = ''
+    #   pathfinder2e.duckdns.org {
+    #       # PROXY ALL REQUEST TO PORT 30000
+    #       reverse_proxy localhost:30000
+    #       encode zstd gzip
+    #   }
+    # '';
   };
 
   services.flatpak.enable = true;
@@ -96,6 +107,7 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    inputs.foundryvtt.nixosModules.foundryvtt
   ];
 
   # Enable OpenGL
