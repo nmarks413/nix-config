@@ -34,6 +34,17 @@
     proxyPort = 443;
   };
 
+  services.cloudflared = {
+    enable = true;
+    user = "nmarks";
+    tunnels = {
+      "b407af0f-5168-4a79-a9f4-fe99e52990dd" = {
+        credentialsFile = "${config.users.users.nmarks.home}/.cloudflared/b407af0f-5168-4a79-a9f4-fe99e52990dd.json";
+        default = "http_status:404";
+      };
+    };
+  };
+
   services.caddy = {
     enable = true;
 
