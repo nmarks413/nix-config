@@ -41,86 +41,87 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
 
-  home.packages = with pkgs; [
-    zigpkgs."0.13.0"
-    stylua
-    webcord
-    btop
-    neofetch
-    direnv
-    R
-    typst
-    typst-live
-    tmux
-    zellij
-    distrobox
-    podman
-    qemu
-    vimgolf
-    lazygit
-    rustup
-    file
-    # itch : THIS IS BROKEN FOR SOME REASON, need to pin it??
-    qbittorrent
-    deno
-    imagemagick
-    pkg-config
-    mpv
-    comma
-    openconnect
-    gnumake
-    kdeconnect
-    signal-desktop
-    zed-editor
-    #getting foundry to work!
-    #nodejs_21
-    caddy
-    cloudflared
-    pm2
-    #productivty
-    todoist-electron
-    #Gaming
-    lutris
-    wineWowPackages.stable
-    winetricks
-    dxvk_2
-    mangohud
-    vulkan-tools
-    asdf-vm
-    # for cmpm17
-    binwalk
-    exiftool
-    #for fun
-    cowsay
-    cmatrix
-    hyfetch
-    bat
-    eza
-    ollama
-    sl
-    fallout-ce
-    fallout2-ce
-    #CSE114 (Haskell stuff)
-    stack
-    (haskell-language-server.override {supportedGhcVersions = ["94" "947"];})
-    haskell.compiler.ghc947
-    ormolu
-    #LSP + formatters/linters
-    lua-language-server
-    nil
-    alejandra
-    statix
-    texlab
-    typst-fmt
-    typst-lsp
-    clang-tools
-    #rust-analyzer
-    #clippy
-    #rustfmt
-    #runpod
-    docker
-    inputs.zls.packages.x86_64-linux
-  ];
+  home.packages = with pkgs;
+    [
+      zigpkgs."0.13.0"
+      stylua
+      webcord
+      btop
+      neofetch
+      direnv
+      R
+      typst
+      typst-live
+      tmux
+      zellij
+      distrobox
+      podman
+      qemu
+      vimgolf
+      lazygit
+      rustup
+      file
+      # itch : THIS IS BROKEN FOR SOME REASON, need to pin it??
+      qbittorrent
+      deno
+      imagemagick
+      pkg-config
+      mpv
+      comma
+      openconnect
+      gnumake
+      kdeconnect
+      signal-desktop
+      zed-editor
+      #getting foundry to work!
+      #nodejs_21
+      caddy
+      cloudflared
+      pm2
+      #productivty
+      todoist-electron
+      #Gaming
+      lutris
+      wineWowPackages.stable
+      winetricks
+      dxvk_2
+      mangohud
+      vulkan-tools
+      asdf-vm
+      # for cmpm17
+      binwalk
+      exiftool
+      #for fun
+      cowsay
+      cmatrix
+      hyfetch
+      bat
+      eza
+      ollama
+      sl
+      fallout-ce
+      fallout2-ce
+      #CSE114 (Haskell stuff)
+      stack
+      (haskell-language-server.override {supportedGhcVersions = ["94" "947"];})
+      haskell.compiler.ghc947
+      ormolu
+      #LSP + formatters/linters
+      lua-language-server
+      nil
+      alejandra
+      statix
+      texlab
+      typst-fmt
+      typst-lsp
+      clang-tools
+      #rust-analyzer
+      #clippy
+      #rustfmt
+      #runpod
+      docker
+    ]
+    ++ [inputs.zls.packages.x86_64-linux];
 
   programs.direnv = {
     enable = true;
