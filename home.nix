@@ -2,6 +2,7 @@
   inputs,
   config,
   pkgs,
+  zls,
   ...
 }: {
   # wayland.windowManager.hyprland = {
@@ -121,7 +122,7 @@
       #runpod
       docker
     ]
-    ++ [zls];
+    ++ [zls."0.13.0"];
 
   programs.direnv = {
     enable = true;
