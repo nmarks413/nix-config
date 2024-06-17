@@ -122,7 +122,7 @@
       #runpod
       docker
     ]
-    ++ [zls.packages.x86_64-linux.zls];
+    ++ [zls.packages.x86_64-linux.zls."0.13.0"];
 
   programs.direnv = {
     enable = true;
