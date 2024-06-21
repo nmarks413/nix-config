@@ -32,7 +32,7 @@
     hostName = "pathfinder2.duckdns.org";
     proxySSL = true;
     proxyPort = 443;
-    package = inputs.foundryvttpackages.${pkgs.system}.foundryvtt_11;
+    package = inputs.foundryvtt.packages.${pkgs.system}.foundryvtt_11;
   };
 
   services.cloudflared = {
