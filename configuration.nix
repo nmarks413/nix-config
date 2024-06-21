@@ -124,7 +124,6 @@
   # Enable OpenGL
   hardware.opengl = {
     enable = true;
-    driSupport = true;
   };
   services.xserver.videoDrivers = ["nvidia"];
 
