@@ -90,6 +90,7 @@
       mangohud
       vulkan-tools
       asdf-vm
+      prismlauncher
       # for cmpm17
       binwalk
       exiftool
