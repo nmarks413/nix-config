@@ -36,8 +36,8 @@
   #   ./zed-editor.nix
   # ];
 
-  imports = [discord/default.nix];
-  sys.discord.enable = true;
+  # imports = [discord/default.nix];
+  # sys.discord.enable = true;
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
@@ -62,6 +62,7 @@
       lazygit
       rustup
       file
+      discord
       # itch : THIS IS BROKEN FOR SOME REASON, need to pin it??
       qbittorrent
       deno
