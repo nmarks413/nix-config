@@ -276,6 +276,11 @@
   };
   environment.variables.EDITOR = "nvim";
 
+  programs.steam = {
+    enable = true;
+    package = with pkgs; steam.override {extraPkgs = pkgs: [attr];};
+  };
+
   # Allow unfree packages
   # List packages installed in system profile. To search, run:
   # $ nix search wget
