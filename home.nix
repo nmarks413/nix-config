@@ -3,6 +3,7 @@
   config,
   pkgs,
   zls,
+  ghostty,
   ...
 }: {
   # wayland.windowManager.hyprland = {
