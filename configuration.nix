@@ -9,6 +9,9 @@
 }: {
   nixpkgs.config.allowUnfree = true;
 
+  services.blueman.enable = true;
+  hardware.bluetooth.enable = true;
+
   systemd.timers.duckdns = {
     wantedBy = ["timers.target"];
     timerConfig = {
