@@ -129,6 +129,7 @@
   services.xserver.videoDrivers = ["nvidia"];
 
   hardware.nvidia = {
+    forceFullCompositionPipeline = true;
     # Modesetting is required.
     modesetting.enable = true;
 
