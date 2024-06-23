@@ -19,7 +19,12 @@
       #flake = false;
     };
 
-    inputs.foundryvtt.url = "github:reckenrode/nix-foundryvtt";
+    flake-utils.url = "github:numtide/flake-utils";
+
+    zig.url = "github:mitchellh/zig-overlay";
+    zls.url = "github:zigtools/zls?rev=a26718049a8657d4da04c331aeced1697bc7652b";
+
+    foundryvtt.url = "github:reckenrode/nix-foundryvtt";
   };
   outputs = {
     self,
@@ -29,8 +34,13 @@
     stylix,
     blocklist-hosts,
     hyprland-plugins,
+    zig,
+    zls,
     ...
   } @ inputs: let
+    overlays = [
+      inputs.zig.overlays.default
+    ];
     systemSettings = {
       system = "x86_64-linux"; # system arch
       hostname = "nixos"; # hostname
@@ -75,7 +85,7 @@
         allowUnfree = true;
         allowUnfreePredicate = _: true;
       };
-      overlays = [];
+      overlays = overlays;
     };
 
     pkgs-stable = import nixpkgs-stable {
@@ -92,13 +102,16 @@
     homeConfigurations = {
       nmarks = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-        modules = [./home.nix];
+        modules = [
+          ./home.nix
+        ];
         extraSpecialArgs = {
           inherit pkgs-stable;
           inherit systemSettings;
           inherit userSettings;
           inherit stylix;
           inherit hyprland-plugins;
+          inherit zls;
         };
       };
     };
