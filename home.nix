@@ -45,6 +45,7 @@
 
   home.packages = with pkgs;
     [
+      efibootmgr
       zigpkgs."0.13.0"
       ghostty.packages.x86_64-linux.default
       stylua
@@ -167,6 +168,7 @@
       hm-update = "git add home.nix ; git commit -m 'updated home-manager config'; git push origin main; home-manager switch --flake ~/.dotfiles/#nmarks";
       sys-update = "git add configuration.nix ; git commit -m 'updated system config'; git push origin main; sudo nixos-rebuild switch --flake ~/.dotfiles/#nmarks";
       full-update = "sys-update; hm-update";
+      reboot-windows = "sudo efibootmgr --bootnext 0000; sudo reboot -h now";
     };
     shellInit = "source $HOME/.nix-profile/share/asdf-vm/asdf.fish ";
   };
