@@ -67,7 +67,6 @@
       file
       (discord.override {
         withVencord = true;
-        withOpenASAR = true;
       })
       # itch : THIS IS BROKEN FOR SOME REASON, need to pin it??
       qbittorrent
