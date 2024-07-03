@@ -65,7 +65,9 @@
       lazygit
       rustup
       file
-      discord
+      (discord.override {
+        withVencord = true;
+      })
       # itch : THIS IS BROKEN FOR SOME REASON, need to pin it??
       qbittorrent
       deno
