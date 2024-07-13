@@ -46,7 +46,6 @@
   home.packages = with pkgs;
     [
       pavucontrol
-      noisetorch
       efibootmgr
       zigpkgs."0.13.0"
       ghostty.packages.x86_64-linux.default
@@ -158,6 +157,8 @@
   };
 
   programs.mangohud.enable = true;
+
+  programs.noisetorch.enable = true;
 
   programs.fish = {
     enable = true;
