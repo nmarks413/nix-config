@@ -45,6 +45,7 @@
 
   home.packages = with pkgs;
     [
+      pavucontrol
       noisetorch
       efibootmgr
       zigpkgs."0.13.0"
