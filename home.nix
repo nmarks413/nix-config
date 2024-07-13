@@ -45,6 +45,7 @@
 
   home.packages = with pkgs;
     [
+      noisetorch
       efibootmgr
       zigpkgs."0.13.0"
       ghostty.packages.x86_64-linux.default
