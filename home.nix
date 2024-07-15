@@ -45,6 +45,7 @@
 
   home.packages = with pkgs;
     [
+      fzf
       pavucontrol
       efibootmgr
       zigpkgs."0.13.0"
@@ -157,8 +158,6 @@
   };
 
   programs.mangohud.enable = true;
-
-  programs.noisetorch.enable = true;
 
   programs.fish = {
     enable = true;
