@@ -128,7 +128,7 @@
       clang-tools
       # rust-analyzer
       #clippy
-      rustfmt
+      # rustfmt
       #runpod
       docker
     ]
