@@ -69,6 +69,7 @@
       lazygit
       rustup
       file
+      vesktop
       (discord.override {
         withVencord = true;
       })
