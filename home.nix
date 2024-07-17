@@ -70,6 +70,7 @@
       rustup
       file
       (discord.override {
+        withOpenASAR = true;
         withVencord = true;
       })
       # itch : THIS IS BROKEN FOR SOME REASON, need to pin it??
