@@ -66,7 +66,7 @@
       qemu
       vimgolf
       lazygit
-      rustup
+      # rustup
       file
       (discord.override {
         withVencord = true;
@@ -126,9 +126,9 @@
       typst-fmt
       typst-lsp
       clang-tools
-      rust-analyzer
+      # rust-analyzer
       #clippy
-      rustfmt
+      # rustfmt
       #runpod
       docker
     ]
