@@ -54,7 +54,7 @@
       stylua
       webcord
       cachix
-      # (btop.override {withCuda = true;})
+      (btop.override {cudaSupport = true;})
       neofetch
       direnv
       R
