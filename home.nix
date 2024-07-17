@@ -53,7 +53,8 @@
       ghostty.packages.x86_64-linux.default
       stylua
       webcord
-      (btop.override {withCuda = true;})
+      cachix
+      # (btop.override {withCuda = true;})
       neofetch
       direnv
       R
