@@ -45,6 +45,7 @@
 
   home.packages = with pkgs;
     [
+      stremio
       codespell
       fzf
       pavucontrol
