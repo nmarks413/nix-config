@@ -12,6 +12,11 @@
   services.blueman.enable = true;
   hardware.bluetooth.enable = true;
 
+  servies = {
+    ratbagd.enable = true;
+    piper.enable = true;
+  };
+
   systemd.timers.duckdns = {
     wantedBy = ["timers.target"];
     timerConfig = {
