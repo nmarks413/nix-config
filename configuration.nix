@@ -14,7 +14,6 @@
 
   servies = {
     ratbagd.enable = true;
-    piper.enable = true;
   };
 
   systemd.timers.duckdns = {
