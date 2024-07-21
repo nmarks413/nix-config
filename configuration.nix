@@ -12,7 +12,7 @@
   services.blueman.enable = true;
   hardware.bluetooth.enable = true;
 
-  servies = {
+  services = {
     ratbagd.enable = true;
   };
 
