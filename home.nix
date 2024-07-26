@@ -45,6 +45,7 @@
 
   home.packages = with pkgs;
     [
+      spotify
       stremio
       codespell
       fzf
