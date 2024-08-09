@@ -135,15 +135,9 @@
       # rustfmt
       #runpod
       docker
+      nh
     ]
     ++ [zls.packages.x86_64-linux.zls];
-
-  programs.nh = {
-    enable = true;
-    clean.enable = true;
-    clean.extraArgs = "--keep-since 4d --keep 3";
-    flake = "/home/user/my-nixos-config";
-  };
 
   programs.direnv = {
     enable = true;
