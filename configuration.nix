@@ -2,6 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 {
+  self,
   inputs,
   config,
   pkgs,
@@ -105,10 +106,12 @@
       "https://nix-community.cachix.org"
       "https://cache.nixos.org/"
       "https://cuda-maintainers.cachix.org"
+      "https://cosmic.cachix.org/"
     ];
     trusted-public-keys = [
       "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E="
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="
     ];
   };
   programs.hyprland.enable = true;
@@ -138,6 +141,13 @@
     suspend.enable = false;
     hibernate.enable = false;
     hybrid-sleep.enable = false;
+  };
+
+  programs.nh = {
+    enable = true;
+    clean.enable = true;
+    clean.extraArgs = "--keep-since 4d --keep 3";
+    flake = "/home/nmarks/.dotfiles";
   };
 
   fonts.packages = with pkgs; [
@@ -181,7 +191,7 @@
     nvidiaSettings = true;
 
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
-    package = config.boot.kernelPackages.nvidiaPackages.production;
+    package = config.boot.kernelPackages.nvidiaPackages.beta;
     #Fixes a glitch
     nvidiaPersistenced = true;
 
@@ -216,6 +226,7 @@
     # };
   };
 
+  boot.supportedFilesystems = ["ntfs"];
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
@@ -247,6 +258,9 @@
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
 
+  # services.desktopManager.cosmic.enable = true;
+  # services.displayManager.cosmic-greeter.enable = true;
+
   # Configure keymap in X11
   services.xserver = {
     xkb.layout = "us";
@@ -257,8 +271,8 @@
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  sound.enable = true;
-  hardware.pulseaudio.enable = false;
+  #sound.enable = true;
+  #hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -331,6 +345,9 @@
     tailscale
     ethtool
     grub2
+
+    wineWowPackages.waylandFull
+    wineWowPackages.stable
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

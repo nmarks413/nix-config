@@ -45,13 +45,23 @@
 
   home.packages = with pkgs;
     [
+      calibre
+      pyright
+      ruff
+      python312Packages.jedi-language-server
+      wofi
+      bottles
+      spectacle
+      dolphin
+      path-of-building
+      tor
       spotify
       stremio
       codespell
       fzf
       pavucontrol
       efibootmgr
-      zigpkgs."0.13.0"
+      zigpkgs.master
       ghostty.packages.x86_64-linux.default
       stylua
       webcord
@@ -136,6 +146,7 @@
       #runpod
       docker
       nh
+      fastfetch
     ]
     ++ [zls.packages.x86_64-linux.zls];
 
@@ -153,6 +164,8 @@
   };
   #Link neovim config into nix
   #xdg.configFile.nvim.source = ./nvim;
+  xdg.mimeApps.defaultApplications."inode/directory" = "dolphin.desktop";
+  # xdg.mimeApps.defaultApplications = {"inode/directory" = "org.kde.dolphin.desktop";};
 
   programs.kitty = {
     enable = true;
@@ -181,6 +194,27 @@
       reboot-windows = "sudo efibootmgr --bootnext 0000; sudo reboot -h now";
     };
     shellInit = "source $HOME/.nix-profile/share/asdf-vm/asdf.fish ";
+  };
+
+  programs.hyfetch = {
+    enable = true;
+    settings = {
+      backend = "fastfetch";
+      preset = "bisexual";
+      mode = "rgb";
+      light_dark = "dark";
+      lightness = {
+      };
+      color_align = {
+        mode = "horizontal";
+        # custom_colors = [];
+        # fore_back = null;
+      };
+      distro = null;
+      pride_month_shown = [
+      ];
+      pride_month_disable = false;
+    };
   };
 
   /*

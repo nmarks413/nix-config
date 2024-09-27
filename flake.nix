@@ -2,6 +2,7 @@
   description = "New Modular flake!";
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
+    # nixpkgs.url = "github:NixOS/nixpkgs/master";
     nixpkgs-stable.url = "nixpkgs/nixos-23.11";
 
     home-manager.url = "github:nix-community/home-manager/master";
@@ -25,6 +26,14 @@
     zls.url = "github:zigtools/zls?rev=a26718049a8657d4da04c331aeced1697bc7652b";
 
     foundryvtt.url = "github:reckenrode/nix-foundryvtt";
+    ghostty = {
+      url = "git+ssh://git@github.com/ghostty-org/ghostty";
+    };
+
+    nixos-cosmic = {
+      url = "github:lilyinstarlight/nixos-cosmic";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs = {
     self,
@@ -36,6 +45,8 @@
     hyprland-plugins,
     zig,
     zls,
+    ghostty,
+    nixos-cosmic,
     ...
   } @ inputs: let
     overlays = [
@@ -112,13 +123,17 @@
           inherit stylix;
           inherit hyprland-plugins;
           inherit zls;
+          inherit ghostty;
         };
       };
     };
     nixosConfigurations = {
-      nmarks = lib.nixosSystem {
+      nixos = lib.nixosSystem {
         system = systemSettings.system;
-        modules = [./configuration.nix];
+        modules = [
+          nixos-cosmic.nixosModules.default
+          ./configuration.nix
+        ];
         specialArgs = {
           inherit inputs;
           inherit pkgs-stable;
@@ -129,5 +144,11 @@
         };
       };
     };
+
+    # nixos = inputs.self.nixosConfigurations.nmarks;
+    #
+    #
+    # nmarks = inputs.self.nixosConfigurations.nmarks.config.system.build.toplevel;
+    # defaultPackage.x86_64-linux = inputs.self.nixosConfigurations.laptoptop.config.system.build.toplevel;
   };
 }

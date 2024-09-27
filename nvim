@@ -1,0 +1,1607 @@
+sourcing setup hook '/nix/store/l014xp1qxdl6gim3zc0jv3mpxhbp346s-python3-3.12.4/nix-support/setup-hook'
+sourcing setup hook '/nix/store/l6m6xfk2wkrhzcw86c1rqzpnk752km7y-gfortran-wrapper-13.3.0/nix-support/setup-hook'
+sourcing setup hook '/nix/store/26gsg95lcdmdzc6pdxp8njps92giskxw-binutils-wrapper-2.42/nix-support/setup-hook'
+sourcing setup hook '/nix/store/aqckch626lg0vxh41dabyzrq0jx7gdk5-cmake-3.29.6/nix-support/setup-hook'
+sourcing setup hook '/nix/store/57hpz6jj3pnjwdwwg6jgmj9gr7kxs8zp-perl-5.38.2/nix-support/setup-hook'
+sourcing setup hook '/nix/store/dv5vgsw8naxnkcc88x78vprbnn1pp44y-patchelf-0.15.0/nix-support/setup-hook'
+sourcing setup hook '/nix/store/i4iynx9axbq23sd0gyrc5wdb46zz6z8l-update-autotools-gnu-config-scripts-hook/nix-support/setup-hook'
+sourcing setup hook '/nix/store/h9lc1dpi14z7is86ffhl3ld569138595-audit-tmpdir.sh'
+sourcing setup hook '/nix/store/m54bmrhj6fqz8nds5zcj97w9s9bckc9v-compress-man-pages.sh'
+sourcing setup hook '/nix/store/wgrbkkaldkrlrni33ccvm3b6vbxzb656-make-symlinks-relative.sh'
+sourcing setup hook '/nix/store/5yzw0vhkyszf2d179m0qfkgxmp5wjjx4-move-docs.sh'
+sourcing setup hook '/nix/store/fyaryjvghbkpfnsyw97hb3lyb37s1pd6-move-lib64.sh'
+sourcing setup hook '/nix/store/kd4xwxjpjxi71jkm6ka0np72if9rm3y0-move-sbin.sh'
+sourcing setup hook '/nix/store/pag6l61paj1dc9sv15l7bm5c17xn5kyk-move-systemd-user-units.sh'
+sourcing setup hook '/nix/store/jivxp510zxakaaic7qkrb7v1dd2rdbw9-multiple-outputs.sh'
+sourcing setup hook '/nix/store/ilaf1w22bxi6jsi45alhmvvdgy4ly3zs-patch-shebangs.sh'
+sourcing setup hook '/nix/store/cickvswrvann041nqxb0rxilc46svw1n-prune-libtool-files.sh'
+sourcing setup hook '/nix/store/xyff06pkhki3qy1ls77w10s0v79c9il0-reproducible-builds.sh'
+sourcing setup hook '/nix/store/aazf105snicrlvyzzbdj85sx4179rpfp-set-source-date-epoch-to-latest.sh'
+sourcing setup hook '/nix/store/gps9qrh99j7g02840wv5x78ykmz30byp-strip.sh'
+sourcing setup hook '/nix/store/62zpnw69ylcfhcpy1di8152zlzmbls91-gcc-wrapper-13.3.0/nix-support/setup-hook'
+sourcing setup hook '/nix/store/pg90p34kys2famxnq7925sbgj4jrnsi8-binutils-wrapper-2.42/nix-support/setup-hook'
+sourcing setup hook '/nix/store/i2dr6qzxsjvkr6jyka6c8agvwwjk4y7x-find-xml-catalogs-hook/nix-support/setup-hook'
+calling 'envBuildHostHook' function hook 'addPythonPath' /nix/store/w40ik54r0nv4fjqwiqs81ixpmdf2xdfw-which-2.21
+calling 'envBuildHostHook' function hook 'sysconfigdataHook' /nix/store/w40ik54r0nv4fjqwiqs81ixpmdf2xdfw-which-2.21
+calling 'envBuildHostHook' function hook 'addPerlLibPath' /nix/store/w40ik54r0nv4fjqwiqs81ixpmdf2xdfw-which-2.21
+calling 'envBuildHostHook' function hook 'addPythonPath' /nix/store/l014xp1qxdl6gim3zc0jv3mpxhbp346s-python3-3.12.4
+calling 'envBuildHostHook' function hook 'sysconfigdataHook' /nix/store/l014xp1qxdl6gim3zc0jv3mpxhbp346s-python3-3.12.4
+calling 'envBuildHostHook' function hook 'addPerlLibPath' /nix/store/l014xp1qxdl6gim3zc0jv3mpxhbp346s-python3-3.12.4
+calling 'envBuildHostHook' function hook 'addPythonPath' /nix/store/l6m6xfk2wkrhzcw86c1rqzpnk752km7y-gfortran-wrapper-13.3.0
+calling 'envBuildHostHook' function hook 'sysconfigdataHook' /nix/store/l6m6xfk2wkrhzcw86c1rqzpnk752km7y-gfortran-wrapper-13.3.0
+calling 'envBuildHostHook' function hook 'addPerlLibPath' /nix/store/l6m6xfk2wkrhzcw86c1rqzpnk752km7y-gfortran-wrapper-13.3.0
+calling 'envBuildHostHook' function hook 'addPythonPath' /nix/store/26gsg95lcdmdzc6pdxp8njps92giskxw-binutils-wrapper-2.42
+calling 'envBuildHostHook' function hook 'sysconfigdataHook' /nix/store/26gsg95lcdmdzc6pdxp8njps92giskxw-binutils-wrapper-2.42
+calling 'envBuildHostHook' function hook 'addPerlLibPath' /nix/store/26gsg95lcdmdzc6pdxp8njps92giskxw-binutils-wrapper-2.42
+calling 'envBuildHostHook' function hook 'addPythonPath' /nix/store/aqckch626lg0vxh41dabyzrq0jx7gdk5-cmake-3.29.6
+calling 'envBuildHostHook' function hook 'sysconfigdataHook' /nix/store/aqckch626lg0vxh41dabyzrq0jx7gdk5-cmake-3.29.6
+calling 'envBuildHostHook' function hook 'addPerlLibPath' /nix/store/aqckch626lg0vxh41dabyzrq0jx7gdk5-cmake-3.29.6
+calling 'envBuildHostHook' function hook 'addPythonPath' /nix/store/57hpz6jj3pnjwdwwg6jgmj9gr7kxs8zp-perl-5.38.2
+calling 'envBuildHostHook' function hook 'sysconfigdataHook' /nix/store/57hpz6jj3pnjwdwwg6jgmj9gr7kxs8zp-perl-5.38.2
+calling 'envBuildHostHook' function hook 'addPerlLibPath' /nix/store/57hpz6jj3pnjwdwwg6jgmj9gr7kxs8zp-perl-5.38.2
+calling 'envBuildHostHook' function hook 'addPythonPath' /nix/store/f63r6sdyy30wm0pv57zn19riib7xa3zj-libxcrypt-4.4.36
+calling 'envBuildHostHook' function hook 'sysconfigdataHook' /nix/store/f63r6sdyy30wm0pv57zn19riib7xa3zj-libxcrypt-4.4.36
+calling 'envBuildHostHook' function hook 'addPerlLibPath' /nix/store/f63r6sdyy30wm0pv57zn19riib7xa3zj-libxcrypt-4.4.36
+calling 'envBuildHostHook' function hook 'addPythonPath' /nix/store/q5g3d04hd8w065hhsigbkj820rahwcd9-gnum4-1.4.19
+calling 'envBuildHostHook' function hook 'sysconfigdataHook' /nix/store/q5g3d04hd8w065hhsigbkj820rahwcd9-gnum4-1.4.19
+calling 'envBuildHostHook' function hook 'addPerlLibPath' /nix/store/q5g3d04hd8w065hhsigbkj820rahwcd9-gnum4-1.4.19
+calling 'envBuildHostHook' function hook 'addPythonPath' /nix/store/bvrly5zpaqxydbfnx3dm4i7k8cbkrp32-openssl-3.0.14-dev
+calling 'envBuildHostHook' function hook 'sysconfigdataHook' /nix/store/bvrly5zpaqxydbfnx3dm4i7k8cbkrp32-openssl-3.0.14-dev
+calling 'envBuildHostHook' function hook 'addPerlLibPath' /nix/store/bvrly5zpaqxydbfnx3dm4i7k8cbkrp32-openssl-3.0.14-dev
+calling 'envBuildHostHook' function hook 'addPythonPath' /nix/store/xpwwq5yjkbsip1p027jgdbzm9pvzfb1v-openssl-3.0.14-bin
+calling 'envBuildHostHook' function hook 'sysconfigdataHook' /nix/store/xpwwq5yjkbsip1p027jgdbzm9pvzfb1v-openssl-3.0.14-bin
+calling 'envBuildHostHook' function hook 'addPerlLibPath' /nix/store/xpwwq5yjkbsip1p027jgdbzm9pvzfb1v-openssl-3.0.14-bin
+calling 'envBuildHostHook' function hook 'addPythonPath' /nix/store/1zd8iqbcl36rliw0bbf9wn4ca31rqz5c-openssl-3.0.14
+calling 'envBuildHostHook' function hook 'sysconfigdataHook' /nix/store/1zd8iqbcl36rliw0bbf9wn4ca31rqz5c-openssl-3.0.14
+calling 'envBuildHostHook' function hook 'addPerlLibPath' /nix/store/1zd8iqbcl36rliw0bbf9wn4ca31rqz5c-openssl-3.0.14
+calling 'envBuildHostHook' function hook 'addPythonPath' /nix/store/dv5vgsw8naxnkcc88x78vprbnn1pp44y-patchelf-0.15.0
+calling 'envBuildHostHook' function hook 'sysconfigdataHook' /nix/store/dv5vgsw8naxnkcc88x78vprbnn1pp44y-patchelf-0.15.0
+calling 'envBuildHostHook' function hook 'addPerlLibPath' /nix/store/dv5vgsw8naxnkcc88x78vprbnn1pp44y-patchelf-0.15.0
+calling 'envBuildHostHook' function hook 'addPythonPath' /nix/store/i4iynx9axbq23sd0gyrc5wdb46zz6z8l-update-autotools-gnu-config-scripts-hook
+calling 'envBuildHostHook' function hook 'sysconfigdataHook' /nix/store/i4iynx9axbq23sd0gyrc5wdb46zz6z8l-update-autotools-gnu-config-scripts-hook
+calling 'envBuildHostHook' function hook 'addPerlLibPath' /nix/store/i4iynx9axbq23sd0gyrc5wdb46zz6z8l-update-autotools-gnu-config-scripts-hook
+calling 'envBuildHostHook' function hook 'addPythonPath' /nix/store/h9lc1dpi14z7is86ffhl3ld569138595-audit-tmpdir.sh
+calling 'envBuildHostHook' function hook 'sysconfigdataHook' /nix/store/h9lc1dpi14z7is86ffhl3ld569138595-audit-tmpdir.sh
+calling 'envBuildHostHook' function hook 'addPerlLibPath' /nix/store/h9lc1dpi14z7is86ffhl3ld569138595-audit-tmpdir.sh
+calling 'envBuildHostHook' function hook 'addPythonPath' /nix/store/m54bmrhj6fqz8nds5zcj97w9s9bckc9v-compress-man-pages.sh
+calling 'envBuildHostHook' function hook 'sysconfigdataHook' /nix/store/m54bmrhj6fqz8nds5zcj97w9s9bckc9v-compress-man-pages.sh
+calling 'envBuildHostHook' function hook 'addPerlLibPath' /nix/store/m54bmrhj6fqz8nds5zcj97w9s9bckc9v-compress-man-pages.sh
+calling 'envBuildHostHook' function hook 'addPythonPath' /nix/store/wgrbkkaldkrlrni33ccvm3b6vbxzb656-make-symlinks-relative.sh
+calling 'envBuildHostHook' function hook 'sysconfigdataHook' /nix/store/wgrbkkaldkrlrni33ccvm3b6vbxzb656-make-symlinks-relative.sh
+calling 'envBuildHostHook' function hook 'addPerlLibPath' /nix/store/wgrbkkaldkrlrni33ccvm3b6vbxzb656-make-symlinks-relative.sh
+calling 'envBuildHostHook' function hook 'addPythonPath' /nix/store/5yzw0vhkyszf2d179m0qfkgxmp5wjjx4-move-docs.sh
+calling 'envBuildHostHook' function hook 'sysconfigdataHook' /nix/store/5yzw0vhkyszf2d179m0qfkgxmp5wjjx4-move-docs.sh
+calling 'envBuildHostHook' function hook 'addPerlLibPath' /nix/store/5yzw0vhkyszf2d179m0qfkgxmp5wjjx4-move-docs.sh
+calling 'envBuildHostHook' function hook 'addPythonPath' /nix/store/fyaryjvghbkpfnsyw97hb3lyb37s1pd6-move-lib64.sh
+calling 'envBuildHostHook' function hook 'sysconfigdataHook' /nix/store/fyaryjvghbkpfnsyw97hb3lyb37s1pd6-move-lib64.sh
+calling 'envBuildHostHook' function hook 'addPerlLibPath' /nix/store/fyaryjvghbkpfnsyw97hb3lyb37s1pd6-move-lib64.sh
+calling 'envBuildHostHook' function hook 'addPythonPath' /nix/store/kd4xwxjpjxi71jkm6ka0np72if9rm3y0-move-sbin.sh
+calling 'envBuildHostHook' function hook 'sysconfigdataHook' /nix/store/kd4xwxjpjxi71jkm6ka0np72if9rm3y0-move-sbin.sh
+calling 'envBuildHostHook' function hook 'addPerlLibPath' /nix/store/kd4xwxjpjxi71jkm6ka0np72if9rm3y0-move-sbin.sh
+calling 'envBuildHostHook' function hook 'addPythonPath' /nix/store/pag6l61paj1dc9sv15l7bm5c17xn5kyk-move-systemd-user-units.sh
+calling 'envBuildHostHook' function hook 'sysconfigdataHook' /nix/store/pag6l61paj1dc9sv15l7bm5c17xn5kyk-move-systemd-user-units.sh
+calling 'envBuildHostHook' function hook 'addPerlLibPath' /nix/store/pag6l61paj1dc9sv15l7bm5c17xn5kyk-move-systemd-user-units.sh
+calling 'envBuildHostHook' function hook 'addPythonPath' /nix/store/jivxp510zxakaaic7qkrb7v1dd2rdbw9-multiple-outputs.sh
+calling 'envBuildHostHook' function hook 'sysconfigdataHook' /nix/store/jivxp510zxakaaic7qkrb7v1dd2rdbw9-multiple-outputs.sh
+calling 'envBuildHostHook' function hook 'addPerlLibPath' /nix/store/jivxp510zxakaaic7qkrb7v1dd2rdbw9-multiple-outputs.sh
+calling 'envBuildHostHook' function hook 'addPythonPath' /nix/store/ilaf1w22bxi6jsi45alhmvvdgy4ly3zs-patch-shebangs.sh
+calling 'envBuildHostHook' function hook 'sysconfigdataHook' /nix/store/ilaf1w22bxi6jsi45alhmvvdgy4ly3zs-patch-shebangs.sh
+calling 'envBuildHostHook' function hook 'addPerlLibPath' /nix/store/ilaf1w22bxi6jsi45alhmvvdgy4ly3zs-patch-shebangs.sh
+calling 'envBuildHostHook' function hook 'addPythonPath' /nix/store/cickvswrvann041nqxb0rxilc46svw1n-prune-libtool-files.sh
+calling 'envBuildHostHook' function hook 'sysconfigdataHook' /nix/store/cickvswrvann041nqxb0rxilc46svw1n-prune-libtool-files.sh
+calling 'envBuildHostHook' function hook 'addPerlLibPath' /nix/store/cickvswrvann041nqxb0rxilc46svw1n-prune-libtool-files.sh
+calling 'envBuildHostHook' function hook 'addPythonPath' /nix/store/xyff06pkhki3qy1ls77w10s0v79c9il0-reproducible-builds.sh
+calling 'envBuildHostHook' function hook 'sysconfigdataHook' /nix/store/xyff06pkhki3qy1ls77w10s0v79c9il0-reproducible-builds.sh
+calling 'envBuildHostHook' function hook 'addPerlLibPath' /nix/store/xyff06pkhki3qy1ls77w10s0v79c9il0-reproducible-builds.sh
+calling 'envBuildHostHook' function hook 'addPythonPath' /nix/store/aazf105snicrlvyzzbdj85sx4179rpfp-set-source-date-epoch-to-latest.sh
+calling 'envBuildHostHook' function hook 'sysconfigdataHook' /nix/store/aazf105snicrlvyzzbdj85sx4179rpfp-set-source-date-epoch-to-latest.sh
+calling 'envBuildHostHook' function hook 'addPerlLibPath' /nix/store/aazf105snicrlvyzzbdj85sx4179rpfp-set-source-date-epoch-to-latest.sh
+calling 'envBuildHostHook' function hook 'addPythonPath' /nix/store/gps9qrh99j7g02840wv5x78ykmz30byp-strip.sh
+calling 'envBuildHostHook' function hook 'sysconfigdataHook' /nix/store/gps9qrh99j7g02840wv5x78ykmz30byp-strip.sh
+calling 'envBuildHostHook' function hook 'addPerlLibPath' /nix/store/gps9qrh99j7g02840wv5x78ykmz30byp-strip.sh
+calling 'envBuildHostHook' function hook 'addPythonPath' /nix/store/62zpnw69ylcfhcpy1di8152zlzmbls91-gcc-wrapper-13.3.0
+calling 'envBuildHostHook' function hook 'sysconfigdataHook' /nix/store/62zpnw69ylcfhcpy1di8152zlzmbls91-gcc-wrapper-13.3.0
+calling 'envBuildHostHook' function hook 'addPerlLibPath' /nix/store/62zpnw69ylcfhcpy1di8152zlzmbls91-gcc-wrapper-13.3.0
+calling 'envBuildHostHook' function hook 'addPythonPath' /nix/store/pg90p34kys2famxnq7925sbgj4jrnsi8-binutils-wrapper-2.42
+calling 'envBuildHostHook' function hook 'sysconfigdataHook' /nix/store/pg90p34kys2famxnq7925sbgj4jrnsi8-binutils-wrapper-2.42
+calling 'envBuildHostHook' function hook 'addPerlLibPath' /nix/store/pg90p34kys2famxnq7925sbgj4jrnsi8-binutils-wrapper-2.42
+calling 'envHostTargetHook' function hook 'bintoolsWrapper_addLDVars' /nix/store/b23a6vc2nkq9v1vs1g003djakr78h8j3-libxml2-2.13.2-dev
+calling 'envHostTargetHook' function hook 'addCMakeParams' /nix/store/b23a6vc2nkq9v1vs1g003djakr78h8j3-libxml2-2.13.2-dev
+calling 'envHostTargetHook' function hook 'ccWrapper_addCVars' /nix/store/b23a6vc2nkq9v1vs1g003djakr78h8j3-libxml2-2.13.2-dev
+calling 'envHostTargetHook' function hook 'bintoolsWrapper_addLDVars' /nix/store/b23a6vc2nkq9v1vs1g003djakr78h8j3-libxml2-2.13.2-dev
+calling 'envHostTargetHook' function hook 'addXMLCatalogs' /nix/store/b23a6vc2nkq9v1vs1g003djakr78h8j3-libxml2-2.13.2-dev
+calling 'envHostTargetHook' function hook 'bintoolsWrapper_addLDVars' /nix/store/i2dr6qzxsjvkr6jyka6c8agvwwjk4y7x-find-xml-catalogs-hook
+calling 'envHostTargetHook' function hook 'addCMakeParams' /nix/store/i2dr6qzxsjvkr6jyka6c8agvwwjk4y7x-find-xml-catalogs-hook
+calling 'envHostTargetHook' function hook 'ccWrapper_addCVars' /nix/store/i2dr6qzxsjvkr6jyka6c8agvwwjk4y7x-find-xml-catalogs-hook
+calling 'envHostTargetHook' function hook 'bintoolsWrapper_addLDVars' /nix/store/i2dr6qzxsjvkr6jyka6c8agvwwjk4y7x-find-xml-catalogs-hook
+calling 'envHostTargetHook' function hook 'addXMLCatalogs' /nix/store/i2dr6qzxsjvkr6jyka6c8agvwwjk4y7x-find-xml-catalogs-hook
+calling 'envHostTargetHook' function hook 'bintoolsWrapper_addLDVars' /nix/store/y06jznbsplvh5bs7xcl50wzbar1z4mxg-libxml2-2.13.2-bin
+calling 'envHostTargetHook' function hook 'addCMakeParams' /nix/store/y06jznbsplvh5bs7xcl50wzbar1z4mxg-libxml2-2.13.2-bin
+calling 'envHostTargetHook' function hook 'ccWrapper_addCVars' /nix/store/y06jznbsplvh5bs7xcl50wzbar1z4mxg-libxml2-2.13.2-bin
+calling 'envHostTargetHook' function hook 'bintoolsWrapper_addLDVars' /nix/store/y06jznbsplvh5bs7xcl50wzbar1z4mxg-libxml2-2.13.2-bin
+calling 'envHostTargetHook' function hook 'addXMLCatalogs' /nix/store/y06jznbsplvh5bs7xcl50wzbar1z4mxg-libxml2-2.13.2-bin
+calling 'envHostTargetHook' function hook 'bintoolsWrapper_addLDVars' /nix/store/amlkmz4vr2j0khjnwfdx25glbd0mcxjj-libxml2-2.13.2
+calling 'envHostTargetHook' function hook 'addCMakeParams' /nix/store/amlkmz4vr2j0khjnwfdx25glbd0mcxjj-libxml2-2.13.2
+calling 'envHostTargetHook' function hook 'ccWrapper_addCVars' /nix/store/amlkmz4vr2j0khjnwfdx25glbd0mcxjj-libxml2-2.13.2
+calling 'envHostTargetHook' function hook 'bintoolsWrapper_addLDVars' /nix/store/amlkmz4vr2j0khjnwfdx25glbd0mcxjj-libxml2-2.13.2
+calling 'envHostTargetHook' function hook 'addXMLCatalogs' /nix/store/amlkmz4vr2j0khjnwfdx25glbd0mcxjj-libxml2-2.13.2
+calling 'postHook' function hook 'makeCmakeFindLibs'
+@nix { "action": "setPhase", "phase": "unpackPhase" }
+Running phase: unpackPhase
+unpacking source archive /nix/store/fpv8bjg9zpkn423dbn86byf6c2nlbdhh-julia-1.10.4-full.tar.gz
+calling 'unpackCmd' function hook '_defaultUnpack' /nix/store/fpv8bjg9zpkn423dbn86byf6c2nlbdhh-julia-1.10.4-full.tar.gz
+source root is julia-1.10.4
+calling 'postUnpack' function hook '_updateSourceDateEpochFromSourceRoot'
+setting SOURCE_DATE_EPOCH to timestamp 1717533920 of file julia-1.10.4/deps/srccache/libtracyclient-897aec5b062664d2485f4f9a213715d2e527e0ca.tar.gz
+@nix { "action": "setPhase", "phase": "patchPhase" }
+Running phase: patchPhase
+applying patch /nix/store/in87ljcasjx7xbjjm8gb4rqf8j76ka2r-0002-skip-failing-and-flaky-tests.patch
+patching file test/Makefile
+evaling implicit 'postPatch' string hook
+patching script interpreter paths in .
+./src/flisp/bootstrap.sh: interpreter directive changed from "#!/bin/sh" to "/nix/store/i1x9sidnvhhbbha2zhgpxkhpysw6ajmr-bash-5.2p26/bin/sh"
+./deps/tools/jlchecksum: interpreter directive changed from "#!/bin/sh" to "/nix/store/i1x9sidnvhhbbha2zhgpxkhpysw6ajmr-bash-5.2p26/bin/sh"
+./deps/tools/jldownload: interpreter directive changed from "#!/bin/sh" to "/nix/store/i1x9sidnvhhbbha2zhgpxkhpysw6ajmr-bash-5.2p26/bin/sh"
+./contrib/fixup-libgfortran.sh: interpreter directive changed from "#!/bin/sh" to "/nix/store/i1x9sidnvhhbbha2zhgpxkhpysw6ajmr-bash-5.2p26/bin/sh"
+./contrib/download_cmake.sh: interpreter directive changed from "#!/bin/sh" to "/nix/store/i1x9sidnvhhbbha2zhgpxkhpysw6ajmr-bash-5.2p26/bin/sh"
+./contrib/new-stdlib.sh: interpreter directive changed from "#!/bin/sh" to "/nix/store/i1x9sidnvhhbbha2zhgpxkhpysw6ajmr-bash-5.2p26/bin/sh"
+./contrib/fixup-libstdc++.sh: interpreter directive changed from "#!/bin/sh" to "/nix/store/i1x9sidnvhhbbha2zhgpxkhpysw6ajmr-bash-5.2p26/bin/sh"
+./contrib/fixup-rpath.sh: interpreter directive changed from "#!/bin/sh" to "/nix/store/i1x9sidnvhhbbha2zhgpxkhpysw6ajmr-bash-5.2p26/bin/sh"
+./contrib/tsan/build.sh: interpreter directive changed from "#!/bin/bash" to "/nix/store/i1x9sidnvhhbbha2zhgpxkhpysw6ajmr-bash-5.2p26/bin/bash"
+./contrib/prepare_release.sh: interpreter directive changed from "#!/bin/sh" to "/nix/store/i1x9sidnvhhbbha2zhgpxkhpysw6ajmr-bash-5.2p26/bin/sh"
+./contrib/asan/build.sh: interpreter directive changed from "#!/bin/bash" to "/nix/store/i1x9sidnvhhbbha2zhgpxkhpysw6ajmr-bash-5.2p26/bin/bash"
+./contrib/asan/check.jl: interpreter directive changed from "#!/bin/bash" to "/nix/store/i1x9sidnvhhbbha2zhgpxkhpysw6ajmr-bash-5.2p26/bin/bash"
+./contrib/mac/app/notarize_check.sh: interpreter directive changed from "#!/bin/bash" to "/nix/store/i1x9sidnvhhbbha2zhgpxkhpysw6ajmr-bash-5.2p26/bin/bash"
+./contrib/mac/app/renotarize_dmg.sh: interpreter directive changed from "#!/bin/bash" to "/nix/store/i1x9sidnvhhbbha2zhgpxkhpysw6ajmr-bash-5.2p26/bin/bash"
+./contrib/delete-all-rpaths.sh: interpreter directive changed from "#!/bin/sh" to "/nix/store/i1x9sidnvhhbbha2zhgpxkhpysw6ajmr-bash-5.2p26/bin/sh"
+./contrib/commit-name.sh: interpreter directive changed from "#!/bin/sh" to "/nix/store/i1x9sidnvhhbbha2zhgpxkhpysw6ajmr-bash-5.2p26/bin/sh"
+./contrib/normalize_triplet.py: interpreter directive changed from "#!/usr/bin/env python" to "/nix/store/l014xp1qxdl6gim3zc0jv3mpxhbp346s-python3-3.12.4/bin/python"
+./contrib/install.sh: interpreter directive changed from "#!/bin/sh" to "/nix/store/i1x9sidnvhhbbha2zhgpxkhpysw6ajmr-bash-5.2p26/bin/sh"
+@nix { "action": "setPhase", "phase": "updateAutotoolsGnuConfigScriptsPhase" }
+Running phase: updateAutotoolsGnuConfigScriptsPhase
+@nix { "action": "setPhase", "phase": "configurePhase" }
+Running phase: configurePhase
+calling 'preConfigure' function hook '_multioutConfig'
+no configure script, doing nothing
+@nix { "action": "setPhase", "phase": "buildPhase" }
+Running phase: buildPhase
+build flags: -j16 SHELL=/nix/store/i1x9sidnvhhbbha2zhgpxkhpysw6ajmr-bash-5.2p26/bin/bash prefix=\$\(out\) USE_BINARYBUILDER=0 JULIA_CPU_TARGET=generic\;sandybridge\,-xsaveopt\,clone_all\;haswell\,-rdrnd\,base\(1\)\;x86-64-v4\,-rdrnd\,base\(1\)
+Warning: git information unavailable; versioning information limited
+Creating usr/etc/julia/startup.jl
+/build/julia-1.10.4/contrib/install.sh 755 /build/julia-1.10.4/contrib/julia-config.jl /build/julia-1.10.4/usr/share/julia/
+Copying in usr/share/man/man1/julia.1
+Warning: git information unavailable; versioning information limited
+[0mCMake Deprecation Warning at CMakeLists.txt:7 (cmake_minimum_required):
+  Compatibility with CMake < 3.5 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value or use a ...<max> suffix to tell
+  CMake that the project does not need compatibility with older versions.
+
+[0m
+-- The C compiler identification is GNU 13.3.0
+patching file include/tdep-arm/libunwind_i.h
+Hunk #1 succeeded at 253 (offset -3 lines).
+Hunk #2 succeeded at 295 (offset -3 lines).
+patching file src/arm/Gex_tables.c
+patching file src/arm/Gstep.c
+[0mCMake Deprecation Warning at CMakeLists.txt:1 (cmake_minimum_required):
+  Compatibility with CMake < 3.5 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value or use a ...<max> suffix to tell
+  CMake that the project does not need compatibility with older versions.
+
+[0m
+checking for a BSD-compatible install... /nix/store/cnknp3yxfibxjhila0sjd1v3yglqssng-coreutils-9.5/bin/install -c
+checking whether build environment is sane... yes
+checking for a race-free mkdir -p... /nix/store/cnknp3yxfibxjhila0sjd1v3yglqssng-coreutils-9.5/bin/mkdir -p
+checking for gawk... gawk
+checking whether make sets $(MAKE)... yes
+checking whether make supports nested variables... yes
+checking build system type... x86_64-unknown-linux-gnu
+checking host system type... x86_64-unknown-linux-gnu
+checking for gcc... gcc -m64 
+-- The C compiler identification is GNU 13.3.0
+checking whether the C compiler works... -- Detecting C compiler ABI info
+yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... -- Detecting C compiler ABI info - done
+-- Check for working C compiler: /nix/store/l6m6xfk2wkrhzcw86c1rqzpnk752km7y-gfortran-wrapper-13.3.0/bin/gcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+
+checking whether we are cross compiling... no
+checking for suffix of object files... o
+checking whether the compiler supports GNU C... yes
+checking whether gcc -m64  accepts -g... yes
+checking for gcc -m64  option to enable C11 features... none needed
+checking whether gcc -m64  understands -c and -o together... checking for a BSD-compatible install... /nix/store/cnknp3yxfibxjhila0sjd1v3yglqssng-coreutils-9.5/bin/install -c
+checking whether build environment is sane... yes
+checking for a thread-safe mkdir -p... /nix/store/cnknp3yxfibxjhila0sjd1v3yglqssng-coreutils-9.5/bin/mkdir -p
+checking for gawk... gawk
+checking whether make sets $(MAKE)... yes
+checking whether make supports nested variables... yes
+checking whether make supports the include directive... yes (GNU style)
+checking for gcc... gcc -m64 
+checking whether the C compiler works... yes
+checking whether make supports the include directive... yes (GNU style)
+checking dependency style of gcc -m64 ... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... -- Looking for sys/types.h
+
+checking whether we are cross compiling... gcc3
+checking for gcc -m64  way to treat warnings as errors... -Werror
+checking if gcc -m64  supports __attribute__(( visibility("default") ))... no
+yes
+checking if gcc -m64  supports -fvisibility=hidden... checking for suffix of object files... -- Looking for sys/types.h - found
+-- Looking for stdint.h
+yes
+checking if gcc -m64  supports -fno-strict-aliasing flag... o
+checking whether we are using the GNU C compiler... yes
+checking whether gcc -m64  accepts -g... yes
+checking if gcc -m64  supports -fno-strict-aliasing flag... yes
+checking for gcc -m64  option to accept ISO C89... -- Looking for stdint.h - found
+-- Looking for stddef.h
+none needed
+checking whether gcc -m64  understands -c and -o together... yes
+checking dependency style of gcc -m64 ... yes
+checking if gcc -m64  supports -g flag... -- The CXX compiler identification is GNU 13.3.0
+gcc3
+-- Detecting C compiler ABI info
+-- Looking for stddef.h - found
+-- Check size of off64_t
+checking whether we are using the GNU C++ compiler... yes
+checking whether g++ -m64  accepts -g... yes
+checking if gcc -m64  supports -std=gnu99 flag... yes
+checking dependency style of g++ -m64 ... yes
+checking if gcc -m64  supports -Wall flag... checking for a BSD-compatible install... -- Detecting C compiler ABI info - done
+/nix/store/cnknp3yxfibxjhila0sjd1v3yglqssng-coreutils-9.5/bin/install -c
+checking whether build environment is sane... yes
+yes
+checking for a race-free mkdir -p... checking if gcc -m64  supports -Wextra flag... gcc3
+checking dependency style of gcc -m64 ... /nix/store/cnknp3yxfibxjhila0sjd1v3yglqssng-coreutils-9.5/bin/mkdir -p
+checking for gawk... gawk
+checking whether make sets $(MAKE)... yes
+checking whether make supports nested variables... -- Check for working C compiler: /nix/store/l6m6xfk2wkrhzcw86c1rqzpnk752km7y-gfortran-wrapper-13.3.0/bin/gcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+yes
+checking whether make supports nested variables... (cached) yes
+checking for gcc... gcc -m64 
+-- Check size of off64_t - done
+-- Looking for fseeko
+checking whether the C compiler works... yes
+checking if gcc -m64  supports -Wno-long-long flag... gcc3
+checking that generated files are newer than configure... patching file src/mbedtls.c
+patching file src/mbedtls.h
+yes
+checking if gcc -m64  supports -Wno-unused-parameter flag... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... -- Detecting CXX compiler ABI info
+yes
+checking if gcc -m64  supports -Wstrict-prototypes flag... yes
+checking the archiver (ar) interface... 
+checking whether we are cross compiling... done
+configure: creating ./config.status
+config.status: creating Makefile
+config.status: creating src/Makefile
+config.status: creating tests/Makefile
+config.status: creating patchelf.spec
+config.status: executing depfiles commands
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /nix/store/l6m6xfk2wkrhzcw86c1rqzpnk752km7y-gfortran-wrapper-13.3.0/bin/g++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Configuring done (2.0s)
+-- Generating done (0.0s)
+[33mCMake Warning:
+  Manually-specified variables were not used by the project:
+
+    CMAKE_INSTALL_LIBDIR
+    ITT_API_FORTRAN_SUPPORT
+    LIB_INSTALL_DIR
+
+[0m
+-- Build files have been written to: /build/julia-1.10.4/deps/scratch/ittapi-0014aec56fea2f30c1374f40861e1bccdd53d0cb
+gcc -m64 -o build/libblastrampoline.o -g -O2 -std=c99 -fPIC -DLIBRARY_EXPORTS -D_GNU_SOURCE -DF2C_AUTODETECTION -DCBLAS_DIVERGENCE_AUTODETECTION -DCOMPLEX_RETSTYLE_AUTODETECTION -c libblastrampoline.c
+gcc -m64 -o build/dl_utils.o -g -O2 -std=c99 -fPIC -DLIBRARY_EXPORTS -D_GNU_SOURCE -DF2C_AUTODETECTION -DCBLAS_DIVERGENCE_AUTODETECTION -DCOMPLEX_RETSTYLE_AUTODETECTION -c dl_utils.c
+ar
+no
+checking how to print strings... checking for suffix of object files... printf
+checking for a sed that does not truncate output... /nix/store/9zsm74npdqq2lgjzavlzaqrz8x44mq9d-gnused-4.9/bin/sed
+-- Looking for fseeko - found
+-- Looking for unistd.h
+checking for grep that handles long lines and -e... WARNING: using mismatched version for csl:
+  want 
+  To resolve this warning, you could try either of the following suggestions: 
+  1. Run the following command: make -C deps uninstall
+  2. Remove the following directory: /build/julia-1.10.4/usr
+gcc -m64 -o build/config.o -g -O2 -std=c99 -fPIC -DLIBRARY_EXPORTS -D_GNU_SOURCE -DF2C_AUTODETECTION -DCBLAS_DIVERGENCE_AUTODETECTION -DCOMPLEX_RETSTYLE_AUTODETECTION -c config.c
+/nix/store/k8zpadqbwqwalggnhqi74gdgrlf3if9l-gnugrep-3.11/bin/grep
+checking for egrep... /nix/store/k8zpadqbwqwalggnhqi74gdgrlf3if9l-gnugrep-3.11/bin/grep -E
+checking for fgrep... /nix/store/k8zpadqbwqwalggnhqi74gdgrlf3if9l-gnugrep-3.11/bin/grep -F
+checking for ld used by gcc -m64 ... ld
+checking if the linker (ld) is GNU ld... yes
+checking for BSD- or MS-compatible name lister (nm)... nm
+checking the name lister (nm) interface... o
+checking whether the compiler supports GNU C... yes
+checking whether gcc -m64  accepts -g... BSD nm
+checking whether ln -s works... yes
+checking the maximum length of command line arguments... 1572864
+checking how to convert x86_64-unknown-linux-gnu file names to x86_64-unknown-linux-gnu format... func_convert_file_noop
+checking how to convert x86_64-unknown-linux-gnu file names to toolchain format... func_convert_file_noop
+checking for ld option to reload object files... -r
+checking for file... patching file src/arm/Gex_tables.c
+file
+checking for objdump... objdump
+checking how to recognize dependent libraries... (cached) pass_all
+checking for dlltool... no
+checking how to associate runtime and link libraries... printf %s\n
+checking for archiver @FILE support... yes
+checking for gcc -m64  option to enable C11 features... Making all in src
+[01m[Ksrc/e_lgamma_r.c:[m[K In function '[01m[Klgamma_r[m[K':
+[01m[Ksrc/e_lgamma_r.c:296:20:[m[K [01;35m[Kwarning: [m[K'[01m[Knadj[m[K' may be used uninitialized [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wmaybe-uninitialized-Wmaybe-uninitialized]8;;[m[K]
+  296 |         if(hx<0) [01;35m[Kr = nadj - r[m[K;
+      |                  [01;35m[K~~^~~~~~~~~~[m[K
+[01m[Ksrc/e_lgamma_r.c:208:22:[m[K [01;36m[Knote: [m[K'[01m[Knadj[m[K' was declared here
+  208 |         double t,y,z,[01;36m[Knadj[m[K,p,p1,p2,p3,q,r,w;
+      |                      [01;36m[K^~~~[m[K
+@
+checking for strip... strip
+checking for ranlib... ranlib
+checking command to parse nm output from gcc -m64  object... none needed
+checking whether gcc -m64  understands -c and -o together... -- Looking for unistd.h - found
+-- Renaming
+--     /build/julia-1.10.4/deps/srccache/zlib-04f42ceca40f73e2978b50e93806c2a18c1281fc/zconf.h
+-- to 'zconf.h.included' because this file is included with zlib
+-- but CMake generates it automatically in the build directory.
+-- Configuring done (2.0s)
+gcc -m64 -o build/autodetection.o -g -O2 -std=c99 -fPIC -DLIBRARY_EXPORTS -D_GNU_SOURCE -DF2C_AUTODETECTION -DCBLAS_DIVERGENCE_AUTODETECTION -DCOMPLEX_RETSTYLE_AUTODETECTION -c autodetection.c
+-- Generating done (0.0s)
+[33mCMake Warning:
+  Manually-specified variables were not used by the project:
+
+    CMAKE_CXX_COMPILER
+    CMAKE_CXX_COMPILER_ARG1
+    CMAKE_INSTALL_LIBDIR
+    LIB_INSTALL_DIR
+
+[0m
+-- Build files have been written to: /build/julia-1.10.4/deps/scratch/zlib-04f42ceca40f73e2978b50e93806c2a18c1281fc
+[01m[Ksrc/e_lgammaf_r.c:[m[K In function '[01m[Klgammaf_r[m[K':
+[01m[Ksrc/e_lgammaf_r.c:229:20:[m[K [01;35m[Kwarning: [m[K'[01m[Knadj[m[K' may be used uninitialized [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wmaybe-uninitialized-Wmaybe-uninitialized]8;;[m[K]
+  229 |         if(hx<0) [01;35m[Kr = nadj - r[m[K;
+      |                  [01;35m[K~~^~~~~~~~~~[m[K
+[01m[Ksrc/e_lgammaf_r.c:141:21:[m[K [01;36m[Knote: [m[K'[01m[Knadj[m[K' was declared here
+  141 |         float t,y,z,[01;36m[Knadj[m[K,p,p1,p2,p3,q,r,w;
+      |                     [01;36m[K^~~~[m[K
+yes
+checking whether make supports the include directive... ok
+checking for sysroot... no
+checking for a working dd... /nix/store/cnknp3yxfibxjhila0sjd1v3yglqssng-coreutils-9.5/bin/dd
+checking how to truncate binary pipes... yes (GNU style)
+checking dependency style of gcc -m64 ... [ 16%] [32mBuilding C object CMakeFiles/ittnotify.dir/src/ittnotify/ittnotify_static.c.o[0m
+/nix/store/cnknp3yxfibxjhila0sjd1v3yglqssng-coreutils-9.5/bin/dd bs=4096 count=1
+gcc3
+checking for stdio.h... checking for mt... no
+checking if : is a manifest tool... no
+yes
+checking for stdio.h... checking for stdlib.h... checking for gcc... gcc -m64 
+yes
+checking for stdlib.h... yes
+checking for string.h... checking whether the C compiler works... gcc -m64 -o build/threading.o -g -O2 -std=c99 -fPIC -DLIBRARY_EXPORTS -D_GNU_SOURCE -DF2C_AUTODETECTION -DCBLAS_DIVERGENCE_AUTODETECTION -DCOMPLEX_RETSTYLE_AUTODETECTION -c threading.c
+yes
+checking for string.h... yes
+checking for inttypes.h... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... yes
+checking for stdint.h... yes
+checking for inttypes.h... [ 33%] [32mBuilding C object CMakeFiles/ittnotify.dir/src/ittnotify/jitprofiling.c.o[0m
+yes
+checking for strings.h... 
+checking whether we are cross compiling... yes
+checking for stdint.h... yes
+checking for strings.h... yes
+checking for sys/stat.h... no
+checking for suffix of object files... yes
+checking for sys/stat.h... [ 50%] [32m[1mLinking C static library bin/libadvisor.a[0m
+yes
+checking for sys/types.h... o
+checking whether the compiler supports GNU C... yes
+checking for sys/types.h... yes
+checking whether gcc -m64  accepts -g... [ 66%] [32mBuilding C object CMakeFiles/jitprofiling.dir/src/ittnotify/jitprofiling.c.o[0m
+[ 66%] Built target advisor
+yes
+checking for unistd.h... yes
+yes
+checking for unistd.h... checking for gcc -m64  option to enable C11 features... gcc -m64 -o build/deepbindless.o -g -O2 -std=c99 -fPIC -DLIBRARY_EXPORTS -D_GNU_SOURCE -DF2C_AUTODETECTION -DCBLAS_DIVERGENCE_AUTODETECTION -DCOMPLEX_RETSTYLE_AUTODETECTION -c deepbindless.c
+yes
+checking for wchar.h... yes
+checking for dlfcn.h... none needed
+checking whether gcc -m64  understands -c and -o together... [ 83%] [32m[1mLinking C static library bin/libjitprofiling.a[0m
+yes
+checking for minix/config.h... yes
+checking for objdir... .libs
+[ 83%] Built target jitprofiling
+no
+checking whether it is safe to define __EXTENSIONS__... patching file include/dwarf.h
+Hunk #1 succeeded at 227 (offset -4 lines).
+Hunk #2 succeeded at 310 (offset -4 lines).
+patching file include/libunwind_i.h
+Hunk #1 succeeded at 356 (offset 10 lines).
+patching file include/tdep-x86/dwarf-config.h
+patching file include/tdep-x86/libunwind_i.h
+Hunk #1 succeeded at 87 (offset 3 lines).
+Hunk #2 succeeded at 128 (offset 3 lines).
+Hunk #3 succeeded at 179 (offset 3 lines).
+Hunk #4 succeeded at 214 (offset 3 lines).
+patching file src/dwarf/Gparser.c
+patching file src/x86/Gos-freebsd.c
+patching file src/x86/Gregs.c
+patching file src/x86/Gstep.c
+patching file src/x86_64/Gos-freebsd.c
+patching file src/x86_64/Gregs.c
+yes
+checking for stdio.h... [01m[Ksrc/k_rem_pio2.c:[m[K In function '[01m[K__kernel_rem_pio2[m[K':
+[01m[Ksrc/k_rem_pio2.c:421:24:[m[K [01;35m[Kwarning: [m[K'[01m[Kfq[m[K' may be used uninitialized [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wmaybe-uninitialized-Wmaybe-uninitialized]8;;[m[K]
+  421 |                 fw = [01;35m[Kfq[0][m[K-fw;
+      |                      [01;35m[K~~^~~[m[K
+[01m[Ksrc/k_rem_pio2.c:297:27:[m[K [01;36m[Knote: [m[K'[01m[Kfq[m[K' declared here
+  297 |         double z,fw,f[20],[01;36m[Kfq[m[K[20],q[20];
+      |                           [01;36m[K^~[m[K
+checking if gcc -m64  supports -fno-rtti -fno-exceptions... gcc -m64 -o build/trampolines/trampolines_x86_64.o -g -O2 -std=c99 -fPIC -DLIBRARY_EXPORTS -D_GNU_SOURCE -DF2C_AUTODETECTION -DCBLAS_DIVERGENCE_AUTODETECTION -DCOMPLEX_RETSTYLE_AUTODETECTION -c trampolines/trampolines_x86_64.S
+patching file src/x86_64/Gstep.c
+Hunk #1 succeeded at 215 (offset -8 lines).
+gcc -m64 -o build/f2c_adapters.o -g -O2 -std=c99 -fPIC -DLIBRARY_EXPORTS -D_GNU_SOURCE -DF2C_AUTODETECTION -DCBLAS_DIVERGENCE_AUTODETECTION -DCOMPLEX_RETSTYLE_AUTODETECTION -c f2c_adapters.c
+yes
+checking whether _XOPEN_SOURCE should be defined... yes
+checking for stdlib.h... no
+checking for gcc -m64  option to produce PIC... -fPIC -DPIC
+checking if gcc -m64  PIC flag -fPIC -DPIC works... yes
+checking for string.h... yes
+checking if gcc -m64  static flag -static works... no
+checking the archiver (ar) interface... yes
+checking for inttypes.h... gcc -m64 -o build/cblas_adapters.o -g -O2 -std=c99 -fPIC -DLIBRARY_EXPORTS -D_GNU_SOURCE -DF2C_AUTODETECTION -DCBLAS_DIVERGENCE_AUTODETECTION -DCOMPLEX_RETSTYLE_AUTODETECTION -c cblas_adapters.c
+no
+checking if gcc -m64  supports -c -o file.o... yes
+ar
+checking for stdint.h... checking for int64_t... yes
+checking if gcc -m64  supports -c -o file.o... (cached) yes
+checking whether the gcc -m64  linker (ld -m elf_x86_64) supports shared libraries... [100%] [32m[1mLinking C static library bin/libittnotify.a[0m
+[  2%] [32mBuilding C object CMakeFiles/zlib.dir/adler32.o[0m
+yes
+checking whether -lc should be explicitly linked in... yes
+checking for strings.h... [  5%] [32mBuilding C object CMakeFiles/zlib.dir/compress.o[0m
+no
+checking dynamic linker characteristics... [  7%] [32mBuilding C object CMakeFiles/zlib.dir/crc32.o[0m
+[100%] Built target ittnotify
+yes
+checking for sys/stat.h... gcc -m64 -o build/complex_return_style_adapters.o -g -O2 -std=c99 -fPIC -DLIBRARY_EXPORTS -D_GNU_SOURCE -DF2C_AUTODETECTION -DCBLAS_DIVERGENCE_AUTODETECTION -DCOMPLEX_RETSTYLE_AUTODETECTION -c complex_return_style_adapters.c
+yes
+checking build system type... x86_64-unknown-linux-gnu
+checking host system type... x86_64-unknown-linux-gnu
+checking how to print strings... printf
+checking for a sed that does not truncate output... /nix/store/9zsm74npdqq2lgjzavlzaqrz8x44mq9d-gnused-4.9/bin/sed
+checking for grep that handles long lines and -e... /nix/store/k8zpadqbwqwalggnhqi74gdgrlf3if9l-gnugrep-3.11/bin/grep
+checking for egrep... /nix/store/k8zpadqbwqwalggnhqi74gdgrlf3if9l-gnugrep-3.11/bin/grep -E
+checking for fgrep... /nix/store/k8zpadqbwqwalggnhqi74gdgrlf3if9l-gnugrep-3.11/bin/grep -F
+checking for ld used by gcc -m64 ... yes
+checking for sys/types.h... ld
+checking if the linker (ld) is GNU ld... yes
+checking for BSD- or MS-compatible name lister (nm)... nm
+checking the name lister (nm) interface... GNU/Linux ld.so
+checking how to hardcode library paths into programs... immediate
+checking whether stripping libraries is possible... yes
+checking if libtool supports shared libraries... yes
+checking whether to build shared libraries... yes
+checking whether to build static libraries... yes
+checking whether make supports nested variables... (cached) yes
+checking how to run the C preprocessor... yes
+checking for unistd.h... [ 10%] [32mBuilding C object CMakeFiles/zlib.dir/deflate.o[0m
+BSD nm
+checking whether ln -s works... yes
+checking the maximum length of command line arguments... gcc -m64 -o build/libblastrampoline.so.5 -g -O2 -std=c99 -fPIC -DLIBRARY_EXPORTS -D_GNU_SOURCE -DF2C_AUTODETECTION -DCBLAS_DIVERGENCE_AUTODETECTION -DCOMPLEX_RETSTYLE_AUTODETECTION -Wl,-soname=libblastrampoline.so.5 build/libblastrampoline.o build/dl_utils.o build/config.o build/autodetection.o build/threading.o build/deepbindless.o build/trampolines/trampolines_x86_64.o build/f2c_adapters.o build/cblas_adapters.o build/complex_return_style_adapters.o -shared -ldl -Wl,-z,noexecstack
+patching file mpn/arm64/aors_n.asm
+1572864
+checking how to convert x86_64-unknown-linux-gnu file names to x86_64-unknown-linux-gnu format... func_convert_file_noop
+checking how to convert x86_64-unknown-linux-gnu file names to toolchain format... func_convert_file_noop
+checking for ld option to reload object files... -r
+checking for file... file
+checking for objdump... objdump
+checking how to recognize dependent libraries... (cached) pass_all
+checking for dlltool... no
+checking how to associate runtime and link libraries... printf %s\n
+checking for archiver @FILE support... patching file mpn/arm64/aorsmul_1.asm
+gcc -m64  -E
+patching file mpn/arm64/aorsorrlshC_n.asm
+yes
+checking for wchar.h... patching file mpn/arm64/cnd_aors_n.asm
+patching file mpn/arm64/logops_n.asm
+patching file mpn/arm64/lshift.asm
+patching file mpn/arm64/lshiftc.asm
+patching file mpn/arm64/mul_1.asm
+patching file mpn/arm64/rsh1aors_n.asm
+patching file mpn/arm64/rshift.asm
+patching file mpn/arm64/sqr_diag_addlsh1.asm
+checking whether gcc -m64  is Clang... yes
+checking for minix/config.h... @
+checking for strip... strip
+checking for ranlib... ranlib
+checking command to parse nm output from gcc -m64  object... no
+checking whether pthreads work with -pthread... no
+checking for vfork.h... [ 12%] [32mBuilding C object CMakeFiles/zlibstatic.dir/adler32.o[0m
+[ 15%] [32mBuilding C object CMakeFiles/zlibstatic.dir/compress.o[0m
+no
+checking whether it is safe to define __EXTENSIONS__... yes
+checking for joinable pthread attribute... patching file src/dwarf/Gfind_proc_info-lsb.c
+Hunk #1 succeeded at 920 (offset 54 lines).
+[ 17%] [32mBuilding C object CMakeFiles/zlibstatic.dir/crc32.o[0m
+ok
+checking for sysroot... yes
+checking whether _XOPEN_SOURCE should be defined... no
+checking for a working dd... /nix/store/cnknp3yxfibxjhila0sjd1v3yglqssng-coreutils-9.5/bin/dd
+checking how to truncate binary pipes... /nix/store/cnknp3yxfibxjhila0sjd1v3yglqssng-coreutils-9.5/bin/dd bs=4096 count=1
+[ 20%] [32mBuilding C object CMakeFiles/zlibstatic.dir/deflate.o[0m
+PTHREAD_CREATE_JOINABLE
+checking whether more special flags are required for pthreads... no
+checking for PTHREAD_PRIO_INHERIT... no
+checking for mt... no
+checking if : is a manifest tool... checking build system type... no
+checking for dlfcn.h... x86_64-unknown-linux-gnu
+checking host system type... x86_64-unknown-linux-gnu
+checking how to print strings... printf
+checking for a sed that does not truncate output... /nix/store/9zsm74npdqq2lgjzavlzaqrz8x44mq9d-gnused-4.9/bin/sed
+checking for grep that handles long lines and -e... /nix/store/k8zpadqbwqwalggnhqi74gdgrlf3if9l-gnugrep-3.11/bin/grep
+checking for egrep... /nix/store/k8zpadqbwqwalggnhqi74gdgrlf3if9l-gnugrep-3.11/bin/grep -E
+checking for fgrep... /nix/store/k8zpadqbwqwalggnhqi74gdgrlf3if9l-gnugrep-3.11/bin/grep -F
+checking for ld used by gcc -m64 ... ld
+checking if the linker (ld) is GNU ld... patching file errno.c
+yes
+checking for BSD- or MS-compatible name lister (nm)... nm
+checking the name lister (nm) interface... yes
+checking for objdir... [ 22%] [32mBuilding C object CMakeFiles/zlib.dir/gzclose.o[0m
+.libs
+BSD nm
+checking whether ln -s works... yes
+checking the maximum length of command line arguments... 1572864
+checking how to convert x86_64-unknown-linux-gnu file names to x86_64-unknown-linux-gnu format... func_convert_file_noop
+checking how to convert x86_64-unknown-linux-gnu file names to toolchain format... func_convert_file_noop
+checking for ld option to reload object files... -r
+checking for file... file
+checking for objdump... objdump
+checking how to recognize dependent libraries... (cached) pass_all
+checking for dlltool... no
+checking how to associate runtime and link libraries... printf %s\n
+checking for archiver @FILE support... yes
+checking for library containing dlopen... @
+checking for strip... strip
+checking for ranlib... ranlib
+checking for gawk... gawk
+checking command to parse nm output from gcc -m64  object... checking if gcc -m64  supports -fno-rtti -fno-exceptions... none required
+checking for library containing kstat_lookup... no
+checking for gcc -m64  option to produce PIC... -fPIC -DPIC
+checking if gcc -m64  PIC flag -fPIC -DPIC works... [ 25%] [32mBuilding C object CMakeFiles/zlib.dir/gzlib.o[0m
+yes
+checking if gcc -m64  static flag -static works... ok
+checking for sysroot... no
+checking for a working dd... /nix/store/cnknp3yxfibxjhila0sjd1v3yglqssng-coreutils-9.5/bin/dd
+checking how to truncate binary pipes... /nix/store/cnknp3yxfibxjhila0sjd1v3yglqssng-coreutils-9.5/bin/dd bs=4096 count=1
+[ 27%] [32mBuilding C object CMakeFiles/zlibstatic.dir/gzclose.o[0m
+no
+checking if gcc -m64  supports -c -o file.o... [ 30%] [32mBuilding C object CMakeFiles/zlibstatic.dir/gzlib.o[0m
+checking for mt... no
+checking if : is a manifest tool... no
+checking for dlfcn.h... yes
+checking if gcc -m64  supports -c -o file.o... (cached) yes
+checking whether the gcc -m64  linker (ld -m elf_x86_64) supports shared libraries... no
+checking for library containing gethostbyname... [ 32%] [32mBuilding C object CMakeFiles/zlib.dir/gzread.o[0m
+yes
+checking for objdir... .libs
+yes
+checking whether -lc should be explicitly linked in... patching file include/libunwind-aarch64.h
+patching file include/libunwind-arm.h
+patching file include/libunwind-x86.h
+[ 35%] [32mBuilding C object CMakeFiles/zlibstatic.dir/gzread.o[0m
+no
+checking dynamic linker characteristics... [ 37%] [32mBuilding C object CMakeFiles/zlibstatic.dir/gzwrite.o[0m
+[ 40%] [32mBuilding C object CMakeFiles/zlibstatic.dir/inflate.o[0m
+none required
+checking for library containing perfstat_cpu... checking if gcc -m64  supports -fno-rtti -fno-exceptions... no
+checking for gcc -m64  option to produce PIC... -fPIC -DPIC
+checking if gcc -m64  PIC flag -fPIC -DPIC works... [ 42%] [32mBuilding C object CMakeFiles/zlib.dir/gzwrite.o[0m
+GNU/Linux ld.so
+checking how to hardcode library paths into programs... immediate
+checking whether stripping libraries is possible... yes
+checking if libtool supports shared libraries... yes
+checking whether to build shared libraries... yes
+checking whether to build static libraries... yes
+checking whether ln -s works... yes
+checking for special C compiler options needed for large files... no
+checking for _FILE_OFFSET_BITS value needed for large files... yes
+checking if gcc -m64  static flag -static works... no
+checking whether the -Werror option is usable... patching file gmp-h.in
+Hunk #1 succeeded at 483 (offset 4 lines).
+patching file gmp-impl.h
+Hunk #1 succeeded at 697 (offset 1 line).
+Hunk #2 succeeded at 730 (offset 1 line).
+patching file memory.c
+Hunk #1 succeeded at 37 (offset -1 lines).
+Hunk #2 succeeded at 144 (offset -1 lines).
+patching file mp_get_fns.c
+Hunk #1 succeeded at 45 (offset -1 lines).
+patching file mp_set_fns.c
+Hunk #1 succeeded at 47 (offset -1 lines).
+patching file mpz/init2.c
+Hunk #1 succeeded at 44 (offset -1 lines).
+patching file mpz/realloc.c
+patching file mpz/realloc2.c
+Hunk #1 succeeded at 44 (offset -1 lines).
+patching file tests/mpz/t-pow.c
+Hunk #1 succeeded at 194 (offset -1 lines).
+Hunk #2 succeeded at 239 (offset -1 lines).
+[ 45%] [32mBuilding C object CMakeFiles/zlib.dir/inflate.o[0m
+[0mCMake Deprecation Warning at CMakeLists.txt:23 (cmake_minimum_required):
+  Compatibility with CMake < 3.5 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value or use a ...<max> suffix to tell
+  CMake that the project does not need compatibility with older versions.
+
+[0m
+no
+checking if gcc -m64  supports -c -o file.o... yes
+checking for simple visibility declarations... [ 47%] [32mBuilding C object CMakeFiles/zlib.dir/infback.o[0m
+no
+checking for library containing clock_gettime... yes
+checking if gcc -m64  supports -c -o file.o... (cached) yes
+checking whether the gcc -m64  linker (ld -m elf_x86_64) supports shared libraries... yes
+checking for __attribute__((uninitialized))... yes
+checking whether -lc should be explicitly linked in... yes
+checking for limits.h... [ 50%] [32mBuilding C object CMakeFiles/zlib.dir/inftrees.o[0m
+-- The C compiler identification is GNU 13.3.0
+no
+checking dynamic linker characteristics... none required
+checking for library containing sendfile... -- Detecting C compiler ABI info
+yes
+checking for sys/types.h... (cached) yes
+checking for sys/stat.h... (cached) yes
+checking for dirent.h... yes
+checking for windows.h... GNU/Linux ld.so
+checking how to hardcode library paths into programs... immediate
+checking whether stripping libraries is possible... yes
+checking if libtool supports shared libraries... yes
+checking whether to build shared libraries... yes
+checking whether to build static libraries... yes
+checking target system type... x86_64-unknown-linux-gnu
+checking for a BSD-compatible install... /nix/store/cnknp3yxfibxjhila0sjd1v3yglqssng-coreutils-9.5/bin/install -c
+checking whether build environment is sane... yes
+checking for a race-free mkdir -p... /nix/store/cnknp3yxfibxjhila0sjd1v3yglqssng-coreutils-9.5/bin/mkdir -p
+checking whether make sets $(MAKE)... yes
+checking whether make supports the include directive... yes (GNU style)
+checking whether make supports nested variables... yes
+checking dependency style of gcc -m64 ... none required
+checking for library containing socket... no
+checking for sys/wait.h... gcc3
+checking whether make supports nested variables... (cached) yes
+checking for gcc... (cached) gcc -m64 
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /nix/store/l6m6xfk2wkrhzcw86c1rqzpnk752km7y-gfortran-wrapper-13.3.0/bin/gcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+[ 55%] [32mBuilding C object CMakeFiles/zlib.dir/inffast.o[0m
+[ 55%] [32mBuilding C object CMakeFiles/zlibstatic.dir/infback.o[0m
+checking whether the compiler supports GNU C... (cached) yes
+checking whether gcc -m64  accepts -g... (cached) yes
+checking for gcc -m64  option to enable C11 features... (cached) none needed
+checking whether gcc -m64  understands -c and -o together... (cached) yes
+yes
+checking for an ANSI C-conforming const... checking whether the compiler supports GNU C++... [ 57%] [32mBuilding C object CMakeFiles/zlib.dir/trees.o[0m
+none required
+yes
+checking for size_t... checking for special C compiler options needed for large files... no
+checking for _FILE_OFFSET_BITS value needed for large files... yes
+checking whether g++ -m64  accepts -g... [ 60%] [32mBuilding C object CMakeFiles/zlibstatic.dir/inftrees.o[0m
+no
+checking for sys/ahafs_evProds.h... yes
+checking for g++ -m64  option to enable C++11 features... no
+none needed
+checking how to run the C++ preprocessor... checking that generated files are newer than configure... done
+configure: creating ./config.status
+[ 62%] [32mBuilding C object CMakeFiles/zlibstatic.dir/inffast.o[0m
+yes
+checking for bcopy... [ 65%] [32mBuilding C object CMakeFiles/zlibstatic.dir/trees.o[0m
+[ 67%] [32mBuilding C object CMakeFiles/zlibstatic.dir/uncompr.o[0m
+[ 70%] [32mBuilding C object CMakeFiles/zlibstatic.dir/zutil.o[0m
+g++ -m64  -E
+yes
+checking for memfd_create... [ 72%] [32mBuilding C object CMakeFiles/zlib.dir/uncompr.o[0m
+yes
+checking for memmove... [ 75%] [32mBuilding C object CMakeFiles/zlib.dir/zutil.o[0m
+[ 77%] [32m[1mLinking C shared library libz.so[0m
+checking for ld used by g++ -m64 ... yes
+checking for mkostemp... ld -m elf_x86_64
+checking if the linker (ld -m elf_x86_64) is GNU ld... yes
+checking whether the g++ -m64  linker (ld -m elf_x86_64) supports shared libraries... yes
+/nix/store/k8zpadqbwqwalggnhqi74gdgrlf3if9l-gnugrep-3.11/bin/grep: warning: stray \ before -
+yes
+checking for secure_getenv... [ 77%] Built target zlib
+[ 80%] [32mBuilding C object CMakeFiles/example.dir/test/example.o[0m
+[ 82%] [32m[1mLinking C static library libz.a[0m
+config.status: creating Makefile
+checking for g++ -m64  option to produce PIC... -fPIC -DPIC
+checking if g++ -m64  PIC flag -fPIC -DPIC works... [ 85%] [32mBuilding C object CMakeFiles/minigzip.dir/test/minigzip.o[0m
+yes
+checking for strerror... config.status: creating libuv.pc
+yes
+checking if g++ -m64  static flag -static works... [ 85%] Built target zlibstatic
+config.status: linking /build/julia-1.10.4/deps/srccache/libuv-2723e256e952be0b015b3c0086f717c3d365d97e/test/fixtures/empty_file to test/fixtures/empty_file
+config.status: linking /build/julia-1.10.4/deps/srccache/libuv-2723e256e952be0b015b3c0086f717c3d365d97e/test/fixtures/load_error.node to test/fixtures/load_error.node
+config.status: linking /build/julia-1.10.4/deps/srccache/libuv-2723e256e952be0b015b3c0086f717c3d365d97e/test/fixtures/lorem_ipsum.txt to test/fixtures/lorem_ipsum.txt
+[ 87%] [32mBuilding C object CMakeFiles/example64.dir/test/example.o[0m
+config.status: executing depfiles commands
+yes
+checking for realpath... [ 90%] [32m[1mLinking C executable minigzip[0m
+[ 92%] [32m[1mLinking C executable example[0m
+[ 92%] Built target minigzip
+patching file mpz/inp_raw.c
+yes
+checking for zlib.h... patching file mpz/n_pow_ui.c
+[ 92%] Built target example
+[ 95%] [32mBuilding C object CMakeFiles/minigzip64.dir/test/minigzip.o[0m
+[ 97%] [32m[1mLinking C executable example64[0m
+patching file tal-reent.c
+no
+checking for gzopen in -lz... [ 97%] Built target example64
+[100%] [32m[1mLinking C executable minigzip64[0m
+no
+checking for bzlib.h... [100%] Built target minigzip64
+no
+checking if g++ -m64  supports -c -o file.o... no
+checking for libbz2... [ 40%] Built target zlib
+yes
+checking if g++ -m64  supports -c -o file.o... (cached) yes
+checking whether the g++ -m64  linker (ld -m elf_x86_64) supports shared libraries... yes
+checking dynamic linker characteristics... (cached) GNU/Linux ld.so
+checking how to hardcode library paths into programs... immediate
+checking dependency style of g++ -m64 ... [ 45%] Built target example
+no
+checking for the pthreads library -lpthreads... [ 87%] Built target zlibstatic
+[ 90%] Built target minigzip
+gcc3
+checking how to run the C preprocessor... checking build system type... [ 95%] Built target example64
+x86_64-unknown-linux-gnu
+checking host system type... x86_64-unknown-linux-gnu
+checking for a BSD-compatible install... gcc -m64  -E
+/nix/store/cnknp3yxfibxjhila0sjd1v3yglqssng-coreutils-9.5/bin/install -c
+checking whether build environment is sane... yes
+[100%] Built target minigzip64
+checking for a thread-safe mkdir -p... /nix/store/cnknp3yxfibxjhila0sjd1v3yglqssng-coreutils-9.5/bin/mkdir -p
+checking for gawk... gawk
+checking whether make sets $(MAKE)... yes
+[36mInstall the project...[0m
+checking whether make supports nested variables... yes
+-- Install configuration: "Release"
+-- Installing: /build/julia-1.10.4/usr-staging/zlib-04f42ceca40f73e2978b50e93806c2a18c1281fc/build/julia-1.10.4/usr/lib/libz.so.1.2.13
+-- Installing: /build/julia-1.10.4/usr-staging/zlib-04f42ceca40f73e2978b50e93806c2a18c1281fc/build/julia-1.10.4/usr/lib/libz.so.1
+-- Installing: /build/julia-1.10.4/usr-staging/zlib-04f42ceca40f73e2978b50e93806c2a18c1281fc/build/julia-1.10.4/usr/lib/libz.so
+-- Installing: /build/julia-1.10.4/usr-staging/zlib-04f42ceca40f73e2978b50e93806c2a18c1281fc/build/julia-1.10.4/usr/lib/libz.a
+-- Installing: /build/julia-1.10.4/usr-staging/zlib-04f42ceca40f73e2978b50e93806c2a18c1281fc/build/julia-1.10.4/usr/include/zconf.h
+-- Installing: /build/julia-1.10.4/usr-staging/zlib-04f42ceca40f73e2978b50e93806c2a18c1281fc/build/julia-1.10.4/usr/include/zlib.h
+-- Installing: /build/julia-1.10.4/usr-staging/zlib-04f42ceca40f73e2978b50e93806c2a18c1281fc/build/julia-1.10.4/usr/share/man/man3/zlib.3
+-- Installing: /build/julia-1.10.4/usr-staging/zlib-04f42ceca40f73e2978b50e93806c2a18c1281fc/build/julia-1.10.4/usr/share/pkgconfig/zlib.pc
+no
+checking whether pthreads work without any flags... checking whether to enable maintainer-specific portions of Makefiles... no
+checking whether ln -s works... yes
+checking whether make sets $(MAKE)... checking ABI=64
+(cached) yes
+checking for pkg-config... no
+checking for a Python interpreter with version >= 3.8... checking compiler gcc -m64  -O2 -pedantic -fomit-frame-pointer -m64 ... python
+checking for python... /nix/store/l014xp1qxdl6gim3zc0jv3mpxhbp346s-python3-3.12.4/bin/python
+checking for python version... 3.12
+checking for python platform... linux
+checking for GNU default python prefix... ${prefix}
+checking for GNU default python exec_prefix... ${exec_prefix}
+checking for python script directory (pythondir)... yes
+checking for joinable pthread attribute... ${PYTHON_PREFIX}/lib/python3.12/site-packages
+checking for python extension module directory (pyexecdir)... ${PYTHON_EXEC_PREFIX}/lib/python3.12/site-packages
+checking whether g++ -m64  supports C++14 features with -std=c++14... checking build system type... x86_64-unknown-linux-gnu
+checking host system type... x86_64-unknown-linux-gnu
+checking target system type... x86_64-unknown-linux-gnu
+checking for a BSD-compatible install... PTHREAD_CREATE_JOINABLE
+checking if more special flags are required for pthreads... no
+checking for PTHREAD_PRIO_INHERIT... yes
+checking whether std::future is available... /nix/store/cnknp3yxfibxjhila0sjd1v3yglqssng-coreutils-9.5/bin/install -c
+checking whether build environment is sane... yes
+checking for a thread-safe mkdir -p... /nix/store/cnknp3yxfibxjhila0sjd1v3yglqssng-coreutils-9.5/bin/mkdir -p
+checking for gawk... gawk
+checking whether make sets $(MAKE)... yes
+checking whether make supports nested variables... yes
+checking whether to enable maintainer-specific portions of Makefiles... no
+checking for gcc... gcc -m64 
+yes
+checking whether Intel CET is enabled... checking whether the C compiler works... no
+checking that generated files are newer than configure... done
+configure: creating ./config.status
+no
+configure: error: in `/build/julia-1.10.4/deps/scratch/libunwind-1.5.0':
+configure: error: C compiler cannot create executables
+See `config.log' for more details
+make[1]: *** [/build/julia-1.10.4/deps/unwind.mk:54: scratch/libunwind-1.5.0/build-configured] Error 77
+make[1]: *** Waiting for unfinished jobs....
+config.status: executing libtool commands
+-- Found Python3: /nix/store/l014xp1qxdl6gim3zc0jv3mpxhbp346s-python3-3.12.4/bin/python3.12 (found version "3.12.4") found components: Interpreter
+config.status: creating Makefile
+config.status: creating libpcre2-8.pc
+config.status: creating libpcre2-16.pc
+config.status: creating libpcre2-32.pc
+config.status: creating libpcre2-posix.pc
+config.status: creating pcre2-config
+config.status: creating src/pcre2.h
+config.status: creating src/config.h
+config.status: executing depfiles commands
+yes
+checking compiler gcc -m64  -O2 -pedantic -fomit-frame-pointer -m64  -mtune=k8... config.status: executing libtool commands
+config.status: executing script-chmod commands
+config.status: executing delete-old-chartables commands
+
+pcre2-10.42 configuration summary:
+
+    Install prefix ..................... : /build/julia-1.10.4/usr
+    C preprocessor ..................... : 
+    C compiler ......................... : gcc -m64 
+    Linker ............................. : ld -m elf_x86_64
+    C preprocessor flags ............... : 
+    C compiler flags ................... :   -O3 -g -O0 -fvisibility=hidden
+    Linker flags ....................... :  -Wl,-rpath,'$$ORIGIN' -Wl,-z,origin -Wl,-rpath-link,/build/julia-1.10.4/usr/lib -Wl,--enable-new-dtags
+    Extra libraries .................... :  
+
+    Build 8-bit pcre2 library .......... : yes
+    Build 16-bit pcre2 library ......... : no
+    Build 32-bit pcre2 library ......... : no
+    Include debugging code ............. : no
+    Enable JIT compiling support ....... : yes
+    Use SELinux allocator in JIT ....... : no
+    Enable Unicode support ............. : yes
+    Newline char/sequence .............. : lf
+    \R matches only ANYCRLF ............ : no
+    \C is disabled ..................... : no
+    EBCDIC coding ...................... : no
+    EBCDIC code for NL ................. : n/a
+    Rebuild char tables ................ : no
+    Internal link size ................. : 2
+    Nested parentheses limit ........... : 250
+    Heap limit ......................... : 20000000 kibibytes
+    Match limit ........................ : 10000000
+    Match depth limit .................. : MATCH_LIMIT
+    Build shared libs .................. : yes
+    Build static libs .................. : yes
+    Use JIT in pcre2grep ............... : yes
+    Enable callouts in pcre2grep ....... : yes
+    Enable fork in pcre2grep callouts .. : yes
+    Initial buffer size for pcre2grep .. : 20480
+    Maximum buffer size for pcre2grep .. : 1048576
+    Link pcre2grep with libz ........... : no
+    Link pcre2grep with libbz2 ......... : no
+    Link pcre2test with libedit ........ : no
+    Link pcre2test with libreadline .... : no
+    Valgrind support ................... : no
+    Code coverage ...................... : no
+    Fuzzer support ..................... : no
+    Use %zu and %td .................... : auto
+
+-- Performing Test C_COMPILER_SUPPORTS_WFORMAT_SIGNEDNESS
+-- Performing Test C_COMPILER_SUPPORTS_WFORMAT_SIGNEDNESS - Success
+-- Configuring done (2.3s)
+-- Generating done (0.7s)
+yes
+checking whether std::map::emplace is available... [33mCMake Warning:
+  Manually-specified variables were not used by the project:
+
+    CMAKE_CXX_COMPILER
+    CMAKE_CXX_COMPILER_ARG1
+    CMAKE_INSTALL_LIBDIR
+
+[0m
+-- Build files have been written to: /build/julia-1.10.4/deps/scratch/mbedtls-2.28.2
+yes
+checking compiler gcc -m64  -O2 -pedantic -fomit-frame-pointer -m64 -mtune=k8  -march=k8... yes
+checking whether std::atomic_* overloads for std::shared_ptr are available... yes
+checking whether thread_local storage class specifier is available.... yes
+checking for library containing dlopen... none required
+checking for cunit >= 2.1... no
+configure: WARNING: 
+checking for CU_initialize_registry in -lcunit... no
+checking whether to enable assertions... yes
+checking for arpa/inet.h... yes
+checking for fcntl.h... yes
+checking for inttypes.h... (cached) yes
+checking for limits.h... yes
+checking for netdb.h... yes
+checking for netinet/in.h... yes
+checking for pwd.h... yes
+checking for stddef.h... yes
+checking for stdint.h... (cached) yes
+checking for stdlib.h... (cached) yes
+checking for string.h... (cached) yes
+checking for sys/socket.h... yes
+checking for sys/time.h... yes
+checking for syslog.h... yes
+checking for gcc... gcc -m64 
+In file included from [01m[Kld80/s_exp2l.c:38[m[K:
+[01m[K/build/julia-1.10.4/deps/scratch/openlibm-ae2d91698508701c83cab83714d42a1146dccf85/src/math_private.h:257:1:[m[K [01;35m[Kwarning: [m[K'[01m[Kirint[m[K' defined but not used [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-function-Wunused-function]8;;[m[K]
+  257 | [01;35m[Kirint[m[K(double x)
+      | [01;35m[K^~~~~[m[K
+checking whether the C compiler works... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... [01m[Kld80/e_lgammal_r.c:[m[K In function '[01m[Klgammal_r[m[K':
+[01m[Kld80/e_lgammal_r.c:423:7:[m[K [01;35m[Kwarning: [m[K'[01m[Knadj[m[K' may be used uninitialized [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wmaybe-uninitialized-Wmaybe-uninitialized]8;;[m[K]
+  423 |     [01;35m[Kr = nadj - r[m[K;
+      |     [01;35m[K~~^~~~~~~~~~[m[K
+[01m[Kld80/e_lgammal_r.c:271:24:[m[K [01;36m[Knote: [m[K'[01m[Knadj[m[K' was declared here
+  271 |   long double t, y, z, [01;36m[Knadj[m[K, p, p1, p2, q, r, w;
+      |                        [01;36m[K^~~~[m[K
+
+checking whether we are cross compiling... no
+checking for suffix of object files... o
+checking whether we are using the GNU C compiler... yes
+checking whether gcc -m64  accepts -g... yes
+checking for gcc -m64  option to accept ISO C89... none needed
+checking whether gcc -m64  understands -c and -o together... yes
+checking for gcc -m64  option to accept ISO C99... none needed
+checking how to run the C preprocessor... gcc -m64  -E
+/nix/store/qsx2xqqm0lp6d8hi86r4y0rz5v9m62wn-binutils-2.42/bin/ld: warning: amd64/e_fmodl.S.o: missing .note.GNU-stack section implies executable stack
+/nix/store/qsx2xqqm0lp6d8hi86r4y0rz5v9m62wn-binutils-2.42/bin/ld: NOTE: This behaviour is deprecated and will be removed in a future version of the linker
+checking build system compiler gcc -m64... yes
+checking for build system preprocessor... gcc -m64 -E
+checking for build system executable suffix... 
+checking whether build system compiler is ANSI... yes
+checking for build system compiler math library... -lm
+checking whether we are using the GNU C++ compiler... yes
+checking whether g++ -m64  accepts -g... yes
+checking C++ compiler g++ -m64   -O2 -pedantic -fomit-frame-pointer -m64 -mtune=k8 -march=k8... yes
+checking for time.h... yes
+checking for unistd.h... (cached) yes
+checking for size_t... yes
+checking how to run the C++ preprocessor... g++ -m64  -E
+checking for grep that handles long lines and -e... /nix/store/k8zpadqbwqwalggnhqi74gdgrlf3if9l-gnugrep-3.11/bin/grep
+checking for egrep... /nix/store/k8zpadqbwqwalggnhqi74gdgrlf3if9l-gnugrep-3.11/bin/grep -E
+using ABI="64"
+      CC="gcc -m64 "
+      CFLAGS="-O2 -pedantic -fomit-frame-pointer -m64 -mtune=k8 -march=k8"
+      CPPFLAGS=""
+      CXX="g++ -m64 "
+      CXXFLAGS="-O2 -pedantic -fomit-frame-pointer -m64 -mtune=k8 -march=k8"
+      MPN_PATH=" x86_64/k8 x86_64 generic"
+checking whether assembler supports --noexecstack option... yes
+checking for ar... ar
+checking for BSD- or MS-compatible name lister (nm)... nm
+checking the name lister (nm) interface... yes
+checking for ssize_t... BSD nm
+checking how to print strings... printf
+checking for a sed that does not truncate output... /nix/store/9zsm74npdqq2lgjzavlzaqrz8x44mq9d-gnused-4.9/bin/sed
+checking for fgrep... /nix/store/k8zpadqbwqwalggnhqi74gdgrlf3if9l-gnugrep-3.11/bin/grep -F
+checking for ld used by gcc -m64 ... ld
+checking if the linker (ld) is GNU ld... yes
+checking whether ln -s works... yes
+checking the maximum length of command line arguments... 1572864
+checking how to convert x86_64-unknown-linux-gnu file names to x86_64-unknown-linux-gnu format... func_convert_file_noop
+checking how to convert x86_64-unknown-linux-gnu file names to toolchain format... func_convert_file_noop
+checking for ld option to reload object files... -r
+checking for objdump... objdump
+checking how to recognize dependent libraries... (cached) pass_all
+checking for dlltool... dlltool
+checking how to associate runtime and link libraries... printf %s\n
+checking for archiver @FILE support... @
+checking for strip... strip
+checking for ranlib... ranlib
+checking command to parse nm output from gcc -m64  object... yes
+checking for uint8_t... yes
+checking for uint16_t... ok
+checking for sysroot... no
+checking for a working dd... /nix/store/cnknp3yxfibxjhila0sjd1v3yglqssng-coreutils-9.5/bin/dd
+checking how to truncate binary pipes... /nix/store/cnknp3yxfibxjhila0sjd1v3yglqssng-coreutils-9.5/bin/dd bs=4096 count=1
+Making all in tests
+/build/julia-1.10.4/deps/srccache/gmp-6.2.1//configure: line 14343: /usr/bin/file: No such file or directory
+checking for mt... no
+checking if : is a manifest tool... no
+checking for ANSI C header files... yes
+checking for uint32_t... yes
+checking for uint64_t... yes
+checking for int8_t... yes
+checking for sys/types.h... yes
+checking for sys/stat.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for int16_t... yes
+checking for memory.h... yes
+checking for strings.h... yes
+yes
+checking for int32_t... checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for unistd.h... yes
+checking for dlfcn.h... yes
+checking for int64_t... yes
+checking for objdir... .libs
+yes
+checking for off_t... checking if gcc -m64  supports -fno-rtti -fno-exceptions... no
+checking for gcc -m64  option to produce PIC... -fPIC -DPIC
+checking if gcc -m64  PIC flag -fPIC -DPIC works... yes
+checking if gcc -m64  static flag -static works... yes
+checking for pid_t... no
+checking if gcc -m64  supports -c -o file.o... yes
+checking if gcc -m64  supports -c -o file.o... (cached) yes
+checking whether the gcc -m64  linker (ld) supports shared libraries... yes
+checking whether -lc should be explicitly linked in... yes
+checking for uid_t in sys/types.h... yes
+checking for ptrdiff_t... no
+checking dynamic linker characteristics... GNU/Linux ld.so
+checking how to hardcode library paths into programs... immediate
+checking whether stripping libraries is possible... yes
+checking if libtool supports shared libraries... yes
+checking whether to build shared libraries... yes
+checking whether to build static libraries... no
+checking how to run the C++ preprocessor... g++ -m64  -E
+yes
+checking whether byte ordering is bigendian... no
+checking for inline... checking for ld used by g++ -m64 ... ld
+checking if the linker (ld) is GNU ld... yes
+inline
+checking for special C compiler options needed for large files... no
+checking for _FILE_OFFSET_BITS value needed for large files... checking whether the g++ -m64  linker (ld) supports shared libraries... yes
+no
+checking for struct tm.tm_gmtoff... yes
+checking for struct sockaddr_in.sin_len... checking for g++ -m64  option to produce PIC... -fPIC -DPIC
+checking if g++ -m64  PIC flag -fPIC -DPIC works... no
+checking for struct sockaddr_in6.sin6_len... yes
+checking if g++ -m64  static flag -static works... no
+checking if g++ -m64  supports -c -o file.o... no
+checking size of int *... yes
+checking if g++ -m64  supports -c -o file.o... (cached) yes
+checking whether the g++ -m64  linker (ld) supports shared libraries... yes
+checking dynamic linker characteristics... (cached) GNU/Linux ld.so
+checking how to hardcode library paths into programs... immediate
+checking for ANSI C header files... (cached) yes
+checking whether time.h and sys/time.h may both be included... yes
+checking fcntl.h usability... 8
+checking size of time_t... yes
+checking fcntl.h presence... yes
+checking for fcntl.h... yes
+checking float.h usability... yes
+checking float.h presence... 8
+checking for working chown... yes
+checking for float.h... yes
+checking invent.h usability... no
+checking invent.h presence... no
+checking for invent.h... no
+checking langinfo.h usability... yes
+checking for error_at_line... yes
+checking langinfo.h presence... yes
+checking for langinfo.h... yes
+checking locale.h usability... yes
+checking locale.h presence... yes
+checking for locale.h... yes
+checking nl_types.h usability... yes
+checking nl_types.h presence... yes
+checking for nl_types.h... yes
+checking sys/attributes.h usability... no
+checking sys/attributes.h presence... no
+checking for sys/attributes.h... no
+checking sys/iograph.h usability... yes
+checking for fork... no
+checking sys/iograph.h presence... no
+checking for sys/iograph.h... no
+checking sys/mman.h usability... yes
+checking sys/mman.h presence... yes
+checking for sys/mman.h... yes
+checking sys/param.h usability... yes
+checking for vfork... yes
+checking sys/param.h presence... yes
+checking for sys/param.h... yes
+checking sys/processor.h usability... yes
+checking for working fork... no
+checking sys/processor.h presence... no
+checking for sys/processor.h... no
+checking sys/pstat.h usability... yes
+checking for working vfork... (cached) yes
+checking for gcc -m64  options needed to detect all undeclared functions... no
+checking sys/pstat.h presence... no
+checking for sys/pstat.h... no
+checking sys/sysinfo.h usability... none needed
+checking whether strerror_r is declared... yes
+checking sys/sysinfo.h presence... yes
+checking for sys/sysinfo.h... yes
+checking sys/syssgi.h usability... yes
+checking whether strerror_r returns char *... yes
+checking for working strnlen... no
+checking sys/syssgi.h presence... no
+checking for sys/syssgi.h... no
+checking sys/systemcfg.h usability... yes
+checking for _Exit... no
+checking sys/systemcfg.h presence... no
+checking for sys/systemcfg.h... no
+checking sys/time.h usability... yes
+checking for accept4... yes
+checking sys/time.h presence... yes
+checking for sys/time.h... yes
+checking sys/times.h usability... yes
+checking sys/times.h presence... yes
+checking for dup2... yes
+checking for sys/times.h... yes
+checking for sys/resource.h... yes
+checking for sys/sysctl.h... yes
+checking for getcwd... no
+checking for machine/hal_sysinfo.h... yes
+checking for getpwnam... no
+checking whether fgetc is declared... yes
+checking whether fscanf is declared... yes
+checking for localtime_r... yes
+checking whether optarg is declared... yes
+checking for memchr... yes
+checking whether ungetc is declared... yes
+checking for memmove... yes
+checking whether vfprintf is declared... yes
+checking whether sys_errlist is declared... yes
+checking for memset... no
+checking whether sys_nerr is declared... no
+checking return type of signal handlers... yes
+checking for mkostemp... void
+checking for intmax_t... yes
+checking for socket... yes
+checking for long double... yes
+checking for sqrt... no
+checking for strchr... yes
+checking for long long... yes
+checking for strdup... yes
+checking for ptrdiff_t... yes
+checking for strerror... yes
+checking for quad_t... yes
+checking for strndup... yes
+checking for uint_least32_t... yes
+checking for strstr... yes
+checking for strtol... yes
+checking for intptr_t... yes
+checking for strtoul... yes
+checking for working volatile... yes
+checking for C/C++ restrict keyword... yes
+checking for timegm... __restrict
+checking whether gcc __attribute__ ((const)) works... yes
+checking whether gcc __attribute__ ((malloc)) works... yes
+checking for timerfd_create... yes
+checking whether gcc __attribute__ ((mode (XX))) works... yes
+checking whether gcc __attribute__ ((noreturn)) works... yes
+checking whether initgroups is declared... yes
+checking whether gcc hidden aliases work... yes
+checking for inline... yes
+checking whether C compiler accepts -fvisibility=hidden... inline
+yes
+checking that generated files are newer than configure... done
+configure: creating ./config.status
+checking for cos in -lm... yes
+checking for working alloca.h... yes
+checking for alloca (via gmp-impl.h)... yes
+checking how to allocate temporary memory... alloca
+config.status: creating Makefile
+config.status: creating lib/Makefile
+config.status: creating lib/libnghttp2.pc
+checking whether byte ordering is bigendian... config.status: creating lib/includes/Makefile
+config.status: creating lib/includes/nghttp2/nghttp2ver.h
+config.status: creating tests/Makefile
+config.status: creating tests/testdata/Makefile
+config.status: creating third-party/Makefile
+config.status: creating src/Makefile
+config.status: creating bpf/Makefile
+config.status: creating examples/Makefile
+config.status: creating integration-tests/Makefile
+config.status: creating integration-tests/config.go
+config.status: creating integration-tests/setenv
+config.status: creating doc/Makefile
+config.status: creating doc/conf.py
+config.status: creating doc/index.rst
+config.status: creating doc/package_README.rst
+no
+checking format of `double' floating point... config.status: creating doc/tutorial-client.rst
+config.status: creating doc/tutorial-server.rst
+config.status: creating doc/tutorial-hpack.rst
+config.status: creating doc/nghttpx-howto.rst
+config.status: creating doc/h2load-howto.rst
+config.status: creating doc/building-android-binary.rst
+IEEE little endian
+checking for alarm... config.status: creating doc/nghttp2.h.rst
+config.status: creating doc/nghttp2ver.h.rst
+config.status: creating doc/contribute.rst
+config.status: creating contrib/Makefile
+config.status: creating script/Makefile
+yes
+checking for attr_get... config.status: creating config.h
+config.status: executing libtool commands
+config.status: executing depfiles commands
+no
+checking for clock... yes
+checking for cputime... no
+checking for getpagesize... yes
+checking for getrusage... yes
+checking for gettimeofday... yes
+checking for getsysinfo... configure: summary of build options:
+
+    Package version: 1.52.0
+    Library version: 38:1:24
+    Install prefix:  /build/julia-1.10.4/usr
+    System types:
+      Build:         x86_64-unknown-linux-gnu
+      Host:          x86_64-unknown-linux-gnu
+      Target:        x86_64-unknown-linux-gnu
+    Compiler:
+      C compiler:     gcc -m64 
+      CFLAGS:         -g -O2
+      LDFLAGS:         -Wl,-rpath,'$$ORIGIN' -Wl,-z,origin -Wl,-rpath-link,/build/julia-1.10.4/usr/lib -Wl,--enable-new-dtags 
+      C++ compiler:   g++ -m64  -std=c++14
+      CXXFLAGS:       -g -O2
+      CXXCPP:         g++ -m64  -E -std=c++14
+      C preprocessor: gcc -m64  -E
+      CPPFLAGS:       
+      WARNCFLAGS:     
+      WARNCXXFLAGS:   
+      CXX1XCXXFLAGS:  
+      EXTRACFLAG:     -fvisibility=hidden
+      BPFCFLAGS:      
+      EXTRABPFCFLAGS: 
+      LIBS:           
+      DEFS:           -DHAVE_CONFIG_H
+      EXTRA_DEFS:     
+    Library:
+      Shared:         yes
+      Static:         yes
+    Libtool:
+      LIBTOOL_LDFLAGS: 
+    Python:
+      Python:         /nix/store/l014xp1qxdl6gim3zc0jv3mpxhbp346s-python3-3.12.4/bin/python
+      PYTHON_VERSION: 3.12
+    Test:
+      CUnit:          no (CFLAGS='' LIBS='')
+      Failmalloc:     yes
+    Libs:
+      OpenSSL:        no (CFLAGS='' LIBS='')
+      Libxml2:        no (CFLAGS='' LIBS='')
+      Libev:          no (CFLAGS='' LIBS='')
+      Libc-ares:      no (CFLAGS='' LIBS='')
+      libngtcp2:      no (CFLAGS='' LIBS='')
+      libngtcp2_crypto_openssl: no (CFLAGS='' LIBS='')
+      libngtcp2_crypto_boringssl: no (CFLAGS='' LIBS='')
+      libnghttp3:     no (CFLAGS='' LIBS='')
+      libbpf:         no (CFLAGS='' LIBS='')
+      Libevent(SSL):  no (CFLAGS='' LIBS='')
+      Jansson:        no (CFLAGS='' LIBS='')
+      Jemalloc:       no (CFLAGS='' LIBS='')
+      Zlib:           no (CFLAGS='' LIBS='')
+      Systemd:        no (CFLAGS='' LIBS='')
+    Third-party:
+      http-parser:    no
+      MRuby:          no (CFLAGS='' LIBS='')
+      Neverbleed:     no
+    Features:
+      Applications:   no
+      HPACK tools:    no
+      Examples:       no
+      Threading:      yes
+      HTTP/3 (EXPERIMENTAL): no
+
+no
+checking for localeconv... yes
+checking for memset... yes
+checking for mmap... yes
+checking for mprotect... yes
+checking for nl_langinfo... yes
+checking for obstack_vprintf... yes
+checking for popen... yes
+checking for processor_info... no
+checking for pstat_getprocessor... no
+checking for raise... yes
+checking for read_real_time... no
+checking for sigaction... yes
+checking for sigaltstack... yes
+checking for sigstack... yes
+checking for syssgi... no
+checking for strchr... yes
+checking for strerror... yes
+checking for strnlen... yes
+checking for strtol... yes
+checking for strtoul... yes
+checking for sysconf... yes
+checking for sysctl... no
+checking for sysctlbyname... no
+checking for times... yes
+checking for library containing clock_gettime... none required
+checking for vsnprintf... yes
+checking whether vsnprintf works... yes
+checking whether sscanf needs writable input... no
+checking for struct pst_processor.psp_iticksperclktick... no
+checking sstream usability... yes
+checking sstream presence... yes
+checking for sstream... yes
+checking for std::locale... yes
+checking for suitable m4... m4
+checking if m4wrap produces spurious output... no
+checking how to switch to text section... .text
+checking how to switch to data section... .data
+checking for assembler label suffix... :
+checking for assembler global directive... .globl
+checking for assembler global directive attribute... 
+checking if globals are prefixed by underscore... no
+checking how to switch to read-only data section... 	.section	.rodata
+checking for assembler .type directive... .type	$1,@$2
+checking for assembler .size directive... .size	$1,$2
+checking for assembler local label prefix... .L
+checking for assembler byte directive... .byte
+checking how to define a 32-bit word... .long
+checking if .align assembly directive is logarithmic... no
+checking if the .align directive accepts an 0x90 fill in .text... yes
+checking for assembler COFF type directives... no
+checking size of void *... 8
+checking size of unsigned short... 2
+checking size of unsigned... 4
+checking size of unsigned long... 8
+checking size of mp_limb_t... 8
+checking for stack_t... yes
+checking for tputs in -lncurses... no
+checking for tputs in -lcurses... no
+checking for readline in -lreadline... no
+checking readline detected... no
+checking for bison... no
+checking for byacc... no
+checking for flex... no
+checking for lex... no
+creating config.m4
+checking that generated files are newer than configure... done
+configure: creating ./config.status
+config.status: creating demos/pexpr-config.h
+config.status: creating demos/calc/calc-config.h
+config.status: creating Makefile
+config.status: creating mpf/Makefile
+config.status: creating mpn/Makefile
+config.status: creating mpq/Makefile
+config.status: creating mpz/Makefile
+config.status: creating printf/Makefile
+config.status: creating scanf/Makefile
+config.status: creating rand/Makefile
+config.status: creating cxx/Makefile
+config.status: creating tests/Makefile
+config.status: creating tests/devel/Makefile
+config.status: creating tests/mpf/Makefile
+config.status: creating tests/mpn/Makefile
+config.status: creating tests/mpq/Makefile
+config.status: creating tests/mpz/Makefile
+config.status: creating tests/rand/Makefile
+config.status: creating tests/misc/Makefile
+config.status: creating tests/cxx/Makefile
+config.status: creating doc/Makefile
+config.status: creating tune/Makefile
+config.status: creating demos/Makefile
+config.status: creating demos/calc/Makefile
+config.status: creating demos/expr/Makefile
+config.status: creating gmp.h
+config.status: creating gmp.pc
+config.status: creating gmpxx.pc
+config.status: creating config.h
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/x86_64/invert_limb_table.asm to mpn/invert_limb_table.asm
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/add.c to mpn/add.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/add_1.c to mpn/add_1.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/x86_64/aors_n.asm to mpn/add_n.asm
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/sub.c to mpn/sub.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/sub_1.c to mpn/sub_1.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/x86_64/aors_n.asm to mpn/sub_n.asm
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/x86_64/cnd_aors_n.asm to mpn/cnd_add_n.asm
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/x86_64/cnd_aors_n.asm to mpn/cnd_sub_n.asm
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/cnd_swap.c to mpn/cnd_swap.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/neg.c to mpn/neg.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/x86_64/com.asm to mpn/com.asm
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/x86_64/mul_1.asm to mpn/mul_1.asm
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/x86_64/aorsmul_1.asm to mpn/addmul_1.asm
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/x86_64/aorsmul_1.asm to mpn/submul_1.asm
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/x86_64/aors_err1_n.asm to mpn/add_err1_n.asm
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/x86_64/aors_err2_n.asm to mpn/add_err2_n.asm
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/x86_64/aors_err3_n.asm to mpn/add_err3_n.asm
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/x86_64/aors_err1_n.asm to mpn/sub_err1_n.asm
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/x86_64/aors_err2_n.asm to mpn/sub_err2_n.asm
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/x86_64/aors_err3_n.asm to mpn/sub_err3_n.asm
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/x86_64/lshift.asm to mpn/lshift.asm
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/x86_64/rshift.asm to mpn/rshift.asm
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/x86_64/dive_1.asm to mpn/dive_1.asm
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/diveby3.c to mpn/diveby3.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/divis.c to mpn/divis.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/divrem.c to mpn/divrem.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/x86_64/divrem_1.asm to mpn/divrem_1.asm
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/x86_64/divrem_2.asm to mpn/divrem_2.asm
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/fib2_ui.c to mpn/fib2_ui.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/fib2m.c to mpn/fib2m.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/mod_1.c to mpn/mod_1.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/x86_64/mod_34lsub1.asm to mpn/mod_34lsub1.asm
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/x86_64/mode1o.asm to mpn/mode1o.asm
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/pre_mod_1.c to mpn/pre_mod_1.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/dump.c to mpn/dump.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/x86_64/mod_1_1.asm to mpn/mod_1_1.asm
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/x86_64/mod_1_2.asm to mpn/mod_1_2.asm
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/mod_1_3.c to mpn/mod_1_3.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/x86_64/mod_1_4.asm to mpn/mod_1_4.asm
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/x86_64/lshiftc.asm to mpn/lshiftc.asm
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/mul.c to mpn/mul.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/mul_fft.c to mpn/mul_fft.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/mul_n.c to mpn/mul_n.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/sqr.c to mpn/sqr.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/x86_64/k8/mul_basecase.asm to mpn/mul_basecase.asm
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/x86_64/k8/sqr_basecase.asm to mpn/sqr_basecase.asm
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/nussbaumer_mul.c to mpn/nussbaumer_mul.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/x86_64/k8/mulmid_basecase.asm to mpn/mulmid_basecase.asm
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/toom42_mulmid.c to mpn/toom42_mulmid.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/mulmid_n.c to mpn/mulmid_n.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/mulmid.c to mpn/mulmid.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/random.c to mpn/random.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/random2.c to mpn/random2.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/pow_1.c to mpn/pow_1.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/rootrem.c to mpn/rootrem.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/sqrtrem.c to mpn/sqrtrem.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/sizeinbase.c to mpn/sizeinbase.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/get_str.c to mpn/get_str.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/set_str.c to mpn/set_str.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/compute_powtab.c to mpn/compute_powtab.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/scan0.c to mpn/scan0.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/scan1.c to mpn/scan1.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/x86_64/popham.asm to mpn/popcount.asm
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/x86_64/popham.asm to mpn/hamdist.asm
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/cmp.c to mpn/cmp.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/zero_p.c to mpn/zero_p.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/perfsqr.c to mpn/perfsqr.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/perfpow.c to mpn/perfpow.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/strongfibo.c to mpn/strongfibo.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/x86_64/gcd_11.asm to mpn/gcd_11.asm
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/x86_64/gcd_22.asm to mpn/gcd_22.asm
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/gcd_1.c to mpn/gcd_1.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/gcd.c to mpn/gcd.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/gcdext_1.c to mpn/gcdext_1.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/gcdext.c to mpn/gcdext.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/gcd_subdiv_step.c to mpn/gcd_subdiv_step.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/gcdext_lehmer.c to mpn/gcdext_lehmer.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/div_q.c to mpn/div_q.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/tdiv_qr.c to mpn/tdiv_qr.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/jacbase.c to mpn/jacbase.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/jacobi_2.c to mpn/jacobi_2.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/jacobi.c to mpn/jacobi.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/get_d.c to mpn/get_d.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/matrix22_mul.c to mpn/matrix22_mul.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/matrix22_mul1_inverse_vector.c to mpn/matrix22_mul1_inverse_vector.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/hgcd_matrix.c to mpn/hgcd_matrix.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/hgcd2.c to mpn/hgcd2.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/hgcd_step.c to mpn/hgcd_step.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/hgcd_reduce.c to mpn/hgcd_reduce.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/hgcd.c to mpn/hgcd.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/hgcd_appr.c to mpn/hgcd_appr.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/hgcd2_jacobi.c to mpn/hgcd2_jacobi.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/hgcd_jacobi.c to mpn/hgcd_jacobi.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/mullo_n.c to mpn/mullo_n.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/x86_64/k8/mullo_basecase.asm to mpn/mullo_basecase.asm
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/sqrlo.c to mpn/sqrlo.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/sqrlo_basecase.c to mpn/sqrlo_basecase.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/toom22_mul.c to mpn/toom22_mul.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/toom32_mul.c to mpn/toom32_mul.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/toom42_mul.c to mpn/toom42_mul.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/toom52_mul.c to mpn/toom52_mul.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/toom62_mul.c to mpn/toom62_mul.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/toom33_mul.c to mpn/toom33_mul.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/toom43_mul.c to mpn/toom43_mul.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/toom53_mul.c to mpn/toom53_mul.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/toom54_mul.c to mpn/toom54_mul.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/toom63_mul.c to mpn/toom63_mul.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/toom44_mul.c to mpn/toom44_mul.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/toom6h_mul.c to mpn/toom6h_mul.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/toom6_sqr.c to mpn/toom6_sqr.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/toom8h_mul.c to mpn/toom8h_mul.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/toom8_sqr.c to mpn/toom8_sqr.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/toom_couple_handling.c to mpn/toom_couple_handling.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/toom2_sqr.c to mpn/toom2_sqr.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/toom3_sqr.c to mpn/toom3_sqr.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/toom4_sqr.c to mpn/toom4_sqr.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/toom_eval_dgr3_pm1.c to mpn/toom_eval_dgr3_pm1.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/toom_eval_dgr3_pm2.c to mpn/toom_eval_dgr3_pm2.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/toom_eval_pm1.c to mpn/toom_eval_pm1.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/toom_eval_pm2.c to mpn/toom_eval_pm2.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/toom_eval_pm2exp.c to mpn/toom_eval_pm2exp.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/toom_eval_pm2rexp.c to mpn/toom_eval_pm2rexp.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/toom_interpolate_5pts.c to mpn/toom_interpolate_5pts.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/toom_interpolate_6pts.c to mpn/toom_interpolate_6pts.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/toom_interpolate_7pts.c to mpn/toom_interpolate_7pts.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/toom_interpolate_8pts.c to mpn/toom_interpolate_8pts.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/toom_interpolate_12pts.c to mpn/toom_interpolate_12pts.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/toom_interpolate_16pts.c to mpn/toom_interpolate_16pts.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/invertappr.c to mpn/invertappr.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/invert.c to mpn/invert.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/binvert.c to mpn/binvert.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/mulmod_bnm1.c to mpn/mulmod_bnm1.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/sqrmod_bnm1.c to mpn/sqrmod_bnm1.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/div_qr_1.c to mpn/div_qr_1.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/x86_64/k8/div_qr_1n_pi1.asm to mpn/div_qr_1n_pi1.asm
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/div_qr_2.c to mpn/div_qr_2.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/x86_64/div_qr_2n_pi1.asm to mpn/div_qr_2n_pi1.asm
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/x86_64/div_qr_2u_pi1.asm to mpn/div_qr_2u_pi1.asm
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/sbpi1_div_q.c to mpn/sbpi1_div_q.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/sbpi1_div_qr.c to mpn/sbpi1_div_qr.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/sbpi1_divappr_q.c to mpn/sbpi1_divappr_q.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/dcpi1_div_q.c to mpn/dcpi1_div_q.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/dcpi1_div_qr.c to mpn/dcpi1_div_qr.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/dcpi1_divappr_q.c to mpn/dcpi1_divappr_q.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/mu_div_qr.c to mpn/mu_div_qr.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/mu_divappr_q.c to mpn/mu_divappr_q.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/mu_div_q.c to mpn/mu_div_q.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/x86_64/k8/bdiv_q_1.asm to mpn/bdiv_q_1.asm
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/sbpi1_bdiv_q.c to mpn/sbpi1_bdiv_q.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/sbpi1_bdiv_qr.c to mpn/sbpi1_bdiv_qr.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/sbpi1_bdiv_r.c to mpn/sbpi1_bdiv_r.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/dcpi1_bdiv_q.c to mpn/dcpi1_bdiv_q.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/dcpi1_bdiv_qr.c to mpn/dcpi1_bdiv_qr.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/mu_bdiv_q.c to mpn/mu_bdiv_q.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/mu_bdiv_qr.c to mpn/mu_bdiv_qr.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/bdiv_q.c to mpn/bdiv_q.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/bdiv_qr.c to mpn/bdiv_qr.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/broot.c to mpn/broot.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/brootinv.c to mpn/brootinv.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/bsqrt.c to mpn/bsqrt.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/bsqrtinv.c to mpn/bsqrtinv.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/divexact.c to mpn/divexact.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/x86_64/bdiv_dbm1c.asm to mpn/bdiv_dbm1c.asm
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/x86_64/k8/redc_1.asm to mpn/redc_1.asm
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/redc_2.c to mpn/redc_2.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/redc_n.c to mpn/redc_n.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/powm.c to mpn/powm.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/powlo.c to mpn/powlo.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/sec_powm.c to mpn/sec_powm.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/sec_mul.c to mpn/sec_mul.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/sec_sqr.c to mpn/sec_sqr.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/sec_div.c to mpn/sec_div_qr.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/sec_div.c to mpn/sec_div_r.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/sec_pi1_div.c to mpn/sec_pi1_div_qr.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/sec_pi1_div.c to mpn/sec_pi1_div_r.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/sec_aors_1.c to mpn/sec_add_1.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/sec_aors_1.c to mpn/sec_sub_1.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/sec_invert.c to mpn/sec_invert.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/trialdiv.c to mpn/trialdiv.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/remove.c to mpn/remove.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/x86_64/logops_n.asm to mpn/and_n.asm
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/x86_64/logops_n.asm to mpn/andn_n.asm
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/x86_64/logops_n.asm to mpn/nand_n.asm
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/x86_64/logops_n.asm to mpn/ior_n.asm
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/x86_64/logops_n.asm to mpn/iorn_n.asm
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/x86_64/logops_n.asm to mpn/nior_n.asm
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/x86_64/logops_n.asm to mpn/xor_n.asm
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/x86_64/logops_n.asm to mpn/xnor_n.asm
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/x86_64/copyi.asm to mpn/copyi.asm
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/x86_64/copyd.asm to mpn/copyd.asm
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/zero.c to mpn/zero.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/x86_64/sec_tabselect.asm to mpn/sec_tabselect.asm
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/comb_tables.c to mpn/comb_tables.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/x86_64/invert_limb.asm to mpn/invert_limb.asm
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/x86_64/sqr_diag_addlsh1.asm to mpn/sqr_diag_addlsh1.asm
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/x86_64/mul_2.asm to mpn/mul_2.asm
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/x86_64/k8/addmul_2.asm to mpn/addmul_2.asm
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/x86_64/aorrlsh1_n.asm to mpn/addlsh1_n.asm
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/x86_64/sublsh1_n.asm to mpn/sublsh1_n.asm
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/x86_64/aorrlsh1_n.asm to mpn/rsblsh1_n.asm
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/x86_64/rsh1aors_n.asm to mpn/rsh1add_n.asm
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/x86_64/rsh1aors_n.asm to mpn/rsh1sub_n.asm
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/x86_64/aorrlsh2_n.asm to mpn/addlsh2_n.asm
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/x86_64/aorrlsh2_n.asm to mpn/rsblsh2_n.asm
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/x86_64/k8/aorrlsh_n.asm to mpn/addlsh_n.asm
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/x86_64/k8/aorrlsh_n.asm to mpn/rsblsh_n.asm
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/generic/add_n_sub_n.c to mpn/add_n_sub_n.c
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/x86_64/addaddmul_1msb0.asm to mpn/addaddmul_1msb0.asm
+config.status: linking /build/julia-1.10.4/deps/srccache/gmp-6.2.1/mpn/x86_64/k8/gmp-mparam.h to gmp-mparam.h
+config.status: executing libtool commands
+configure: summary of build options:
+
+  Version:           GNU MP 6.2.1
+  Host type:         x86_64-unknown-linux-gnu
+  ABI:               64
+  Install prefix:    /build/julia-1.10.4/usr
+  Compiler:          gcc -m64 
+  Static libraries:  no
+  Shared libraries:  yes
+
+make: *** [Makefile:79: julia-deps] Error 2
