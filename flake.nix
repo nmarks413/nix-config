@@ -8,6 +8,11 @@
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    darwin = {
+      url = "github:lnl7/nix-darwin/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     stylix.url = "github:danth/stylix";
     blocklist-hosts = {
       url = "github:StevenBlack/hosts";
@@ -52,44 +57,6 @@
     overlays = [
       inputs.zig.overlays.default
     ];
-    systemSettings = {
-      system = "x86_64-linux"; # system arch
-      hostname = "nixos"; # hostname
-      #profile = "personal"; # select a profile defined from my profiles directory
-      timezone = "America/Los_Angeles"; # select timezone
-      locale = "en_US.UTF-8"; # select locale
-    };
-    userSettings = rec {
-      username = "nmarks"; # username
-      name = "Nmarks"; # name/identifier
-      email = "nmarks413@gmail.com"; # email (used for certain configurations)
-      dotfilesDir = "~/.dotfiles"; # absolute path of the local repo
-      #theme = "uwunicorn-yt"; # selcted theme from my themes directory (./themes/)
-      wm = "hyprland"; # Selected window manager or desktop environment; must select one in both ./user/wm/ and ./system/wm/
-      # window manager type (hyprland or x11) translator
-      wmType =
-        if (wm == "hyprland")
-        then "wayland"
-        else "x11";
-      browser = "firefox"; # Default browser; must select one from ./user/app/browser/
-      term = "kitty"; # Default terminal command;
-      font = ""; # Selected font
-      fontPkg = pkgs.intel-one-mono; # Font package
-      editor = "nvim"; # Default editor;
-      # editor spawning translator
-      # generates a command that can be used to spawn editor inside a gui
-      # EDITOR and TERM session variables must be set in home.nix or other module
-      # I set the session variable SPAWNEDITOR to this in my home.nix for convenience
-      spawnEditor =
-        if (editor == "emacsclient")
-        then "emacsclient -c -a 'emacs'"
-        else
-          (
-            if ((editor == "vim") || (editor == "nvim") || (editor == "nano"))
-            then "exec " + term + " -e " + editor
-            else editor
-          );
-    };
     pkgs = import nixpkgs {
       system = systemSettings.system;
       config = {
@@ -108,15 +75,21 @@
       overlays = [];
     };
 
+
     lib = nixpkgs.lib;
   in {
-    homeConfigurations = {
-      nmarks = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
+    nixosConfigurations = {
+      nixos = lib.nixosSystem {
+        system = systemSettings.system;
         modules = [
-          ./home.nix
-        ];
-        extraSpecialArgs = {
+          nixos-cosmic.nixosModules.default
+          ./configuration.nix
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+	  	home-manager.useUserPackages = true;
+	    home-manager.users.nmarks = import ./hosts/desktop/home.nix;	
+	    home-manager.extraSpecialArgs = {
           inherit pkgs-stable;
           inherit systemSettings;
           inherit userSettings;
@@ -125,14 +98,7 @@
           inherit zls;
           inherit ghostty;
         };
-      };
-    };
-    nixosConfigurations = {
-      nixos = lib.nixosSystem {
-        system = systemSettings.system;
-        modules = [
-          nixos-cosmic.nixosModules.default
-          ./configuration.nix
+          }
         ];
         specialArgs = {
           inherit inputs;
@@ -144,7 +110,20 @@
         };
       };
     };
-
+    darwinSystem = darwin.lib.darwinSystem {
+      system = "aarch64-darwin";
+        modules = [
+          ./hosts/laptop/configuration.nix
+          home-manager.darwinModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.nmarks = import ./hosts/laptop/home.nix;
+            users.users.nmarks.home = "/Users/nmarks";
+          };
+        ];
+        specialArgs = { inherit nixpkgs; };
+   };
     # nixos = inputs.self.nixosConfigurations.nmarks;
     #
     #
