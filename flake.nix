@@ -58,36 +58,23 @@
     overlays = [
       inputs.zig.overlays.default
     ];
-    pkgs = import nixpkgs {
-      config = {
-        allowUnfree = true;
-        allowUnfreePredicate = _: true;
-      };
-      overlays = overlays;
-    };
 
-    pkgs-stable = import nixpkgs-stable {
-      config = {
-        allowUnfree = true;
-        allowUnfreePredicate = _: true;
-      };
-      overlays = [];
-    };
-
-    lib = nixpkgs.lib;
+    inherit (nixpkgs) lib;
   in {
     nixosConfigurations = {
       nixos = lib.nixosSystem {
         modules = [
+          {nixpkgs.overlays = overlays;}
           nixos-cosmic.nixosModules.default
-          ./configuration.nix
+          ./hosts/desktop/configuration.nix
           home-manager.nixosModules.home-manager
           {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.nmarks = import ./hosts/desktop/home.nix;
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              users.nmarks = import ./hosts/desktop/home.nix;
+            };
             home-manager.extraSpecialArgs = {
-              inherit pkgs-stable;
               inherit stylix;
               inherit hyprland-plugins;
               inherit zls;
@@ -97,25 +84,39 @@
         ];
         specialArgs = {
           inherit inputs;
-          inherit pkgs-stable;
           inherit stylix;
           inherit blocklist-hosts;
         };
       };
     };
-    darwinSystem = darwin.lib.darwinSystem {
-      system = "aarch64-darwin";
-      modules = [
-        ./hosts/laptop/configuration.nix
-        home-manager.darwinModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.nmarks = import ./hosts/laptop/home.nix;
-          users.users.nmarks.home = "/Users/nmarks";
-        }
-      ];
-      specialArgs = {inherit nixpkgs;};
+    darwinConfigurations = {
+      "Natalies-MacBook-Air" = darwin.lib.darwinSystem {
+        system = "aarch64-darwin";
+        modules = [
+          {nixpkgs.overlays = overlays;}
+          ./hosts/laptop/configuration.nix
+          home-manager.darwinModules.home-manager
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              users.nmarks = import ./hosts/laptop/home.nix;
+            };
+            home-manager.extraSpecialArgs = {
+              inherit stylix;
+              inherit zls;
+              inherit ghostty;
+            };
+            users.users.nmarks.home = "/Users/nmarks";
+          }
+        ];
+        specialArgs = {
+          inherit inputs;
+          inherit stylix;
+          inherit blocklist-hosts;
+          inherit ghostty;
+        };
+      };
     };
     # nixos = inputs.self.nixosConfigurations.nmarks;
     #

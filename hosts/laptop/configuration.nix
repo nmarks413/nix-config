@@ -1,27 +1,38 @@
-{ config, pkgs, … }:
-
 {
-  environment.systemPackages =
-    [
-      pkgs.home-manager
-    ];
+  config,
+  pkgs,
+  ...
+}: {
+  programs.nh = {
+    enable = true;
+    clean.enable = true;
+    clean.extraArgs = "--keep-since 4d --keep 3";
+    flake = "/Users/nmarks/.dotfiles";
+  };
+
+  environment.systemPackages = [
+    pkgs.home-manager
+    pkgs.neovim
+  ];
 
   # Use a custom configuration.nix location.
-  environment.darwinConfig = "$HOME/src/github.com/evantravers/dotfiles/nix-darwin-configuration";
+  #environment.darwinConfig = "$HOME/.dotfiles/hosts/laptop";
 
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
   nix = {
     package = pkgs.nix;
     settings = {
-      "extra-experimental-features" = [ "nix-command" "flakes" ];
+      "extra-experimental-features" = ["nix-command" "flakes"];
     };
   };
+
+  nixpkgs.config.allowUnfree = true;
 
   # Create /etc/zshrc that loads the nix-darwin environment.
   programs = {
     gnupg.agent.enable = true;
-    zsh.enable = true;  # default shell on catalina
+    zsh.enable = true; # default shell on catalina
   };
 
   # Used for backwards compatibility, please read the changelog before changing.
@@ -29,8 +40,7 @@
   system.stateVersion = 4;
 
   # Install fonts
-  fonts.fontDir.enable = true;
-  fonts.fonts = [
+  fonts.packages = [
     pkgs.iosevka
   ];
 
@@ -53,10 +63,9 @@
   system.defaults = {
     # minimal dock
     dock = {
-      autohide = true;
-      orientation = "left";
+      autohide = false;
       show-process-indicators = false;
-      show-recents = false;
+      show-recents = true;
       static-only = true;
     };
     # a finder that tells me what I want to know and lets me work
@@ -66,9 +75,5 @@
       FXEnableExtensionChangeWarning = false;
     };
     # Tab between form controls and F-row that behaves as F1-F12
-    NSGlobalDomain = {
-      AppleKeyboardUIMode = 3;
-      "com.apple.keyboard.fnState" = true;
-    };
   };
 }
