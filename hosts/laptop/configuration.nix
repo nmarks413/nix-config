@@ -71,7 +71,7 @@
     # minimal dock
     dock = {
       autohide = false;
-      show-process-indicators = false;
+      show-process-indicators = true;
       show-recents = true;
       static-only = true;
     };

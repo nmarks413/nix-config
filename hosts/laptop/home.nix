@@ -31,6 +31,7 @@
   # environment.
 
   home.packages = with pkgs; [
+    ghostty
     pyright
     ruff
     python312Packages.jedi-language-server
