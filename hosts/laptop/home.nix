@@ -31,7 +31,7 @@
   # environment.
 
   home.packages = with pkgs; [
-    ghostty
+    # ghostty.packages.aarch64-darwin.default
     pyright
     ruff
     python312Packages.jedi-language-server
