@@ -28,7 +28,7 @@
     zig.url = "github:mitchellh/zig-overlay";
     zls.url = "github:zigtools/zls?rev=a26718049a8657d4da04c331aeced1697bc7652b";
 
-    foundryvtt.url = "github:reckenrode/nix-foundryvtt";
+    # foundryvtt.url = "github:reckenrode/nix-foundryvtt";
 
     ghostty = {
       url = "git+ssh://git@github.com/ghostty-org/ghostty";
