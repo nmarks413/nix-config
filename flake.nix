@@ -13,11 +13,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    stylix.url = "github:danth/stylix";
-    blocklist-hosts = {
+    hosts = {
       url = "github:StevenBlack/hosts";
       #flake = false;
     };
+
     hyprland.url = "github:hyprwm/Hyprland";
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";
@@ -25,12 +25,11 @@
       #flake = false;
     };
 
-    flake-utils.url = "github:numtide/flake-utils";
-
     zig.url = "github:mitchellh/zig-overlay";
     zls.url = "github:zigtools/zls?rev=a26718049a8657d4da04c331aeced1697bc7652b";
 
     foundryvtt.url = "github:reckenrode/nix-foundryvtt";
+
     ghostty = {
       url = "git+ssh://git@github.com/ghostty-org/ghostty";
     };
@@ -44,15 +43,18 @@
       url = "github:ToyVo/nh_darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-options-search = {
+      url = "github:madsbv/nix-options-search";
+    };
   };
   outputs = {
     self,
     nixpkgs,
     nixpkgs-stable,
+    nix-options-search,
     home-manager,
-    stylix,
     darwin,
-    blocklist-hosts,
+    hosts,
     hyprland-plugins,
     zig,
     zls,
@@ -64,14 +66,16 @@
     overlays = [
       inputs.zig.overlays.default
     ];
-
     inherit (nixpkgs) lib;
   in {
     nixosConfigurations = {
       nixos = lib.nixosSystem {
         modules = [
           {nixpkgs.overlays = overlays;}
-          nixos-cosmic.nixosModules.default
+          hosts.nixosModule
+          {
+            networking.stevenBlackHosts.enable = true;
+          }
           ./hosts/desktop/configuration.nix
           home-manager.nixosModules.home-manager
           {
@@ -81,7 +85,6 @@
               users.nmarks = import ./hosts/desktop/home.nix;
             };
             home-manager.extraSpecialArgs = {
-              inherit stylix;
               inherit hyprland-plugins;
               inherit zls;
               inherit ghostty;
@@ -90,8 +93,6 @@
         ];
         specialArgs = {
           inherit inputs;
-          inherit stylix;
-          inherit blocklist-hosts;
         };
       };
     };
@@ -103,6 +104,10 @@
           {nixpkgs.overlays = overlays;}
           ./hosts/laptop/configuration.nix
           home-manager.darwinModules.home-manager
+          hosts.nixosModule
+          {
+            networking.stevenBlackHosts.enable = true;
+          }
           {
             home-manager = {
               useGlobalPkgs = true;
@@ -110,7 +115,6 @@
               users.nmarks = import ./hosts/laptop/home.nix;
             };
             home-manager.extraSpecialArgs = {
-              inherit stylix;
               inherit zls;
               inherit ghostty;
             };
@@ -120,8 +124,6 @@
         specialArgs = {
           inherit nh_darwin;
           inherit inputs;
-          inherit stylix;
-          inherit blocklist-hosts;
           inherit ghostty;
         };
       };

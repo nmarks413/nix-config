@@ -4,6 +4,7 @@
   pkgs,
   zls,
   ghostty,
+  nix-options-search,
   ...
 }: {
   # wayland.windowManager.hyprland = {
@@ -111,7 +112,6 @@
       dxvk_2
       mangohud
       vulkan-tools
-      asdf-vm
       prismlauncher
       # for cmpm17
       binwalk
@@ -126,11 +126,6 @@
       sl
       fallout-ce
       fallout2-ce
-      #CSE114 (Haskell stuff)
-      stack
-      (haskell-language-server.override {supportedGhcVersions = ["94" "947"];})
-      haskell.compiler.ghc947
-      ormolu
       #LSP + formatters/linters
       lua-language-server
       nil
@@ -169,7 +164,7 @@
 
   programs.kitty = {
     enable = true;
-    theme = "Catppuccin-Mocha";
+    themeFile = "Catppuccin-Mocha";
     extraConfig = "font_family Iosevka NF
                    italic_font auto
                    bold_italic_font  auto
@@ -188,12 +183,11 @@
       }
     ];
     shellAliases = {
-      hm-update = "git add home.nix ; git commit -m 'updated home-manager config'; git push origin main; home-manager switch --flake ~/.dotfiles/#nmarks";
-      sys-update = "git add configuration.nix ; git commit -m 'updated system config'; git push origin main; sudo nixos-rebuild switch --flake ~/.dotfiles/#nmarks";
-      full-update = "sys-update; hm-update";
+      # hm-update = "git add home.nix ; git commit -m 'updated home-manager config'; git push origin main; home-manager switch --flake ~/.dotfiles/#nmarks";
+      # sys-update = "git add configuration.nix ; git commit -m 'updated system config'; git push origin main; sudo nixos-rebuild switch --flake ~/.dotfiles/#nmarks";
+      # full-update = "sys-update; hm-update";
       reboot-windows = "sudo efibootmgr --bootnext 0000; sudo reboot -h now";
     };
-    shellInit = "source $HOME/.nix-profile/share/asdf-vm/asdf.fish ";
   };
 
   programs.hyfetch = {
