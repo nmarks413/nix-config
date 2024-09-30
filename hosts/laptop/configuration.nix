@@ -3,12 +3,17 @@
   pkgs,
   ...
 }: {
-  programs.nh = {
-    enable = true;
-    clean.enable = true;
-    clean.extraArgs = "--keep-since 4d --keep 3";
-    flake = "/Users/nmarks/.dotfiles";
-  };
+  # nixpkgs.overlays = [
+  #   (final: prev: {nh-darwin = nh_darwin.packages.${prev.system}.default;})
+  # ];
+  environment.shellAliases.nh = "nh_darwin";
+
+  # programs.nh = {
+  #   enable = true;
+  #   clean.enable = true;
+  #   clean.extraArgs = "--keep-since 4d --keep 3";
+  #   flake = "/Users/nmarks/.dotfiles";
+  # };
 
   environment.systemPackages = [
     pkgs.home-manager
@@ -43,6 +48,8 @@
   fonts.packages = [
     pkgs.iosevka
   ];
+
+  services.tailscale.enable = true;
 
   # Use homebrew to install casks and Mac App Store apps
   homebrew = {

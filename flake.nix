@@ -39,6 +39,11 @@
       url = "github:lilyinstarlight/nixos-cosmic";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nh_darwin = {
+      url = "github:ToyVo/nh_darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs = {
     self,
@@ -53,6 +58,7 @@
     zls,
     ghostty,
     nixos-cosmic,
+    nh_darwin,
     ...
   } @ inputs: let
     overlays = [
@@ -93,6 +99,7 @@
       "Natalies-MacBook-Air" = darwin.lib.darwinSystem {
         system = "aarch64-darwin";
         modules = [
+          # nh_darwin.nixDarwinModules.default
           {nixpkgs.overlays = overlays;}
           ./hosts/laptop/configuration.nix
           home-manager.darwinModules.home-manager
@@ -111,6 +118,7 @@
           }
         ];
         specialArgs = {
+          inherit nh_darwin;
           inherit inputs;
           inherit stylix;
           inherit blocklist-hosts;
@@ -118,6 +126,8 @@
         };
       };
     };
+
+    # darwinPackages = self.darwinConfigurations."Natalie-MacBook-Air".pkgs;
     # nixos = inputs.self.nixosConfigurations.nmarks;
     #
     #
