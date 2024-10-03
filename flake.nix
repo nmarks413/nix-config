@@ -104,10 +104,6 @@
           {nixpkgs.overlays = overlays;}
           ./hosts/laptop/configuration.nix
           home-manager.darwinModules.home-manager
-          hosts.nixosModule
-          {
-            networking.stevenBlackHosts.enable = true;
-          }
           {
             home-manager = {
               useGlobalPkgs = true;

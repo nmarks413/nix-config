@@ -71,7 +71,7 @@
     # minimal dock
     dock = {
       autohide = false;
-      show-process-indicators = false;
+      show-process-indicators = true;
       show-recents = true;
       static-only = true;
     };
@@ -81,6 +81,25 @@
       ShowPathbar = true;
       FXEnableExtensionChangeWarning = false;
     };
-    # Tab between form controls and F-row that behaves as F1-F12
+
+    CustomUserPreferences = {
+      launchd.user.agents.UserKeyMapping.serviceConfig = {
+        ProgramArguments = [
+          "/usr/bin/hidutil"
+          "property"
+          "--match"
+          "{&quot;ProductID&quot;:0x0,&quot;VendorID&quot;:0x0,&quot;Product&quot;:&quot;Apple Internal Keyboard / Trackpad&quot;}"
+          "--set"
+          (
+            let
+              # https://developer.apple.com/library/archive/technotes/tn2450/_index.html
+              caps_lock = "0x700000039";
+              escape = "0x700000029";
+            in "{&quot;UserKeyMapping&quot;:[{&quot;HIDKeyboardModifierMappingDst&quot;:${escape},&quot;HIDKeyboardModifierMappingSrc&quot;:${caps_lock}},{&quot;HIDKeyboardModifierMappingDst&quot;:${caps_lock},&quot;HIDKeyboardModifierMappingSrc&quot;:${escape}}]}"
+          )
+        ];
+        RunAtLoad = true;
+      };
+    };
   };
 }
