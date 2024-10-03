@@ -10,6 +10,12 @@
 }: {
   nixpkgs.config.allowUnfree = true;
 
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    openFirewall = true;
+  };
+
   programs._1password.enable = true;
   programs._1password-gui = {
     enable = true;
