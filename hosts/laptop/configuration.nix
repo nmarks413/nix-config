@@ -65,14 +65,26 @@
   homebrew = {
     enable = true;
 
+    onActivation = {
+      autoUpdate = true;
+      cleanup = "uninstall";
+      upgrade = true;
+    };
+
+    taps = [
+      "armcord/armcord"
+    ];
+
     casks = [
       "1password"
       "firefox"
       "obsidian"
       "raycast"
+      "armcord"
     ];
 
     masApps = {
+      "wireguard" = 1451685025;
     };
   };
 
