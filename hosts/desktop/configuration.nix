@@ -10,6 +10,12 @@
 }: {
   nixpkgs.config.allowUnfree = true;
 
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    openFirewall = true;
+  };
+
   programs._1password.enable = true;
   programs._1password-gui = {
     enable = true;
@@ -156,7 +162,7 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    inputs.foundryvtt.nixosModules.foundryvtt
+    # inputs.foundryvtt.nixosModules.foundryvtt
   ];
 
   # Enable OpenGL
