@@ -81,6 +81,7 @@
       "obsidian"
       "raycast"
       "armcord"
+      "battle-net"
     ];
 
     masApps = {
