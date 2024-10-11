@@ -33,6 +33,11 @@
 
   programs.noisetorch.enable = true;
 
+  xdg.portal = {
+    enable = true;
+    extraPortals = with pkgs; [xdg-desktop-portal-gtk];
+  };
+
   # systemd.timers.duckdns = {
   #   wantedBy = ["timers.target"];
   #   timerConfig = {
@@ -350,6 +355,8 @@
     tailscale
     ethtool
     grub2
+
+    xdg-desktop-portal-gtk
 
     wineWowPackages.waylandFull
     wineWowPackages.stable

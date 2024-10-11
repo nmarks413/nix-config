@@ -29,12 +29,6 @@
       fsType = "ext4";
     };
 
-  fileSystems."/home/nmarks/Games/steam" =
-    { device = "/home/nmarks/Games/steam";
-      fsType = "none";
-      options = [ "bind" ];
-    };
-
   swapDevices =
     [ { device = "/dev/disk/by-uuid/a4128bb9-239c-4aa9-9777-5067feb77b28"; }
     ];

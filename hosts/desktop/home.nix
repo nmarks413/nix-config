@@ -46,6 +46,7 @@
 
   home.packages = with pkgs;
     [
+      armcord
       calibre
       pyright
       ruff
