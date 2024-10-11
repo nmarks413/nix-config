@@ -32,6 +32,7 @@
 
   home.packages = with pkgs; [
     # ghostty.packages.aarch64-darwin.default
+    anki-bin
     wireguard-tools
     pyright
     ruff
