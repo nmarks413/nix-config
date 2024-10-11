@@ -6,7 +6,7 @@
   # nixpkgs.overlays = [
   #   (final: prev: {nh-darwin = nh_darwin.packages.${prev.system}.default;})
   # ];
-  environment.shellAliases.nh = "nh_darwin";
+  # environment.shellAliases.nh = "nh_darwin";
 
   # programs.nh = {
   #   enable = true;
@@ -62,32 +62,32 @@
   services.tailscale.enable = true;
 
   # Use homebrew to install casks and Mac App Store apps
-  homebrew = {
-    enable = true;
-
-    onActivation = {
-      autoUpdate = true;
-      cleanup = "uninstall";
-      upgrade = true;
-    };
-
-    taps = [
-      "armcord/armcord"
-    ];
-
-    casks = [
-      "1password"
-      "firefox"
-      "obsidian"
-      "raycast"
-      "armcord"
-      "battle-net"
-    ];
-
-    masApps = {
-      "wireguard" = 1451685025;
-    };
-  };
+  # homebrew = {
+  #   enable = true;
+  #
+  #   onActivation = {
+  #     autoUpdate = true;
+  #     cleanup = "uninstall";
+  #     upgrade = true;
+  #   };
+  #
+  #   taps = [
+  #     "armcord/armcord"
+  #   ];
+  #
+  #   casks = [
+  #     "1password"
+  #     "firefox"
+  #     "obsidian"
+  #     "raycast"
+  #     "armcord"
+  #     "battle-net"
+  #   ];
+  #
+  #   masApps = {
+  #     "wireguard" = 1451685025;
+  #   };
+  # };
 
   # set some OSX preferences that I always end up hunting down and changing.
   system.defaults = {
