@@ -46,6 +46,9 @@
 
   home.packages = with pkgs;
     [
+      imagemagick
+      luajitPackages.magick
+      lemonade
       armcord
       calibre
       pyright
@@ -155,8 +158,8 @@
   programs.neovim = {
     viAlias = true;
     vimAlias = true;
-    extraPackages = with pkgs; [
-    ];
+    extraLuaPackages = ps: [ps.magick];
+    extraPackages = [pkgs.imagemagick];
   };
   #Link neovim config into nix
   #xdg.configFile.nvim.source = ./nvim;
