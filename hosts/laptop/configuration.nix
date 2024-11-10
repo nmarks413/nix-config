@@ -62,32 +62,38 @@
   services.tailscale.enable = true;
 
   # Use homebrew to install casks and Mac App Store apps
-  # homebrew = {
-  #   enable = true;
-  #
-  #   onActivation = {
-  #     autoUpdate = true;
-  #     cleanup = "uninstall";
-  #     upgrade = true;
-  #   };
-  #
-  #   taps = [
-  #     "armcord/armcord"
-  #   ];
-  #
-  #   casks = [
-  #     "1password"
-  #     "firefox"
-  #     "obsidian"
-  #     "raycast"
-  #     "armcord"
-  #     "battle-net"
-  #   ];
-  #
-  #   masApps = {
-  #     "wireguard" = 1451685025;
-  #   };
-  # };
+  homebrew = {
+    enable = true;
+
+    onActivation = {
+      autoUpdate = true;
+      cleanup = "uninstall";
+      upgrade = true;
+    };
+
+    # taps = [
+    #   "legcord/legcord"
+    # ];
+
+    brews = [
+      "imagemagick"
+    ];
+
+    casks = [
+      # "1password"
+      # "firefox"
+      # "obsidian"
+      # "raycast"
+      # "legcord"
+      "battle-net"
+      "stremio"
+      "alt-tab"
+    ];
+
+    masApps = {
+      "wireguard" = 1451685025;
+    };
+  };
 
   # set some OSX preferences that I always end up hunting down and changing.
   system.defaults = {

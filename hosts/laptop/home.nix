@@ -32,9 +32,14 @@
 
   home.packages = with pkgs; [
     # ghostty.packages.aarch64-darwin.default
+    lua51Packages.lua
+    lua51Packages.luarocks
+    luajitPackages.magick
+    ripgrep
+    lemonade
     anki-bin
     wireguard-tools
-    pyright
+    basedpyright
     ruff
     python312Packages.jedi-language-server
     tor
@@ -112,8 +117,8 @@
   programs.neovim = {
     viAlias = true;
     vimAlias = true;
-    extraPackages = with pkgs; [
-    ];
+    extraLuaPackages = ps: [ps.magick];
+    extraPackages = [pkgs.imagemagick];
   };
   #Link neovim config into nix
   #xdg.configFile.nvim.source = ./nvim;
@@ -130,6 +135,7 @@
       }
     ];
     shellAliases = {
+      DYLD_FALLBACK_LIBRARY_PATH = "$(brew --prefix)/lib:$DYLD_FALLBACK_LIBRARY_PATH";
     };
   };
 
