@@ -47,7 +47,8 @@
   home.packages = with pkgs;
     [
       imagemagick
-      luajitPackages.magick
+      lua51Packages.lua
+      lua51Packages.luarocks-nix
       lemonade
       armcord
       calibre
