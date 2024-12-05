@@ -135,7 +135,7 @@
       }
     ];
     shellAliases = {
-      DYLD_FALLBACK_LIBRARY_PATH = "$(brew --prefix)/lib:$DYLD_FALLBACK_LIBRARY_PATH";
+      # DYLD_FALLBACK_LIBRARY_PATH = "$(brew --prefix)/lib:$DYLD_FALLBACK_LIBRARY_PATH";
     };
   };
 
