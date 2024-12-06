@@ -32,6 +32,9 @@
 
   home.packages = with pkgs; [
     # ghostty.packages.aarch64-darwin.default
+    python312
+    uv
+    fd
     lua51Packages.lua
     lua51Packages.luarocks
     luajitPackages.magick
@@ -39,7 +42,6 @@
     lemonade
     anki-bin
     wireguard-tools
-    basedpyright
     ruff
     python312Packages.jedi-language-server
     tor
