@@ -38,77 +38,15 @@
     extraPortals = with pkgs; [xdg-desktop-portal-gtk];
   };
 
-  # systemd.timers.duckdns = {
-  #   wantedBy = ["timers.target"];
-  #   timerConfig = {
-  #     OnBootSec = "5m";
-  #     OnUnitActiveSec = "5m";
-  #     Unit = "duckdns.service";
-  #   };
-  # };
-  # systemd.services.duckdns = {
-  #   enable = true;
-  #   script = ''echo url="https://www.duckdns.org/update?domains=pathfinder2e&token=9c1ffa47-7496-4975-ba2b-a6928b28c500&ip=" | ${pkgs.curl}/bin/curl -v -k -o ~/.duckdns/duck.log -K -'';
-  #   serviceConfig = {
-  #     Type = "oneshot";
-  #     User = "nmarks";
-  #   };
-  # };
-  #
-  # services.foundryvtt = {
-  #   enable = true;
-  #   hostName = "pathfinder2.duckdns.org";
-  #   proxySSL = true;
-  #   proxyPort = 443;
-  #   package = inputs.foundryvtt.packages.${pkgs.system}.foundryvtt_11;
-  # };
-  #
-  # services.cloudflared = {
-  #   enable = true;
-  #   # user = "nmarks";
-  #   # tunnels = {
-  #   #   "b407af0f-5168-4a79-a9f4-fe99e52990dd" = {
-  #   #     credentialsFile = "${config.users.users.nmarks.home}/.cloudflared/b407af0f-5168-4a79-a9f4-fe99e52990dd.json";
-  #   #     default = "http_status:404";
-  #   #   };
-  #   # };
-  # };
-  #
-  # services.caddy = {
-  #   enable = true;
-  #
-  #   # virtualHosts."10.154.1.147".extraConfig = ''
-  #   #   tls internal
-  #   #   reverse_proxy localhost:30000
-  #   #   encode zstd gzip
-  #   # '';
-  #
-  #   # virtualHosts."10.154.1.105".extraConfig = ''
-  #   #   tls internal
-  #   #   reverse_proxy localhost:30000
-  #   #   encode zstd gzip
-  #   # '';
-  #   #
-  #   # virtualHosts."pathfinder2e.duckdns.org".extraConfig = ''
-  #   #   reverse_proxy localhost:30000
-  #   #   encode zstd gzip
-  #   # '';
-  #   virtualHosts."pathfinder2e.duckdns.org".extraConfig = ''
-  #     reverse_proxy localhost:30000
-  #   '';
-  #
-  #   # extraConfig = ''
-  #   #   pathfinder2e.duckdns.org {
-  #   #       # PROXY ALL REQUEST TO PORT 30000
-  #   #       reverse_proxy localhost:30000
-  #   #       encode zstd gzip
-  #   #   }
-  #   # '';
-  # };
-
   services.flatpak.enable = true;
 
-  virtualisation.docker.enable = true;
+  virtualisation.containers.enable = true;
+  virtualisation.podman = {
+    enable = true;
+    dockerCompat = true;
+  };
+
+  nix.settings.trusted-users = ["root" "nmarks"];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
   nix.settings = {
@@ -176,6 +114,7 @@
   };
   services.xserver.videoDrivers = ["nvidia"];
 
+  hardware.nvidia-container-toolkit.enable = true;
   hardware.nvidia = {
     forceFullCompositionPipeline = true;
     # Modesetting is required.
@@ -265,11 +204,11 @@
   services.xserver.enable = true;
 
   # Enable the KDE Plasma Desktop Environment.
-  services.displayManager.sddm.enable = true;
-  services.desktopManager.plasma6.enable = true;
+  # services.displayManager.sddm.enable = true;
+  # services.desktopManager.plasma6.enable = true;
 
-  # services.desktopManager.cosmic.enable = true;
-  # services.displayManager.cosmic-greeter.enable = true;
+  services.desktopManager.cosmic.enable = true;
+  services.displayManager.cosmic-greeter.enable = true;
 
   # Configure keymap in X11
   services.xserver = {
@@ -334,6 +273,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    distrobox
     fish
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget

@@ -50,7 +50,7 @@
       lua51Packages.lua
       lua51Packages.luarocks-nix
       lemonade
-      armcord
+      legcord
       calibre
       pyright
       ruff
@@ -100,7 +100,6 @@
       comma
       openconnect
       gnumake
-      kdeconnect
       signal-desktop
       zed-editor
       #getting foundry to work!

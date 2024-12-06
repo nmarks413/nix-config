@@ -90,6 +90,7 @@
               inherit ghostty;
             };
           }
+          nixos-cosmic.nixosModules.default
         ];
         specialArgs = {
           inherit inputs;
