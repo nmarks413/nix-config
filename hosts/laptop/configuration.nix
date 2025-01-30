@@ -77,6 +77,7 @@
 
     brews = [
       "imagemagick"
+      "binwalk"
     ];
 
     casks = [

@@ -30,6 +30,10 @@
 
     # foundryvtt.url = "github:reckenrode/nix-foundryvtt";
 
+    nil = {
+      url = "github:oxalica/nil";
+    };
+
     ghostty = {
       url = "git+ssh://git@github.com/ghostty-org/ghostty";
     };
@@ -61,6 +65,7 @@
     ghostty,
     nixos-cosmic,
     nh_darwin,
+    nil,
     ...
   } @ inputs: let
     overlays = [
@@ -114,6 +119,7 @@
             home-manager.extraSpecialArgs = {
               inherit zls;
               inherit ghostty;
+              inherit nil;
             };
             users.users.nmarks.home = "/Users/nmarks";
           }

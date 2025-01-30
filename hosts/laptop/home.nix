@@ -3,6 +3,7 @@
   config,
   pkgs,
   ghostty,
+  nil,
   ...
 }: {
   # Home Manager needs a bit of information about you and the paths it should
@@ -30,86 +31,87 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
 
-  home.packages = with pkgs; [
-    # ghostty.packages.aarch64-darwin.default
-    python312
-    uv
-    fd
-    lua51Packages.lua
-    lua51Packages.luarocks
-    luajitPackages.magick
-    ripgrep
-    lemonade
-    anki-bin
-    wireguard-tools
-    ruff
-    python312Packages.jedi-language-server
-    tor
-    #spotify
-    #stremio
-    fzf
-    zigpkgs.master
-    stylua
-    cachix
-    btop
-    neofetch
-    direnv
-    typst
-    typst-live
-    tmux
-    zellij
-    qemu
-    vimgolf
-    lazygit
-    rustup
-    file
-    vesktop
-    discord
-    # itch : THIS IS BROKEN FOR SOME REASON, need to pin it??
-    qbittorrent
-    deno
-    imagemagick
-    pkg-config
-    #mpv
-    comma
-    gnumake
-    #signal-desktop
-    #zed-editor
-    #getting foundry to work!
-    #nodejs_21
-    #productivty
-    #todoist-electron
-    #Gaming
-    prismlauncher
-    # for cmpm17
-    binwalk
-    exiftool
-    #for fun
-    cowsay
-    cmatrix
-    hyfetch
-    bat
-    eza
-    ollama
-    sl
-    #LSP + formatters/linters
-    texlivePackages.chktex
-    lua-language-server
-    nil
-    alejandra
-    statix
-    texlab
-    typst-fmt
-    typst-lsp
-    clang-tools
-    # rust-analyzer
-    #clippy
-    # rustfmt
-    #runpod
-    docker
-    nh
-    fastfetch
-  ];
+  home.packages =
+    (with pkgs; [
+      # ghostty.packages.aarch64-darwin.default
+      python312
+      uv
+      fd
+      lua51Packages.lua
+      lua51Packages.luarocks
+      luajitPackages.magick
+      ripgrep
+      lemonade
+      anki-bin
+      wireguard-tools
+      ruff
+      python312Packages.jedi-language-server
+      tor
+      #spotify
+      #stremio
+      fzf
+      zigpkgs.master
+      stylua
+      cachix
+      btop
+      neofetch
+      direnv
+      typst
+      typst-live
+      tmux
+      zellij
+      qemu
+      vimgolf
+      lazygit
+      rustup
+      file
+      vesktop
+      discord
+      # itch : THIS IS BROKEN FOR SOME REASON, need to pin it??
+      qbittorrent
+      deno
+      imagemagick
+      pkg-config
+      #mpv
+      comma
+      gnumake
+      #signal-desktop
+      #zed-editor
+      #getting foundry to work!
+      #nodejs_21
+      #productivty
+      #todoist-electron
+      #Gaming
+      prismlauncher
+      # for cmpm17
+      exiftool
+      #for fun
+      cowsay
+      cmatrix
+      hyfetch
+      bat
+      eza
+      ollama
+      sl
+      #LSP + formatters/linters
+      texlivePackages.chktex
+      lua-language-server
+      alejandra
+      statix
+      texlab
+      typst-fmt
+      typst-lsp
+      clang-tools
+      # rust-analyzer
+      #clippy
+      # rustfmt
+      #runpod
+      docker
+      nh
+      fastfetch
+    ])
+    ++ [nil.packages.aarch64-darwin.default];
+
   programs.direnv = {
     enable = true;
     #enableFishIntegration = true;
