@@ -30,10 +30,6 @@
 
     # foundryvtt.url = "github:reckenrode/nix-foundryvtt";
 
-    ghostty = {
-      url = "git+ssh://git@github.com/ghostty-org/ghostty";
-    };
-
     nixos-cosmic = {
       url = "github:lilyinstarlight/nixos-cosmic";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -58,7 +54,6 @@
     hyprland-plugins,
     zig,
     zls,
-    ghostty,
     nixos-cosmic,
     nh_darwin,
     ...
@@ -87,7 +82,6 @@
             home-manager.extraSpecialArgs = {
               inherit hyprland-plugins;
               inherit zls;
-              inherit ghostty;
             };
           }
           nixos-cosmic.nixosModules.default
@@ -113,7 +107,6 @@
             };
             home-manager.extraSpecialArgs = {
               inherit zls;
-              inherit ghostty;
             };
             users.users.nmarks.home = "/Users/nmarks";
           }
@@ -121,7 +114,6 @@
         specialArgs = {
           inherit nh_darwin;
           inherit inputs;
-          inherit ghostty;
         };
       };
     };

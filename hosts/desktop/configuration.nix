@@ -16,6 +16,8 @@
     openFirewall = true;
   };
 
+  programs.gamemode.enable = true;
+
   programs._1password.enable = true;
   programs._1password-gui = {
     enable = true;
@@ -43,23 +45,26 @@
   virtualisation.containers.enable = true;
   virtualisation.podman = {
     enable = true;
-    dockerCompat = true;
+    # dockerCompat = true;
   };
+  virtualisation.docker.enable = true;
 
   nix.settings.trusted-users = ["root" "nmarks"];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
   nix.settings = {
     substituters = [
-      "https://nix-community.cachix.org"
       "https://cache.nixos.org/"
-      "https://cuda-maintainers.cachix.org"
+      "https://nix-community.cachix.org"
       "https://cosmic.cachix.org/"
+      "https://cache.iog.io"
+      "https://cuda-maintainers.cachix.org"
     ];
     trusted-public-keys = [
       "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E="
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="
+      "hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ="
     ];
   };
   programs.hyprland.enable = true;
@@ -99,7 +104,8 @@
   };
 
   fonts.packages = with pkgs; [
-    (nerdfonts.override {fonts = ["FiraCode" "Iosevka"];})
+    nerd-fonts.fira-code
+    nerd-fonts.iosevka
   ];
 
   imports = [
@@ -160,19 +166,21 @@
   #boot.loader.systemd-boot.enable = true;
   #boot.loader.efi.canTouchEfiVariables = true;
 
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
   boot.loader = {
-    systemd-boot.enable = true;
+    # systemd-boot.enable = true;
     efi = {
       canTouchEfiVariables = true;
       # assuming /boot is the mount point of the  EFI partition in NixOS (as the installation section recommends).
-      efiSysMountPoint = "/boot";
+      efiSysMountPoint = "/boot/efi";
     };
-    # grub = {
-    #   enable = true;
-    #   device = "/dev/sdb1";
-    #   theme = pkgs.nixos-grub2-theme;
-    #   useOSProber = true;
-    # };
+    grub = {
+      enable = true;
+      device = "nodev";
+      theme = pkgs.nixos-grub2-theme;
+      useOSProber = true;
+    };
   };
 
   boot.supportedFilesystems = ["ntfs"];
@@ -205,7 +213,7 @@
 
   # Enable the KDE Plasma Desktop Environment.
   # services.displayManager.sddm.enable = true;
-  # services.desktopManager.plasma6.enable = true;
+  services.desktopManager.plasma6.enable = true;
 
   services.desktopManager.cosmic.enable = true;
   services.displayManager.cosmic-greeter.enable = true;
@@ -220,14 +228,15 @@
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  #sound.enable = true;
-  #hardware.pulseaudio.enable = false;
+  # services.pulseaudio.enable = true;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
+    audio.enable = true;
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
+    # systemWide = true;
     # If you want to use JACK applications, uncomment this
     #jack.enable = true;
 
@@ -267,6 +276,11 @@
   programs.steam = {
     enable = true;
     package = with pkgs; steam.override {extraPkgs = pkgs: [attr];};
+  };
+
+  programs.git = {
+    enable = true;
+    lfs.enable = true;
   };
 
   # Allow unfree packages
@@ -407,7 +421,7 @@
     nss
     openssl
     pango
-    pipewire
+    # pipewire
     stdenv.cc.cc
     systemd
     vulkan-loader
