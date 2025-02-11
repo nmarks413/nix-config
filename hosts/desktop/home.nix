@@ -45,6 +45,9 @@
 
   home.packages = with pkgs;
     [
+      rust-bin.stable.latest.default
+      just
+      libxkbcommon
       imagemagick
       lua51Packages.lua
       lua51Packages.luarocks-nix
@@ -83,7 +86,6 @@
       qemu
       vimgolf
       lazygit
-      rustup
       file
       vesktop
       (discord.override {

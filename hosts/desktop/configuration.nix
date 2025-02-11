@@ -180,6 +180,7 @@
       device = "nodev";
       theme = pkgs.nixos-grub2-theme;
       useOSProber = true;
+      efiSupport = true;
     };
   };
 
@@ -196,6 +197,8 @@
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
 
+  i18n.supportedLocales = ["all"];
+
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "en_US.UTF-8";
     LC_IDENTIFICATION = "en_US.UTF-8";
@@ -210,6 +213,7 @@
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
+  services.xserver.displayManager.startx.enable = true;
 
   # Enable the KDE Plasma Desktop Environment.
   # services.displayManager.sddm.enable = true;

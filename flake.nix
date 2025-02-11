@@ -8,6 +8,11 @@
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    rust-overlay = {
+      url = "github:oxalica/rust-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     darwin = {
       url = "github:lnl7/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -60,6 +65,7 @@
   } @ inputs: let
     overlays = [
       inputs.zig.overlays.default
+      inputs.rust-overlay.overlays.default
     ];
     inherit (nixpkgs) lib;
   in {
