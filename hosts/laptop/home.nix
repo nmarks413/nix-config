@@ -32,6 +32,9 @@
 
   home.packages = with pkgs; [
     # ghostty.packages.aarch64-darwin.default
+    python312
+    uv
+    fd
     lua51Packages.lua
     lua51Packages.luarocks
     luajitPackages.magick
@@ -39,7 +42,6 @@
     lemonade
     anki-bin
     wireguard-tools
-    basedpyright
     ruff
     python312Packages.jedi-language-server
     tor
@@ -52,8 +54,6 @@
     btop
     neofetch
     direnv
-    typst
-    typst-live
     tmux
     zellij
     qemu
@@ -80,7 +80,7 @@
     #Gaming
     prismlauncher
     # for cmpm17
-    binwalk
+    # binwalk
     exiftool
     #for fun
     cowsay
@@ -97,8 +97,6 @@
     alejandra
     statix
     texlab
-    typst-fmt
-    typst-lsp
     clang-tools
     # rust-analyzer
     #clippy
@@ -124,6 +122,13 @@
   #xdg.configFile.nvim.source = ./nvim;
   #xdg.mimeApps.defaultApplications."inode/directory" = "dolphin.desktop";
   # xdg.mimeApps.defaultApplications = {"inode/directory" = "org.kde.dolphin.desktop";};
+
+  programs.atuin = {
+    enable = true;
+    enableBashIntegration = true;
+    enableFishIntegration = true;
+    daemon.enable = true;
+  };
 
   programs.fish = {
     enable = true;
