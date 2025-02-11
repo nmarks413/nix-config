@@ -54,8 +54,6 @@
     btop
     neofetch
     direnv
-    typst
-    typst-live
     tmux
     zellij
     qemu
@@ -82,7 +80,7 @@
     #Gaming
     prismlauncher
     # for cmpm17
-    binwalk
+    # binwalk
     exiftool
     #for fun
     cowsay
@@ -99,8 +97,6 @@
     alejandra
     statix
     texlab
-    typst-fmt
-    typst-lsp
     clang-tools
     # rust-analyzer
     #clippy
