@@ -3,7 +3,6 @@
   config,
   pkgs,
   zls,
-  ghostty,
   nix-options-search,
   ...
 }: {
@@ -49,7 +48,6 @@
       imagemagick
       lua51Packages.lua
       lua51Packages.luarocks-nix
-      lemonade
       legcord
       calibre
       pyright
@@ -68,7 +66,7 @@
       pavucontrol
       efibootmgr
       zigpkgs.master
-      ghostty.packages.x86_64-linux.default
+      ghostty
       stylua
       webcord
       cachix
@@ -136,8 +134,6 @@
       alejandra
       statix
       texlab
-      typst-fmt
-      typst-lsp
       clang-tools
       # rust-analyzer
       #clippy
