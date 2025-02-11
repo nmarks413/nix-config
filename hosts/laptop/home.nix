@@ -123,6 +123,13 @@
   #xdg.mimeApps.defaultApplications."inode/directory" = "dolphin.desktop";
   # xdg.mimeApps.defaultApplications = {"inode/directory" = "org.kde.dolphin.desktop";};
 
+  programs.atuin = {
+    enable = true;
+    enableBashIntegration = true;
+    enableFishIntegration = true;
+    daemon.enable = true;
+  };
+
   programs.fish = {
     enable = true;
 
