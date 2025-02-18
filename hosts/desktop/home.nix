@@ -108,7 +108,6 @@
       cloudflared
       pm2
       #productivty
-      todoist-electron
       #Gaming
       lutris
       wineWowPackages.stable
@@ -118,7 +117,6 @@
       vulkan-tools
       prismlauncher
       # for cmpm17
-      binwalk
       exiftool
       #for fun
       cowsay
@@ -146,6 +144,13 @@
       fastfetch
     ]
     ++ [zls.packages.x86_64-linux.zls];
+
+  programs.atuin = {
+    enable = true;
+    enableBashIntegration = true;
+    enableFishIntegration = true;
+    daemon.enable = true;
+  };
 
   programs.direnv = {
     enable = true;
