@@ -33,6 +33,7 @@
   home.packages = with pkgs; [
     # ghostty.packages.aarch64-darwin.default
     python312
+    moonlight
     uv
     fd
     lua51Packages.lua
@@ -127,7 +128,7 @@
     enable = true;
     enableBashIntegration = true;
     enableFishIntegration = true;
-    daemon.enable = true;
+    daemon.enable = false;
   };
 
   programs.fish = {
