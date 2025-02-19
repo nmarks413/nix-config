@@ -35,6 +35,10 @@
 
     # foundryvtt.url = "github:reckenrode/nix-foundryvtt";
 
+    moonlight = {
+      url = "github:moonlight-mod/moonlight"; # Add `/develop` to the flake URL to use nightly.
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nixos-cosmic = {
       url = "github:lilyinstarlight/nixos-cosmic";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -72,6 +76,7 @@
     nixosConfigurations = {
       nixos = lib.nixosSystem {
         modules = [
+          inputs.moonlight.homeModules.default
           {nixpkgs.overlays = overlays;}
           hosts.nixosModule
           {
@@ -116,6 +121,7 @@
             };
             users.users.nmarks.home = "/Users/nmarks";
           }
+          inputs.moonlight.homeModules.default
         ];
         specialArgs = {
           inherit nh_darwin;

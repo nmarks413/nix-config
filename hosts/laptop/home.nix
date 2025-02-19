@@ -3,6 +3,7 @@
   config,
   pkgs,
   ghostty,
+  moonlight,
   ...
 }: {
   # Home Manager needs a bit of information about you and the paths it should
@@ -33,7 +34,6 @@
   home.packages = with pkgs; [
     # ghostty.packages.aarch64-darwin.default
     python312
-    moonlight
     uv
     fd
     lua51Packages.lua
@@ -142,6 +142,24 @@
     ];
     shellAliases = {
       # DYLD_FALLBACK_LIBRARY_PATH = "$(brew --prefix)/lib:$DYLD_FALLBACK_LIBRARY_PATH";
+    };
+  };
+
+  programs.moonlight-mod = {
+    enable = true;
+    stable = {
+      extensions = {
+        allActivites.enabled = true;
+        alwaysFocus.enabled = true;
+
+        betterEmbedsYT = {
+          enabled = true;
+          config = {
+            fullDescription = false;
+            expandDescription = true;
+          };
+        };
+      };
     };
   };
 
