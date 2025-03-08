@@ -45,6 +45,7 @@
 
   home.packages = with pkgs;
     [
+      glance
       rust-bin.stable.latest.default
       just
       libxkbcommon
@@ -58,8 +59,7 @@
       python312Packages.jedi-language-server
       wofi
       bottles
-      spectacle
-      dolphin
+      kdePackages.dolphin
       path-of-building
       tor
       spotify
@@ -89,7 +89,7 @@
       file
       vesktop
       (discord.override {
-        withVencord = true;
+        withMoonlight = true;
       })
       # itch : THIS IS BROKEN FOR SOME REASON, need to pin it??
       qbittorrent
@@ -218,6 +218,120 @@
     };
   };
 
+  services.glance = {
+    enable = true;
+    settings = {
+      pages = [
+        {
+          name = "Home";
+          columns = [
+            {
+              size = "small";
+              widgets = [
+                {
+                  type = "calendar";
+                  first-day-of-week = "monday";
+                }
+                {
+                  type = "rss";
+                  limit = 10;
+                  collapse-after = 3;
+                  cache = "12h";
+                  feeds = [
+                    {
+                      url = "https://selfh.st/rss/";
+                      title = "selfh.st";
+                      limit = 4;
+                    }
+                    {url = "https://ciechanow.ski/atom.xml";}
+                    {
+                      url = "https://www.joshwcomeau.com/rss.xml";
+                      title = "Josh Comeau";
+                    }
+                    {url = "https://samwho.dev/rss.xml";}
+                    {
+                      url = "https://ishadeed.com/feed.xml";
+                      title = "Ahmad Shadeed";
+                    }
+                  ];
+                }
+              ];
+            }
+            {
+              size = "full";
+              widgets = [
+                {
+                  type = "group";
+                  widgets = [{type = "hacker-news";} {type = "lobsters";}];
+                }
+                {
+                  type = "videos";
+                  channels = ["UCXuqSBlHAE6Xw-yeJA0Tunw" "UCR-DXc1voovS8nhAvccRZhg" "UCsBjURrPoezykLs9EqgamOA" "UCBJycsmduvYEL83R_U4JriQ" "UCHnyfMqiRRG1u-2MsSQLbXA"];
+                }
+                {
+                  type = "group";
+                  widgets = [
+                    {
+                      type = "reddit";
+                      subreddit = "technology";
+                      show-thumbnails = true;
+                    }
+                    {
+                      type = "reddit";
+                      subreddit = "selfhosted";
+                      show-thumbnails = true;
+                    }
+                  ];
+                }
+              ];
+            }
+            {
+              size = "small";
+              widgets = [
+                {
+                  type = "weather";
+                  location = "London, United Kingdom";
+                  units = "metric";
+                  hour-format = "12h";
+                }
+                {
+                  type = "markets";
+                  symbol-link-template = "https://www.tradingview.com/symbols/{SYMBOL}/news";
+                  markets = [
+                    {
+                      symbol = "SPY";
+                      name = "S&P 500";
+                    }
+                    {
+                      symbol = "BTC-USD";
+                      name = "Bitcoin";
+                    }
+                    {
+                      symbol = "NVDA";
+                      name = "NVIDIA";
+                    }
+                    {
+                      symbol = "AAPL";
+                      name = "Apple";
+                    }
+                    {
+                      symbol = "MSFT";
+                      name = "Microsoft";
+                    }
+                  ];
+                }
+                {
+                  type = "releases";
+                  cache = "1d";
+                  repositories = ["glanceapp/glance" "go-gitea/gitea" "immich-app/immich" "syncthing/syncthing"];
+                }
+              ];
+            }
+          ];
+        }
+      ];
+    };
+  };
   /*
     programs.zsh = {
     oh-my-zsh = {

@@ -51,6 +51,11 @@
     nix-options-search = {
       url = "github:madsbv/nix-options-search";
     };
+
+    chinese-fonts-overlay = {
+      url = "github:brsvh/chinese-fonts-overlay/main";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs = {
     self,
@@ -70,13 +75,13 @@
     overlays = [
       inputs.zig.overlays.default
       inputs.rust-overlay.overlays.default
+      inputs.chinese-fonts-overlay.overlays.default
     ];
     inherit (nixpkgs) lib;
   in {
     nixosConfigurations = {
       nixos = lib.nixosSystem {
         modules = [
-          inputs.moonlight.homeModules.default
           {nixpkgs.overlays = overlays;}
           hosts.nixosModule
           {
@@ -121,7 +126,6 @@
             };
             users.users.nmarks.home = "/Users/nmarks";
           }
-          inputs.moonlight.homeModules.default
         ];
         specialArgs = {
           inherit nh_darwin;

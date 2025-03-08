@@ -104,6 +104,7 @@
   };
 
   fonts.packages = with pkgs; [
+    # alibaba-fonts
     nerd-fonts.fira-code
     nerd-fonts.iosevka
   ];
@@ -178,7 +179,7 @@
     grub = {
       enable = true;
       device = "nodev";
-      theme = pkgs.nixos-grub2-theme;
+      theme = pkgs.catppuccin-grub;
       useOSProber = true;
       efiSupport = true;
     };
@@ -209,6 +210,19 @@
     LC_PAPER = "en_US.UTF-8";
     LC_TELEPHONE = "en_US.UTF-8";
     LC_TIME = "en_US.UTF-8";
+  };
+
+  i18n.inputMethod = {
+    type = "fcitx5";
+    enable = true;
+    fcitx5.waylandFrontend = true;
+    fcitx5.addons = with pkgs; [
+      # fcitx5-gtk
+      # kdePackages.fcitx5-qt
+      rime-data
+      fcitx5-rime
+      fcitx5-rose-pine
+    ];
   };
 
   # Enable the X11 windowing system.
@@ -261,9 +275,7 @@
     # openssh.authorizedKeys.keyFiles = ["~/.ssh/id_ed25519.pub"];
     packages = with pkgs; [
       firefox
-      kate
       vim
-      kitty
       lua-language-server
       texlive.combined.scheme-full
       steam-run
