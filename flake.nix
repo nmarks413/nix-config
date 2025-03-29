@@ -102,9 +102,7 @@
           }
           nixos-cosmic.nixosModules.default
         ];
-        specialArgs = {
-          inherit inputs;
-        };
+        specialArgs = inputs;
       };
     };
     darwinConfigurations = {

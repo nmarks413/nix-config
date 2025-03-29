@@ -276,9 +276,6 @@
     packages = with pkgs; [
       firefox
       vim
-      lua-language-server
-      texlive.combined.scheme-full
-      steam-run
       #  thunderbird
     ];
   };
@@ -299,37 +296,8 @@
     lfs.enable = true;
   };
 
-  # Allow unfree packages
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
   environment.systemPackages = with pkgs; [
-    distrobox
-    fish
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    wget
-    git
-    unzip
-    ripgrep
-    clang
-    fd
-    cargo
-    python3
-    python311Packages.pynvim
-    python311Packages.pip
-    steam
-    ruby
-    julia
-    xclip
-    nodePackages.npm
-    go
-    tailscale
-    ethtool
-    grub2
-
-    xdg-desktop-portal-gtk
-
-    wineWowPackages.waylandFull
-    wineWowPackages.stable
+    vim
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
