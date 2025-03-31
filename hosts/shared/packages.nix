@@ -13,22 +13,25 @@ with pkgs; [
   unzip
   clang
 
+  #virtualization
+  qemu
+  podman
+  docker
+
   #productivity
   glance
-  wofi
   anki-bin
   tailscale
+  openconnect
+  wireguard-tools
 
   #nix tools
   cachix
   direnv
   comma
   nh
-  podman
-  docker
 
   #terminal stuff
-  ghostty
   (btop.override {cudaSupport = true;})
   tmux
   zellij
@@ -45,25 +48,11 @@ with pkgs; [
   ripgrep
   file
   fish
-  ethtool
-
-  #linux tools
-  pavucontrol
-  grub2
-  efibootmgr
-  distrobox
-  qemu
-  openconnect
-  wireguard-tools
-  xdg-desktop-portal-gtk
-  xclip
 
   #image tools
   imagemagick
 
   #chatting apps
-  legcord
-  webcord
   (discord.override {
     withMoonlight = true;
   })
@@ -71,10 +60,7 @@ with pkgs; [
   signal-desktop
 
   #media
-  calibre
-  kdePackages.dolphin
   spotify
-  stremio
   qbittorrent
   mpv
 
@@ -108,22 +94,11 @@ with pkgs; [
   R
   deno
   ruby
-  julia
   nodePackages.npm
   go
 
   #gaming
-  steam
-  bottles
-  path-of-building
-  lutris
-  wineWowPackages.stable
-  winetricks
-  dxvk_2
-  mangohud
-  vulkan-tools
   prismlauncher
-  steam-run
 
   #browsers
   tor

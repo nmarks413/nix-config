@@ -109,7 +109,6 @@
       "Natalies-MacBook-Air" = darwin.lib.darwinSystem {
         system = "aarch64-darwin";
         modules = [
-          # nh_darwin.nixDarwinModules.default
           {nixpkgs.overlays = overlays;}
           ./hosts/laptop/configuration.nix
           home-manager.darwinModules.home-manager
@@ -126,17 +125,9 @@
           }
         ];
         specialArgs = {
-          inherit nh_darwin;
           inherit inputs;
         };
       };
     };
-
-    # darwinPackages = self.darwinConfigurations."Natalie-MacBook-Air".pkgs;
-    # nixos = inputs.self.nixosConfigurations.nmarks;
-    #
-    #
-    # nmarks = inputs.self.nixosConfigurations.nmarks.config.system.build.toplevel;
-    # defaultPackage.x86_64-linux = inputs.self.nixosConfigurations.laptoptop.config.system.build.toplevel;
   };
 }

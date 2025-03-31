@@ -276,6 +276,8 @@
     packages = with pkgs; [
       firefox
       vim
+      steam
+
       #  thunderbird
     ];
   };

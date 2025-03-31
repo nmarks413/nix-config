@@ -27,6 +27,38 @@ in {
     in
       shared-packages
       ++ [
+        #building macos apps hard :(
+        ghostty
+        stremio
+        julia
+
+        #gaming
+        bottles
+        lutris
+        mangohud
+        dxvk_2
+        steam-run
+        vulkan-tools
+        path-of-building
+        wineWowPackages.stable
+        winetricks
+
+        #window manager stuff
+        wofi
+        #linux tools
+        legcord
+        pavucontrol
+        ethtool
+        grub2
+        efibootmgr
+        distrobox
+        xdg-desktop-portal-gtk
+        xclip
+        kdePackages.dolphin
+        #broken on macos
+        calibre
+      ]
+      ++ [
         zls.packages.x86_64-linux.zls
         rust-bin.stable.latest.default
       ];
@@ -43,5 +75,4 @@ in {
   programs = shared-programs;
 
   xdg.mimeApps.defaultApplications."inode/directory" = "dolphin.desktop";
-
 }

@@ -3,22 +3,12 @@
   pkgs,
   ...
 }: {
-  # nixpkgs.overlays = [
-  #   (final: prev: {nh-darwin = nh_darwin.packages.${prev.system}.default;})
-  # ];
-  # environment.shellAliases.nh = "nh_darwin";
-
-  # programs.nh = {
-  #   enable = true;
-  #   clean.enable = true;
-  #   clean.extraArgs = "--keep-since 4d --keep 3";
-  #   flake = "/Users/nmarks/.dotfiles";
-  # };
-
   environment.systemPackages = [
     pkgs.home-manager
     pkgs.neovim
   ];
+
+  nixpkgs.config.allowUnfree = true;
 
   # Use a custom configuration.nix location.
   #environment.darwinConfig = "$HOME/.dotfiles/hosts/laptop";
@@ -30,8 +20,6 @@
       "extra-experimental-features" = ["nix-command" "flakes"];
     };
   };
-
-  nixpkgs.config.allowUnfree = true;
 
   # Create /etc/zshrc that loads the nix-darwin environment.
   programs = {
@@ -51,7 +39,7 @@
 
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
-  system.stateVersion = 4;
+  system.stateVersion = 6;
 
   # Install fonts
   fonts.packages = [
@@ -87,11 +75,18 @@
       "battle-net"
       "stremio"
       "alt-tab"
+      "legcord"
     ];
 
     masApps = {
       "wireguard" = 1451685025;
     };
+  };
+
+  security.pam.services.sudo_local = {
+    enable = true;
+    reattach = true;
+    touchIdAuth = true;
   };
 
   # set some OSX preferences that I always end up hunting down and changing.

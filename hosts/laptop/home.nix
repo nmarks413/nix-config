@@ -18,10 +18,6 @@
   # release notes.
   home.stateVersion = "23.05"; # Please read the comment before changing.
 
-  nixpkgs.config = {
-    allowUnfree = true;
-  };
-
   home.packages = pkgs.callPackage ../shared/packages.nix {};
 
   programs = import ../shared/home-programs.nix {inherit config pkgs lib;};
