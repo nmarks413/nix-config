@@ -96,6 +96,7 @@ with pkgs; [
   ruby
   nodePackages.npm
   go
+  coq
 
   #gaming
   prismlauncher
