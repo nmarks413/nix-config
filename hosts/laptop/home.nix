@@ -28,6 +28,9 @@
     TERMINAL = "ghostty";
     BROWSER = "firefox";
   };
+  home.sessionPath = [
+    "$HOME/.emacs.d/bin"
+  ];
 
   # Let Home Manager install and manage itself.
 }

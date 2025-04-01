@@ -44,6 +44,8 @@
   # Install fonts
   fonts.packages = [
     pkgs.iosevka
+    pkgs.nerd-fonts.symbols-only
+    pkgs.nerd-fonts.iosevka
   ];
 
   services.tailscale.enable = true;
