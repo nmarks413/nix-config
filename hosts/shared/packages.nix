@@ -4,7 +4,6 @@ with pkgs; [
   just
   pkg-config
   gnumake
-  zed-editor
   caddy
   pm2
   clang-tools
@@ -12,6 +11,10 @@ with pkgs; [
   git
   unzip
   clang
+
+  #ides
+  zed-editor
+  emacs
 
   #virtualization
   qemu
