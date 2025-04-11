@@ -60,6 +60,7 @@ in {
         #broken on macos
         calibre
         mpv
+        wireguard-tools
       ]
       ++ [
         zls.packages.x86_64-linux.zls

@@ -28,7 +28,6 @@ with pkgs; [
   anki-bin
   tailscale
   openconnect
-  wireguard-tools
 
   #nix tools
   cachix
