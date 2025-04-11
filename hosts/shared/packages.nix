@@ -11,6 +11,8 @@ with pkgs; [
   git
   unzip
   clang
+  cmake
+  gnupg
 
   #ides
   zed-editor
@@ -65,12 +67,12 @@ with pkgs; [
   #media
   spotify
   qbittorrent
-  mpv
 
   #language servers
   typst-live
   lua-language-server
   nil
+  nixd
   texlab
   texlivePackages.chktex
 
@@ -100,6 +102,7 @@ with pkgs; [
   nodePackages.npm
   go
   coq
+  elan
 
   #gaming
   prismlauncher

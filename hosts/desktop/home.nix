@@ -57,6 +57,7 @@ in {
         kdePackages.dolphin
         #broken on macos
         calibre
+        mpv
       ]
       ++ [
         zls.packages.x86_64-linux.zls
