@@ -3,10 +3,10 @@
   pkgs,
   ...
 }: {
-  environment.systemPackages = [
-    pkgs.home-manager
-    pkgs.neovim
-    pkgs.pinentry_mac
+  environment.systemPackages = with pkgs; [
+    home-manager
+    neovim
+    pinentry_mac
   ];
 
   nixpkgs.config.allowUnfree = true;
