@@ -40,7 +40,7 @@
         # custom_colors = [];
         # fore_back = null;
       };
-      distro = null;
+      distro = "nixos";
       pride_month_shown = [
       ];
       pride_month_disable = false;
