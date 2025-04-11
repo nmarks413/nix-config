@@ -3,9 +3,10 @@
   pkgs,
   ...
 }: {
-  environment.systemPackages = [
-    pkgs.home-manager
-    pkgs.neovim
+  environment.systemPackages = with pkgs; [
+    home-manager
+    neovim
+    pinentry_mac
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -56,7 +57,7 @@
 
     onActivation = {
       autoUpdate = true;
-      cleanup = "uninstall";
+      cleanup = "none";
       upgrade = true;
     };
 
@@ -66,18 +67,16 @@
 
     brews = [
       "imagemagick"
+      "opam"
     ];
 
     casks = [
-      # "1password"
-      # "firefox"
-      # "obsidian"
-      # "raycast"
-      # "legcord"
       "battle-net"
       "stremio"
       "alt-tab"
       "legcord"
+      "zulip"
+      "zen-browser"
     ];
 
     masApps = {
