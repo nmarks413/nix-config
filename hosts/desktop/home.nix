@@ -42,9 +42,11 @@ in {
         path-of-building
         wineWowPackages.stable
         winetricks
+        (prismlauncher.override {gamemodeSupport = true;})
 
         #window manager stuff
         wofi
+        xorg.xauth
         #linux tools
         legcord
         pavucontrol

@@ -226,12 +226,20 @@
   };
 
   # Enable the X11 windowing system.
-  services.xserver.enable = true;
-  services.xserver.displayManager.startx.enable = true;
+  # services.xserver.enable = true;
+  # services.xserver.displayManager.startx.enable = true;
 
   # Enable the KDE Plasma Desktop Environment.
   # services.displayManager.sddm.enable = true;
-  services.desktopManager.plasma6.enable = true;
+  # services.desktopManager.plasma6.enable = true;
+
+  ### Cosmic stuff
+
+  environment.sessionVariables.COSMIC_DATA_CONTROL_ENABLED = 1;
+
+  systemd.packages = [pkgs.observatory];
+
+  systemd.services.monitord.wantedBy = ["multi-user.target"];
 
   services.desktopManager.cosmic.enable = true;
   services.displayManager.cosmic-greeter.enable = true;
@@ -308,12 +316,21 @@
   programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = true;
+    pinentryPackage = pkgs.pinentry-curses;
   };
 
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
+  services.openssh = {
+    enable = true;
+    ports = [22];
+    settings = {
+      PasswordAuthentication = true;
+      UseDns = true;
+      X11Forwarding = true;
+    };
+  };
 
   programs.kdeconnect.enable = true;
 

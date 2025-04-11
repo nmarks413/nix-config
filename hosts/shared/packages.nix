@@ -101,9 +101,6 @@ with pkgs; [
   go
   coq
 
-  #gaming
-  prismlauncher
-
   #browsers
   tor
   firefox
