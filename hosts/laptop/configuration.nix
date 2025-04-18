@@ -6,6 +6,9 @@
 }: {
   imports = [
     ../../modules/shared/nix.nix
+    ../../modules/shared/home-manager.nix
+    ../../modules/shared/vars.nix
+    ../../modules/shared/extras.nix
     ./modules/icons.nix
   ];
 
