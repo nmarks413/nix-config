@@ -1,6 +1,3 @@
-#<BS> Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
 {
   self,
   inputs,
@@ -8,8 +5,14 @@
   pkgs,
   ...
 }: {
-  nixpkgs.config.allowUnfree = true;
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
 
+    ../../modules/shared/nix.nix
+    ../../modules/nixos/nvidia.nix
+    ../../modules/nixos/boot.ni
+  ];
   services.avahi = {
     enable = true;
     nssmdns4 = true;
@@ -51,22 +54,6 @@
 
   nix.settings.trusted-users = ["root" "nmarks"];
 
-  nix.settings.experimental-features = ["nix-command" "flakes"];
-  nix.settings = {
-    substituters = [
-      "https://cache.nixos.org/"
-      "https://nix-community.cachix.org"
-      "https://cosmic.cachix.org/"
-      "https://cache.iog.io"
-      "https://cuda-maintainers.cachix.org"
-    ];
-    trusted-public-keys = [
-      "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E="
-      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-      "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="
-      "hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ="
-    ];
-  };
   programs.hyprland.enable = true;
 
   programs.fish.enable = true;
@@ -108,89 +95,6 @@
     nerd-fonts.fira-code
     nerd-fonts.iosevka
   ];
-
-  imports = [
-    # Include the results of the hardware scan.
-    ./hardware-configuration.nix
-    # inputs.foundryvtt.nixosModules.foundryvtt
-  ];
-
-  # Enable OpenGL
-  hardware.graphics = {
-    enable = true;
-  };
-  services.xserver.videoDrivers = ["nvidia"];
-
-  hardware.nvidia-container-toolkit.enable = true;
-  hardware.nvidia = {
-    forceFullCompositionPipeline = true;
-    # Modesetting is required.
-    modesetting.enable = true;
-
-    # Nvidia power management. Experimental, and can cause sleep/suspend to fail.
-    powerManagement.enable = false;
-    # Fine-grained power management. Turns off GPU when not in use.
-    # Experimental and only works on modern Nvidia GPUs (Turing or newer).
-    powerManagement.finegrained = false;
-
-    # Use the NVidia open source kernel module (not to be confused with the
-    # independent third-party "nouveau" open source driver).
-    # Support is limited to the Turing and later architectures. Full list of
-    # supported GPUs is at:
-    # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus
-    # Only available from driver 515.43.04+
-    # Currently alpha-quality/buggy, so false is currently the recommended setting.
-    open = false;
-
-    # Enable the Nvidia settings menu,
-    # accessible via `nvidia-settings`.
-    nvidiaSettings = true;
-
-    # Optionally, you may need to select the appropriate driver version for your specific GPU.
-    package = config.boot.kernelPackages.nvidiaPackages.latest;
-    #Fixes a glitch
-    nvidiaPersistenced = true;
-
-    #Required for amdgpu and nvidia gpu pairings
-    # modesetting.enable = true;
-
-    prime = {
-      # offload.enable = true;
-      #sync.enable = true;
-
-      amdgpuBusId = "PCI:0f:00.0";
-
-      nvidiaBusId = "PCI:01:00.0";
-    };
-  };
-  # Bootloader.
-  #boot.loader.systemd-boot.enable = true;
-  #boot.loader.efi.canTouchEfiVariables = true;
-
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-
-  boot.loader = {
-    # systemd-boot.enable = true;
-    efi = {
-      canTouchEfiVariables = true;
-      # assuming /boot is the mount point of the  EFI partition in NixOS (as the installation section recommends).
-      efiSysMountPoint = "/boot/efi";
-    };
-    grub = {
-      enable = true;
-      device = "nodev";
-      theme = pkgs.catppuccin-grub;
-      useOSProber = true;
-      efiSupport = true;
-    };
-  };
-
-  boot.supportedFilesystems = ["ntfs"];
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Enable networking
 
   # Set your time zone.
   time.timeZone = "America/Los_Angeles";
@@ -340,19 +244,6 @@
     networkmanager.enable = true;
     firewall = {
       allowedTCPPorts = [22 80 443];
-      #KDE Connect
-      # allowedTCPPortRanges = [
-      #   {
-      #     from = 1714;
-      #     to = 1764;
-      #   }
-      # ];
-      # allowedUDPPortRanges = [
-      #   {
-      #     from = 1714;
-      #     to = 1764;
-      #   }
-      # ];
       enable = true;
     };
     interfaces.enp11s0.wakeOnLan = {

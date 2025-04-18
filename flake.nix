@@ -33,8 +33,6 @@
     zig.url = "github:mitchellh/zig-overlay";
     zls.url = "github:zigtools/zls?rev=a26718049a8657d4da04c331aeced1697bc7652b";
 
-    # foundryvtt.url = "github:reckenrode/nix-foundryvtt";
-
     moonlight = {
       url = "github:moonlight-mod/moonlight"; # Add `/develop` to the flake URL to use nightly.
       inputs.nixpkgs.follows = "nixpkgs";
@@ -44,90 +42,78 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nh_darwin = {
-      url = "github:ToyVo/nh_darwin";
+    nh = {
+      url = "github:viperML/nh";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-options-search = {
       url = "github:madsbv/nix-options-search";
     };
 
+    nix-index-database.url = "github:nix-community/nix-index-database";
+    nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
+
     chinese-fonts-overlay = {
       url = "github:brsvh/chinese-fonts-overlay/main";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  outputs = {
-    self,
+  outputs = inputs @ {
     nixpkgs,
-    nixpkgs-stable,
-    nix-options-search,
-    home-manager,
-    darwin,
-    hosts,
-    hyprland-plugins,
-    zig,
-    zls,
     nixos-cosmic,
-    nh_darwin,
+    nix-index-database,
+    darwin,
     ...
-  } @ inputs: let
+  }: let
     overlays = [
       inputs.zig.overlays.default
       inputs.rust-overlay.overlays.default
       inputs.chinese-fonts-overlay.overlays.default
+      inputs.nh.overlays.default
     ];
     inherit (nixpkgs) lib;
+    mkIfElse = p: yes: no:
+      lib.mkMerge [
+        (lib.mkIf p yes)
+        (lib.mkIf (!p) no)
+      ];
+
+    user = "nmarks";
+
+    shared_modules = [
+      # {nixpkgs.overlays = overlays;}
+      # {programs.nix-index-database.comma.enable = true;}
+      # nixindex
+      # homemanagerModules
+      {
+        _module.args = {
+          inherit user;
+          inherit mkIfElse;
+        };
+      }
+    ];
   in {
     nixosConfigurations = {
       nixos = lib.nixosSystem {
-        modules = [
-          {nixpkgs.overlays = overlays;}
-          hosts.nixosModule
-          {
-            networking.stevenBlackHosts.enable = true;
-          }
-          ./hosts/desktop/configuration.nix
-          home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              backupFileExtension = "hm-backup";
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              users.nmarks = import ./hosts/desktop/home.nix;
-            };
-            home-manager.extraSpecialArgs = {
-              inherit hyprland-plugins;
-              inherit zls;
-            };
-          }
-          nixos-cosmic.nixosModules.default
-        ];
+        system = "x86_64-linux";
+        modules =
+          [
+            ./hosts/desktop/configuration.nix
+            nixos-cosmic.nixosModules.default
+          ]
+          ++ shared_modules;
         specialArgs = inputs;
       };
     };
     darwinConfigurations = {
       "Natalies-MacBook-Air" = darwin.lib.darwinSystem {
         system = "aarch64-darwin";
-        modules = [
-          {nixpkgs.overlays = overlays;}
-          ./hosts/laptop/configuration.nix
-          home-manager.darwinModules.home-manager
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              users.nmarks = import ./hosts/laptop/home.nix;
-            };
-            home-manager.extraSpecialArgs = {
-              inherit zls;
-            };
-            users.users.nmarks.home = "/Users/nmarks";
-          }
-        ];
-        specialArgs = {
-          inherit inputs;
-        };
+        specialArgs = inputs;
+        modules =
+          [
+            ./hosts/laptop/configuration.nix
+          ]
+          ++ shared_modules;
       };
     };
   };

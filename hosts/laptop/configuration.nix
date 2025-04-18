@@ -1,26 +1,31 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }: {
+  imports = [
+    ../../modules/shared/nix.nix
+    ./modules/icons.nix
+  ];
+
   environment.systemPackages = with pkgs; [
-    home-manager
     neovim
     pinentry_mac
   ];
 
-  nixpkgs.config.allowUnfree = true;
+  environment.customIcons = {
+    enable = true;
+    icons = [
+      {
+        path = "/Applications/Zen.app";
+        icon = "/Users/nmarks/.dotfiles/icons/Zen_icons/firefox.icns";
+      }
+    ];
+  };
 
   # Use a custom configuration.nix location.
   #environment.darwinConfig = "$HOME/.dotfiles/hosts/laptop";
-
-  # Auto upgrade nix package and the daemon service.
-  nix = {
-    package = pkgs.nix;
-    settings = {
-      "extra-experimental-features" = ["nix-command" "flakes"];
-    };
-  };
 
   # Create /etc/zshrc that loads the nix-darwin environment.
   programs = {

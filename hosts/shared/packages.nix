@@ -32,7 +32,6 @@ with pkgs; [
   #nix tools
   cachix
   direnv
-  comma
   nh
 
   #terminal stuff
@@ -44,7 +43,6 @@ with pkgs; [
   neofetch
   hyfetch
   fastfetch
-  bat
   eza
   ollama
   uv

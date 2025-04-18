@@ -668,23 +668,43 @@
         "type": "github"
       }
     },
-    "nh_darwin": {
+    "nh": {
       "inputs": {
         "nixpkgs": [
           "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1739410909,
-        "narHash": "sha256-wx0oBgnmh6K8PJGyASLAErnrIe8/1hZthVrkfoX+j/E=",
-        "owner": "ToyVo",
-        "repo": "nh_darwin",
-        "rev": "10c8d19efd0ed9f63708d1179468fbb2f2bd7f4e",
+        "lastModified": 1743682999,
+        "narHash": "sha256-bg+aAN8K90r3m/I+xXiXG0gawpbkshwlk93wxUN7KEk=",
+        "owner": "viperML",
+        "repo": "nh",
+        "rev": "9e9a4590b38b62b28f07a1fae973ce7b6ca0687a",
         "type": "github"
       },
       "original": {
-        "owner": "ToyVo",
-        "repo": "nh_darwin",
+        "owner": "viperML",
+        "repo": "nh",
+        "type": "github"
+      }
+    },
+    "nix-index-database": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1744518957,
+        "narHash": "sha256-RLBSWQfTL0v+7uyskC5kP6slLK1jvIuhaAh8QvB75m4=",
+        "owner": "nix-community",
+        "repo": "nix-index-database",
+        "rev": "4fc9ea78c962904f4ea11046f3db37c62e8a02fd",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "nix-index-database",
         "type": "github"
       }
     },
@@ -920,7 +940,8 @@
         "hyprland": "hyprland",
         "hyprland-plugins": "hyprland-plugins",
         "moonlight": "moonlight",
-        "nh_darwin": "nh_darwin",
+        "nh": "nh",
+        "nix-index-database": "nix-index-database",
         "nix-options-search": "nix-options-search",
         "nixos-cosmic": "nixos-cosmic",
         "nixpkgs": "nixpkgs_5",
