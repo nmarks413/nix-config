@@ -58,63 +58,46 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  outputs = inputs @ {
+  outputs = {
     nixpkgs,
     nixos-cosmic,
     nix-index-database,
     darwin,
     ...
-  }: let
+  } @ inputs: let
     overlays = [
       inputs.zig.overlays.default
       inputs.rust-overlay.overlays.default
       inputs.chinese-fonts-overlay.overlays.default
       inputs.nh.overlays.default
     ];
-    inherit (nixpkgs) lib;
-    mkIfElse = p: yes: no:
-      lib.mkMerge [
-        (lib.mkIf p yes)
-        (lib.mkIf (!p) no)
-      ];
+
+    mkSystem = import ./lib/mkSystem.nix {
+      inherit overlays nixpkgs inputs;
+    };
 
     user = "nmarks";
-
-    shared_modules = [
-      # {nixpkgs.overlays = overlays;}
-      # {programs.nix-index-database.comma.enable = true;}
-      # nixindex
-      # homemanagerModules
-      {
-        _module.args = {
-          inherit user;
-          inherit mkIfElse;
-        };
-      }
-    ];
   in {
-    nixosConfigurations = {
-      nixos = lib.nixosSystem {
-        system = "x86_64-linux";
-        modules =
-          [
-            ./hosts/desktop/configuration.nix
-            nixos-cosmic.nixosModules.default
-          ]
-          ++ shared_modules;
-        specialArgs = inputs;
-      };
+    nixosConfigurations.nixos = mkSystem "nixos" {
+      system = "x86_64-linux";
+      inherit user;
+      extraModules = [
+        nixos-cosmic.nixosModules.default
+      ];
     };
-    darwinConfigurations = {
-      "Natalies-MacBook-Air" = darwin.lib.darwinSystem {
-        system = "aarch64-darwin";
-        specialArgs = inputs;
-        modules =
-          [
-            ./hosts/laptop/configuration.nix
-          ]
-          ++ shared_modules;
-      };
+    darwinConfigurations."Natalies-MacBook-Air" = mkSystem "Natalies-MacBook-Air" {
+      system = "aarch64-darwin";
+      inherit user;
+      darwin = true;
     };
+    # darwinConfigurations = {
+    #   "Natalies-MacBook-Air" = darwin.lib.darwinSystem {
+    #     system = "aarch64-darwin";
+    #     specialArgs = inputs;
+    #     modules = [
+    #       ./hosts/laptop/configuration.nix
+    #     ];
+    #   };
+    # };
   };
 }
