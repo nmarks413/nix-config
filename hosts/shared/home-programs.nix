@@ -1,9 +1,11 @@
 {
+  inputs,
   config,
   pkgs,
   lib,
   ...
 }: {
+  nix-index.enable = true;
   atuin = {
     enable = true;
     enableBashIntegration = true;
@@ -56,8 +58,6 @@
       };
       color_align = {
         mode = "horizontal";
-        # custom_colors = [];
-        # fore_back = null;
       };
       distro = "nixos";
       pride_month_shown = [

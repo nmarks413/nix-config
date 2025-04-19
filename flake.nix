@@ -90,14 +90,5 @@
       inherit user;
       darwin = true;
     };
-    # darwinConfigurations = {
-    #   "Natalies-MacBook-Air" = darwin.lib.darwinSystem {
-    #     system = "aarch64-darwin";
-    #     specialArgs = inputs;
-    #     modules = [
-    #       ./hosts/laptop/configuration.nix
-    #     ];
-    #   };
-    # };
   };
 }

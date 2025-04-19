@@ -7,7 +7,7 @@
   nix-options-search,
   ...
 }: let
-  shared-programs = import ../shared/home-programs.nix {inherit config pkgs lib;};
+  shared-programs = import ../shared/home-programs.nix {inherit inputs config pkgs lib;};
 in {
   home = {
     username = "nmarks";

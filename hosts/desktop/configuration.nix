@@ -9,7 +9,6 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
 
-    ../../modules/shared/nix.nix
     ../../modules/nixos/nvidia.nix
     ../../modules/nixos/boot.nix
   ];

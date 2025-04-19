@@ -1,13 +1,11 @@
 {
+  inputs,
   config,
   pkgs,
   lib,
   ...
 }: {
   imports = [
-    ../../modules/shared/nix.nix
-    ../../modules/shared/extras.nix
-
     ./modules/icons.nix
   ];
 

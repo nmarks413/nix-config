@@ -28,6 +28,7 @@
   # The config files for this system.
 
   hostConfig = ../hosts/${host}/configuration.nix;
+  homeConfig = ../hosts/${host}/home.nix;
 
   # NixOS vs nix-darwin functions
   systemFunc =
@@ -35,7 +36,7 @@
     then inputs.darwin.lib.darwinSystem
     else nixpkgs.lib.nixosSystem;
 
-  home-manager =
+  hmModules =
     if darwin
     then inputs.home-manager.darwinModules
     else inputs.home-manager.nixosModules;
@@ -58,13 +59,15 @@ in
 
         hostConfig
         nixindex
-        home-manager.home-manager
+        {programs.nix-index-database.comma.enable = true;}
+        hmModules.home-manager
         {
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
             backupFileExtension = "hm-backup";
             extraSpecialArgs = {inherit inputs;};
+            users.${user} = homeConfig;
           };
         }
 

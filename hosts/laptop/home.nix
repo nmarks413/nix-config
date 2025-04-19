@@ -1,12 +1,14 @@
 {
+  inputs,
   config,
   pkgs,
   lib,
   ...
 }: {
-  programs = import ../shared/home-programs.nix {inherit config pkgs lib;};
+  programs = import ../shared/home-programs.nix {inherit inputs config pkgs lib;};
 
   home = {
+    homeDirectory = "/Users/nmarks/";
     # Home Manager needs a bit of information about you and the paths it should
     # manage.
     # This value determines the Home Manager release that your configuration is

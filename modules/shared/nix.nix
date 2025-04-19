@@ -13,8 +13,11 @@
       warn-dirty = false
     '';
 
+    optimise = {
+      automatic = true;
+    };
+
     settings = {
-      auto-optimise-store = true;
       experimental-features = ["nix-command" "flakes"];
       substituters = [
         "https://cache.nixos.org/?priority=10"
@@ -31,8 +34,6 @@
     };
     gc = {
       automatic = true;
-      persistent = true;
-      dates = "weekly";
       options = "--delete-older-than 7d";
     };
   };
