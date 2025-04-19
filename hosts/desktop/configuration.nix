@@ -11,7 +11,7 @@
 
     ../../modules/shared/nix.nix
     ../../modules/nixos/nvidia.nix
-    ../../modules/nixos/boot.ni
+    ../../modules/nixos/boot.nix
   ];
   services.avahi = {
     enable = true;

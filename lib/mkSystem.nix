@@ -10,24 +10,31 @@
   darwin ? false,
   extraModules ? [],
 }: let
-  # True if this is a WSL system.
-  # True if Linux, which is a heuristic for not being Darwin.
-  mkIfElse = p: yes: no:
-    nixpkgs.lib.mkMerge [
-      (nixpkgs.lib.mkIf p yes)
-      (nixpkgs.lib.mkIf (!p) no)
-    ];
+  # mkIfElse = p: yes: no:
+  #   nixpkgs.lib.mkMerge [
+  #     (nixpkgs.lib.mkIf p yes)
+  #     (nixpkgs.lib.mkIf (!p) no)
+  #   ];
+  nixindex =
+    if darwin
+    then inputs.nix-index-database.darwinModules.nix-index
+    else inputs.nix-index-database.nixosModules.nix-index;
 
-  nixindex = mkIfElse darwin inputs.nix-index-database.darwinModules.nix-index inputs.nix-index-database.nixosModules.nix-index;
-
-  host = mkIfElse darwin "laptop" "desktop";
+  host =
+    if darwin
+    then "laptop"
+    else "desktop";
 
   # The config files for this system.
 
   hostConfig = ../hosts/${host}/configuration.nix;
 
   # NixOS vs nix-darwin functions
-  systemFunc = mkIfElse darwin inputs.darwin.lib.darwinSystem nixpkgs.lib.nixosSystem;
+  systemFunc =
+    if darwin
+    then inputs.darwin.lib.darwinSystem
+    else nixpkgs.lib.nixosSystem;
+
   home-manager =
     if darwin
     then inputs.home-manager.darwinModules
@@ -42,7 +49,13 @@ in
         # to go through and apply our system type. We do this first so
         # the overlays are available globally.
         {nixpkgs.overlays = overlays;}
-        {inputs.programs.nix-index-database.comma.enable = true;}
+
+        # Enable caching for nix-index so we dont have to rebuild it
+
+        #shared modules
+        ../modules/shared/nix.nix
+        ../modules/shared/extras.nix
+
         hostConfig
         nixindex
         home-manager.home-manager

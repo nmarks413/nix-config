@@ -5,12 +5,9 @@
   ...
 }: {
   imports = [
-    ../../modules/shared/vars.nix
     ../../modules/shared/nix.nix
     ../../modules/shared/extras.nix
-    ../../modules/shared/modules.nix
 
-    ../../modules/shared/home-manager.nix
     ./modules/icons.nix
   ];
 
