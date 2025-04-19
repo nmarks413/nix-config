@@ -30,6 +30,11 @@
   hostConfig = ../hosts/${host}/configuration.nix;
   homeConfig = ../hosts/${host}/home.nix;
 
+  homeDir =
+    if darwin
+    then "/Users/nmarks/"
+    else "/home/nmarks";
+
   # NixOS vs nix-darwin functions
   systemFunc =
     if darwin
