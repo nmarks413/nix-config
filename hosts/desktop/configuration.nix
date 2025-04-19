@@ -12,12 +12,6 @@
     ../../modules/nixos/nvidia.nix
     ../../modules/nixos/boot.nix
   ];
-  services.avahi = {
-    enable = true;
-    nssmdns4 = true;
-    openFirewall = true;
-  };
-
   programs.gamemode.enable = true;
 
   programs._1password.enable = true;
@@ -28,11 +22,9 @@
     polkitPolicyOwners = ["nmarks"];
   };
 
-  services.blueman.enable = true;
   hardware.bluetooth.enable = true;
 
   services = {
-    ratbagd.enable = true;
   };
 
   programs.noisetorch.enable = true;
@@ -41,8 +33,6 @@
     enable = true;
     extraPortals = with pkgs; [xdg-desktop-portal-gtk];
   };
-
-  services.flatpak.enable = true;
 
   virtualisation.containers.enable = true;
   virtualisation.podman = {
@@ -56,21 +46,6 @@
   programs.hyprland.enable = true;
 
   programs.fish.enable = true;
-
-  services.tailscale.enable = true;
-
-  services.keyd = {
-    enable = true;
-    keyboards = {
-      default = {
-        settings = {
-          main = {
-            capslock = "escape";
-          };
-        };
-      };
-    };
-  };
 
   virtualisation.libvirtd.enable = true;
   programs.virt-manager.enable = true;
@@ -89,52 +64,6 @@
     flake = "/home/nmarks/.dotfiles";
   };
 
-  fonts.packages = with pkgs; [
-    # alibaba-fonts
-    nerd-fonts.fira-code
-    nerd-fonts.iosevka
-  ];
-
-  # Set your time zone.
-  time.timeZone = "America/Los_Angeles";
-
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
-
-  i18n.supportedLocales = ["all"];
-
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "en_US.UTF-8";
-    LC_IDENTIFICATION = "en_US.UTF-8";
-    LC_MEASUREMENT = "en_US.UTF-8";
-    LC_MONETARY = "en_US.UTF-8";
-    LC_NAME = "en_US.UTF-8";
-    LC_NUMERIC = "en_US.UTF-8";
-    LC_PAPER = "en_US.UTF-8";
-    LC_TELEPHONE = "en_US.UTF-8";
-    LC_TIME = "en_US.UTF-8";
-  };
-
-  i18n.inputMethod = {
-    type = "fcitx5";
-    enable = true;
-    fcitx5.waylandFrontend = true;
-    fcitx5.addons = with pkgs; [
-      # fcitx5-gtk
-      # kdePackages.fcitx5-qt
-      rime-data
-      fcitx5-rime
-      fcitx5-rose-pine
-    ];
-  };
-
-  # Enable the X11 windowing system.
-  # services.xserver.enable = true;
-  # services.xserver.displayManager.startx.enable = true;
-
-  # Enable the KDE Plasma Desktop Environment.
-  # services.displayManager.sddm.enable = true;
-  # services.desktopManager.plasma6.enable = true;
 
   ### Cosmic stuff
 
@@ -144,35 +73,9 @@
 
   systemd.services.monitord.wantedBy = ["multi-user.target"];
 
-  services.desktopManager.cosmic.enable = true;
-  services.displayManager.cosmic-greeter.enable = true;
-
-  # Configure keymap in X11
-  services.xserver = {
-    xkb.layout = "us";
-    xkb.variant = "";
-  };
-
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-
   # Enable sound with pipewire.
   # services.pulseaudio.enable = true;
   security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    audio.enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    # systemWide = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
-  };
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
@@ -220,19 +123,6 @@
     enable = true;
     enableSSHSupport = true;
     pinentryPackage = pkgs.pinentry-curses;
-  };
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  services.openssh = {
-    enable = true;
-    ports = [22];
-    settings = {
-      PasswordAuthentication = true;
-      UseDns = true;
-      X11Forwarding = true;
-    };
   };
 
   programs.kdeconnect.enable = true;

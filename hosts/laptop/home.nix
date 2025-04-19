@@ -3,13 +3,13 @@
   config,
   pkgs,
   lib,
-  currentSystemUser,
+  user,
   ...
 }: {
   programs = import ../shared/home-programs.nix {inherit inputs config pkgs lib;};
 
   home = {
-    username = currentSystemUser;
+    username = user;
     homeDirectory = "/Users/nmarks/";
     # Home Manager needs a bit of information about you and the paths it should
     # manage.

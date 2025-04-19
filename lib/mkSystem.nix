@@ -10,11 +10,6 @@
   darwin ? false,
   extraModules ? [],
 }: let
-  # mkIfElse = p: yes: no:
-  #   nixpkgs.lib.mkMerge [
-  #     (nixpkgs.lib.mkIf p yes)
-  #     (nixpkgs.lib.mkIf (!p) no)
-  #   ];
   nixindex =
     if darwin
     then inputs.nix-index-database.darwinModules.nix-index
@@ -59,8 +54,7 @@ in
         # Enable caching for nix-index so we dont have to rebuild it
 
         #shared modules
-        ../modules/shared/nix.nix
-        ../modules/shared/extras.nix
+        ../modules/shared
 
         hostConfig
         nixindex
@@ -71,9 +65,11 @@ in
             useGlobalPkgs = true;
             useUserPackages = true;
             backupFileExtension = "hm-backup";
-            extraSpecialArgs = {inherit inputs;};
+            extraSpecialArgs = {inherit inputs user;};
             users.${user} = homeConfig;
           };
+
+          users.users.${user}.home = homeDir;
         }
 
         # We expose some extra arguments so that our modules can parameterize
