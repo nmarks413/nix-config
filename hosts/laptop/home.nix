@@ -11,7 +11,7 @@
   home = {
     username = user;
     homeDirectory = "/Users/nmarks/";
-    shell = pkgs.fish;
+    # shell = pkgs.fish;
     # Home Manager needs a bit of information about you and the paths it should
     # manage.
     # This value determines the Home Manager release that your configuration is
