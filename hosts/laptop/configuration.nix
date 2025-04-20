@@ -6,7 +6,8 @@
   ...
 }: {
   imports = [
-    ./modules/icons.nix
+    # ../../modules/macos/icons.nix
+    ../../modules/macos/homebrew.nix
   ];
 
   environment.systemPackages = with pkgs; [
@@ -14,15 +15,15 @@
     pinentry_mac
   ];
 
-  environment.customIcons = {
-    enable = true;
-    icons = [
-      {
-        path = "/Applications/Zen.app";
-        icon = "/Users/nmarks/.dotfiles/icons/Zen_icons/firefox.icns";
-      }
-    ];
-  };
+  # environment.customIcons = {
+  #   enable = true;
+  #   icons = [
+  #     {
+  #       path = "/Applications/Zen.app";
+  #       icon = "/Users/nmarks/.dotfiles/icons/Zen_icons/firefox.icns";
+  #     }
+  #   ];
+  # };
 
   # Use a custom configuration.nix location.
   #environment.darwinConfig = "$HOME/.dotfiles/hosts/laptop";
@@ -43,52 +44,6 @@
     '';
   };
 
-  # Used for backwards compatibility, please read the changelog before changing.
-  # $ darwin-rebuild changelog
-  system.stateVersion = 6;
-
-  # Install fonts
-  fonts.packages = [
-    pkgs.iosevka
-    pkgs.nerd-fonts.symbols-only
-    pkgs.nerd-fonts.iosevka
-  ];
-
-  services.tailscale.enable = true;
-
-  # Use homebrew to install casks and Mac App Store apps
-  homebrew = {
-    enable = true;
-
-    onActivation = {
-      autoUpdate = true;
-      cleanup = "none";
-      upgrade = true;
-    };
-
-    # taps = [
-    #   "legcord/legcord"
-    # ];
-
-    brews = [
-      "imagemagick"
-      "opam"
-    ];
-
-    casks = [
-      "battle-net"
-      "stremio"
-      "alt-tab"
-      "legcord"
-      "zulip"
-      "zen-browser"
-    ];
-
-    masApps = {
-      "wireguard" = 1451685025;
-    };
-  };
-
   security.pam.services.sudo_local = {
     enable = true;
     reattach = true;
@@ -96,39 +51,73 @@
   };
 
   # set some OSX preferences that I always end up hunting down and changing.
-  system.defaults = {
-    # minimal dock
-    dock = {
-      autohide = false;
-      show-process-indicators = true;
-      show-recents = true;
-      static-only = true;
-    };
-    # a finder that tells me what I want to know and lets me work
-    finder = {
-      AppleShowAllExtensions = true;
-      ShowPathbar = true;
-      FXEnableExtensionChangeWarning = false;
-    };
+  system = {
+    # Used for backwards compatibility, please read the changelog before changing.
+    # $ darwin-rebuild changelog
+    stateVersion = 6;
 
-    CustomUserPreferences = {
-      launchd.user.agents.UserKeyMapping.serviceConfig = {
-        ProgramArguments = [
-          "/usr/bin/hidutil"
-          "property"
-          "--match"
-          "{&quot;ProductID&quot;:0x0,&quot;VendorID&quot;:0x0,&quot;Product&quot;:&quot;Apple Internal Keyboard / Trackpad&quot;}"
-          "--set"
-          (
-            let
-              # https://developer.apple.com/library/archive/technotes/tn2450/_index.html
-              caps_lock = "0x700000039";
-              escape = "0x700000029";
-            in "{&quot;UserKeyMapping&quot;:[{&quot;HIDKeyboardModifierMappingDst&quot;:${escape},&quot;HIDKeyboardModifierMappingSrc&quot;:${caps_lock}},{&quot;HIDKeyboardModifierMappingDst&quot;:${caps_lock},&quot;HIDKeyboardModifierMappingSrc&quot;:${escape}}]}"
-          )
-        ];
-        RunAtLoad = true;
+    defaults = {
+      LaunchServices = {
+        LSQuarantine = false;
       };
+
+      NSGlobalDomain = {
+        AppleShowAllExtensions = true;
+        ApplePressAndHoldEnabled = false;
+
+        # 120, 90, 60, 30, 12, 6, 2
+        KeyRepeat = 2;
+
+        # 120, 94, 68, 35, 25, 15
+        InitialKeyRepeat = 15;
+
+        "com.apple.mouse.tapBehavior" = 1;
+        "com.apple.sound.beep.volume" = 0.0;
+        "com.apple.sound.beep.feedback" = 0;
+
+        #Ew.
+        NSAutomaticCapitalizationEnabled = false;
+        NSAutomaticDashSubstitutionEnabled = false;
+        NSAutomaticInlinePredictionEnabled = false;
+        NSAutomaticPeriodSubstitutionEnabled = false;
+        NSAutomaticQuoteSubstitutionEnabled = false;
+        NSAutomaticSpellingCorrectionEnabled = false;
+        NSDisableAutomaticTermination = true;
+        NSDocumentSaveNewDocumentsToCloud = false;
+        AppleICUForce24HourTime = true;
+      };
+      # minimal dock
+      dock = {
+        autohide = true;
+        autohide-time-modifier = 0;
+        show-process-indicators = true;
+
+        expose-group-apps = true;
+
+        show-recents = true;
+        static-only = true;
+
+        mineffect = "scale";
+
+        orientation = "bottom";
+      };
+      # a finder that tells me what I want to know and lets me work
+      finder = {
+        _FXShowPosixPathInTitle = true;
+        FXDefaultSearchScope = "SCcf";
+        AppleShowAllExtensions = true;
+        ShowPathbar = true;
+        FXEnableExtensionChangeWarning = false;
+      };
+      CustomSystemPreferences = {
+        "com.apple.universalaccess" = {
+          closeViewTrackpadGestureZoomEnabled = 1;
+        };
+      };
+    };
+    keyboard = {
+      enableKeyMapping = true;
+      remapCapsLockToEscape = true;
     };
   };
 }

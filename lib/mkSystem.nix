@@ -54,7 +54,8 @@ in
         # Enable caching for nix-index so we dont have to rebuild it
 
         #shared modules
-        ../modules/shared
+        ../modules/shared/extras.nix
+        ../modules/shared/nix.nix
 
         hostConfig
         nixindex
