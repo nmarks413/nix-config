@@ -25,8 +25,6 @@
 
     noisetorch.enable = true;
 
-    hyprland.enable = true;
-
     fish.enable = true;
     virt-manager.enable = true;
 

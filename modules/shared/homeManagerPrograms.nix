@@ -1,6 +1,8 @@
 {
   pkgs,
+  lib,
   userSettings,
+  systemSettings,
   ...
 }: {
   nix-index.enable = true;
@@ -15,15 +17,6 @@
     enable = true;
     enableZshIntegration = true;
     nix-direnv.enable = true;
-  };
-
-  kitty = {
-    enable = true;
-    themeFile = "Catppuccin-Mocha";
-    extraConfig = "font_family Iosevka NF
-                   italic_font auto
-                   bold_italic_font  auto
-                   bold_font  auto";
   };
 
   bat = {
@@ -59,9 +52,12 @@
         inherit (pkgs.fishPlugins.bang-bang) src;
       }
     ];
-    shellAliases = {
-      reboot-windows = "sudo efibootmgr --bootnext 0000; sudo reboot -h now";
-    };
+    shellAliases =
+      {
+      }
+      // lib.optionalAttrs (!systemSettings.darwin) {
+        reboot-windows = "sudo efibootmgr --bootnext 0000; sudo reboot -h now";
+      };
     shellInit = ''
       test -r '/Users/${userSettings.username}/.opam/opam-init/init.fish' && source '/Users/${userSettings.username}/.opam/opam-init/init.fish' > /dev/null 2> /dev/null; or true
       batman --export-env | source
