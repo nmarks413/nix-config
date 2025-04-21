@@ -4,9 +4,15 @@
   pkgs,
   lib,
   userSettings,
+  systemSettings,
   ...
 }: {
-  programs = import ../../modules/shared/homeManagerPrograms.nix {inherit inputs config pkgs lib userSettings;};
+  imports = [
+    inputs.nixvim.homeManagerModules.nixvim
+    #set up nixvim
+    ../../modules/nixvim
+  ];
+  programs = import ../../modules/shared/homeManagerPrograms.nix {inherit inputs config pkgs lib userSettings systemSettings;};
 
   home = {
     inherit (userSettings) username;

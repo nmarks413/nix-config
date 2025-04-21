@@ -21,6 +21,7 @@
     else inputs.stylix.nixosModules.stylix;
 
   systemSettings = rec {
+    inherit darwin;
     host =
       if darwin
       then userSettings.darwinHost
