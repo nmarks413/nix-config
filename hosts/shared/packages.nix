@@ -59,11 +59,10 @@ with pkgs; [
     withMoonlight = true;
   })
   vesktop
-  signal-desktop
+  signal-desktop-bin
 
   #media
   spotify
-  qbittorrent
 
   #language servers
   typst-live

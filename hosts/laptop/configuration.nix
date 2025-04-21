@@ -3,6 +3,7 @@
   config,
   pkgs,
   lib,
+  userSettings,
   ...
 }: {
   imports = [
@@ -10,20 +11,12 @@
     ../../modules/macos/homebrew.nix
   ];
 
-  environment.systemPackages = with pkgs; [
-    neovim
-    pinentry_mac
-  ];
-
-  # environment.customIcons = {
-  #   enable = true;
-  #   icons = [
-  #     {
-  #       path = "/Applications/Zen.app";
-  #       icon = "/Users/nmarks/.dotfiles/icons/Zen_icons/firefox.icns";
-  #     }
-  #   ];
-  # };
+  environment.systemPackages = with pkgs;
+    [
+      neovim
+      pinentry_mac
+    ]
+    ++ callPackage ../shared/packages.nix {};
 
   # Use a custom configuration.nix location.
   #environment.darwinConfig = "$HOME/.dotfiles/hosts/laptop";
@@ -34,6 +27,7 @@
     zsh.enable = true; # default shell on catalina
   };
 
+  # When opening an interactive shell that isnt fish move into fish
   programs.zsh = {
     interactiveShellInit = ''
       if [[ $(${pkgs.procps}/bin/ps -p $PPID -o comm) != "fish" && -z ''${ZSH_EXUCTION_STRING} ]]
@@ -44,6 +38,7 @@
     '';
   };
 
+  #Use touchid or watch to activate sudo
   security.pam.services.sudo_local = {
     enable = true;
     reattach = true;
@@ -57,12 +52,15 @@
     stateVersion = 6;
 
     defaults = {
+      # Turn quaranite off
       LaunchServices = {
         LSQuarantine = false;
       };
 
       NSGlobalDomain = {
+        # Show extensions in finder
         AppleShowAllExtensions = true;
+        #Turn off the hold and press to input special chars
         ApplePressAndHoldEnabled = false;
 
         # 120, 90, 60, 30, 12, 6, 2
@@ -71,6 +69,7 @@
         # 120, 94, 68, 35, 25, 15
         InitialKeyRepeat = 15;
 
+        #Turn off beep noise in terminal
         "com.apple.mouse.tapBehavior" = 1;
         "com.apple.sound.beep.volume" = 0.0;
         "com.apple.sound.beep.feedback" = 0;
@@ -89,7 +88,8 @@
       # minimal dock
       dock = {
         autohide = true;
-        autohide-time-modifier = 0;
+        #instant hide and show
+        autohide-time-modifier = 0.0;
         show-process-indicators = true;
 
         expose-group-apps = true;
@@ -97,11 +97,12 @@
         show-recents = true;
         static-only = true;
 
+        # Scale instead of shrink
         mineffect = "scale";
 
         orientation = "bottom";
       };
-      # a finder that tells me what I want to know and lets me work
+      # Better finder settings
       finder = {
         _FXShowPosixPathInTitle = true;
         FXDefaultSearchScope = "SCcf";
@@ -115,6 +116,8 @@
         };
       };
     };
+
+    # Bind caps to escape for better normal mode stuff
     keyboard = {
       enableKeyMapping = true;
       remapCapsLockToEscape = true;

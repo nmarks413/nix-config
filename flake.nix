@@ -72,22 +72,33 @@
       inputs.nh.overlays.default
     ];
 
-    mkSystem = import ./lib/mkSystem.nix {
-      inherit overlays nixpkgs inputs;
+    # ----- USER SETTINGS ----- #
+    userSettings = rec {
+      username = "nmarks"; # username
+      name = "Natalie"; # name/identifier
+      email = "nmarks413@gmail.com"; # email (used for certain configurations)
+      dotfilesDir = "~/.dotfiles"; # absolute path of the local repo
+      browser = "firefox"; # Default browser; must select one from ./user/app/browser/
+      term = "ghostty"; # Default terminal command;
+      font = "iosevka Nerd Font"; # Selected font
+      editor = "neovim"; # Default editor;
+      spawnEditor = "exec" + term + " -e " + editor;
+      timeZone = "America/Los_Angeles";
+      sexuality = "bisexual";
     };
 
-    user = "nmarks";
+    mkSystem = import ./lib/mkSystem.nix {
+      inherit overlays nixpkgs inputs userSettings;
+    };
   in {
     nixosConfigurations.nixos = mkSystem "nixos" {
       system = "x86_64-linux";
-      inherit user;
       extraModules = [
         nixos-cosmic.nixosModules.default
       ];
     };
     darwinConfigurations."Natalies-MacBook-Air" = mkSystem "Natalies-MacBook-Air" {
       system = "aarch64-darwin";
-      inherit user;
       darwin = true;
     };
   };

@@ -3,6 +3,7 @@
   config,
   pkgs,
   lib,
+  userSettings,
   ...
 }: {
   nix-index.enable = true;
@@ -51,7 +52,7 @@
     enable = true;
     settings = {
       backend = "fastfetch";
-      preset = "bisexual";
+      preset = userSettings.sexuality;
       mode = "rgb";
       light_dark = "dark";
       lightness = {
@@ -85,7 +86,7 @@
       reboot-windows = "sudo efibootmgr --bootnext 0000; sudo reboot -h now";
     };
     shellInit = ''
-      test -r '/Users/nmarks/.opam/opam-init/init.fish' && source '/Users/nmarks/.opam/opam-init/init.fish' > /dev/null 2> /dev/null; or true
+      test -r '/Users/${userSettings.username}/.opam/opam-init/init.fish' && source '/Users/${userSettings.username}/.opam/opam-init/init.fish' > /dev/null 2> /dev/null; or true
       batman --export-env | source
     '';
   };

@@ -3,6 +3,7 @@
   inputs,
   config,
   pkgs,
+  userSettings,
   ...
 }: {
   imports = [
@@ -11,57 +12,90 @@
 
     ../../modules/nixos/nvidia.nix
     ../../modules/nixos/boot.nix
+    ../../modules/nixos/ld.nix
+    ../../modules/nixos/services.nix
   ];
-  programs.gamemode.enable = true;
+  programs = {
+    gamemode.enable = true;
 
-  programs._1password.enable = true;
-  programs._1password-gui = {
-    enable = true;
-    # Certain features, including CLI integration and system authentication support,
-    # require enabling PolKit integration on some desktop environments (e.g. Plasma).
-    polkitPolicyOwners = ["nmarks"];
+    _1password.enable = true;
+    _1password-gui = {
+      enable = true;
+      # Certain features, including CLI integration and system authentication support,
+      # require enabling PolKit integration on some desktop environments (e.g. Plasma).
+      polkitPolicyOwners = [userSettings.username];
+    };
+
+    noisetorch.enable = true;
+
+    hyprland.enable = true;
+
+    fish.enable = true;
+    virt-manager.enable = true;
+
+    nh = {
+      enable = true;
+      clean.enable = true;
+      clean.extraArgs = "--keep-since 4d --keep 3";
+      flake = "/home/nmarks/.dotfiles";
+    };
+
+    neovim = {
+      enable = true;
+      defaultEditor = true;
+    };
+
+    steam = {
+      enable = true;
+      package = with pkgs; steam.override {extraPkgs = pkgs: [attr];};
+    };
+
+    git = {
+      enable = true;
+      lfs.enable = true;
+    };
+
+    # Some programs need SUID wrappers, can be configured further or are
+    # started in user sessions.
+    mtr.enable = true;
+    gnupg.agent = {
+      enable = true;
+      enableSSHSupport = true;
+      pinentryPackage = pkgs.pinentry-curses;
+    };
+
+    kdeconnect.enable = true;
   };
 
   hardware.bluetooth.enable = true;
-
-  services = {
-  };
-
-  programs.noisetorch.enable = true;
 
   xdg.portal = {
     enable = true;
     extraPortals = with pkgs; [xdg-desktop-portal-gtk];
   };
+  virtualisation = {
+    containers.enable = true;
+    podman = {
+      enable = true;
+      # dockerCompat = true;
+    };
+    docker.enable = true;
 
-  virtualisation.containers.enable = true;
-  virtualisation.podman = {
-    enable = true;
-    # dockerCompat = true;
-  };
-  virtualisation.docker.enable = true;
-
-  nix.settings.trusted-users = ["root" "nmarks"];
-
-  programs.hyprland.enable = true;
-
-  programs.fish.enable = true;
-
-  virtualisation.libvirtd.enable = true;
-  programs.virt-manager.enable = true;
-
-  systemd.targets = {
-    sleep.enable = false;
-    suspend.enable = false;
-    hibernate.enable = false;
-    hybrid-sleep.enable = false;
+    libvirtd.enable = true;
   };
 
-  programs.nh = {
-    enable = true;
-    clean.enable = true;
-    clean.extraArgs = "--keep-since 4d --keep 3";
-    flake = "/home/nmarks/.dotfiles";
+  nix.settings.trusted-users = ["root" userSettings.username];
+  systemd = {
+    targets = {
+      sleep.enable = false;
+      suspend.enable = false;
+      hibernate.enable = false;
+      hybrid-sleep.enable = false;
+    };
+
+    packages = [pkgs.observatory];
+
+    services.monitord.wantedBy = ["multi-user.target"];
   };
 
   i18n = {
@@ -95,16 +129,8 @@
       ];
     };
   };
-  ### Cosmic stuff
-
-  environment.sessionVariables.COSMIC_DATA_CONTROL_ENABLED = 1;
-
-  systemd.packages = [pkgs.observatory];
-
-  systemd.services.monitord.wantedBy = ["multi-user.target"];
 
   # Enable sound with pipewire.
-  # services.pulseaudio.enable = true;
   security.rtkit.enable = true;
 
   # Enable touchpad support (enabled default in most desktopManager).
@@ -112,7 +138,7 @@
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.defaultUserShell = pkgs.fish;
-  users.users.nmarks = {
+  users.users.${userSettings.username} = {
     isNormalUser = true;
     description = "Natalie Marks";
     extraGroups = ["networkmanager" "wheel" "docker"];
@@ -125,40 +151,17 @@
       #  thunderbird
     ];
   };
+  environment = {
+    sessionVariables.COSMIC_DATA_CONTROL_ENABLED = 1;
+    variables.EDITOR = "nvim";
 
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
+    systemPackages = with pkgs; [
+      vim
+    ];
   };
-  environment.variables.EDITOR = "nvim";
-
-  programs.steam = {
-    enable = true;
-    package = with pkgs; steam.override {extraPkgs = pkgs: [attr];};
-  };
-
-  programs.git = {
-    enable = true;
-    lfs.enable = true;
-  };
-
-  environment.systemPackages = with pkgs; [
-    vim
-  ];
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  programs.mtr.enable = true;
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
-    pinentryPackage = pkgs.pinentry-curses;
-  };
-
-  programs.kdeconnect.enable = true;
 
   networking = {
-    hostName = "nixos"; # Define your hostname.
+    hostName = userSettings.hostname; # Define your hostname.
     # wireless.enable = true; # Enables wireless support via wpa_supplicant.
     networkmanager.enable = true;
     firewall = {
@@ -171,89 +174,6 @@
     };
   };
 
-  programs.nix-ld.enable = true;
-
-  # "minimum" amount of libraries needed for most games to run without steam-run
-  programs.nix-ld.libraries = with pkgs; [
-    # common requirement for several games
-    stdenv.cc.cc.lib
-
-    # from https://github.com/NixOS/nixpkgs/blob/nixos-23.05/pkgs/games/steam/fhsenv.nix#L72-L79
-    xorg.libXcomposite
-    xorg.libXtst
-    xorg.libXrandr
-    xorg.libXext
-    xorg.libX11
-    xorg.libXfixes
-    libGL
-    libva
-
-    # from https://github.com/NixOS/nixpkgs/blob/nixos-23.05/pkgs/games/steam/fhsenv.nix#L124-L136
-    fontconfig
-    freetype
-    xorg.libXt
-    xorg.libXmu
-    libogg
-    libvorbis
-    SDL
-    SDL2_image
-    glew110
-    libdrm
-    libidn
-    tbb
-    zlib
-    alsa-lib
-    at-spi2-atk
-    at-spi2-core
-    atk
-    cairo
-    cups
-    curl
-    dbus
-    expat
-    fontconfig
-    freetype
-    fuse3
-    gdk-pixbuf
-    glib
-    gtk3
-    icu
-    libGL
-    libappindicator-gtk3
-    libdrm
-    libglvnd
-    libnotify
-    libpulseaudio
-    libunwind
-    libusb1
-    libuuid
-    libxkbcommon
-    libxml2
-    mesa
-    nspr
-    nss
-    openssl
-    pango
-    # pipewire
-    stdenv.cc.cc
-    systemd
-    vulkan-loader
-    xorg.libX11
-    xorg.libXScrnSaver
-    xorg.libXcomposite
-    xorg.libXcursor
-    xorg.libXdamage
-    xorg.libXext
-    xorg.libXfixes
-    xorg.libXi
-    xorg.libXrandr
-    xorg.libXrender
-    xorg.libXtst
-    xorg.libxcb
-    xorg.libxkbfile
-    xorg.libxshmfence
-    zlib
-  ];
   # Open ports in the firewall.
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.

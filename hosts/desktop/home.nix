@@ -4,22 +4,11 @@
   pkgs,
   lib,
   zls,
-  nix-options-search,
   ...
 }: let
   shared-programs = import ../shared/home-programs.nix {inherit inputs config pkgs lib;};
 in {
   home = {
-    username = "nmarks";
-    homeDirectory = "/home/nmarks";
-
-    # This value determines the Home Manager release that your configuration is
-    # compatible with. This helps avoid breakage when a new Home Manager release
-    # introduces backwards incompatible changes.
-    #
-    # You should not change this value, even if you update Home Manager. If you do
-    # want to update the value, then make sure to first check the Home Manager
-    # release notes.
     stateVersion = "23.05"; # Please read the comment before changing.
 
     packages = with pkgs; let
@@ -31,6 +20,7 @@ in {
         ghostty
         stremio
         julia
+        qbittorrent
 
         #gaming
         bottles
@@ -67,16 +57,9 @@ in {
         rust-bin.stable.latest.default
       ];
     # programs.mangohud.enable = true;
-
-    sessionVariables = {
-      EDITOR = "nvim";
-      VISUAL = "nvim";
-      TERMINAL = "ghostty";
-      BROWSER = "firefox";
-    };
   };
 
   programs = shared-programs;
 
-  xdg.mimeApps.defaultApplications."inode/directory" = "dolphin.desktop";
+  # xdg.mimeApps.defaultApplications."inode/directory" = "dolphin.desktop";
 }

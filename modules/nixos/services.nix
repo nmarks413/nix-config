@@ -26,9 +26,13 @@
       };
     };
 
-
     desktopManager.cosmic.enable = true;
     displayManager.cosmic-greeter.enable = true;
+
+    # Auto mount devices
+    udiskie = {
+      enable = true;
+    };
 
     # Configure keymap in X11
     xserver = {
@@ -39,7 +43,10 @@
     tailscale.enable = true;
 
     # Enable CUPS to print documents.
-    printing.enable = true;
+    printing = {
+      enable = true;
+      drivers = [pkgs.brlaser]; # Brother printer driver
+    };
 
     pipewire = {
       enable = true;
