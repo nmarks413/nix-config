@@ -1,10 +1,4 @@
-{
-  inputs,
-  config,
-  lib,
-  pkgs,
-  ...
-}: {
+_: {
   # Use homebrew to install casks and Mac App Store apps
   homebrew = {
     enable = true;
@@ -14,10 +8,6 @@
       cleanup = "none";
       upgrade = true;
     };
-
-    # taps = [
-    #   "legcord/legcord"
-    # ];
 
     brews = [
       "imagemagick"

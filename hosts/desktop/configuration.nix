@@ -1,7 +1,4 @@
 {
-  self,
-  inputs,
-  config,
   pkgs,
   userSettings,
   ...

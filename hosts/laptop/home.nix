@@ -4,7 +4,6 @@
   pkgs,
   lib,
   userSettings,
-  systemSettings,
   ...
 }: {
   programs = import ../shared/home-programs.nix {inherit inputs config pkgs lib userSettings;};
@@ -15,7 +14,7 @@
     # shell = pkgs.fish;
     stateVersion = "23.05"; # Please read the comment before changing.
 
-    # packages = pkgs.callPackage ../shared/packages.nix {};
+    packages = pkgs.callPackage ../shared/packages.nix {};
 
     sessionPath = [
       "$HOME/.emacs.d/bin"

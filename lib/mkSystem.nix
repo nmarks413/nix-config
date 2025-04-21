@@ -10,27 +10,21 @@
   darwin ? false,
   extraModules ? [],
 }: let
-  # userSettings = rec {
-  #   username = "nmarks"; # username
-  #   name = "Natalie"; # name/identifier
-  #   email = "nmarks413@gmail.com"; # email (used for certain configurations)
-  #   dotfilesDir = "~/.dotfiles"; # absolute path of the local repo
-  #   browser = "firefox"; # Default browser; must select one from ./user/app/browser/
-  #   term = "ghostty"; # Default terminal command;
-  #   font = "iosevka Nerd Font"; # Selected font
-  #   editor = "neovim"; # Default editor;
-  #   spawnEditor = "exec" + term + "- e " + editor;
-  # };
   nixindex =
     if darwin
     then inputs.nix-index-database.darwinModules.nix-index
     else inputs.nix-index-database.nixosModules.nix-index;
 
+  stylix =
+    if darwin
+    then inputs.stylix.darwinModules.stylix
+    else inputs.stylix.nixosModules.stylix;
+
   systemSettings = rec {
     host =
       if darwin
-      then "laptop"
-      else "desktop";
+      then userSettings.darwinHost
+      else userSettings.nixosHost;
 
     # The config files for this system.
 
@@ -71,9 +65,17 @@ in
           ../modules/shared/extras.nix
           ../modules/shared/nix.nix
 
+          # Link to config.nix
           hostConfig
+
+          #Set up nix-index and enable comma for easy one-shot command use
+          #https://github.com/nix-community/comma
           nixindex
           {programs.nix-index-database.comma.enable = true;}
+
+          #style programs
+          stylix
+
           hmModules.home-manager
           {
             home-manager = {
@@ -99,5 +101,6 @@ in
             };
           }
         ]
+        #Add extra modules depending on system
         ++ extraModules;
     }

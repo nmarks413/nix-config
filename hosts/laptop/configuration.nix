@@ -1,25 +1,12 @@
-{
-  inputs,
-  config,
-  pkgs,
-  lib,
-  userSettings,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
-    # ../../modules/macos/icons.nix
     ../../modules/macos/homebrew.nix
   ];
 
-  environment.systemPackages = with pkgs;
-    [
-      neovim
-      pinentry_mac
-    ]
-    ++ callPackage ../shared/packages.nix {};
-
-  # Use a custom configuration.nix location.
-  #environment.darwinConfig = "$HOME/.dotfiles/hosts/laptop";
+  environment.systemPackages = with pkgs; [
+    neovim
+    pinentry_mac
+  ];
 
   # Create /etc/zshrc that loads the nix-darwin environment.
   programs = {
