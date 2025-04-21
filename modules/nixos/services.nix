@@ -25,10 +25,9 @@
     displayManager.cosmic-greeter.enable = true;
 
     # Auto mount devices
-    udiskie = {
+    udisks2 = {
       enable = true;
     };
-
     # Configure keymap in X11
     xserver = {
       xkb.layout = "us";

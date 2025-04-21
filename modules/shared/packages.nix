@@ -1,4 +1,8 @@
-{pkgs, ...}:
+{
+  pkgs,
+  systemSettings,
+  ...
+}:
 with pkgs; [
   #general development
   just
@@ -59,7 +63,6 @@ with pkgs; [
     withMoonlight = true;
   })
   vesktop
-  signal-desktop-bin
 
   #media
   spotify
