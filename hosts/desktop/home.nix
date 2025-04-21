@@ -6,13 +6,13 @@
   zls,
   ...
 }: let
-  shared-programs = import ../shared/home-programs.nix {inherit inputs config pkgs lib;};
+  shared-programs = import ../../modules/shared/homeManagerPrograms.nix {inherit inputs config pkgs lib;};
 in {
   home = {
     stateVersion = "23.05"; # Please read the comment before changing.
 
     packages = with pkgs; let
-      shared-packages = import ../shared/packages.nix {inherit pkgs;};
+      shared-packages = import ../../modules/shared/packages.nix {inherit pkgs;};
     in
       shared-packages
       ++ [
