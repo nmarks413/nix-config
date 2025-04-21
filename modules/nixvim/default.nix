@@ -12,8 +12,6 @@
   programs.nixvim = {
     enable = true;
 
-    defaultEditor = true;
-
     globals = {
       #Set leader to space, and localleader to \
       mapleader = " ";
