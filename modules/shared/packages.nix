@@ -109,6 +109,7 @@ with pkgs; [
 
   #math
   texlive.combined.scheme-full
+  zathura
 
   #fun things
   cowsay

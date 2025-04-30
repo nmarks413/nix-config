@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-  programs.nixvim.programs = {
+  programs.nixvim.plugins = {
     lz-n = {
       enable = true;
     };

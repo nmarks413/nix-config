@@ -59,9 +59,9 @@
         reboot-windows = "sudo efibootmgr --bootnext 0000; sudo reboot -h now";
       };
     shellInit = ''
-      test -r '/Users/${userSettings.username}/.opam/opam-init/init.fish' && source '/Users/${userSettings.username}/.opam/opam-init/init.fish' > /dev/null 2> /dev/null; or true
       batman --export-env | source
     '';
+    ##test -r '/Users/${userSettings.username}/.opam/opam-init/init.fish' && source '/Users/${userSettings.username}/.opam/opam-init/init.fish' > /dev/null 2> /dev/null; or true
   };
   home-manager.enable = true;
 }

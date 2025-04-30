@@ -10,7 +10,7 @@
   imports = [
     inputs.nixvim.homeManagerModules.nixvim
     #set up nixvim
-    ../../modules/nixvim
+    # ../../modules/nixvim
   ];
   programs = import ../../modules/shared/homeManagerPrograms.nix {inherit inputs config pkgs lib userSettings systemSettings;};
 

@@ -133,8 +133,9 @@
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.defaultUserShell = pkgs.fish;
+  # users.defaultUserShell = pkgs.fish;
   users.users.${userSettings.username} = {
+    shell = pkgs.fish;
     isNormalUser = true;
     description = "Natalie Marks";
     extraGroups = ["networkmanager" "wheel" "docker"];

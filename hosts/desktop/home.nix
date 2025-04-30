@@ -12,7 +12,7 @@ in {
   imports = [
     inputs.nixvim.homeManagerModules.nixvim
     #set up nixvim
-    ../../modules/nixvim
+    # ../../modules/nixvim
   ];
   home = {
     stateVersion = "23.05"; # Please read the comment before changing.
