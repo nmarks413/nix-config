@@ -21,6 +21,7 @@ _: {
       "legcord"
       "zulip"
       "zen-browser"
+      "supertuxkart"
     ];
 
     masApps = {

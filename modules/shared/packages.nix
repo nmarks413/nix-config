@@ -63,6 +63,7 @@ with pkgs; [
 
   #media
   spotify
+  zathura
 
   #language servers
   typst-live
@@ -82,6 +83,7 @@ with pkgs; [
   lua51Packages.luarocks-nix
   codespell
   typst
+  tree-sitter
 
   #python
   pyright
