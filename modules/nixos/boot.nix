@@ -10,7 +10,7 @@
       grub = {
         enable = true;
         device = "nodev";
-        theme = pkgs.catppuccin-grub;
+        # theme = pkgs.catppuccin-grub;
         useOSProber = true;
         efiSupport = true;
       };

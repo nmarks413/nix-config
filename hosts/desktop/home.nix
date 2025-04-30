@@ -3,16 +3,22 @@
   config,
   pkgs,
   lib,
-  zls,
+  userSettings,
+  systemSettings,
   ...
 }: let
-  shared-programs = import ../../modules/shared/homeManagerPrograms.nix {inherit inputs config pkgs lib;};
+  shared-programs = import ../../modules/shared/homeManagerPrograms.nix {inherit inputs config pkgs lib userSettings systemSettings;};
 in {
+  imports = [
+    inputs.nixvim.homeManagerModules.nixvim
+    #set up nixvim
+    # ../../modules/nixvim
+  ];
   home = {
     stateVersion = "23.05"; # Please read the comment before changing.
 
     packages = with pkgs; let
-      shared-packages = import ../../modules/shared/packages.nix {inherit pkgs;};
+      shared-packages = import ../../modules/shared/packages.nix {inherit pkgs systemSettings;};
     in
       shared-packages
       ++ [
@@ -51,9 +57,10 @@ in {
         calibre
         mpv
         wireguard-tools
+        signal-desktop
       ]
       ++ [
-        zls.packages.x86_64-linux.zls
+        inputs.zls.packages.x86_64-linux.zls
         rust-bin.stable.latest.default
       ];
     # programs.mangohud.enable = true;

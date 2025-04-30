@@ -1,6 +1,7 @@
 {
   pkgs,
   userSettings,
+  systemSettings,
   ...
 }: {
   imports = [
@@ -30,9 +31,9 @@
 
     nh = {
       enable = true;
-      clean.enable = true;
-      clean.extraArgs = "--keep-since 4d --keep 3";
-      flake = "/home/nmarks/.dotfiles";
+      # clean.enable = true;
+      # clean.extraArgs = "--keep-since 4d --keep 3";
+      flake = "/home/nmarks/.dotfiles#nixosConfigurations.nixos";
     };
 
     neovim = {
@@ -132,8 +133,9 @@
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.defaultUserShell = pkgs.fish;
+  # users.defaultUserShell = pkgs.fish;
   users.users.${userSettings.username} = {
+    shell = pkgs.fish;
     isNormalUser = true;
     description = "Natalie Marks";
     extraGroups = ["networkmanager" "wheel" "docker"];
@@ -156,7 +158,7 @@
   };
 
   networking = {
-    hostName = userSettings.hostname; # Define your hostname.
+    hostName = systemSettings.host; # Define your hostname.
     # wireless.enable = true; # Enables wireless support via wpa_supplicant.
     networkmanager.enable = true;
     firewall = {

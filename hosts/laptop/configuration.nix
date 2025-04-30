@@ -6,6 +6,7 @@
   environment.systemPackages = with pkgs; [
     neovim
     pinentry_mac
+    signal-desktop-bin
   ];
 
   # Create /etc/zshrc that loads the nix-darwin environment.
