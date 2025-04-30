@@ -20,7 +20,7 @@
     # shell = pkgs.fish;
     stateVersion = "23.05"; # Please read the comment before changing.
 
-    packages = pkgs.callPackage ../../modules/shared/packages.nix {};
+    packages = pkgs.callPackage ../../modules/shared/packages.nix {inherit systemSettings;};
 
     sessionPath = [
       "$HOME/.emacs.d/bin"
