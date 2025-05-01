@@ -63,8 +63,7 @@ in
           # Enable caching for nix-index so we dont have to rebuild it
 
           #shared modules
-          ../modules/shared/extras.nix
-          ../modules/shared/nix.nix
+          ../modules/shared
 
           # Link to config.nix
           hostConfig

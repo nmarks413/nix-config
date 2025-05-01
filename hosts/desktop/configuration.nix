@@ -8,10 +8,7 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
 
-    ../../modules/nixos/nvidia.nix
-    ../../modules/nixos/boot.nix
-    ../../modules/nixos/ld.nix
-    ../../modules/nixos/services.nix
+    ../../modules/nixos
   ];
   programs = {
     gamemode.enable = true;
