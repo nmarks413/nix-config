@@ -48,6 +48,9 @@
         NSDisableAutomaticTermination = true;
         NSDocumentSaveNewDocumentsToCloud = false;
         AppleICUForce24HourTime = true;
+
+        #Autohide menu bar
+        _HIHideMenuBar = userSettings.darwinTiling;
       };
       # minimal dock
       dock = {
@@ -75,9 +78,6 @@
         FXEnableExtensionChangeWarning = false;
       };
 
-      _HIHideMenuBar = {
-        enable = userSettings.darwinTiling;
-      };
       CustomSystemPreferences = {
         "com.apple.universalaccess" = {
           closeViewTrackpadGestureZoomEnabled = 1;
