@@ -3,10 +3,6 @@
   userSettings,
   ...
 }: {
-  imports = [
-    ../../modules/macos
-  ];
-
   environment.systemPackages = with pkgs; [
     neovim
     pinentry_mac

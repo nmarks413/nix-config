@@ -20,6 +20,11 @@
     then inputs.stylix.darwinModules.stylix
     else inputs.stylix.nixosModules.stylix;
 
+  systemModuleDir =
+    if darwin
+    then "macos"
+    else "nixos";
+
   systemSettings = rec {
     inherit darwin;
     host =
@@ -69,6 +74,9 @@ in
 
           #shared modules
           ../modules/shared
+
+          #system specific modules
+          ../modules/${systemModuleDir}
 
           # Link to config.nix
           hostConfig
