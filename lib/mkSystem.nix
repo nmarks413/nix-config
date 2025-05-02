@@ -53,6 +53,11 @@ in
     systemFunc rec {
       inherit system;
 
+      #gross and ugly hack do NOT like
+      specialArgs = {
+        inherit (userSettings) darwinTiling;
+      };
+
       modules =
         [
           # Apply our overlays. Overlays are keyed by system type so we have

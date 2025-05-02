@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  userSettings,
+  ...
+}: {
   imports = [
     ../../modules/macos
   ];

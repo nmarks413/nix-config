@@ -79,6 +79,9 @@
 
     # ----- USER SETTINGS ----- #
     userSettings = rec {
+      #enable if you want to use a tiling wm on macos
+      darwinTiling = true;
+
       username = "nmarks"; # username
       name = "Natalie"; # name/identifier
       email = "nmarks413@gmail.com"; # email (used for certain configurations)

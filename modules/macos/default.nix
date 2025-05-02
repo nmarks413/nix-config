@@ -1,7 +1,13 @@
-{pkgs, ...}: {
-  imports = [
-    ./homebrew.nix
-    ./system.nix
-    # ./tiling
-  ];
+{
+  pkgs,
+  lib,
+  darwinTiling,
+  ...
+}: {
+  imports =
+    [
+      ./homebrew.nix
+      ./system.nix
+    ]
+    ++ lib.optionals darwinTiling [./tiling];
 }
