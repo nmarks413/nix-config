@@ -112,6 +112,15 @@
         "-c"
         "/run/current-system/sw/bin/sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE"
       ];
+
+      on-window-detected = [
+        #Ghostty currently renders tabs as individual processes
+        #Fix comes from https://ghostty.org/docs/help/macos-tiling-wms
+        {
+          "if".app-id = "com.mitchellh.ghostty";
+          run = ["layout tiling"];
+        }
+      ];
     };
   };
 }

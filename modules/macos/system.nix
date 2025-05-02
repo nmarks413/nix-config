@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  userSettings,
+  ...
+}: {
   #Use touchid or watch to activate sudo
   security.pam.services.sudo_local = {
     enable = true;
@@ -12,7 +16,7 @@
     stateVersion = 6;
 
     defaults = {
-      # Turn quaranite off
+      # Turn quarantine off
       LaunchServices = {
         LSQuarantine = false;
       };
@@ -69,6 +73,10 @@
         AppleShowAllExtensions = true;
         ShowPathbar = true;
         FXEnableExtensionChangeWarning = false;
+      };
+
+      _HIHideMenuBar = {
+        enable = userSettings.darwinTiling;
       };
       CustomSystemPreferences = {
         "com.apple.universalaccess" = {
