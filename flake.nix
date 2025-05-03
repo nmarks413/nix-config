@@ -62,19 +62,6 @@
       inputs.zig.overlays.default
       inputs.rust-overlay.overlays.default
       inputs.nh.overlays.default
-      #Signal desktop decided to break bc of being outdated on macos :(
-      (
-        final: prev: {
-          signal-desktop-bin = prev.signal-desktop-bin.overrideAttrs (old: {
-            version = "7.51.0";
-
-            src = prev.fetchurl {
-              url = "https://updates.signal.org/desktop/signal-desktop-mac-universal-7.51.0.dmg";
-              hash = "sha256-dUcBvKbGVsEUxOSv8u/jjuvYjHar2+zbv+/ZRS85w1w=";
-            };
-          });
-        }
-      )
     ];
 
     # ----- USER SETTINGS ----- #

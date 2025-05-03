@@ -81,6 +81,9 @@
         cmd-shift-8 = "move-node-to-workspace 8";
         cmd-shift-9 = "move-node-to-workspace 9";
 
+        cmd-h = []; # Disable "hide application"
+        cmd-alt-h = []; # Disable "hide others"
+
         # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
         alt-tab = "workspace-back-and-forth";
         # See: https://nikitabobko.github.io/AeroSpace/commands#move-workspace-to-monitor
@@ -107,6 +110,7 @@
         up = "volume up";
         shift-down = ["volume set 0" "mode main"];
       };
+      after-startup-command = ["exec-and-forget sketchybar"];
       exec-on-workspace-change = [
         "/bin/bash"
         "-c"

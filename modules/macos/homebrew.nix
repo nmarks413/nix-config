@@ -22,6 +22,8 @@ _: {
       "zulip"
       "zen-browser"
       "supertuxkart"
+
+      "mediosz/tap/swipeaerospace"
     ];
 
     masApps = {
