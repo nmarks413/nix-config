@@ -21,6 +21,10 @@
         LSQuarantine = false;
       };
 
+      WindowManager = {
+        EnableStandardClickToShowDesktop = false;
+      };
+
       NSGlobalDomain = {
         # Show extensions in finder
         AppleShowAllExtensions = true;
