@@ -120,7 +120,7 @@
     # natalie's desktop computer
     nixosConfigurations.nixos = mkSystem "nixos" {
       userSettings = users.nmarks;
-      configDir = ./hosts/desktop;
+      configDir = ./hosts/natalie/desktop;
       system = "x86_64-linux";
       extraModules = [
         nixos-cosmic.nixosModules.default
@@ -129,20 +129,20 @@
     # natalie's laptop
     darwinConfigurations."Natalies-MacBook-Air" = mkSystem "Natalies-MacBook-Air" {
       userSettings = users.nmarks;
-      configDir = ./hosts/laptop;
+      configDir = ./hosts/natalie/laptop;
       system = "aarch64-darwin";
     };
 
     # chloe's mac studio "sandwich"
     darwinConfigurations.sandwich = mkSystem "sandwich" {
       userSettings = users.paper_clover;
-      configDir = ./hosts/laptop;
+      configDir = ./hosts/chloe;
       system = "aarch64-darwin";
     };
     # chloe's macbook air "paperback"
     darwinConfigurations.paperback = mkSystem "paperback" {
       userSettings = users.paper_clover;
-      configDir = ./hosts/laptop;
+      configDir = ./hosts/chloe;
       system = "aarch64-darwin";
     };
   };
