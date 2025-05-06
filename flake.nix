@@ -95,32 +95,18 @@
       timeZone = "America/Los_Angeles";
       sexuality = "bisexual";
     };
-    users.paper_clover = rec {
-      #enable if you want to use a tiling wm on macos
-      darwinTiling = true;
-
-      username = "clo"; # username
-      name = "chloe caruso"; # name/identifier
-      email = "account@paperclover.net"; # email (used for certain configurations)
-      dotfilesDir = "~/config"; # absolute path of the local repo
-      theme = "catppuccin-mocha"; #name of theme that stylix will use
-      browser = "firefox"; # Default browser; must select one from ./user/app/browser/
-      term = "ghostty"; # Default terminal command;
-      font = "iosevka"; # Selected font
-      editor = "neovim"; # Default editor;
-      spawnEditor = "exec" + term + " -e " + editor;
-      timeZone = "America/Los_Angeles";
-      sexuality = "lesbian";
-    };
-
     mkSystem = import ./lib/mkSystem.nix {
       inherit overlays nixpkgs inputs;
     };
   in {
+    packages.aarch64-darwin.darwin-rebuild = darwin.packages.aarch64-darwin.darwin-rebuild;
+    formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
+    formatter.aarch64-darwin = nixpkgs.legacyPackages.aarch64-darwin.alejandra;
+
     # natalie's desktop computer
     nixosConfigurations.nixos = mkSystem "nixos" {
-      userSettings = users.nmarks;
-      configDir = ./hosts/natalie/desktop;
+      user = "nmarks";
+      host = "desktop";
       system = "x86_64-linux";
       extraModules = [
         nixos-cosmic.nixosModules.default
@@ -128,21 +114,21 @@
     };
     # natalie's laptop
     darwinConfigurations."Natalies-MacBook-Air" = mkSystem "Natalies-MacBook-Air" {
-      userSettings = users.nmarks;
-      configDir = ./hosts/natalie/laptop;
+      user = "nmarks";
+      host = "laptop";
       system = "aarch64-darwin";
     };
 
     # chloe's mac studio "sandwich"
     darwinConfigurations.sandwich = mkSystem "sandwich" {
-      userSettings = users.paper_clover;
-      configDir = ./hosts/chloe;
+      user = "chloe";
+      host = "sandwich";
       system = "aarch64-darwin";
     };
     # chloe's macbook air "paperback"
     darwinConfigurations.paperback = mkSystem "paperback" {
-      userSettings = users.paper_clover;
-      configDir = ./hosts/chloe;
+      user = "chloe";
+      host = "paperback";
       system = "aarch64-darwin";
     };
   };

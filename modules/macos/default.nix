@@ -1,13 +1,13 @@
 {
   pkgs,
   lib,
-  darwinTiling,
   ...
 }: {
-  imports =
-    [
-      ./homebrew.nix
-      ./system.nix
-    ]
-    ++ lib.optionals darwinTiling [./tiling];
+  imports = [
+    # sort-lines: start
+    ./mac-app-store.nix
+    ./system.nix
+    ./icons.nix
+    # sort-lines: end
+  ];
 }

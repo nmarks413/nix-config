@@ -6,17 +6,16 @@
   userSettings,
   systemSettings,
   ...
-}: {
+} @ args: {
   imports = [
     inputs.nixvim.homeManagerModules.nixvim
     #set up nixvim
     # ../../modules/nixvim
   ];
-  programs = import ../../modules/shared/homeManagerPrograms.nix {inherit inputs config pkgs lib userSettings systemSettings;};
+  programs = import ./home-programs.nix args;
 
   home = {
     inherit (userSettings) username;
-    # homeDirectory = systemSettings.homeConfig;
     # shell = pkgs.fish;
     stateVersion = "23.05"; # Please read the comment before changing.
 
