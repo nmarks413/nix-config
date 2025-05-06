@@ -4,12 +4,14 @@
   nixpkgs,
   overlays,
   inputs,
-  userSettings,
 }: name: {
+  userSettings,
   system,
-  darwin ? false,
+  configDir, # base host config
   extraModules ? [],
 }: let
+  darwin = nixpkgs.lib.strings.hasSuffix "-darwin" system;
+
   nixindex =
     if darwin
     then inputs.nix-index-database.darwinModules.nix-index
@@ -25,40 +27,36 @@
     then "macos"
     else "nixos";
 
-  systemSettings = rec {
-    inherit darwin;
-    host =
-      if darwin
-      then userSettings.darwinHost
-      else userSettings.nixosHost;
-
-    # The config files for this system.
-
-    hostConfig = ../hosts/${host}/configuration.nix;
-    homeConfig = ../hosts/${host}/home.nix;
-
-    homeDir =
-      if darwin
-      then "/Users/" + userSettings.username + "/"
-      else "/home/" + userSettings.username + "/";
-
     # NixOS vs nix-darwin functions
     systemFunc =
       if darwin
       then inputs.darwin.lib.darwinSystem
       else nixpkgs.lib.nixosSystem;
 
+
+    # The config files for this system.
+    hostConfig = configDir + "/configuration.nix";
+    homeConfig = configDir + "/home.nix";
+
     hmModules =
       if darwin
       then inputs.home-manager.darwinModules
       else inputs.home-manager.nixosModules;
+
+  systemSettings = rec {
+    inherit darwin;
+
+    homeDir =
+      if darwin
+      then "/Users/" + userSettings.username + "/"
+      else "/home/" + userSettings.username + "/";
+
   };
 in
-  with systemSettings;
-    systemFunc rec {
+    systemFunc {
       inherit system;
 
-      #gross and ugly hack do NOT like
+      # TODO: gross and ugly hack do NOT like
       specialArgs = {
         inherit (userSettings) darwinTiling;
       };
@@ -70,23 +68,21 @@ in
           # the overlays are available globally.
           {nixpkgs.overlays = overlays;}
 
-          # Enable caching for nix-index so we dont have to rebuild it
-
-          #shared modules
+          # Shared modules
           ../modules/shared
 
-          #system specific modules
+          # System specific modules
           ../modules/${systemModuleDir}
 
-          # Link to config.nix
+          # Link to configuration.nix
           hostConfig
 
-          #Set up nix-index and enable comma for easy one-shot command use
-          #https://github.com/nix-community/comma
+          # Set up nix-index and enable comma for easy one-shot command use
+          # https://github.com/nix-community/comma
           nixindex
           {programs.nix-index-database.comma.enable = true;}
 
-          #style programs
+          # Themes for all programs
           stylix
 
           hmModules.home-manager
@@ -99,7 +95,7 @@ in
               users.${userSettings.username} = homeConfig;
             };
 
-            users.users.${userSettings.username}.home = homeDir;
+            users.users.${userSettings.username}.home = systemSettings.homeDir;
           }
 
           # We expose some extra arguments so that our modules can parameterize
@@ -114,6 +110,6 @@ in
             };
           }
         ]
-        #Add extra modules depending on system
+        # Add extra modules specified from config
         ++ extraModules;
     }
