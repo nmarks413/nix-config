@@ -1,21 +1,25 @@
 {
+  config,
   pkgs,
-  userSettings,
+  lib,
   ...
-}: {
-  #Use touchid or watch to activate sudo
+}: let
+  tiling = config.shared.darwin.tiling.enable;
+in {
+  # Use touchid or watch to activate sudo
   security.pam.services.sudo_local = {
     enable = true;
     reattach = true;
     touchIdAuth = true;
   };
-  # set some OSX preferences that I always end up hunting down and changing.
+
+  # Set some OSX preferences that I always end up hunting down and changing.
   system = {
     # Used for backwards compatibility, please read the changelog before changing.
     # $ darwin-rebuild changelog
     stateVersion = 6;
 
-    defaults = {
+    defaults = lib.mkDefault {
       # Turn quarantine off
       LaunchServices = {
         LSQuarantine = false;
@@ -53,14 +57,14 @@
         NSDocumentSaveNewDocumentsToCloud = false;
         AppleICUForce24HourTime = true;
 
-        #Autohide menu bar
-        _HIHideMenuBar = userSettings.darwinTiling;
+        # Autohide menu bar for tiling window manager
+        _HIHideMenuBar = tiling;
       };
       # minimal dock
       dock = {
         autohide = true;
-        #instant hide and show
-        autohide-time-modifier = 0.0;
+        autohide-time-modifier = 0.0; # make animation instant
+        autohide-delay = 0.0; # remove delay when touching bottom of screen
         show-process-indicators = true;
 
         expose-group-apps = true;
@@ -80,13 +84,12 @@
         AppleShowAllExtensions = true;
         ShowPathbar = true;
         FXEnableExtensionChangeWarning = false;
+        # TODO: default to list view and not saving .DS_Store
       };
-
       CustomSystemPreferences = {
         "com.apple.universalaccess" = {
           closeViewTrackpadGestureZoomEnabled = 1;
         };
-
         "com.apple.symbolichotkeys" = {
           AppleSymbolicHotKeys = {
             "64" = {
@@ -96,7 +99,6 @@
         };
       };
     };
-
     # Bind caps to escape for better normal mode stuff
     keyboard = {
       enableKeyMapping = true;

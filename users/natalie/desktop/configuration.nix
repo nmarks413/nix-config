@@ -1,7 +1,7 @@
 {
   pkgs,
-  userSettings,
-  systemSettings,
+  user,
+  host,
   ...
 }: {
   imports = [
@@ -16,7 +16,7 @@
       enable = true;
       # Certain features, including CLI integration and system authentication support,
       # require enabling PolKit integration on some desktop environments (e.g. Plasma).
-      polkitPolicyOwners = [userSettings.username];
+      polkitPolicyOwners = [user.username];
     };
 
     noisetorch.enable = true;
@@ -75,7 +75,7 @@
     libvirtd.enable = true;
   };
 
-  nix.settings.trusted-users = ["root" userSettings.username];
+  nix.settings.trusted-users = ["root" user.username];
   systemd = {
     targets = {
       sleep.enable = false;
@@ -129,10 +129,10 @@
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   # users.defaultUserShell = pkgs.fish;
-  users.users.${userSettings.username} = {
+  users.users.${user.username} = {
     shell = pkgs.fish;
     isNormalUser = true;
-    description = "Natalie Marks";
+    description = user.name;
     extraGroups = ["networkmanager" "wheel" "docker"];
     # openssh.authorizedKeys.keyFiles = ["~/.ssh/id_ed25519.pub"];
     packages = with pkgs; [
@@ -153,7 +153,7 @@
   };
 
   networking = {
-    hostName = systemSettings.host; # Define your hostname.
+    hostName = host.name; # Define your hostname.
     # wireless.enable = true; # Enables wireless support via wpa_supplicant.
     networkmanager.enable = true;
     firewall = {

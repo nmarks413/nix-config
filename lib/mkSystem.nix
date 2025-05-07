@@ -4,116 +4,149 @@
   nixpkgs,
   overlays,
   inputs,
-  userSettings,
 }: name: {
-  system,
-  darwin ? false,
+  user, # ./users/{name}
+  host ? null, # ./users/{name}/{host} (optional)
+  system, # arch-os
   extraModules ? [],
 }: let
-  nixindex =
-    if darwin
-    then inputs.nix-index-database.darwinModules.nix-index
-    else inputs.nix-index-database.nixosModules.nix-index;
+  inherit (builtins) pathExists;
+  darwin = nixpkgs.lib.strings.hasSuffix "-darwin" system;
+  getInputModule = a: b:
+    inputs.${
+      a
+    }.${
+      if darwin
+      then "darwinModules"
+      else "nixosModules"
+    }.${
+      b
+    };
 
-  stylix =
+  # NixOS vs nix-darwin functions
+  systemFunc =
     if darwin
-    then inputs.stylix.darwinModules.stylix
-    else inputs.stylix.nixosModules.stylix;
+    then inputs.darwin.lib.darwinSystem
+    else nixpkgs.lib.nixosSystem;
 
-  systemModuleDir =
-    if darwin
-    then "macos"
-    else "nixos";
+  userDir = ../users + "/${user}";
+  userConfig = import (userDir + "/user.nix");
+  hostDir = userDir + "/${host}";
 
+  hostConfigPath = hostDir + "/configuration.nix";
+  userConfigPath = userDir + "/configuration.nix";
+  hostHomePath = hostDir + "/home.nix";
+  userHomePath = userDir + "/home.nix";
+
+  # Arguments passed to all module files
+  args = {
+    inherit inputs;
+    currentSystem = system;
+    # Details about the host machine
+    host = {
+      inherit darwin name;
+    };
+    user = ({
+        # This acts as formal documentation for what is allowed in user.nix
+        username, # unix username
+        name, # your display name
+        email, # for identity in programs such as git
+        dotfilesDir, # location to `../.`
+        timeZone ? "America/Los_Angeles",
+        # Stylix/Theming
+        theme ? null, # theme name for stylix
+        sexuality ? null, # pride flag for hyfetch
+        font ? null, # font to use
+        term, # preferred $TERM
+        editor, # preferred $EDITOR
+        browser ? null, # preferred $BROWSER
+      } @ user:
+        user)
+    userConfig;
+  };
   systemSettings = rec {
     inherit darwin;
-    host =
+    homeDir = "/${
       if darwin
-      then userSettings.darwinHost
-      else userSettings.nixosHost;
-
-    # The config files for this system.
-
-    hostConfig = ../hosts/${host}/configuration.nix;
-    homeConfig = ../hosts/${host}/home.nix;
-
-    homeDir =
-      if darwin
-      then "/Users/" + userSettings.username + "/"
-      else "/home/" + userSettings.username + "/";
-
-    # NixOS vs nix-darwin functions
-    systemFunc =
-      if darwin
-      then inputs.darwin.lib.darwinSystem
-      else nixpkgs.lib.nixosSystem;
-
-    hmModules =
-      if darwin
-      then inputs.home-manager.darwinModules
-      else inputs.home-manager.nixosModules;
+      then "Users"
+      else "home"
+    }/${userConfig.username}";
   };
 in
-  with systemSettings;
-    systemFunc rec {
-      inherit system;
+  systemFunc {
+    inherit system;
 
-      #gross and ugly hack do NOT like
-      specialArgs = {
-        inherit (userSettings) darwinTiling;
-      };
+    modules =
+      builtins.filter (f: f != null)
+      [
+        # Apply our overlays. Overlays are keyed by system type so we have
+        # to go through and apply our system type. We do this first so
+        # the overlays are available globally.
+        {nixpkgs.overlays = overlays;}
 
-      modules =
-        [
-          # Apply our overlays. Overlays are keyed by system type so we have
-          # to go through and apply our system type. We do this first so
-          # the overlays are available globally.
-          {nixpkgs.overlays = overlays;}
+        # Modules shared between nix-darwin and NixOS
+        ../modules/shared
+        # Modules for the specific OS
+        (
+          if darwin
+          then ../modules/macos
+          else ../modules/nixos
+        )
 
-          # Enable caching for nix-index so we dont have to rebuild it
+        # The user-wide configuration.nix
+        (
+          if pathExists userConfigPath
+          then userConfigPath
+          else null
+        )
+        # The host-wide configuration.nix
+        (
+          if host != null && pathExists hostConfigPath
+          then hostConfigPath
+          else null
+        )
 
-          #shared modules
-          ../modules/shared
+        # Set up nix-index and enable comma for easy one-shot command use
+        # https://github.com/nix-community/comma
+        (getInputModule "nix-index-database" "nix-index")
+        {programs.nix-index-database.comma.enable = true;}
 
-          #system specific modules
-          ../modules/${systemModuleDir}
+        # Themes for all programs
+        (getInputModule "stylix" "stylix")
 
-          # Link to config.nix
-          hostConfig
+        # Home manager
+        (getInputModule "home-manager" "home-manager")
+        {
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            backupFileExtension = "hm-backup";
+            # Arguments passed to all module files
+            extraSpecialArgs =
+              args
+              // {
+                mainHomeImports = builtins.filter (f: f != null) [
+                  (
+                    if pathExists userHomePath
+                    then userHomePath
+                    else null
+                  )
+                  (
+                    if host != null && pathExists hostHomePath
+                    then hostHomePath
+                    else null
+                  )
+                ];
+              };
+            # can't find how to make this an array without the param
+            users.${userConfig.username} = ../modules/home-manager.nix;
+          };
+          users.users.${userConfig.username}.home = systemSettings.homeDir;
+        }
 
-          #Set up nix-index and enable comma for easy one-shot command use
-          #https://github.com/nix-community/comma
-          nixindex
-          {programs.nix-index-database.comma.enable = true;}
-
-          #style programs
-          stylix
-
-          hmModules.home-manager
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              backupFileExtension = "hm-backup";
-              extraSpecialArgs = {inherit inputs userSettings systemSettings;};
-              users.${userSettings.username} = homeConfig;
-            };
-
-            users.users.${userSettings.username}.home = homeDir;
-          }
-
-          # We expose some extra arguments so that our modules can parameterize
-          # better based on these values.
-          {
-            config._module.args = {
-              currentSystem = system;
-              # currentSystemName = name;
-              # currentSystemUser = userSettings.username;
-
-              inherit inputs userSettings systemSettings;
-            };
-          }
-        ]
-        #Add extra modules depending on system
-        ++ extraModules;
-    }
+        # Arguments passed to all module files
+        {config._module.args = args;}
+      ]
+      # Add extra modules specified from config
+      ++ extraModules;
+  }
