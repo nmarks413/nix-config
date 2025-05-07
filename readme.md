@@ -1,10 +1,35 @@
 # nix config
 
-meow.
+this setup allows natalie and chloe to share common configuration between their machines, but also share useful modules between each other.
+
+```
+lib/ # reusable functions
+modules/ # reusable modules
+    +-- macos/   # nix-darwin configurations
+    +-- nixos/   # linux configurations
+    +-- nixvim/  # neovim configurations
+    +-- shared/  # shared between nixos-rebuild & nixos-rebuild
+    +-- home-manager.nix # home program presets
+users/
+    +-- chloe/
+    |   +-- user.nix               # info about her
+    |   +-- configuration.nix      # for all hosts
+    |   +-- home.nix               # for all hosts
+    |   +-- sandwich/
+    |   |   +-- configuration.nix  # per host
+    |   |   +-- home.nix
+    |   +-- paperback/
+    |       ...
+    +-- natalie/
+        +-- user.nix               # info about her
+        ...
+```
+
+A new machine can be added by adding a new definition in `flake.nix`. Note that the user and host `configuration.nix` and `home.nix` files are 
 
 ## macOS installation instructions
 
-Install Nix using the upstream nix (Pick "no" then "yes):
+Install Nix using the upstream Nix (Pick "no" then "yes):
 
 ```
 curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | \

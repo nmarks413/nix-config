@@ -1,18 +1,18 @@
 # Configuration applied to all of chloe's machines
-{
-  pkgs,
-  userSettings,
-  ...
-}: {
+{ pkgs, ... }: {
+  # packages for all machines
   environment.systemPackages = with pkgs; [
     neovim
   ];
+  # configuration for shared modules.
+  # all custom options in 'shared' for clarity.
   shared.darwin = {
     macAppStoreApps = [
       "adguard"
       "magnet"
     ];
   };
+  # system preferences
   system.defaults = {
     NSGlobalDomain = {
       KeyRepeat = 1;

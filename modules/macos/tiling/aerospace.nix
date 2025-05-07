@@ -1,6 +1,6 @@
-{pkgs, ...}: {
+{config,pkgs, ...}: {
   services.aerospace = {
-    enable = true;
+    enable = config.shared.darwin.tiling.enable;
     settings = {
       # Normalizations. See: https://nikitabobko.github.io/AeroSpace/guide#normalization
       enable-normalization-flatten-containers = true;

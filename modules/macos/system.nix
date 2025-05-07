@@ -3,7 +3,9 @@
   pkgs,
   lib,
   ...
-}: {
+}: let
+  tiling = config.shared.darwin.tiling.enable;
+in {
   # Use touchid or watch to activate sudo
   security.pam.services.sudo_local = {
     enable = true;
@@ -51,8 +53,8 @@
         NSDocumentSaveNewDocumentsToCloud = false;
         AppleICUForce24HourTime = true;
 
-        #Autohide menu bar
-        #_HIHideMenuBar = config.shared.darwin.tiling;
+        # Autohide menu bar for tiling window manager
+        _HIHideMenuBar = tiling;
       };
       # minimal dock
       dock = {

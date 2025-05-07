@@ -2,7 +2,6 @@
   description = "New Modular flake!";
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
-    # nixpkgs.url = "github:NixOS/nixpkgs/master";
     nixpkgs-stable.url = "nixpkgs/nixos-23.11";
 
     home-manager.url = "github:nix-community/home-manager/master";
@@ -77,35 +76,19 @@
       )
     ];
 
-    # ----- USER SETTINGS ----- #
-    users.nmarks = rec {
-      #enable if you want to use a tiling wm on macos
-      darwinTiling = true;
-
-      username = "nmarks"; # username
-      name = "Natalie"; # name/identifier
-      email = "nmarks413@gmail.com"; # email (used for certain configurations)
-      dotfilesDir = "~/.dotfiles"; # absolute path of the local repo
-      theme = "catppuccin-mocha"; #name of theme that stylix will use
-      browser = "firefox"; # Default browser; must select one from ./user/app/browser/
-      term = "ghostty"; # Default terminal command;
-      font = "iosevka"; # Selected font
-      editor = "neovim"; # Default editor;
-      spawnEditor = "exec" + term + " -e " + editor;
-      timeZone = "America/Los_Angeles";
-      sexuality = "bisexual";
-    };
     mkSystem = import ./lib/mkSystem.nix {
       inherit overlays nixpkgs inputs;
     };
-  in {
+  in rec {
+    # "nix run .#darwin-rebuild"
     packages.aarch64-darwin.darwin-rebuild = darwin.packages.aarch64-darwin.darwin-rebuild;
+    # "nix fmt ."
     formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
     formatter.aarch64-darwin = nixpkgs.legacyPackages.aarch64-darwin.alejandra;
 
     # natalie's desktop computer
     nixosConfigurations.nixos = mkSystem "nixos" {
-      user = "nmarks";
+      user = "natalie";
       host = "desktop";
       system = "x86_64-linux";
       extraModules = [
@@ -114,7 +97,7 @@
     };
     # natalie's laptop
     darwinConfigurations."Natalies-MacBook-Air" = mkSystem "Natalies-MacBook-Air" {
-      user = "nmarks";
+      user = "natalie";
       host = "laptop";
       system = "aarch64-darwin";
     };
@@ -131,5 +114,13 @@
       host = "paperback";
       system = "aarch64-darwin";
     };
+
+    # generate checks for "nix flake check --all-systems --no-build"
+    checks.aarch64-darwin = builtins.listToAttrs (builtins.map (name: let
+      d = darwinConfigurations.${name}.system;
+    in {
+      name = "darwinConfiguration-" + d.name;
+      value = d;
+    }) (builtins.attrNames darwinConfigurations));
   };
 }

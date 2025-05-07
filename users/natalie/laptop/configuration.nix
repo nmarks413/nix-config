@@ -1,8 +1,4 @@
-{
-  pkgs,
-  userSettings,
-  ...
-}: {
+{pkgs, ...}: {
   environment.systemPackages = with pkgs; [
     neovim
     pinentry_mac

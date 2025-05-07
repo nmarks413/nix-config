@@ -14,5 +14,5 @@
 
   # Default terminal command. NOTE: ghostty is not installed for you
   term = "ghostty"; # preferred $TERMINAL
-  editor = "nvim";  # preferred $EDITOR
+  editor = "nvim"; # preferred $EDITOR
 }

@@ -44,24 +44,25 @@
     currentSystem = system;
     # Details about the host machine
     host = {
-      inherit darwin;
+      inherit darwin name;
     };
     user = ({
-      # This acts as formal documentation for what is allowed in user.nix
-      username, # unix username
-      name, # your display name
-      email, # for identity in programs such as git
-      dotfilesDir, # location to `../.`
-      timeZone ? "America/Los_Angeles",
-
-      # Stylix/Theming
-      theme ? null, # theme name for stylix
-      sexuality ? null, # pride flag for hyfetch
-
-      term, # preferred $TERM
-      editor, # preferred $EDITOR
-      browser ? null, # preferred $BROWSER
-    }@user: user) userConfig;
+        # This acts as formal documentation for what is allowed in user.nix
+        username, # unix username
+        name, # your display name
+        email, # for identity in programs such as git
+        dotfilesDir, # location to `../.`
+        timeZone ? "America/Los_Angeles",
+        # Stylix/Theming
+        theme ? null, # theme name for stylix
+        sexuality ? null, # pride flag for hyfetch
+        font ? null, # font to use
+        term, # preferred $TERM
+        editor, # preferred $EDITOR
+        browser ? null, # preferred $BROWSER
+      } @ user:
+        user)
+    userConfig;
   };
   systemSettings = rec {
     inherit darwin;

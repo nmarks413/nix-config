@@ -1,6 +1,6 @@
-{pkgs, ...}: {
+{config,pkgs, ...}: {
   services.sketchybar = {
-    enable = true;
+    enable = config.shared.darwin.tiling.enable;
     config = ''
       # This is a demo config to showcase some of the most important commands.
       # It is meant to be changed and configured, as it is intentionally kept sparse.

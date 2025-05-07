@@ -69,7 +69,8 @@ in {
         }
       ];
       shellAliases =
-        { } // lib.optionalAttrs (!host.darwin) {
+        {}
+        // lib.optionalAttrs (!host.darwin) {
           reboot-windows = "sudo efibootmgr --bootnext 0000; sudo reboot -h now";
         };
       shellInit = ''
