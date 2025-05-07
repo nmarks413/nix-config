@@ -1,4 +1,5 @@
 {
+  inputs,
   pkgs,
   userSettings,
   ...
@@ -13,6 +14,7 @@
     iosevka
     nerd-fonts.symbols-only
     nerd-fonts.iosevka
+    inputs.apple-fonts.packages.${pkgs.system}.sf-pro
   ];
 
   # Set your time zone.

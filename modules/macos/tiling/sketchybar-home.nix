@@ -1,5 +1,11 @@
-{pkgs, ...}: let
-  folder = "../../../files/sketchybar/";
+{
+  pkgs,
+  config,
+  ...
+}: let
+  # folder = "${config.home.homeDirectory}.dotfiles/files/sketchybar";
+  # folder = "~/.dotfiles/files/sketchybar";
+  folder = ../../../files/sketchybar;
 in {
   home.file = {
     sketchybarrc = {
@@ -27,16 +33,16 @@ in {
         # launchctl unload -F /System/Library/LaunchAgents/com.apple.OSDUIHelper.plist > /dev/null 2>&1 &
 
         # Setting up the general bar appearance and default values
-        ${pkgs.sketchybar}/bin/sketchybar --bar     height=50                                         \
+        ${pkgs.sketchybar}/bin/sketchybar --bar     height=40                                         \
                                                     color=$BAR_COLOR                                  \
                                                     shadow=off                                        \
                                                     position=top                                      \
                                                     sticky=on                                         \
-                                                    padding_right=7                                   \
-                                                    padding_left=7                                    \
+                                                    padding_right=0                                   \
+                                                    padding_left=0                                    \
                                                     corner_radius=12                                  \
-                                                    y_offset=20                                       \
-                                                    margin=40                                         \
+                                                    y_offset=0                                        \
+                                                    margin=2                                          \
                                                     blur_radius=0                                     \
                                                     notch_width=0                                     \
                                           --default updates=when_shown                                \
@@ -83,7 +89,7 @@ in {
     icons = {
       executable = true;
       target = ".config/sketchybar/icons.sh";
-      text = builtins.readFile "${folder}/executable_icons.sh";
+      source = folder + /icons.sh;
     };
     colors = {
       executable = true;
@@ -120,12 +126,12 @@ in {
     items_apple = {
       executable = true;
       target = ".config/sketchybar/items/apple.sh";
-      text = builtins.readFile "${folder}/items/executable_apple.sh";
+      source = folder + /items/executable_apple.sh;
     };
     items_brew = {
       executable = true;
       target = ".config/sketchybar/items/brew.sh";
-      text = builtins.readFile "${folder}/items/executable_brew.sh";
+      source = folder + /items/executable_brew.sh;
     };
     items_calendar = {
       executable = true;
@@ -149,12 +155,12 @@ in {
     items_cpu = {
       executable = true;
       target = ".config/sketchybar/items/cpu.sh";
-      text = builtins.readFile "${folder}/items/executable_cpu.sh";
+      source = folder + /items/executable_cpu.sh;
     };
     items_divider = {
       executable = true;
       target = ".config/sketchybar/items/divider.sh";
-      text = builtins.readFile "${folder}/items/executable_divider.sh";
+      source = folder + /items/executable_divider.sh;
     };
     items_front_app = {
       executable = true;
@@ -165,7 +171,7 @@ in {
         sketchybar --add       event            window_focus                  \
                    --add       event            windows_on_spaces             \
                    --add       item             system.aerospace left         \
-                   --set       system.aerospace script="$PLUGIN_DIR/yabai.sh" \
+                   --set       system.aerospace script="$PLUGIN_DIR/aerospace.sh" \
                                                 icon.font="$FONT:Bold:16.0"   \
                                                 label.drawing=off             \
                                                 icon.width=30                 \
@@ -190,7 +196,7 @@ in {
     items_github = {
       executable = true;
       target = ".config/sketchybar/items/github.sh";
-      text = builtins.readFile "${folder}/items/executable_github.sh";
+      source = folder + /items/executable_github.sh;
     };
     items_spaces = {
       executable = true;
@@ -216,7 +222,7 @@ in {
                                               background.drawing=on                             \
                                               script="$PLUGIN_DIR/aerospace.sh $sid"            \
                                               click_script="aerospace workspace $sid"           \
-                                              label.font="JetBrainsMono Nerd Font:Regular:16.0" \
+                                              label.font="Iosevka Nerd Font:Regular:16.0" \
                                               label.padding_right=33                            \
                                               label.background.height=26                        \
                                               label.background.drawing=on                       \
@@ -225,7 +231,7 @@ in {
         done
         ${pkgs.sketchybar}/bin/sketchybar --add item      separator left                                   \
                                           --set separator icon=                                           \
-                                                          icon.font="JetBrainsMono Nerd Font:Regular:16.0" \
+                                                          icon.font="Iosevka Nerd Font:Regular:16.0" \
                                                           background.padding_left=26                       \
                                                           background.padding_right=15                      \
                                                           label.drawing=off                                \
@@ -236,7 +242,7 @@ in {
     items_spotify = {
       executable = true;
       target = ".config/sketchybar/items/spotify.sh";
-      text = builtins.readFile "${folder}/items/executable_spotify.sh";
+      source = folder + /items/executable_spotify.sh;
     };
     items_volume = {
       executable = true;
@@ -277,32 +283,32 @@ in {
     plugins_brew = {
       executable = true;
       target = ".config/sketchybar/plugins/brew.sh";
-      text = builtins.readFile "${folder}/plugins/executable_brew.sh";
+      source = folder + /plugins/executable_brew.sh;
     };
     plugins_calendar = {
       executable = true;
       target = ".config/sketchybar/plugins/calendar.sh";
-      text = builtins.readFile "${folder}/plugins/executable_calendar.sh";
+      source = folder + /plugins/executable_calendar.sh;
     };
     plugins_github = {
       executable = true;
       target = ".config/sketchybar/plugins/github.sh";
-      text = builtins.readFile "${folder}/plugins/executable_github.sh";
+      source = folder + /plugins/executable_github.sh;
     };
     plugins_icon_map = {
       executable = true;
       target = ".config/sketchybar/plugins/icon_map.sh";
-      text = builtins.readFile "${folder}/plugins/executable_icon_map.sh";
+      source = folder + /plugins/executable_icon_map.sh;
     };
     plugins_space = {
       executable = true;
       target = ".config/sketchybar/plugins/space.sh";
-      text = builtins.readFile "${folder}/plugins/executable_space.sh";
+      source = folder + /plugins/executable_space.sh;
     };
     plugins_spotify = {
       executable = true;
       target = ".config/sketchybar/plugins/spotify.sh";
-      text = builtins.readFile "${folder}/plugins/executable_spotify.sh";
+      source = folder + /plugins/executable_spotify.sh;
     };
     plugins_volume = {
       executable = true;
@@ -347,15 +353,10 @@ in {
         fi
       '';
     };
-    plugins_yabai = {
-      executable = true;
-      target = ".config/sketchybar/plugins/yabai.sh";
-      text = builtins.readFile "${folder}/plugins/executable_yabai.sh";
-    };
     plugins_zen = {
       executable = true;
       target = ".config/sketchybar/plugins/zen.sh";
-      text = builtins.readFile "${folder}/plugins/executable_zen.sh";
+      source = folder + /plugins/executable_zen.sh;
     };
     plugins_aerospace = {
       executable = true;

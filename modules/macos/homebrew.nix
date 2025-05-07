@@ -22,6 +22,7 @@ _: {
       "zulip"
       "zen-browser"
       "supertuxkart"
+      "sf-symbols"
 
       "mediosz/tap/swipeaerospace"
     ];

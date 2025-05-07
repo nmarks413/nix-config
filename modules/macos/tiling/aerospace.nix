@@ -110,7 +110,10 @@
         up = "volume up";
         shift-down = ["volume set 0" "mode main"];
       };
-      after-startup-command = ["exec-and-forget sketchybar"];
+      after-startup-command = [
+        "exec-and-forget sketchybar"
+        "exec-and-forget open /Applications/SwipeAeroSpace.app"
+      ];
       exec-on-workspace-change = [
         "/bin/bash"
         "-c"
