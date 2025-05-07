@@ -18,10 +18,10 @@
     };
 
   stylix = {
-    enable = false;
+    enable = user ? "theme";
     base16Scheme = "${pkgs.base16-schemes}/share/themes/${user.theme}.yaml";
 
-    fonts = {
+    fonts = lib.optionalAttrs (user ? "font") {
       serif = {
         package = pkgs.nerd-fonts.${user.font};
         name = "${user.font} Nerd Font";

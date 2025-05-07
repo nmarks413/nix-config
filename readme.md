@@ -8,7 +8,7 @@ modules/ # reusable modules
     +-- macos/   # nix-darwin configurations
     +-- nixos/   # linux configurations
     +-- nixvim/  # neovim configurations
-    +-- shared/  # shared between nixos-rebuild & nixos-rebuild
+    +-- shared/  # shared between nixos-rebuild & darwin-rebuild
     +-- home-manager.nix # home program presets
 users/
     +-- chloe/
@@ -36,30 +36,30 @@ curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix 
   sh -s -- install
 ```
 
-Open a new shell and clone the repository:
+While this installs, now is a good time to perform manual setup steps:
+
+- Setup your SSH keys in `~/.ssh`
+- Configure the device hostname in System Settings in
+    - About -> Name
+    - General -> Sharing -> Local Hostname
+- Make sure you're logged into iCloud / Mac App Store
+- `xcode-select --install` to make sure Git and other utilities are available.
+- Optional: Disable app verification with `sudo spctl --master-disable`, then, go to System Settings -> Privacy to allow unsigned apps.
+
+Once Nix is installed, open a new shell and clone the repository:
 
 ```
-# Install git + other command tools. (Used by many programs)
-xcode-select --install
-
 # Clone via HTTPs
 git clone https://git.paperclover.net/clo/config.git
 # With SSH Authentication
 git clone git@git.paperclover.net:clo/config
 ```
 
-Setup `nix-darwin`
-```
-# Tell nix-darwin where the flake is at.
-sudo mkdir /etc/nix-darwin
-sudo ln -s $(realpath flake.nix) /etc/nix-darwin/
+The location of the cloned repository must match what is in your `user.nix` file. 
 
-# Enable configuration.
-nix run .#darwin-rebuild switch
+Setup `nix-darwin` using the `switch` helper:
+
+```
+./switch
 ```
 
-Additionally, it may be helpful to disable the unsigned app popup.
-```
-sudo spctl --master-disable
-# then, go to System Settings -> Privacy to allow unsigned apps.
-```

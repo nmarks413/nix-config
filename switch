@@ -8,5 +8,5 @@ fi;
 if command -v nh > /dev/null; then
   nh $nh_subcommand switch .
 else
-  $fallback_command switch
+  $fallback_command -- switch --flake .
 fi
