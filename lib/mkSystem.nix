@@ -6,7 +6,7 @@
   inputs,
 }: name: {
   user, # ./users/{name}
-  host ? null, # ./users/{name}/{host} (optional)
+  host, # ./users/{name}/{host} (optional)
   system, # arch-os
   extraModules ? [],
 }: let
@@ -102,9 +102,7 @@ in
         (pathOrNull userConfigPath)
         # The host-wide configuration.nix
         (
-          if host != null
-          then pathOrNull hostConfigPath
-          else null
+          pathOrNull hostConfigPath
         )
 
         # Set up nix-index and enable comma for easy one-shot command use
@@ -131,9 +129,7 @@ in
                     pathOrNull userHomePath
                   )
                   (
-                    if host != null
-                    then pathOrNull hostHomePath
-                    else null
+                    pathOrNull hostHomePath
                   )
                   #Can't have conditional import path
                   ../modules/macos/tiling/sketchybar-home.nix
