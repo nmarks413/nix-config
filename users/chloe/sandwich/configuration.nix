@@ -1,8 +1,8 @@
-# Configuration applied to all of chloe's machines
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
     ffmpeg
     ripgrep
+    reaper
   ];
   shared.darwin = {
     macAppStoreApps = [
