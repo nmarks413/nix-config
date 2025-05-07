@@ -38,6 +38,11 @@
   hostHomePath = hostDir + "/home.nix";
   userHomePath = userDir + "/home.nix";
 
+  pathOrNull = a:
+    if pathExists a
+    then a
+    else null;
+
   # Arguments passed to all module files
   args = {
     inherit inputs;
@@ -94,15 +99,11 @@ in
         )
 
         # The user-wide configuration.nix
-        (
-          if pathExists userConfigPath
-          then userConfigPath
-          else null
-        )
+        (pathOrNull userConfigPath)
         # The host-wide configuration.nix
         (
-          if host != null && pathExists hostConfigPath
-          then hostConfigPath
+          if host != null
+          then pathOrNull hostConfigPath
           else null
         )
 
@@ -127,15 +128,15 @@ in
               // {
                 mainHomeImports = builtins.filter (f: f != null) [
                   (
-                    if pathExists userHomePath
-                    then userHomePath
-                    else null
+                    pathOrNull userHomePath
                   )
                   (
-                    if host != null && pathExists hostHomePath
-                    then hostHomePath
+                    if host != null
+                    then pathOrNull hostHomePath
                     else null
                   )
+                  #Can't have conditional import path
+                  ../modules/macos/tiling/sketchybar-home.nix
                 ];
               };
             # can't find how to make this an array without the param

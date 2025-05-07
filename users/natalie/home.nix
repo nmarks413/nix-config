@@ -9,6 +9,7 @@
     bat.enable = true;
     hyfetch.enable = true;
     direnv.enable = true;
+    fish.enable = true;
     # sort-lines:end
   };
 

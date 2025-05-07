@@ -1,4 +1,8 @@
-{config,pkgs, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   services.aerospace = {
     enable = config.shared.darwin.tiling.enable;
     settings = {
@@ -60,34 +64,34 @@
         alt-equal = "resize smart +50";
 
         # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
-        cmd-1 = "workspace 1";
-        cmd-2 = "workspace 2";
-        cmd-3 = "workspace 3";
-        cmd-4 = "workspace 4";
-        cmd-5 = "workspace 5";
-        cmd-6 = "workspace 6";
-        cmd-7 = "workspace 7";
-        cmd-8 = "workspace 8";
-        cmd-9 = "workspace 9";
+        alt-1 = "workspace 1";
+        alt-2 = "workspace 2";
+        alt-3 = "workspace 3";
+        alt-4 = "workspace 4";
+        alt-5 = "workspace 5";
+        alt-6 = "workspace 6";
+        alt-7 = "workspace 7";
+        alt-8 = "workspace 8";
+        alt-9 = "workspace 9";
 
         # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
-        cmd-shift-1 = "move-node-to-workspace 1";
-        cmd-shift-2 = "move-node-to-workspace 2";
-        cmd-shift-3 = "move-node-to-workspace 3";
-        cmd-shift-4 = "move-node-to-workspace 4";
-        cmd-shift-5 = "move-node-to-workspace 5";
-        cmd-shift-6 = "move-node-to-workspace 6";
-        cmd-shift-7 = "move-node-to-workspace 7";
-        cmd-shift-8 = "move-node-to-workspace 8";
-        cmd-shift-9 = "move-node-to-workspace 9";
+        alt-shift-1 = "move-node-to-workspace 1";
+        alt-shift-2 = "move-node-to-workspace 2";
+        alt-shift-3 = "move-node-to-workspace 3";
+        alt-shift-4 = "move-node-to-workspace 4";
+        alt-shift-5 = "move-node-to-workspace 5";
+        alt-shift-6 = "move-node-to-workspace 6";
+        alt-shift-7 = "move-node-to-workspace 7";
+        alt-shift-8 = "move-node-to-workspace 8";
+        alt-shift-9 = "move-node-to-workspace 9";
 
         cmd-h = []; # Disable "hide application"
         cmd-alt-h = []; # Disable "hide others"
 
-        # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
-        alt-tab = "workspace-back-and-forth";
-        # See: https://nikitabobko.github.io/AeroSpace/commands#move-workspace-to-monitor
-        alt-shift-tab = "move-workspace-to-monitor --wrap-around next";
+        # # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
+        # alt-tab = "workspace-back-and-forth";
+        # # See: https://nikitabobko.github.io/AeroSpace/commands#move-workspace-to-monitor
+        # alt-shift-tab = "move-workspace-to-monitor --wrap-around next";
 
         # See: https://nikitabobko.github.io/AeroSpace/commands#mode
         alt-shift-semicolon = "mode service";
@@ -112,7 +116,7 @@
       };
       after-startup-command = [
         "exec-and-forget sketchybar"
-        "exec-and-forget open /Applications/SwipeAeroSpace.app"
+        # "exec open /Applications/SwipeAeroSpace.app"
       ];
       exec-on-workspace-change = [
         "/bin/bash"
@@ -124,8 +128,11 @@
         #Ghostty currently renders tabs as individual processes
         #Fix comes from https://ghostty.org/docs/help/macos-tiling-wms
         {
-          "if".app-id = "com.mitchellh.ghostty";
+          "if" = {
+            app-id = "com.mitchellh.ghostty";
+          };
           run = ["layout tiling"];
+          check-further-callbacks = true;
         }
       ];
     };
