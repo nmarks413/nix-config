@@ -1,0 +1,12 @@
+#!/bin/sh
+nh_subcommand="os"
+fallback_command="nixos-rebuild"
+if [ "$(uname -o)" ]; then
+  nh_subcommand="darwin"
+  fallback_command="nix run .#darwin-rebuild"
+fi;
+if command -v nh > /dev/null; then
+  nh $nh_subcommand switch .
+else
+  $fallback_command -- switch --flake .
+fi

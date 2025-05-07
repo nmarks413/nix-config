@@ -1,6 +1,9 @@
+# shared is used by nixos-rebuild and darwin-rebuild
 {pkgs, ...}: {
   imports = [
-    ./extras.nix
+    # sort-lines:start
+    ./user-system-settings.nix
     ./nix.nix
+    # sort-lines:end
   ];
 }

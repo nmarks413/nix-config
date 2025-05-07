@@ -1,8 +1,5 @@
-{
-  pkgs,
-  systemSettings,
-  ...
-}:
+# Packages installed with home-manager
+{pkgs, ...}:
 with pkgs; [
   #general development
   just
