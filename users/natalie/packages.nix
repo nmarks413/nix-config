@@ -31,7 +31,6 @@ with pkgs; [
   openconnect
 
   #nix tools
-  cachix
   direnv
   nh
 

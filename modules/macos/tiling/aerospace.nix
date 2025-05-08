@@ -116,7 +116,7 @@
       };
       after-startup-command = [
         "exec-and-forget sketchybar"
-        # "exec open /Applications/SwipeAeroSpace.app"
+        "exec-and-forget open /Applications/SwipeAeroSpace.app"
       ];
       exec-on-workspace-change = [
         "/bin/bash"
@@ -131,7 +131,7 @@
           "if" = {
             app-id = "com.mitchellh.ghostty";
           };
-          run = ["layout tiling"];
+          run = ["layout floating"];
           check-further-callbacks = true;
         }
       ];
