@@ -1,5 +1,5 @@
 # Configuration applied to all of chloe's machines
-{ pkgs, ... }: {
+{pkgs, ...}: {
   # packages for all machines
   environment.systemPackages = with pkgs; [
     neovim
