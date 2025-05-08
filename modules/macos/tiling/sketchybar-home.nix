@@ -101,18 +101,18 @@ in {
         text = ''
           #!/usr/bin/env sh
           # Color Palette
-          export BLACK=0xff4c4f69
-          export WHITE=0xffeff1f5
-          export RED=0xffd20f39
+          export BLACK=0xff11111b
+          export WHITE=0x66cdd6f4
+          export RED=0xffa6e3a1
           export GREEN=0xff40a02b
-          export BLUE=0xff1e66f5
-          export YELLOW=0xffdf8e1d
-          export ORANGE=0xfffe640b
-          export MAGENTA=0xffea76cb
-          export GREY=0xff9ca0b0
+          export BLUE=0xff89b4fa
+          export YELLOW=0xfff9e2af
+          export ORANGE=0xfffab387
+          export MAGENTA=0xffeba0ac
+          export GREY=0xff585b70
           export TRANSPARENT=0xff000000
           export BLUE2=0xff7287fd
-          export FLAMINGO=0xffdd7878
+          export FLAMINGO=0xfff2cdcd
 
           # General bar colors
           export BAR_COLOR=0xeff1f5ff # Color of the bar
