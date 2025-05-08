@@ -4,6 +4,9 @@
   environment.systemPackages = with pkgs; [
     neovim
   ];
+  # services for all machines
+  # services.karabiner-elements.enable = true; # BROKEN
+
   # configuration for shared modules.
   # all custom options in 'shared' for clarity.
   shared.darwin = {
@@ -12,11 +15,15 @@
       "magnet"
     ];
   };
+
   # system preferences
   system.defaults = {
     NSGlobalDomain = {
       KeyRepeat = 1;
       InitialKeyRepeat = 10;
+    };
+    dock = {
+      show-recents = false;
     };
     CustomUserPreferences = {
       NSGlobalDomain = {
