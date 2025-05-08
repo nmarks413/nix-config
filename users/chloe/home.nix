@@ -57,11 +57,10 @@ in {
       enable = true;
       matchBlocks = rec {
         zenith = {
-          hostname = "192.168.86.50";
           user = "clo";
           port = 222;
         };
-        "nas.paperclover.net" = zenith;
+        "nas.paperclover.net" = lib.mkIf zenith;
       };
     };
   };
