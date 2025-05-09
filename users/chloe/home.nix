@@ -14,6 +14,7 @@ in {
       all = [
         ffmpeg
         ripgrep
+	uv
       ];
       # packages to install for desktop environments (non-server)
       desktop = [
