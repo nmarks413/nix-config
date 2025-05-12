@@ -7,15 +7,22 @@
   pkgs,
   modulesPath,
   ...
-}: {
+}:
+{
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
-  boot.initrd.availableKernelModules = ["nvme" "ahci" "xhci_pci" "usbhid" "sd_mod"];
-  boot.initrd.kernelModules = [];
-  boot.kernelModules = ["kvm-amd"];
-  boot.extraModulePackages = [];
+  boot.initrd.availableKernelModules = [
+    "nvme"
+    "ahci"
+    "xhci_pci"
+    "usbhid"
+    "sd_mod"
+  ];
+  boot.initrd.kernelModules = [ ];
+  boot.kernelModules = [ "kvm-amd" ];
+  boot.extraModulePackages = [ ];
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/5838d50d-e6e8-4ad2-a25e-524f4c46da35";
@@ -25,7 +32,10 @@
   fileSystems."/boot/efi" = {
     device = "/dev/disk/by-uuid/2319-EE79";
     fsType = "vfat";
-    options = ["fmask=0022" "dmask=0022"];
+    options = [
+      "fmask=0022"
+      "dmask=0022"
+    ];
   };
 
   fileSystems."/home/nmarks/Games/steam" = {
@@ -34,7 +44,7 @@
   };
 
   swapDevices = [
-    {device = "/dev/disk/by-uuid/a4128bb9-239c-4aa9-9777-5067feb77b28";}
+    { device = "/dev/disk/by-uuid/a4128bb9-239c-4aa9-9777-5067feb77b28"; }
   ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking

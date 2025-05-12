@@ -1,6 +1,6 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   environment.systemPackages = with pkgs; [
-    neovim
     pinentry_mac
     signal-desktop-bin
   ];
@@ -8,7 +8,7 @@
   # Custom configuration modules in "modules" are shared between users,
   # and can be configured in this "shared" namespace
   shared.darwin = {
-    macAppStoreApps = ["wireguard"];
+    macAppStoreApps = [ "wireguard" ];
   };
 
   # Create /etc/zshrc that loads the nix-darwin environment.

@@ -4,7 +4,8 @@
   pkgs,
   host,
   ...
-}: {
+}:
+{
   services.tailscale.enable = true;
   fonts.packages = with pkgs; [
     nerd-fonts.fira-code

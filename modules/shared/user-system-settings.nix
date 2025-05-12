@@ -1,10 +1,12 @@
 # applies user settings for the system
 {
+  config,
   pkgs,
   user,
   lib,
   ...
-}: {
+}:
+{
   # Set your time zone.
   time.timeZone = user.timeZone;
 
@@ -17,8 +19,8 @@
       BROWSER = user.browser;
     };
 
-  stylix = {
-    enable = user ? "theme";
+  stylix = lib.mkIf (user ? "theme" && user.theme != null) {
+    enable = false;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/${user.theme}.yaml";
 
     fonts = lib.optionalAttrs (user ? "font") {

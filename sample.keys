@@ -1,0 +1,9 @@
+global {
+	cmd + opt + backtick -> app "Keyboard Maestro"
+}
+
+device WorkLouder {
+	a -> {
+		if app "REAPER" -> key cmd + shift
+	}
+}

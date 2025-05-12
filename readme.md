@@ -1,13 +1,14 @@
 # nix config
 
-this setup allows natalie and chloe to share common configuration between their machines, but also share useful modules between each other.
+this setup allows natalie and chloe to share common configuration between their
+machines, but also share useful modules between each other.
 
 ```
 lib/ # reusable functions
 modules/ # reusable modules
     +-- macos/   # nix-darwin configurations
     +-- nixos/   # linux configurations
-    +-- nixvim/  # neovim configurations
+    +-- neovim/  # nvf configurations
     +-- shared/  # shared between nixos-rebuild & darwin-rebuild
     +-- home-manager.nix # home program presets
 users/
@@ -15,6 +16,7 @@ users/
     |   +-- user.nix               # info about her
     |   +-- configuration.nix      # for all hosts
     |   +-- home.nix               # for all hosts
+    |   +-- vim.nix                # for neovim
     |   +-- sandwich/
     |   |   +-- configuration.nix  # per host
     |   |   +-- home.nix
@@ -25,7 +27,8 @@ users/
         ...
 ```
 
-A new machine can be added by adding a new definition in `flake.nix`. Note that the user and host `configuration.nix` and `home.nix` files are 
+A new machine can be added by adding a new definition in `flake.nix`. Note that
+the user and host `configuration.nix` and `home.nix` files are
 
 ## macOS installation instructions
 
@@ -40,11 +43,12 @@ While this installs, now is a good time to perform manual setup steps:
 
 - Setup your SSH keys in `~/.ssh`
 - Configure the device hostname in System Settings in
-    - About -> Name
-    - General -> Sharing -> Local Hostname
+  - About -> Name
+  - General -> Sharing -> Local Hostname
 - Make sure you're logged into iCloud / Mac App Store
 - `xcode-select --install` to make sure Git and other utilities are available.
-- Optional: Disable app verification with `sudo spctl --master-disable`, then, go to System Settings -> Privacy to allow unsigned apps.
+- Optional: Disable app verification with `sudo spctl --master-disable`, then,
+  go to System Settings -> Privacy to allow unsigned apps.
 
 Once Nix is installed, open a new shell and clone the repository:
 
@@ -55,11 +59,11 @@ git clone https://git.paperclover.net/clo/config.git
 git clone git@git.paperclover.net:clo/config
 ```
 
-The location of the cloned repository must match what is in your `user.nix` file. 
+The location of the cloned repository must match what is in your `user.nix`
+file.
 
 Setup `nix-darwin` using the `switch` helper:
 
 ```
 ./switch
 ```
-

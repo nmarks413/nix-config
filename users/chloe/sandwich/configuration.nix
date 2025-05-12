@@ -1,9 +1,5 @@
-{pkgs, ...}: {
-  environment.systemPackages = with pkgs; [
-    ffmpeg
-    ripgrep
-    reaper
-  ];
+{ pkgs, ... }:
+{
   shared.darwin = {
     macAppStoreApps = [
       "final-cut-pro"

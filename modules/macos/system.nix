@@ -3,9 +3,11 @@
   pkgs,
   lib,
   ...
-}: let
+}:
+let
   tiling = config.shared.darwin.tiling.enable;
-in {
+in
+{
   # Use touchid or watch to activate sudo
   security.pam.services.sudo_local = {
     enable = true;
@@ -59,6 +61,10 @@ in {
 
         # Autohide menu bar for tiling window manager
         _HIHideMenuBar = tiling;
+
+        # Use the expanded save dialog by default
+        NSNavPanelExpandedStateForSaveMode = true;
+        NSNavPanelExpandedStateForSaveMode2 = true;
       };
       # minimal dock
       dock = {
@@ -84,18 +90,31 @@ in {
         AppleShowAllExtensions = true;
         ShowPathbar = true;
         FXEnableExtensionChangeWarning = false;
-        # TODO: default to list view and not saving .DS_Store
+        FXPreferredViewStyle = "Nlsv"; # List View
+        ShowExternalHardDrivesOnDesktop = false;
+        ShowHardDrivesOnDesktop = false;
+        ShowRemovableMediaOnDesktop = false;
+        NewWindowTarget = "Home";
       };
       CustomSystemPreferences = {
+        NSGlobalDomain = {
+          NSStatusItemSelectionPadding = 1;
+          NSStatusItemSelectionSpacing = 1;
+        };
         "com.apple.universalaccess" = {
           closeViewTrackpadGestureZoomEnabled = 1;
+          # TODO: enable zoom. this doesn't do enough
         };
-        "com.apple.symbolichotkeys" = {
-          AppleSymbolicHotKeys = {
-            "64" = {
-              enabled = false;
-            };
-          };
+        "com.apple.desktopservices" = {
+          # Prevents the Finder from reading DS_Store files on network
+          # shares, potentially. See https://support.apple.com/en-us/102064
+          DSDontWriteNetworkStores = 1;
+        };
+        "com.apple.dock" = {
+          workspaces-edge-delay = 0.15;
+        };
+        "com.apple.CrashReporter" = {
+          DialogType = "developer"; # display crash reports when apps crash.
         };
       };
     };

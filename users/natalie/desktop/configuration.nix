@@ -3,7 +3,8 @@
   user,
   host,
   ...
-}: {
+}:
+{
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -16,7 +17,7 @@
       enable = true;
       # Certain features, including CLI integration and system authentication support,
       # require enabling PolKit integration on some desktop environments (e.g. Plasma).
-      polkitPolicyOwners = [user.username];
+      polkitPolicyOwners = [ user.username ];
     };
 
     noisetorch.enable = true;
@@ -31,14 +32,9 @@
       flake = "/home/nmarks/.dotfiles#nixosConfigurations.nixos";
     };
 
-    neovim = {
-      enable = true;
-      defaultEditor = true;
-    };
-
     steam = {
       enable = true;
-      package = with pkgs; steam.override {extraPkgs = pkgs: [attr];};
+      package = with pkgs; steam.override { extraPkgs = pkgs: [ attr ]; };
     };
 
     git = {
@@ -62,7 +58,7 @@
 
   xdg.portal = {
     enable = true;
-    extraPortals = with pkgs; [xdg-desktop-portal-gtk];
+    extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
   };
   virtualisation = {
     containers.enable = true;
@@ -75,7 +71,10 @@
     libvirtd.enable = true;
   };
 
-  nix.settings.trusted-users = ["root" user.username];
+  nix.settings.trusted-users = [
+    "root"
+    user.username
+  ];
   systemd = {
     targets = {
       sleep.enable = false;
@@ -84,16 +83,16 @@
       hybrid-sleep.enable = false;
     };
 
-    packages = [pkgs.observatory];
+    packages = [ pkgs.observatory ];
 
-    services.monitord.wantedBy = ["multi-user.target"];
+    services.monitord.wantedBy = [ "multi-user.target" ];
   };
 
   i18n = {
     # Select internationalisation properties.
     defaultLocale = "en_US.UTF-8";
 
-    supportedLocales = ["all"];
+    supportedLocales = [ "all" ];
 
     extraLocaleSettings = {
       LC_ADDRESS = "en_US.UTF-8";
@@ -133,7 +132,11 @@
     shell = pkgs.fish;
     isNormalUser = true;
     description = user.name;
-    extraGroups = ["networkmanager" "wheel" "docker"];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "docker"
+    ];
     # openssh.authorizedKeys.keyFiles = ["~/.ssh/id_ed25519.pub"];
     packages = with pkgs; [
       firefox
@@ -157,12 +160,16 @@
     # wireless.enable = true; # Enables wireless support via wpa_supplicant.
     networkmanager.enable = true;
     firewall = {
-      allowedTCPPorts = [22 80 443];
+      allowedTCPPorts = [
+        22
+        80
+        443
+      ];
       enable = true;
     };
     interfaces.enp11s0.wakeOnLan = {
       enable = true;
-      policy = ["magic"];
+      policy = [ "magic" ];
     };
   };
 

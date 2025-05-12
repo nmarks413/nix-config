@@ -1,0 +1,13 @@
+#!/bin/sh
+username="$(id -u -n)"
+if [ "$username" = "clo" ]; then
+  name="chloe";
+elif [ "$username" = "nmarks" ]; then
+  name="natalie";
+fi
+if [ -z "$name" ]; then
+  echo "Configure this wrapper script with your name." >2
+  exit 1
+fi
+exec nix run ".#nvim-$name" -- "$@"
+
