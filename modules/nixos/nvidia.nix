@@ -2,10 +2,12 @@
   pkgs,
   config,
   ...
-}: let
+}:
+let
   nvidiaDriverChannel = config.boot.kernelPackages.nvidiaPackages.latest;
-in {
-  services.xserver.videoDrivers = ["nvidia"];
+in
+{
+  services.xserver.videoDrivers = [ "nvidia" ];
 
   nixpkgs.config = {
     nvidia.acceptLicense = true;
@@ -18,7 +20,7 @@ in {
   ];
 
   # Blacklist nouveau to avoid conflicts
-  boot.blacklistedKernelModules = ["nouveau"];
+  boot.blacklistedKernelModules = [ "nouveau" ];
   environment.variables = {
     LIBVA_DRIVER_NAME = "nvidia"; # Hardware video acceleration
     XDG_SESSION_TYPE = "wayland"; # Force Wayland
@@ -80,7 +82,7 @@ in {
   };
 
   nix.settings = {
-    substituters = ["https://cuda-maintainers.cachix.org"];
+    substituters = [ "https://cuda-maintainers.cachix.org" ];
     trusted-public-keys = [
       "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E="
     ];

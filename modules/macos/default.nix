@@ -2,7 +2,8 @@
   pkgs,
   lib,
   ...
-}: {
+}:
+{
   imports = [
     # sort-lines: start
     ./mac-app-store.nix
@@ -14,7 +15,7 @@
   # make 'shared.linux' not an error to define.
   options.shared.linux = lib.mkOption {
     type = lib.types.anything;
-    default = {};
+    default = { };
     description = "no-op on darwin";
   };
 }

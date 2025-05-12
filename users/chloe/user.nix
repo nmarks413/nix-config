@@ -8,7 +8,7 @@
   dotfilesDir = "~/config"; # absolute path of the local repo
 
   # Stylix/Theming
-  theme = "catppuccin-mocha";
+  theme = null;
   #font
   sexuality = "lesbian"; # hyfetch
 

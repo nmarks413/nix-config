@@ -1,46 +1,34 @@
-{
-  inputs,
-  pkgs,
-  lib,
-  host,
-  ...
-}: let
+{ pkgs, host, ... }:
+let
   hostServer = false;
-in {
+in
+{
   home = {
     stateVersion = "23.05"; # Please read the comment before changing.
-    packages = with pkgs; let
-      # packages to always install
-      all = [
-        ffmpeg
-        ripgrep
-	uv
-      ];
-      # packages to install for desktop environments (non-server)
-      desktop = [
-      ];
-      # packages to install on all servers
-      server = [];
-      # packages to install on macOS desktops
-      darwin = [
-        raycast
-      ];
-      # packages to install on linux desktops
-      linux = [
-        reaper # TODO: why does this break on macOS
-      ];
-    in
-      all
-      ++ (
-        if host.darwin
-        then darwin
-        else linux
-      )
-      ++ (
-        if hostServer
-        then server
-        else desktop
-      );
+    packages =
+      with pkgs;
+      let
+        # packages to always install
+        all = [
+          ffmpeg
+          ripgrep
+          uv
+        ];
+        # packages to install for desktop environments (non-server)
+        desktop = [
+        ];
+        # packages to install on all servers
+        server = [ ];
+        # packages to install on macOS desktops
+        darwin = [
+          raycast
+        ];
+        # packages to install on linux desktops
+        linux = [
+          reaper # TODO: why does this break on macOS
+        ];
+      in
+      all ++ (if host.darwin then darwin else linux) ++ (if hostServer then server else desktop);
   };
   programs = {
     # sort-lines:start
@@ -61,7 +49,14 @@ in {
           user = "clo";
           port = 222;
         };
-        "nas.paperclover.net" = lib.mkIf zenith;
+        "nas.paperclover.net" = zenith;
+      };
+    };
+    neovide = {
+      enable = !hostServer;
+      settings = {
+        font.normal = "AT Name Mono";
+        font.size = 13;
       };
     };
   };

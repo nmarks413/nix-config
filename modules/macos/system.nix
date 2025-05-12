@@ -3,9 +3,11 @@
   pkgs,
   lib,
   ...
-}: let
+}:
+let
   tiling = config.shared.darwin.tiling.enable;
-in {
+in
+{
   # Use touchid or watch to activate sudo
   security.pam.services.sudo_local = {
     enable = true;
@@ -110,11 +112,6 @@ in {
         };
         "com.apple.dock" = {
           workspaces-edge-delay = 0.15;
-        };
-        "com.apple.symbolichotkeys" = {
-          AppleSymbolicHotKeys = {
-            "64".enabled = false;
-          };
         };
         "com.apple.CrashReporter" = {
           DialogType = "developer"; # display crash reports when apps crash.

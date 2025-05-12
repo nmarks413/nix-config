@@ -2,17 +2,18 @@
   lib,
   config,
   ...
-}: let
+}:
+let
   cfg = config.environment.customIcons;
-  inherit
-    (lib)
+  inherit (lib)
     mkEnableOption
     mkIf
     mkMerge
     mkOption
     types
     ;
-in {
+in
+{
   options.environment.customIcons = {
     enable = mkEnableOption "environment.customIcons";
     clearCacheOnActivation = mkEnableOption "environment.customIcons.clearCacheOnActivation";
@@ -21,8 +22,8 @@ in {
       type = types.listOf (
         types.submodule {
           options = {
-            path = mkOption {type = types.path;};
-            icon = mkOption {type = types.path;};
+            path = mkOption { type = types.path; };
+            icon = mkOption { type = types.path; };
           };
         }
       );
@@ -46,8 +47,7 @@ in {
                 set imageData to (current application's NSImage's alloc()'s initWithContentsOfFile:iconPath)
                 (current application's NSWorkspace's sharedWorkspace()'s setIcon:imageData forFile:destPath options:2)
               EOF
-            '')
-            cfg.icons
+            '') cfg.icons
           ))
         }
 

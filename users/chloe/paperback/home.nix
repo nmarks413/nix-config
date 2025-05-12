@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   # these programs are not globally installed to reduce distractions.
   # most of these are needed for my work environment.
   programs.bun.enable = true;
@@ -10,5 +11,7 @@
     typescript
     pm2
     pnpm
+    yt-dlp
+    spotdl
   ];
 }

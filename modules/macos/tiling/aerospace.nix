@@ -2,7 +2,8 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   services.aerospace = {
     enable = config.shared.darwin.tiling.enable;
     settings = {
@@ -85,8 +86,8 @@
         alt-shift-8 = "move-node-to-workspace 8";
         alt-shift-9 = "move-node-to-workspace 9";
 
-        cmd-h = []; # Disable "hide application"
-        cmd-alt-h = []; # Disable "hide others"
+        cmd-h = [ ]; # Disable "hide application"
+        cmd-alt-h = [ ]; # Disable "hide others"
 
         # # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
         # alt-tab = "workspace-back-and-forth";
@@ -97,22 +98,49 @@
         alt-shift-semicolon = "mode service";
       };
       mode.service.binding = {
-        esc = ["reload-config" "mode main"];
-        r = ["flatten-workspace-tree" "mode main"]; # reset layout
-        f = ["layout floating tiling" "mode main"]; # Toggle between floating and tiling layout
-        backspace = ["close-all-windows-but-current" "mode main"];
+        esc = [
+          "reload-config"
+          "mode main"
+        ];
+        r = [
+          "flatten-workspace-tree"
+          "mode main"
+        ]; # reset layout
+        f = [
+          "layout floating tiling"
+          "mode main"
+        ]; # Toggle between floating and tiling layout
+        backspace = [
+          "close-all-windows-but-current"
+          "mode main"
+        ];
 
         # sticky is not yet supported https://github.com/nikitabobko/AeroSpace/issues/2
         #s = ["layout sticky tiling", "mode main"]
 
-        alt-shift-h = ["join-with left" "mode main"];
-        alt-shift-j = ["join-with down" "mode main"];
-        alt-shift-k = ["join-with up" "mode main"];
-        alt-shift-l = ["join-with right" "mode main"];
+        alt-shift-h = [
+          "join-with left"
+          "mode main"
+        ];
+        alt-shift-j = [
+          "join-with down"
+          "mode main"
+        ];
+        alt-shift-k = [
+          "join-with up"
+          "mode main"
+        ];
+        alt-shift-l = [
+          "join-with right"
+          "mode main"
+        ];
 
         down = "volume down";
         up = "volume up";
-        shift-down = ["volume set 0" "mode main"];
+        shift-down = [
+          "volume set 0"
+          "mode main"
+        ];
       };
       after-startup-command = [
         "exec-and-forget sketchybar"
@@ -131,7 +159,7 @@
           "if" = {
             app-id = "com.mitchellh.ghostty";
           };
-          run = ["layout floating"];
+          run = [ "layout floating" ];
           check-further-callbacks = true;
         }
       ];

@@ -3,7 +3,8 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   types = lib.types;
 
   # Mapping of Mac App Store applications.
@@ -23,12 +24,13 @@
 
   # the resolved configuration from the user
   masApps = config.shared.darwin.macAppStoreApps;
-in {
+in
+{
   options = {
     # Installs Mac Applications via name using homebrew.
     shared.darwin.macAppStoreApps = lib.mkOption {
       type = types.listOf types.str;
-      default = [];
+      default = [ ];
     };
   };
   config = lib.mkIf (builtins.length masApps > 0) {
@@ -37,8 +39,7 @@ in {
       builtins.map (name: {
         inherit name;
         value = allMasApps.${name};
-      })
-      masApps
+      }) masApps
     );
   };
 }

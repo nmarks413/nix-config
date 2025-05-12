@@ -8,10 +8,14 @@
   host,
   mainHomeImports,
   ...
-}: let
+}:
+let
   cfg = config.programs;
-in {
-  imports = mainHomeImports;
+in
+{
+  imports = mainHomeImports ++ [
+    ./macos/sketchybar.nix
+  ];
   programs = {
     home-manager.enable = true;
     nix-index.enable = true;
@@ -40,7 +44,14 @@ in {
       daemon.enable = cfg.atuin.enable;
     };
     bat = {
-      extraPackages = with pkgs.bat-extras; [batdiff batman batgrep batwatch batpipe prettybat];
+      extraPackages = with pkgs.bat-extras; [
+        batdiff
+        batman
+        batgrep
+        batwatch
+        batpipe
+        prettybat
+      ];
     };
     hyfetch = {
       settings = {
@@ -69,7 +80,7 @@ in {
         }
       ];
       shellAliases =
-        {}
+        { }
         // lib.optionalAttrs (!host.darwin) {
           reboot-windows = "sudo efibootmgr --bootnext 0000; sudo reboot -h now";
         };
