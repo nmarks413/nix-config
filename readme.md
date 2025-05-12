@@ -6,16 +6,16 @@ machines, but also share useful modules between each other.
 ```
 lib/ # reusable functions
 modules/ # reusable modules
+    +-- home/    # home program configurations
     +-- macos/   # nix-darwin configurations
-    +-- nixos/   # linux configurations
     +-- neovim/  # nvf configurations
+    +-- nixos/   # linux configurations
     +-- shared/  # shared between nixos-rebuild & darwin-rebuild
-    +-- home-manager.nix # home program presets
 users/
     +-- chloe/
     |   +-- user.nix               # info about her
-    |   +-- configuration.nix      # for all hosts
-    |   +-- home.nix               # for all hosts
+    |   +-- configuration.nix      # for all hosts (system)
+    |   +-- home.nix               # for all hosts (userspace)
     |   +-- vim.nix                # for neovim
     |   +-- sandwich/
     |   |   +-- configuration.nix  # per host
@@ -67,3 +67,15 @@ Setup `nix-darwin` using the `switch` helper:
 ```
 ./switch
 ```
+
+## Neovim configuration
+
+By default, neovim is configured to all machines in `$PATH`. Neovim can be run
+directly via `nix run`, which skips needing to build the whole system
+configuration.
+
+```
+nix run .#nvim-natalie  # run by user
+./nvim                  # run based on your username
+```
+
