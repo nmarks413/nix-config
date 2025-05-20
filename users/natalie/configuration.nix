@@ -13,6 +13,7 @@
     nerd-fonts.symbols-only
     nerd-fonts.iosevka
     inputs.apple-fonts.packages.${pkgs.system}.sf-pro
+    sketchybar-app-font
   ];
 
   # configuration for shared modules.
