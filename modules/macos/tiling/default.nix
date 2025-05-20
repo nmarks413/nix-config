@@ -1,6 +1,8 @@
-{lib, ...}: let
+{ lib, ... }:
+let
   inherit (lib) types;
-in {
+in
+{
   imports = [
     ./sketchybar.nix
     ./aerospace.nix

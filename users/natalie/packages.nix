@@ -1,6 +1,7 @@
 # Packages installed with home-manager
-{pkgs, ...}:
-with pkgs; [
+{ pkgs, ... }:
+with pkgs;
+[
   #general development
   just
   pkg-config
@@ -35,7 +36,7 @@ with pkgs; [
   nh
 
   #terminal stuff
-  (btop.override {cudaSupport = true;})
+  (btop.override { cudaSupport = true; })
   tmux
   zellij
   lazygit
@@ -78,6 +79,7 @@ with pkgs; [
   statix
 
   #neovim deps
+  # TODO: from clo, maybe u can remove all of these? i don't wanna break tho
   lua51Packages.lua
   lua51Packages.luarocks-nix
   codespell

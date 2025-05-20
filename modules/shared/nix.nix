@@ -1,10 +1,11 @@
-{inputs, ...}: {
+{ inputs, ... }:
+{
   nixpkgs.config = {
     allowUnfree = true;
   };
 
   nix = {
-    nixPath = ["nixpkgs = ${inputs.nixpkgs}"];
+    nixPath = [ "nixpkgs = ${inputs.nixpkgs}" ];
     extraOptions = ''
       warn-dirty = false
     '';
@@ -14,7 +15,10 @@
     };
 
     settings = {
-      experimental-features = ["nix-command" "flakes"];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
       substituters = [
         "https://cache.nixos.org/?priority=10"
 
