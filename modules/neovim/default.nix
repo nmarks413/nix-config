@@ -3,8 +3,7 @@
   lib,
   host,
   ...
-}:
-{
+}: {
   # based on default options from upstream:
   # https://github.com/NotAShelf/nvf/blob/main/configuration.nix
   #
@@ -68,6 +67,7 @@
       rust.enable = true;
       ts.enable = true;
       zig.enable = true;
+      markdown.enable = true;
       # sort-lines: off
 
       nix.format.type = "nixfmt"; # looks so much nicer
@@ -81,7 +81,16 @@
       nvimBufferline.enable = true;
     };
     autocomplete = {
-      blink-cmp.enable = true;
+      blink-cmp = {
+        enable = true;
+        sourcePlugins = {
+          ripgrep.enable = true;
+        };
+        friendly-snippets.enable = true;
+        setupOpts = {
+          keymap.preset = "super-tab";
+        };
+      };
     };
     statusline = {
       lualine = {
@@ -93,6 +102,52 @@
         };
       };
     };
+
+    utility = {
+      snacks-nvim = {
+        enable = true;
+        setupOpts = {
+          bigfile.enable = true;
+          explorer.replace_netrw = true;
+          dashboard = {
+            sections = [
+              {section = "header";}
+              {
+                icon = " ";
+                title = "Keymaps";
+                section = "keys";
+                indent = 2;
+                padding = 1;
+              }
+              {
+                icon = " ";
+                title = "Recent Files";
+                section = "recent_files";
+                indent = 2;
+                padding = 1;
+              }
+              {
+                icon = " ";
+                title = "Projects";
+                section = "projects";
+                indent = 2;
+                padding = 1;
+              }
+              {section = "startup";}
+            ];
+          };
+          image.enable = true;
+          notifier.timeout = 3000;
+          picker = {
+            enable = true;
+            sources = {
+              explorer = {};
+            };
+          };
+        };
+      };
+    };
+
     binds = {
       whichKey.enable = true;
       cheatsheet.enable = true;

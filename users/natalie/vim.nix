@@ -1,5 +1,7 @@
-{ ... }:
-{
+{...}: {
+  imports = [
+    ./vim/default.nix
+  ];
   vim = {
     theme = {
       name = "catppuccin";

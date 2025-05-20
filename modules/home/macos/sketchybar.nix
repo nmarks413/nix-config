@@ -2,407 +2,534 @@
   pkgs,
   lib,
   config,
-  host,
   ...
-}:
-let
-  # folder = "${config.home.homeDirectory}.dotfiles/files/sketchybar";
-  # folder = "~/.dotfiles/files/sketchybar";
-  folder = ../../../files/sketchybar;
-in
-lib.mkIf (host.darwin) {
+}: {
   home.file =
-    lib.attrsets.mapAttrs
-      (
-        file: value: (lib.attrsets.overrideExisting value { enable = config.shared.darwin.tiling.enable; })
-      )
-      {
-        sketchybarrc = {
-          executable = true;
-          target = ".config/sketchybar/sketchybarrc";
-          text = ''
-            #!/usr/bin/env sh
+    lib.attrsets.mapAttrs (file: value: (
+      lib.attrsets.overrideExisting value {enable = config.shared.darwin.tiling.enable;}
+    )) {
+      sketchybarrc = {
+        executable = true;
+        target = ".config/sketchybar/sketchybarrc";
+        text = ''
+          #!/usr/bin/env sh
 
-            source "$HOME/.config/sketchybar/colors.sh" # Loads all defined colors
-            source "$HOME/.config/sketchybar/icons.sh" # Loads all defined icons
+          source "$HOME/.config/sketchybar/colors.sh" # Loads all defined colors
 
-            ITEM_DIR="$HOME/.config/sketchybar/items" # Directory where the items are configured
-            PLUGIN_DIR="$HOME/.config/sketchybar/plugins" # Directory where all the plugin scripts are stored
+          ITEM_DIR="$HOME/.config/sketchybar/items" # Directory where the items are configured
+          PLUGIN_DIR="$HOME/.config/sketchybar/plugins" # Directory where all the plugin scripts are stored
 
-            FONT="SF Pro" # Needs to have Regular, Bold, Semibold, Heavy and Black variants
-            PADDINGS=3 # All paddings use this value (icon, label, background)
-
-            # Setting up and starting the helper process
-            HELPER=git.felix.helper
-            killall helper
-            cd $HOME/.config/sketchybar/helper && make
-            $HOME/.config/sketchybar/helper/helper $HELPER > /dev/null 2>&1 &
-
-            # Unload the macOS on screen indicator overlay for volume change
-            # launchctl unload -F /System/Library/LaunchAgents/com.apple.OSDUIHelper.plist > /dev/null 2>&1 &
-
-            # Setting up the general bar appearance and default values
-            ${pkgs.sketchybar}/bin/sketchybar --bar     height=40                                         \
-                                                        color=$BAR_COLOR                                  \
-                                                        shadow=off                                        \
-                                                        position=top                                      \
-                                                        sticky=on                                         \
-                                                        padding_right=0                                   \
-                                                        padding_left=0                                    \
-                                                        corner_radius=12                                  \
-                                                        y_offset=0                                        \
-                                                        margin=2                                          \
-                                                        blur_radius=0                                     \
-                                                        notch_width=0                                     \
-                                              --default updates=when_shown                                \
-                                                        icon.font="$FONT:Bold:14.0"                       \
-                                                        icon.color=$ICON_COLOR                            \
-                                                        icon.padding_left=$PADDINGS                       \
-                                                        icon.padding_right=$PADDINGS                      \
-                                                        label.font="$FONT:Semibold:13.0"                  \
-                                                        label.color=$LABEL_COLOR                          \
-                                                        label.padding_left=$PADDINGS                      \
-                                                        label.padding_right=$PADDINGS                     \
-                                                        background.padding_right=$PADDINGS                \
-                                                        background.padding_left=$PADDINGS                 \
-                                                        background.height=26                              \
-                                                        background.corner_radius=9                        \
-                                                        popup.background.border_width=2                   \
-                                                        popup.background.corner_radius=11                 \
-                                                        popup.background.border_color=$POPUP_BORDER_COLOR \
-                                                        popup.background.color=$POPUP_BACKGROUND_COLOR    \
-                                                        popup.background.shadow.drawing=on
-
-            # Left
-            source "$ITEM_DIR/apple.sh"
-            source "$ITEM_DIR/spaces.sh"
-            source "$ITEM_DIR/front_app.sh"
-
-            # Center
-            # source "$ITEM_DIR/spotify.sh"
-            source "$ITEM_DIR/calendar.sh"
-
-            # Right
-            # source "$ITEM_DIR/brew.sh"
-            # source "$ITEM_DIR/github.sh"
-            source "$ITEM_DIR/volume.sh"
-            # source "$ITEM_DIR/divider.sh"
-            # source "$ITEM_DIR/cpu.sh"
-
-            # Forcing all item scripts to run (never do this outside of sketchybarrc)
-            ${pkgs.sketchybar}/bin/sketchybar --update
-
-            echo "sketchybar configuation loaded.."
-          '';
-        };
-        icons = {
-          executable = true;
-          target = ".config/sketchybar/icons.sh";
-          source = folder + /icons.sh;
-        };
-        colors = {
-          executable = true;
-          target = ".config/sketchybar/colors.sh";
-          text = ''
-            #!/usr/bin/env sh
-            # Color Palette
-            export BLACK=0xff4c4f69
-            export WHITE=0xffeff1f5
-            export RED=0xffd20f39
-            export GREEN=0xff40a02b
-            export BLUE=0xff1e66f5
-            export YELLOW=0xffdf8e1d
-            export ORANGE=0xfffe640b
-            export MAGENTA=0xffea76cb
-            export GREY=0xff9ca0b0
-            export TRANSPARENT=0xff000000
-            export BLUE2=0xff7287fd
-            export FLAMINGO=0xffdd7878
-
-            # General bar colors
-            export BAR_COLOR=0xeff1f5ff # Color of the bar
-            export ICON_COLOR=0xff4c4f69
-            export LABEL_COLOR=0xff4c4f69 # Color of all labels
-            export BACKGROUND_1=0xffbcc0cc
-            export BACKGROUND_2=0xffbcc0cc
-
-            export POPUP_BACKGROUND_COLOR=$BLACK
-            export POPUP_BORDER_COLOR=$WHITE
-
-            export SHADOW_COLOR=$BLACK
-          '';
-        };
-        items_apple = {
-          executable = true;
-          target = ".config/sketchybar/items/apple.sh";
-          source = folder + /items/executable_apple.sh;
-        };
-        items_brew = {
-          executable = true;
-          target = ".config/sketchybar/items/brew.sh";
-          source = folder + /items/executable_brew.sh;
-        };
-        items_calendar = {
-          executable = true;
-          target = ".config/sketchybar/items/calendar.sh";
-          text = ''
-            #!/usr/bin/env sh
-
-            sketchybar --add item     calendar center                   \
-                       --set calendar icon=cal                          \
-                                      display=1                         \
-                                      icon.font="$FONT:Black:12.0"      \
-                                      icon.padding_right=0              \
-                                      label.width=50                    \
-                                      label.align=right                 \
-                                      background.padding_left=15        \
-                                      update_freq=30                    \
-                                      script="$PLUGIN_DIR/calendar.sh"  \
-                                      click_script="$PLUGIN_DIR/zen.sh"
-          '';
-        };
-        items_cpu = {
-          executable = true;
-          target = ".config/sketchybar/items/cpu.sh";
-          source = folder + /items/executable_cpu.sh;
-        };
-        items_divider = {
-          executable = true;
-          target = ".config/sketchybar/items/divider.sh";
-          source = folder + /items/executable_divider.sh;
-        };
-        items_front_app = {
-          executable = true;
-          target = ".config/sketchybar/items/front_app.sh";
-          text = ''
-            #!/usr/bin/env sh
-            FRONT_APP_SCRIPT='sketchybar --set $NAME label="$INFO"'
-            sketchybar --add       event            window_focus                  \
-                       --add       event            windows_on_spaces             \
-                       --add       item             system.aerospace left         \
-                       --set       system.aerospace script="$PLUGIN_DIR/aerospace.sh" \
-                                                    icon.font="$FONT:Bold:16.0"   \
-                                                    label.drawing=off             \
-                                                    icon.width=30                 \
-                                                    icon=$YABAI_GRID              \
-                                                    icon.color=$BLACK             \
-                                                    updates=on                    \
-                                                    display=active                \
-                       --subscribe system.aerospace window_focus                  \
-                                                    windows_on_spaces             \
-                                                    mouse.clicked                 \
-                       --add       item             front_app left                \
-                       --set       front_app        script="$FRONT_APP_SCRIPT"    \
-                                                    icon.drawing=off              \
-                                                    background.padding_left=0     \
-                                                    background.padding_right=10   \
-                                                    label.color=$BLACK            \
-                                                    label.font="$FONT:Black:12.0" \
-                                                    display=active                \
-                       --subscribe front_app        front_app_switched
-          '';
-        };
-        items_github = {
-          executable = true;
-          target = ".config/sketchybar/items/github.sh";
-          source = folder + /items/executable_github.sh;
-        };
-        items_spaces = {
-          executable = true;
-          target = ".config/sketchybar/items/spaces.sh";
-          # label.background.color=$BACKGROUND_2
-          text = ''
-            ${pkgs.sketchybar}/bin/sketchybar --add event aerospace_workspace_change
-            ${pkgs.sketchybar}/bin/sketchybar --add event aerospace_mode_change
-            for sid in $(${pkgs.aerospace}/bin/aerospace list-workspaces --all); do
-              ${pkgs.sketchybar}/bin/sketchybar --add item space.$sid left                          \
-                                                --subscribe space.$sid aerospace_workspace_change   \
-                                                --subscribe space.$sid aerospace_mode_change        \
-                                                --set space.$sid                                    \
-                                                  icon=$sid                                         \
-                                                  icon.padding_left=22                              \
-                                                  icon.padding_right=22                             \
-                                                  icon.highlight_color=$WHITE                       \
-                                                  icon.highlight=off                                \
-                                                  icon.color=0xff4c566a                             \
-                                                  background.padding_left=-8                        \
-                                                  background.padding_right=-8                       \
-                                                  background.color=$BACKGROUND_1                    \
-                                                  background.drawing=on                             \
-                                                  script="$PLUGIN_DIR/aerospace.sh $sid"            \
-                                                  click_script="aerospace workspace $sid"           \
-                                                  label.font="Iosevka Nerd Font:Regular:16.0" \
-                                                  label.padding_right=33                            \
-                                                  label.background.height=26                        \
-                                                  label.background.drawing=on                       \
-                                                  label.background.corner_radius=9                  \
-                                                  label.drawing=off
-            done
-            ${pkgs.sketchybar}/bin/sketchybar --add item      separator left                                   \
-                                              --set separator icon=                                           \
-                                                              icon.font="Iosevka Nerd Font:Regular:16.0" \
-                                                              background.padding_left=26                       \
-                                                              background.padding_right=15                      \
-                                                              label.drawing=off                                \
-                                                              display=active                                   \
-                                                              icon.color=$GREEN
-          '';
-        };
-        items_spotify = {
-          executable = true;
-          target = ".config/sketchybar/items/spotify.sh";
-          source = folder + /items/executable_spotify.sh;
-        };
-        items_volume = {
-          executable = true;
-          target = ".config/sketchybar/items/volume.sh";
-          text = ''
-            INITIAL_WIDTH=$(osascript -e 'set ovol to output volume of (get volume settings)')
-            ${pkgs.sketchybar}/bin/sketchybar --add item volume right                     \
-                                              --subscribe volume volume_change            \
-                                              --set volume script="$PLUGIN_DIR/volume.sh" \
-                                                updates=on                                \
-                                                icon.background.drawing=on                \
-                                                icon.background.color=$FLAMINGO           \
-                                                icon.background.height=8                  \
-                                                icon.background.corner_radius=3           \
-                                                icon.width=$INITIAL_WIDTH                 \
-                                                width=100                                 \
-                                                icon.align=right                          \
-                                                label.drawing=off                         \
-                                                background.drawing=on                     \
-                                                background.color=$BACKGROUND_2            \
-                                                background.height=8                       \
-                                                background.corner_radius=3                \
-                                                align=left
-
-            ${pkgs.sketchybar}/bin/sketchybar --add alias "Control Center,Sound" right     \
-                                              --rename "Control Center,Sound" volume_alias \
-                                              --set volume_alias icon.drawing=off          \
-                                                label.drawing=off                          \
-                                                alias.color=$BLUE2                         \
-                                                background.padding_right=0                 \
-                                                background.padding_left=5                  \
-                                                width=50                                   \
-                                                align=right                                \
-                                                click_script="$PLUGIN_DIR/volume_click.sh"
-
-          '';
-        };
-        plugins_brew = {
-          executable = true;
-          target = ".config/sketchybar/plugins/brew.sh";
-          source = folder + /plugins/executable_brew.sh;
-        };
-        plugins_calendar = {
-          executable = true;
-          target = ".config/sketchybar/plugins/calendar.sh";
-          source = folder + /plugins/executable_calendar.sh;
-        };
-        plugins_github = {
-          executable = true;
-          target = ".config/sketchybar/plugins/github.sh";
-          source = folder + /plugins/executable_github.sh;
-        };
-        plugins_icon_map = {
-          executable = true;
-          target = ".config/sketchybar/plugins/icon_map.sh";
-          source = folder + /plugins/executable_icon_map.sh;
-        };
-        plugins_space = {
-          executable = true;
-          target = ".config/sketchybar/plugins/space.sh";
-          source = folder + /plugins/executable_space.sh;
-        };
-        plugins_spotify = {
-          executable = true;
-          target = ".config/sketchybar/plugins/spotify.sh";
-          source = folder + /plugins/executable_spotify.sh;
-        };
-        plugins_volume = {
-          executable = true;
-          target = ".config/sketchybar/plugins/volume.sh";
-          text = ''
-            #!/usr/bin/env sh
-            WIDTH=100
-
-            volume_change() {
-              # INITIAL_WIDTH=$(${pkgs.sketchybar}/bin/sketchybar --query $NAME | ${pkgs.jq}/bin/jq ".icon.width")
-              # if [ "$INITIAL_WIDTH" -eq "0" ]; then
-              #   ${pkgs.sketchybar}/bin/sketchybar --animate tanh 30 --set $NAME width=$WIDTH icon.width=$INFO
-              # else
-              #   ${pkgs.sketchybar}/bin/sketchybar --set $NAME icon.width=$INFO width=$WIDTH
-              # fi
-              ${pkgs.sketchybar}/bin/sketchybar --set $NAME icon.width=$INFO
+          FONT="SF Pro" # Needs to have Regular, Bold, Semibold, Heavy and Black variants
+          PADDINGS=3 # All paddings use this value (icon, label, background)
 
 
-              # sleep 5
-              # FINAL_WIDTH=$(${pkgs.sketchybar}/bin/sketchybar --query $NAME | ${pkgs.jq}/bin/jq ".icon.width")
-              # if [ "$FINAL_WIDTH" -eq "$INFO" ]; then
-              #   ${pkgs.sketchybar}/bin/sketchybar --animate tanh 30 --set $NAME width=0 icon.width=0
-              # fi
-            }
+          # Setting up the general bar appearance and default values
+          ${pkgs.sketchybar}/bin/sketchybar --bar     height=40                                         \
+                                                      blur_radius=30 \
+                                                      position=top \
+                                                      sticky=on \
+                                                      padding_left=10 \
+                                                      padding_right=10
 
-            case "$SENDER" in
-              "volume_change") volume_change
-              ;;
-            esac
-          '';
-        };
-        plugins_volume_click = {
-          executable = true;
-          target = ".config/sketchybar/plugins/volume_click.sh";
-          text = ''
-            #!/usr/bin/env sh
-            MUTED=$(osascript -e 'output muted of (get volume settings)')
-            if [ "$MUTED" = "false" ]; then
-              osascript -e 'set volume output muted true'
-            else
-              osascript -e 'set volume output muted false'
-            fi
-          '';
-        };
-        plugins_zen = {
-          executable = true;
-          target = ".config/sketchybar/plugins/zen.sh";
-          source = folder + /plugins/executable_zen.sh;
-        };
-        plugins_aerospace = {
-          executable = true;
-          target = ".config/sketchybar/plugins/aerospace.sh";
-          text = ''
-            #!/usr/bin/env bash
-            source "$HOME/.config/sketchybar/colors.sh" # Loads all defined colors
 
-            highlight_focused_workspace() {
-              if [[ "$1" = "$FOCUSED_WORKSPACE" ]]
-              then
-                ${pkgs.sketchybar}/bin/sketchybar --animate tanh 20 --set $NAME icon.highlight=on label.width=0
-              else
-                ${pkgs.sketchybar}/bin/sketchybar --animate tanh 20 --set $NAME icon.highlight=off label.width=dynamic
-              fi
-            }
+          ${pkgs.sketchybar}/bin/sketchybar --default icon.font="SF Pro:Semibold:12.0" \
+                                                              icon.color=$ITEM_COLOR \
+                                                              label.font="SF Pro:Semibold:12.0" \
+                                                              label.color=$ITEM_COLOR \
+                                                              background.color=$ACCENT_COLOR \
+                                                              background.corner_radius=10 \
+                                                              background.height=20 \
+                                                              padding_left=4 \
+                                                              padding_right=4 \
+                                                              icon.padding_left=6 \
+                                                              icon.padding_right=3 \
+                                                              label.padding_left=3 \
+                                                              label.padding_right=6
 
-            illuminate_mode() {
-              if [[ "$mode" = "service" ]]
-              then
-                ${pkgs.sketchybar}/bin/sketchybar --animate tanh 20 --set $NAME background.color=$ORANGE
-              elif [[ "$mode" = "resize" ]]
-              then
-                ${pkgs.sketchybar}/bin/sketchybar --animate tanh 20 --set $NAME background.color=$GREEN
-              else
-                ${pkgs.sketchybar}/bin/sketchybar --animate tanh 20 --set $NAME background.color=$BACKGROUND_1
-              fi
-            }
-            case "$SENDER" in
-              "aerospace_workspace_change")
-                highlight_focused_workspace $1
-                ;;
-              "aerospace_mode_change")
-                illuminate_mode
-                ;;
-            esac
-          '';
-        };
+
+          # Left
+          # source "$ITEM_DIR/apple.sh"
+          source "$ITEM_DIR/spaces.sh"
+          source "$ITEM_DIR/front_app.sh"
+
+          # Center
+          # source "$ITEM_DIR/spotify.sh"
+          source "$ITEM_DIR/calendar.sh"
+
+          # Right
+          source $ITEM_DIR/calendar.sh
+          source $ITEM_DIR/wifi.sh
+          source $ITEM_DIR/battery.sh
+          source $ITEM_DIR/volume.sh
+
+          # Forcing all item scripts to run (never do this outside of sketchybarrc)
+          ${pkgs.sketchybar}/bin/sketchybar --update
+
+          echo "sketchybar configuation loaded.."
+        '';
       };
+      icons = {
+        executable = true;
+        target = ".config/sketchybar/plugins/icons.sh";
+        text = ''
+          #!/usr/bin/env sh
+
+          # Source the icon map with all the application icons
+          source ${pkgs.sketchybar-app-font}/bin/icon_map.sh
+
+          # Create a cache directory if it doesn't exist
+          CACHE_DIR="$HOME/.cache/sketchybar"
+          mkdir -p "$CACHE_DIR"
+
+          # Cache file for icon mappings
+          ICON_CACHE="$CACHE_DIR/icon_cache.txt"
+
+          # Create the cache file if it doesn't exist
+          if [ ! -f "$ICON_CACHE" ]; then
+            touch "$ICON_CACHE"
+          fi
+
+          # Check if the app is already in cache
+          APP_NAME=$(if [ "$1" = "Zen" ]; then echo "Zen Browser"; else echo "$1"; fi)
+
+          CACHED_ICON=$(grep "^$APP_NAME|" "$ICON_CACHE" | cut -d '|' -f2)
+
+          if [ -n "$CACHED_ICON" ]; then
+            # Cache hit, return the icon
+            echo "$CACHED_ICON"
+            exit 0
+          fi
+
+          # Get icon from the mapping function
+          __icon_map "$APP_NAME"
+
+          if [ -n "$icon_result" ]; then
+            echo "$APP_NAME|$icon_result" >>"$ICON_CACHE"
+          fi
+
+          echo "$icon_result"
+        '';
+      };
+      colors = {
+        executable = true;
+        target = ".config/sketchybar/colors.sh";
+        text = ''
+
+          export TRANSPARENT=0x00ffffff
+
+          # -- Gray Scheme --
+          export ITEM_COLOR=0xff000000
+          export ACCENT_COLOR=0xffc3c6cb
+
+          # -- White Scheme --
+          # export ITEM_COLOR=0xff000000
+          # export ACCENT_COLOR=0xffffffff
+
+          # -- Teal Scheme --
+          # export ITEM_COLOR=0xff000000
+          # export ACCENT_COLOR=0xff2cf9ed
+
+          # -- Purple Scheme --
+          # export ITEM_COLOR=0xff000000
+          # export ACCENT_COLOR=0xffeb46f9
+
+          # -- Red Scheme ---
+          # export ITEM_COLOR=0xff000000
+          # export ACCENT_COLOR=0xffff2453
+
+          # -- Blue Scheme ---
+          # export ITEM_COLOR=0xff000000
+          # export ACCENT_COLOR=0xff15bdf9
+
+          # -- Green Scheme --
+          # export ITEM_COLOR=0xff000000
+          # export ACCENT_COLOR=0xff1dfca1
+
+          # -- Orange Scheme --
+          # export ITEM_COLOR=0xffffffff
+          # export ACCENT_COLOR=0xfff97716
+
+          # -- Yellow Scheme --
+          # export ITEM_COLOR=0xff000000
+          # export ACCENT_COLOR=0xfff7fc17
+        '';
+      };
+      items_wifi = {
+        executable = true;
+        target = ".config/sketchybar/items/wifi.sh";
+        text = ''
+          #!/usr/bin/env/ sh
+
+          sketchybar --add item wifi right \
+            --set wifi \
+            icon="􀙥" \
+            label="Updating..." \
+            script="$PLUGIN_DIR/wifi.sh" \
+            --subscribe wifi wifi_change
+        '';
+      };
+      items_battery = {
+        executable = true;
+        target = ".config/sketchybar/items/battery.sh";
+        text = ''
+          #!/usr/bin/env/ sh
+          sketchybar --add item battery right \
+              --set battery update_freq=180 \
+              script="$PLUGIN_DIR/battery.sh" \
+              --subscribe battery system_woke power_source_change
+        '';
+      };
+      items_calendar = {
+        executable = true;
+        target = ".config/sketchybar/items/calendar.sh";
+        text = ''
+          #!/usr/bin/env sh
+          sketchybar --add item calendar right \
+            --set calendar icon=􀧞 \
+            update_freq=15 \
+            script="$PLUGIN_DIR/calendar.sh"
+        '';
+      };
+      items_front_app = {
+        executable = true;
+        target = ".config/sketchybar/items/front_app.sh";
+        text = ''
+          #!/usr/bin/env sh
+
+          sketchybar --add item front_app left \
+              --set front_app background.color=$ACCENT_COLOR \
+              icon.color=$ITEM_COLOR \
+              label.color=$ITEM_COLOR \
+              icon.font="sketchybar-app-font:Regular:12.0" \
+              label.font="SF Pro:Semibold:12.0" \
+              script="$PLUGIN_DIR/front_app.sh" \
+              --subscribe front_app front_app_switched
+        '';
+      };
+      items_spaces = {
+        executable = true;
+        target = ".config/sketchybar/items/spaces.sh";
+        text = ''
+          sketchybar --add event aerospace_workspace_change
+
+          sketchybar --add item aerospace_dummy left \
+            --set aerospace_dummy display=0 \
+            script="$PLUGIN_DIR/spaces.sh" \
+            --subscribe aerospace_dummy aerospace_workspace_change
+
+          for m in $(aerospace list-monitors | awk '{print $1}'); do
+            for sid in $(aerospace list-workspaces --monitor $m); do
+              sketchybar --add space space.$sid left \
+                --set space.$sid space=$sid \
+                icon=$sid \
+                background.color=$TRANSPARENT \
+                label.color=$ACCENT_COLOR \
+                icon.color=$ACCENT_COLOR \
+                display=$m \
+                label.font="sketchybar-app-font:Regular:12.0" \
+                icon.font="SF Pro:Semibold:12.0" \
+                label.padding_right=10 \
+                label.y_offset=-1 \
+                click_script="$PLUGIN_DIR/space_click.sh $sid"
+
+              apps=$(aerospace list-windows --monitor "$m" --workspace "$sid" |
+                awk -F '|' '{gsub(/^ *| *$/, "", $2); if (!seen[$2]++) print $2}')
+
+              icon_strip=""
+              if [ "''${apps}" != "" ]; then
+                while read -r app; do
+                  icon_strip+=" $($PLUGIN_DIR/icons.sh "$app")"
+                done <<<"''${apps}"
+              else
+                icon_strip=" —"
+              fi
+
+              sketchybar --set space.$sid label="$icon_strip"
+
+            done
+
+            for empty_space in $(aerospace list-workspaces --monitor $m --empty); do
+              sketchybar --set space.$empty_space display=0
+            done
+            for focus in $(aerospace list-workspaces --focused); do
+              sketchybar --set space.$focus background.drawing=on \
+                background.color=$ACCENT_COLOR \
+                label.color=$ITEM_COLOR \
+                icon.color=$ITEM_COLOR
+            done
+          done
+        '';
+      };
+
+      items_volume = {
+        executable = true;
+        target = ".config/sketchybar/items/volume.sh";
+        text = ''
+          #/usr/bin/env sh
+
+          sketchybar --add item volume right \
+            --set volume script="$PLUGIN_DIR/volume.sh" \
+            --subscribe volume volume_change
+        '';
+      };
+      plugins_wifi = {
+        executable = true;
+        target = ".config/sketchybar/plugins/wifi.sh";
+        text = ''
+                   #/usr/bin/env sh
+
+          SSID=$(system_profiler SPAirPortDataType | awk '/Current Network Information:/ { getline; print substr($0, 13, (length($0) - 13)); exit }')
+
+                   if [ "$SSID" = "" ]; then
+                     sketchybar --set $NAME icon="􀙈" label="Disconnected"
+                   else
+                     sketchybar --set $NAME icon="􀙇" label="$SSID"
+                   fi
+
+        '';
+      };
+      plugins_calendar = {
+        executable = true;
+        target = ".config/sketchybar/plugins/calendar.sh";
+
+        text = ''
+          #/usr/bin/env sh
+
+          sketchybar --set $NAME label="$(date +'%a %d %b %I:%M %p')"
+        '';
+      };
+      plugins_spaces = {
+        executable = true;
+        target = ".config/sketchybar/plugins/spaces.sh";
+        text = ''
+          #!/usr/bin/env sh
+
+          source "$CONFIG_DIR/colors.sh"
+
+          update_workspace_appearance() {
+            local sid=$1
+            local is_focused=$2
+
+            if [ "$is_focused" = "true" ]; then
+              sketchybar --set space.$sid background.drawing=on \
+                background.color=$ACCENT_COLOR \
+                label.color=$ITEM_COLOR \
+                icon.color=$ITEM_COLOR
+            else
+              sketchybar --set space.$sid background.drawing=off \
+                label.color=$ACCENT_COLOR \
+                icon.color=$ACCENT_COLOR
+            fi
+          }
+
+          update_icons() {
+            m=$1
+            sid=$2
+
+            apps=$(aerospace list-windows --monitor "$m" --workspace "$sid" \
+            | awk -F '|' '{gsub(/^ *| *$/, "", $2); if (!seen[$2]++) print $2}' \
+            | sort)
+
+            icon_strip=""
+            if [ "''${apps}" != "" ]; then
+              while read -r app; do
+                icon_strip+=" $($CONFIG_DIR/plugins/icons.sh "$app")"
+              done <<<"''${apps}"
+            else
+              icon_strip=" —"
+            fi
+
+            sketchybar --animate sin 10 --set space.$sid label="$icon_strip"
+          }
+
+          update_workspace_appearance "$PREV_WORKSPACE" "false"
+          update_workspace_appearance "$FOCUSED_WORKSPACE" "true"
+
+          for m in $(aerospace list-monitors | awk '{print $1}'); do
+            for sid in $(aerospace list-workspaces --monitor $m --visible); do
+              sketchybar --set space.$sid display=$m
+
+              update_icons "$m" "$sid"
+
+              update_icons "$m" "$PREV_WORKSPACE"
+
+              apps=$(aerospace list-windows --monitor "$m" --workspace "$sid" | wc -l)
+              if [ "''${apps}" -eq 0 ]; then
+                sketchybar --set space.$sid display=0
+              fi
+            done
+          done
+        '';
+      };
+
+      plugins_space_click = {
+        executable = true;
+        target = ".config/sketchybar/plugins/space_click.sh";
+        text = ''
+          #/usr/bin/env/ sh
+
+          apps=$(aerospace list-windows --workspace $1 | awk -F '|' '{gsub(/^ *| *$/, "", $2); print $2}')
+          focused=$(aerospace list-workspaces --focused)
+
+          if [ "''${apps}" = "" ] && [ "''${focused}" != "$1" ]; then
+            sketchybar --set space.$1 display=0
+          else
+            aerospace workspace $1
+          fi
+        '';
+      };
+      plugins_volume = {
+        executable = true;
+        target = ".config/sketchybar/plugins/volume.sh";
+        text = ''
+                    #!/usr/bin/env sh
+
+                    # The volume_change event supplies a $INFO variable in which the current volume
+          # percentage is passed to the script.
+
+          if [ "$SENDER" = "volume_change" ]; then
+
+            VOLUME=$INFO
+
+            case $VOLUME in
+            [6-9][0-9] | 100)
+              ICON="􀊩"
+              ;;
+            [3-5][0-9])
+              ICON="􀊥"
+              ;;
+            [1-9] | [1-2][0-9])
+              ICON="􀊡"
+              ;;
+            *) ICON="􀊣" ;;
+            esac
+
+            sketchybar --set $NAME icon="$ICON" label="$VOLUME%"
+          fi
+        '';
+      };
+      plugins_front_app = {
+        executable = true;
+        target = ".config/sketchybar/plugins/front_app.sh";
+        text = ''
+          # Some events send additional information specific to the event in the $INFO
+          # variable. E.g. the front_app_switched event sends the name of the newly
+          # focused application in the $INFO variable:
+          # https://felixkratz.github.io/SketchyBar/config/events#events-and-scripting
+
+          app_switched() {
+            for m in $(aerospace list-monitors | awk '{print $1}'); do
+              for sid in $(aerospace list-workspaces --monitor $m --visible); do
+
+                apps=$( (echo "$INFO"; aerospace list-windows --monitor "$m" --workspace "$sid" \
+                | awk -F '|' '{gsub(/^ *| *$/, "", $2); print $2}') \
+                | awk '!seen[$0]++' | sort)
+
+                icon_strip=""
+                if [ "''${apps}" != "" ]; then
+                  while read -r app; do
+                    icon_strip+=" $($CONFIG_DIR/plugins/icons.sh "$app")"
+                  done <<<"''${apps}"
+                else
+                  icon_strip=" —"
+                fi
+
+                sketchybar --animate sin 10 --set space.$sid label="$icon_strip"
+              done
+            done
+          }
+
+          if [ "$SENDER" = "front_app_switched" ]; then
+
+            sketchybar --set $NAME label="$INFO" icon="$($CONFIG_DIR/plugins/icons.sh "$INFO")"
+
+            app_switched
+          fi
+        '';
+      };
+      plugins_battery = {
+        executable = true;
+        target = ".config/sketchybar/plugins/battery.sh";
+        text = ''
+          #!/usr/bin/env sh
+          source "$CONFIG_DIR/colors.sh"
+
+          PERCENTAGE=$(pmset -g batt | grep -Eo "\d+%" | cut -d% -f1)
+          CHARGING=$(pmset -g batt | grep 'AC Power')
+
+          if [ $PERCENTAGE = "" ]; then
+            exit 0
+          fi
+
+          case ''${PERCENTAGE} in
+          9[0-9] | 100)
+            ICON="􀛨"
+            COLOR=$ITEM_COLOR
+            ;;
+          [6-8][0-9])
+            ICON="􀺸"
+            COLOR=$ITEM_COLOR
+            ;;
+          [3-5][0-9])
+            ICON="􀺶"
+            COLOR="0xFFd97706"
+            ;;
+          [1-2][0-9])
+            ICON="􀛩"
+            COLOR="0xFFf97316"
+            ;;
+          *)
+            ICON="􀛪"
+            COLOR="0xFFef4444"
+            ;;
+          esac
+
+          if [[ $CHARGING != "" ]]; then
+            ICON="􀢋"
+            COLOR=$ITEM_COLOR
+          fi
+
+          # The item invoking this script (name $NAME) will get its icon and label
+          # updated with the current battery status
+          sketchybar --set $NAME icon="$ICON" label="''${PERCENTAGE}%" icon.color="$COLOR"
+        '';
+      };
+      plugins_aerospace = {
+        executable = true;
+        target = ".config/sketchybar/plugins/aerospace.sh";
+        text = ''
+          #!/usr/bin/env bash
+          source "$HOME/.config/sketchybar/colors.sh" # Loads all defined colors
+
+          highlight_focused_workspace() {
+            if [[ "$1" = "$FOCUSED_WORKSPACE" ]]
+            then
+              ${pkgs.sketchybar}/bin/sketchybar --animate tanh 20 --set $NAME icon.highlight=on label.width=0
+            else
+              ${pkgs.sketchybar}/bin/sketchybar --animate tanh 20 --set $NAME icon.highlight=off label.width=dynamic
+            fi
+          }
+
+          illuminate_mode() {
+            if [[ "$mode" = "service" ]]
+            then
+              ${pkgs.sketchybar}/bin/sketchybar --animate tanh 20 --set $NAME background.color=$ORANGE
+            elif [[ "$mode" = "resize" ]]
+            then
+              ${pkgs.sketchybar}/bin/sketchybar --animate tanh 20 --set $NAME background.color=$GREEN
+            else
+              ${pkgs.sketchybar}/bin/sketchybar --animate tanh 20 --set $NAME background.color=$BACKGROUND_1
+            fi
+          }
+          case "$SENDER" in
+            "aerospace_workspace_change")
+              highlight_focused_workspace $1
+              ;;
+            "aerospace_mode_change")
+              illuminate_mode
+              ;;
+          esac
+        '';
+      };
+    };
 }
