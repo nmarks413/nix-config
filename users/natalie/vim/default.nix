@@ -4,6 +4,6 @@
     ./languages.nix
     ./latex.nix
     ./lean.nix
-    ./ui.nix
+    ./visuals.nix
   ];
 }

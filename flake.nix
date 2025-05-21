@@ -2,7 +2,11 @@
   description = "multi device configuration flake";
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "nixpkgs/nixos-23.11";
+
+    lix-module = {
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.93.0.tar.gz";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -43,6 +47,7 @@
     {
       self,
       nixpkgs,
+      lix-module,
       nixos-cosmic,
       darwin,
       ...
@@ -92,6 +97,7 @@
         inherit
           overlays
           nixpkgs
+          lix-module
           inputs
           mkNeovim
           ;

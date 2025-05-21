@@ -4,24 +4,16 @@
   host,
   pkgs,
   ...
-}: let
-  darwin =
-    if host.darwin
-    then "darwin"
-    else "nixos";
-  flakePath = "/${
-    if host.darwin
-    then "Users"
-    else "home"
-  }/${user.username}/.dotfiles";
+}:
+let
+  darwin = if host.darwin then "darwin" else "nixos";
+  flakePath = "/${if host.darwin then "Users" else "home"}/${user.username}/.dotfiles";
 
   # BIG HACK DO NOT DO PLS
 
-  hostname =
-    if host.darwin
-    then "Natalies-MacBook-Air"
-    else "nixos";
-in {
+  hostname = if host.darwin then "Natalies-MacBook-Air" else "nixos";
+in
+{
   vim = {
     extraPackages = with pkgs; [
       python312Packages.pylatexenc
@@ -94,18 +86,30 @@ in {
       enable = true;
       setupOpts = {
         formatters_by_ft = {
-          fish = ["fish_indent"];
-          tex = ["latexindent"];
+          fish = [ "fish_indent" ];
+          tex = [ "latexindent" ];
         };
       };
     };
 
-    diagnostics.nvim-lint = {
+    diagnostics = {
       enable = true;
-      linters_by_ft = {
-        nix = ["statix"];
-        tex = ["chktex"];
-        haskell = ["hlint"];
+      config = {
+        virtual_text = {
+          format = pkgs.lib.generators.mkLuaInline ''
+            function(diagnostic)
+              return string.format("%s (%s)", diagnostic.message, diagnostic.source)
+            end
+          '';
+        };
+      };
+      nvim-lint = {
+        enable = true;
+        linters_by_ft = {
+          nix = [ "statix" ];
+          tex = [ "chktex" ];
+          haskell = [ "hlint" ];
+        };
       };
     };
     treesitter = {
