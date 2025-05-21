@@ -1,7 +1,6 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
     pinentry_mac
-    signal-desktop-bin
   ];
 
   # Custom configuration modules in "modules" are shared between users,
@@ -43,6 +42,7 @@
       "zen"
       "supertuxkart"
       "sf-symbols"
+      "signal"
 
       "mediosz/tap/swipeaerospace"
     ];
