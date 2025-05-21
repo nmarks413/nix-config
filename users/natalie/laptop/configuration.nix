@@ -42,7 +42,6 @@
       "zen"
       "supertuxkart"
       "sf-symbols"
-      "signal"
 
       "mediosz/tap/swipeaerospace"
     ];
