@@ -10,17 +10,13 @@
       undofile = true;
       swapfile = false;
       showmode = false;
-      foldmethod = "expr";
-      foldexpr = "v:lua.vim.treesitter.foldexpr()";
+      foldlevel = 99;
+      foldcolumn = "1";
+      foldlevelstart = 99;
+      foldenable = true;
     };
 
     autocmds = [
-      {
-        event = ["LspAttach"];
-        pattern = ["*"];
-        desc = "User: Set LSP folding if client supports it";
-        callback = pkgs.lib.generators.mkLuaInline ''function(ctx) local client = assert(vim.lsp.get_client_by_id(ctx.data.client_id)) if client:supports_method("textDocument/foldingRange") then local win = vim.api.nvim_get_current_win() vim.wo[win][0].foldexpr = "v:lua.vim.lsp.foldexpr()" end end'';
-      }
     ];
     theme = {
       name = "catppuccin";

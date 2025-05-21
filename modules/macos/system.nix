@@ -1,13 +1,12 @@
 {
+  user,
   config,
   pkgs,
   lib,
   ...
-}:
-let
+}: let
   tiling = config.shared.darwin.tiling.enable;
-in
-{
+in {
   # Use touchid or watch to activate sudo
   security.pam.services.sudo_local = {
     enable = true;
@@ -17,6 +16,7 @@ in
 
   # Set some OSX preferences that I always end up hunting down and changing.
   system = {
+    primaryUser = user.username;
     # Used for backwards compatibility, please read the changelog before changing.
     # $ darwin-rebuild changelog
     stateVersion = 6;

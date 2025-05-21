@@ -132,6 +132,12 @@ in {
         };
       };
     };
+
+    ui = {
+      nvim-ufo = {
+        enable = true;
+      };
+    };
     autocomplete.blink-cmp = {
       enable = true;
       mappings = {
