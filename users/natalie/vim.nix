@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   imports = [
     ./vim/default.nix
   ];
@@ -20,8 +21,9 @@
     };
 
     autocmds = [
+      #Autocommand to fall back to treesitter folding if LSP doesnt support it
       {
-        event = ["LspAttach"];
+        event = [ "LspAttach" ];
         callback = pkgs.lib.generators.mkLuaInline ''
           function(args)
             local client = vim.lsp.get_client_by_id(args.data.client_id)
@@ -33,6 +35,20 @@
         '';
       }
     ];
+
+    tabline = {
+      nvimBufferline.enable = true;
+    };
+
+    binds = {
+      hardtime-nvim = {
+        enable = true;
+        setupOpts = {
+          restriction_mode = "block";
+        };
+      };
+    };
+
     theme = {
       name = "catppuccin";
       style = "mocha";
