@@ -1,14 +1,14 @@
-{ inputs, ... }:
-{
+{inputs, ...}: {
   nixpkgs.config = {
     allowUnfree = true;
   };
 
   nix = {
-    nixPath = [ "nixpkgs = ${inputs.nixpkgs}" ];
+    # nixPath = ["nixpkgs = ${inputs.nixpkgs}"];
     extraOptions = ''
       warn-dirty = false
     '';
+    channel.enable = false;
 
     optimise = {
       automatic = true;
@@ -19,6 +19,7 @@
         "nix-command"
         "flakes"
       ];
+      extra-nix-path = "nixpkgs=flake:nixpkgs";
       substituters = [
         "https://cache.nixos.org/?priority=10"
 

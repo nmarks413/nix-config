@@ -74,7 +74,7 @@
     };
     filetree = {
       neo-tree = {
-        enable = true;
+        enable = false;
       };
     };
     tabline = {
@@ -133,7 +133,6 @@
                 indent = 2;
                 padding = 1;
               }
-              {section = "startup";}
             ];
           };
           image.enable = true;

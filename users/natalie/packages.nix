@@ -1,7 +1,6 @@
 # Packages installed with home-manager
-{ pkgs, ... }:
-with pkgs;
-[
+{pkgs, ...}:
+with pkgs; [
   #general development
   just
   pkg-config
@@ -36,7 +35,7 @@ with pkgs;
   nh
 
   #terminal stuff
-  (btop.override { cudaSupport = true; })
+  (btop.override {cudaSupport = true;})
   tmux
   zellij
   lazygit
@@ -83,7 +82,6 @@ with pkgs;
   lua51Packages.lua
   lua51Packages.luarocks-nix
   codespell
-  typst
   tree-sitter
 
   #python

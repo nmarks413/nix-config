@@ -7,5 +7,6 @@
       name = "catppuccin";
       style = "mocha";
     };
+    hideSearchHighlight = true;
   };
 }
