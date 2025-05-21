@@ -49,7 +49,6 @@
     }@inputs:
     let
       lib = nixpkgs.lib;
-
       # TODO: apply these overlays sooner and remove uses of legacyPackages elsewhere.
       overlays = [
         inputs.zig.overlays.default

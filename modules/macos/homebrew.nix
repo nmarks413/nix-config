@@ -4,27 +4,15 @@ _: {
     enable = true;
 
     onActivation = {
-      autoUpdate = true;
+      autoUpdate = false;
       cleanup = "none";
-      upgrade = true;
+      upgrade = false;
     };
 
     brews = [
-      "imagemagick"
-      "opam"
     ];
 
     casks = [
-      "battle-net"
-      "stremio"
-      "alt-tab"
-      "legcord"
-      "zulip"
-      "zen-browser"
-      "supertuxkart"
-      "sf-symbols"
-
-      "mediosz/tap/swipeaerospace"
     ];
 
     masApps = {

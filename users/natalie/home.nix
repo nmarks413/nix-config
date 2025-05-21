@@ -2,8 +2,7 @@
   pkgs,
   lib,
   ...
-}@args:
-{
+} @ args: {
   programs = {
     # sort-lines:start
     atuin.enable = true;
@@ -11,6 +10,7 @@
     hyfetch.enable = true;
     direnv.enable = true;
     fish.enable = true;
+    man.generateCaches = false;
     # sort-lines:end
   };
 

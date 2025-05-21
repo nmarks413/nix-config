@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   environment.systemPackages = with pkgs; [
     pinentry_mac
     signal-desktop-bin
@@ -8,7 +7,7 @@
   # Custom configuration modules in "modules" are shared between users,
   # and can be configured in this "shared" namespace
   shared.darwin = {
-    macAppStoreApps = [ "wireguard" ];
+    macAppStoreApps = ["wireguard"];
   };
 
   # Create /etc/zshrc that loads the nix-darwin environment.
@@ -30,14 +29,6 @@
 
   # Use homebrew to install casks
   homebrew = {
-    enable = true;
-
-    onActivation = {
-      autoUpdate = true;
-      cleanup = "none";
-      upgrade = true;
-    };
-
     brews = [
       "imagemagick"
       "opam"
@@ -49,8 +40,11 @@
       "alt-tab"
       "legcord"
       "zulip"
-      "zen-browser"
+      "zen"
       "supertuxkart"
+      "sf-symbols"
+
+      "mediosz/tap/swipeaerospace"
     ];
   };
 }

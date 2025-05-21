@@ -9,6 +9,7 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
   ];
+  documentation.man.generateCaches = false;
   programs = {
     gamemode.enable = true;
 

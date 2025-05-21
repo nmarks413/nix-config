@@ -87,9 +87,6 @@
           ripgrep.enable = true;
         };
         friendly-snippets.enable = true;
-        setupOpts = {
-          keymap.preset = "super-tab";
-        };
       };
     };
     statusline = {

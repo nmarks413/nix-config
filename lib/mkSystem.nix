@@ -7,7 +7,7 @@
   mkNeovim,
 }: name: {
   user, # ./users/{name}
-  host, # ./users/{name}/{host} (optional)
+  host, # ./users/{name}/{host}
   system, # arch-os
   extraModules ? [],
 }: let
