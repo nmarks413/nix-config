@@ -13,5 +13,6 @@
     pnpm
     yt-dlp
     spotdl
+    zig
   ];
 }
