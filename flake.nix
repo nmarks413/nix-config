@@ -3,10 +3,10 @@
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
 
-    # lix-module = {
-    #   url = "https://git.lix.systems/lix-project/nixos-module/archive/2.93.0.tar.gz";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    lix-module = {
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.93.0.tar.gz";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -26,9 +26,6 @@
     zig.url = "github:mitchellh/zig-overlay";
     zls.url = "github:zigtools/zls?rev=a26718049a8657d4da04c331aeced1697bc7652b";
 
-    stylix.url = "github:danth/stylix";
-    stylix.inputs.nixpkgs.follows = "nixpkgs";
-
     moonlight.url = "github:moonlight-mod/moonlight"; # Add `/develop` to the flake URL to use nightly.
     moonlight.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -47,7 +44,7 @@
     {
       self,
       nixpkgs,
-      # lix-module,
+      lix-module,
       nixos-cosmic,
       darwin,
       ...
@@ -97,7 +94,7 @@
         inherit
           overlays
           nixpkgs
-          # lix-module
+          lix-module
           inputs
           mkNeovim
           ;

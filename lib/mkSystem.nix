@@ -2,7 +2,7 @@
 # particular architecture.
 {
   nixpkgs,
-  # lix-module,
+  lix-module,
   overlays,
   inputs,
   mkNeovim,
@@ -89,7 +89,7 @@ systemFunc {
 
       # Use lix (alternative nix implementation)
       # https://lix.systems/add-to-config/#flake-based-configurations
-      # lix-module.nixosModules.default
+      lix-module.nixosModules.default
       # (getInputModule "lix-module" "default")
 
       # Modules shared between nix-darwin and NixOS
@@ -106,9 +106,6 @@ systemFunc {
       # https://github.com/nix-community/comma
       (getInputModule "nix-index-database" "nix-index")
       { programs.nix-index-database.comma.enable = true; }
-
-      # Themes for all programs
-      (getInputModule "stylix" "stylix")
 
       # Home manager
       (getInputModule "home-manager" "home-manager")
