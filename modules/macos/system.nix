@@ -4,9 +4,11 @@
   pkgs,
   lib,
   ...
-}: let
+}:
+let
   tiling = config.shared.darwin.tiling.enable;
-in {
+in
+{
   # Use touchid or watch to activate sudo
   security.pam.services.sudo_local = {
     enable = true;

@@ -595,6 +595,7 @@
         "nixpkgs": "nixpkgs_2",
         "nvf": "nvf",
         "rust-overlay": "rust-overlay_2",
+        "zen-browser": "zen-browser",
         "zig": "zig",
         "zls": "zls"
       }
@@ -842,6 +843,26 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "zen-browser": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1748059546,
+        "narHash": "sha256-e0jy8RU8ofOdeS5gF9Hir+M5Wn0q7D8MkpeQXsOJdu4=",
+        "owner": "youwen5",
+        "repo": "zen-browser-flake",
+        "rev": "716a5af28d686d67146d01b14112c919b6133a84",
+        "type": "github"
+      },
+      "original": {
+        "owner": "youwen5",
+        "repo": "zen-browser-flake",
         "type": "github"
       }
     },

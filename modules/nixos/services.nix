@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   services = {
     avahi = {
       enable = true;
@@ -40,7 +41,7 @@
     # Enable CUPS to print documents.
     printing = {
       enable = true;
-      drivers = [pkgs.brlaser]; # Brother printer driver
+      drivers = [ pkgs.brlaser ]; # Brother printer driver
     };
 
     pipewire = {
@@ -55,7 +56,7 @@
 
     openssh = {
       enable = true;
-      ports = [22];
+      ports = [ 22 ];
       settings = {
         PasswordAuthentication = true;
         UseDns = true;

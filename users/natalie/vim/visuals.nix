@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   vim = {
     visuals = {
       indent-blankline = {

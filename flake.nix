@@ -29,6 +29,10 @@
     moonlight.url = "github:moonlight-mod/moonlight"; # Add `/develop` to the flake URL to use nightly.
     moonlight.inputs.nixpkgs.follows = "nixpkgs";
 
+    zen-browser = {
+      url = "github:youwen5/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nh.url = "github:viperML/nh";
     nh.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -37,76 +41,79 @@
     nix-index-database.url = "github:nix-community/nix-index-database";
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
   };
-  outputs = {
-    self,
-    nixpkgs,
-    lix-module,
-    darwin,
-    ...
-  } @ inputs: let
-    lib = nixpkgs.lib;
-    # TODO: apply these overlays sooner and remove uses of legacyPackages elsewhere.
-    overlays = [
-      inputs.zig.overlays.default
-      inputs.rust-overlay.overlays.default
-      inputs.nh.overlays.default
+  outputs =
+    {
+      self,
+      nixpkgs,
+      lix-module,
+      darwin,
+      ...
+    }@inputs:
+    let
+      lib = nixpkgs.lib;
+      # TODO: apply these overlays sooner and remove uses of legacyPackages elsewhere.
+      overlays = [
+        inputs.zig.overlays.default
+        inputs.rust-overlay.overlays.default
+        inputs.nh.overlays.default
 
-      # https://github.com/LnL7/nix-darwin/issues/1041
-      (_: prev: {
-        karabiner-elements = prev.karabiner-elements.overrideAttrs (old: {
-          version = "14.13.0";
+        # https://github.com/LnL7/nix-darwin/issues/1041
+        (_: prev: {
+          karabiner-elements = prev.karabiner-elements.overrideAttrs (old: {
+            version = "14.13.0";
 
-          src = prev.fetchurl {
-            inherit (old.src) url;
-            hash = "sha256-gmJwoht/Tfm5qMecmq1N6PSAIfWOqsvuHU8VDJY8bLw=";
-          };
-        });
-      })
-    ];
-
-    # Users of this flake currently use x86_64 Linux and Apple Silicon
-    systems = [
-      "x86_64-linux"
-      "aarch64-darwin"
-    ];
-    forAllSystems = f:
-      builtins.listToAttrs (
-        builtins.map (system: {
-          name = system;
-          value = f (
-            inputs
-            // {
-              inherit system;
-              pkgs = nixpkgs.legacyPackages.${system};
-            }
-          );
+            src = prev.fetchurl {
+              inherit (old.src) url;
+              hash = "sha256-gmJwoht/Tfm5qMecmq1N6PSAIfWOqsvuHU8VDJY8bLw=";
+            };
+          });
         })
-        systems
-      );
+      ];
 
-    mkSystem = import ./lib/mkSystem.nix {
-      inherit
-        overlays
-        nixpkgs
-        lix-module
-        inputs
-        mkNeovim
-        ;
-    };
-    mkNeovim = import ./lib/mkNeovim.nix {
-      inherit
-        self
-        overlays
-        nixpkgs
-        inputs
-        ;
-    };
-  in rec {
-    inherit self;
-    # "nix fmt"
-    formatter = forAllSystems (inputs: inputs.pkgs.nixfmt-tree);
-    packages = forAllSystems (
-      {system, ...}:
+      # Users of this flake currently use x86_64 Linux and Apple Silicon
+      systems = [
+        "x86_64-linux"
+        "aarch64-darwin"
+      ];
+      forAllSystems =
+        f:
+        builtins.listToAttrs (
+          builtins.map (system: {
+            name = system;
+            value = f (
+              inputs
+              // {
+                inherit system;
+                pkgs = nixpkgs.legacyPackages.${system};
+              }
+            );
+          }) systems
+        );
+
+      mkSystem = import ./lib/mkSystem.nix {
+        inherit
+          overlays
+          nixpkgs
+          lix-module
+          inputs
+          mkNeovim
+          ;
+      };
+      mkNeovim = import ./lib/mkNeovim.nix {
+        inherit
+          self
+          overlays
+          nixpkgs
+          inputs
+          ;
+      };
+    in
+    rec {
+      inherit self;
+      # "nix fmt"
+      formatter = forAllSystems (inputs: inputs.pkgs.nixfmt-tree);
+      packages = forAllSystems (
+        { system, ... }:
         {
           nvim-chloe = mkNeovim "chloe" system;
           nvim-natalie = mkNeovim "natalie" system;
@@ -115,46 +122,48 @@
           # "nix run .#darwin-rebuild"
           darwin-rebuild = darwin.packages.aarch64-darwin.darwin-rebuild;
         }
-    );
+      );
 
-    # natalie's desktop computer
-    nixosConfigurations.nixos = mkSystem "nixos" {
-      user = "natalie";
-      host = "desktop";
-      system = "x86_64-linux";
-      extraModules = [
-      ];
-    };
-    # natalie's laptop
-    darwinConfigurations."Natalies-MacBook-Air" = mkSystem "Natalies-MacBook-Air" {
-      user = "natalie";
-      host = "laptop";
-      system = "aarch64-darwin";
-    };
+      # natalie's desktop computer
+      nixosConfigurations.nixos = mkSystem "nixos" {
+        user = "natalie";
+        host = "desktop";
+        system = "x86_64-linux";
+        extraModules = [
+        ];
+      };
+      # natalie's laptop
+      darwinConfigurations."Natalies-MacBook-Air" = mkSystem "Natalies-MacBook-Air" {
+        user = "natalie";
+        host = "laptop";
+        system = "aarch64-darwin";
+      };
 
-    # chloe's mac studio "sandwich"
-    darwinConfigurations.sandwich = mkSystem "sandwich" {
-      user = "chloe";
-      host = "sandwich";
-      system = "aarch64-darwin";
-    };
-    # chloe's macbook air "paperback"
-    darwinConfigurations.paperback = mkSystem "paperback" {
-      user = "chloe";
-      host = "paperback";
-      system = "aarch64-darwin";
-    };
+      # chloe's mac studio "sandwich"
+      darwinConfigurations.sandwich = mkSystem "sandwich" {
+        user = "chloe";
+        host = "sandwich";
+        system = "aarch64-darwin";
+      };
+      # chloe's macbook air "paperback"
+      darwinConfigurations.paperback = mkSystem "paperback" {
+        user = "chloe";
+        host = "paperback";
+        system = "aarch64-darwin";
+      };
 
-    # generate checks for "nix flake check --all-systems --no-build"
-    checks.aarch64-darwin = builtins.listToAttrs (
-      builtins.map (
-        name: let
-          d = darwinConfigurations.${name}.system;
-        in {
-          name = "darwinConfiguration-" + d.name;
-          value = d;
-        }
-      ) (builtins.attrNames darwinConfigurations)
-    );
-  };
+      # generate checks for "nix flake check --all-systems --no-build"
+      checks.aarch64-darwin = builtins.listToAttrs (
+        builtins.map (
+          name:
+          let
+            d = darwinConfigurations.${name}.system;
+          in
+          {
+            name = "darwinConfiguration-" + d.name;
+            value = d;
+          }
+        ) (builtins.attrNames darwinConfigurations)
+      );
+    };
 }

@@ -8,14 +8,14 @@
   host,
   mainHomeImports,
   ...
-}: let
+}:
+let
   cfg = config.programs;
-in {
-  imports =
-    mainHomeImports
-    ++ [
-      ./macos/sketchybar.nix
-    ];
+in
+{
+  imports = mainHomeImports ++ [
+    ./macos/sketchybar.nix
+  ];
   programs = {
     home-manager.enable = true;
     nix-index.enable = true;
@@ -80,7 +80,7 @@ in {
         }
       ];
       shellAliases =
-        {}
+        { }
         // lib.optionalAttrs (!host.darwin) {
           reboot-windows = "sudo efibootmgr --bootnext 0000; sudo reboot -h now";
         };

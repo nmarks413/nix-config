@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   vim = {
     lazy.plugins."lean.nvim" = {
       enabled = true;
