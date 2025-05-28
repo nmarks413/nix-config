@@ -34,6 +34,7 @@ with pkgs;
   #nix tools
   direnv
   nh
+  (lix.override { aws-sdk-cpp = null; })
 
   #terminal stuff
   (btop.override { cudaSupport = true; })
