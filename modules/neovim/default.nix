@@ -1,9 +1,5 @@
+{ config, lib, ... }:
 {
-  config,
-  lib,
-  host,
-  ...
-}: {
   # based on default options from upstream:
   # https://github.com/NotAShelf/nvf/blob/main/configuration.nix
   #
@@ -45,6 +41,10 @@
       # https://github.com/onsails/lspkind.nvim
       lspkind.enable = config.vim.autocomplete.blink-cmp.enable;
     };
+    treesitter = {
+      enable = true;
+      addDefaultGrammars = true;
+    };
     debugger = {
       nvim-dap = {
         enable = true;
@@ -57,17 +57,17 @@
       enableExtraDiagnostics = true;
 
       # sort-lines: on
-      assembly.enable = true;
       bash.enable = true;
       clang.enable = true;
       css.enable = true;
       html.enable = true;
+      markdown.enable = true;
       nix.enable = true;
+      python.enable = true;
       rust.crates.enable = true;
       rust.enable = true;
       ts.enable = true;
       zig.enable = true;
-      markdown.enable = true;
       # sort-lines: off
 
       nix.format.type = "nixfmt"; # looks so much nicer
@@ -107,19 +107,24 @@
           bigfile.enable = true;
           explorer.replace_netrw = true;
           dashboard = {
-            sections = [
-              {section = "header";}
-              {
-                icon = " ";
-                title = "Keymaps";
-                section = "keys";
-                indent = 2;
-                padding = 1;
-              }
+            preset.keys = [
               {
                 icon = " ";
-                title = "Recent Files";
-                section = "recent_files";
+                key = "n";
+                desc = "New File";
+                action = ":ene | startinsert";
+              }
+              {
+                icon = " ";
+                key = "r";
+                desc = "Recent Files";
+                action = ":lua Snacks.dashboard.pick('oldfiles')";
+              }
+            ];
+            sections = [
+              { section = "header"; }
+              {
+                section = "keys";
                 indent = 2;
                 padding = 1;
               }
@@ -130,6 +135,21 @@
                 indent = 2;
                 padding = 1;
               }
+              {
+                icon = " ";
+                title = "Git";
+                section = "terminal";
+                enabled = lib.options.literalExpression ''
+                  function()
+                    return Snacks.git.get_root() ~= nil
+                  end
+                '';
+                cmd = "git status --short --branch --renames";
+                height = 10;
+                padding = 1;
+                ttl = 5 * 60;
+                indent = 3;
+              }
             ];
           };
           image.enable = true;
@@ -137,7 +157,7 @@
           picker = {
             enable = true;
             sources = {
-              explorer = {};
+              explorer = { };
             };
           };
         };

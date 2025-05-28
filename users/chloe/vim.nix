@@ -1,20 +1,58 @@
-{ ... }:
-{
-  vim.theme.extraConfig = ''
-    if vim.g.neovide then
-      vim.g.neovide_cursor_trail_size = 0.3
-      vim.g.neovide_scroll_animation_length = 0.1;
+_: {
+  vim = {
+    options = {
+      tabstop = 2;
+      softtabstop = 2;
+      shiftwidth = 2;
+      undofile = true;
+      swapfile = false;
+      showmode = false;
+      foldlevel = 99;
+      foldcolumn = "1";
+      foldlevelstart = 99;
+      foldenable = true;
+      linebreak = true;
+    };
 
-      vim.keymap.set('n', '<D-s>', ':w<CR>') -- Save
-      vim.keymap.set('v', '<D-c>', '"+y') -- Copy
-      vim.keymap.set('n', '<D-v>', '"+P') -- Paste normal mode
-      vim.keymap.set('v', '<D-v>', '"+P') -- Paste visual mode
-      vim.keymap.set('c', '<D-v>', '<C-R>+') -- Paste command mode
-      vim.keymap.set('i', '<D-v>', '<ESC>l"+Pli') -- Paste insert mode
-    end
-    vim.api.nvim_set_keymap("", '<D-v>', '+p<CR>', { noremap = true, silent = true})
-    vim.api.nvim_set_keymap('!', '<D-v>', '<C-R>+', { noremap = true, silent = true})
-    vim.api.nvim_set_keymap('t', '<D-v>', '<C-R>+', { noremap = true, silent = true})
-    vim.api.nvim_set_keymap('v', '<D-v>', '<C-R>+', { noremap = true, silent = true})
-  '';
+    binds = {
+      hardtime-nvim.setupOpts = {
+        restriction_mode = "block";
+        disable_mouse = false;
+      };
+    };
+    git = {
+      gitsigns.setupOpts = {
+        current_line_blame = true;
+        current_line_blame_opts = {
+          virt_text = true;
+          virt_text_pos = "right_align";
+          delay = 25;
+          ignore_whitespace = true;
+          virt_text_priority = 100;
+          use_focus = true;
+        };
+      };
+    };
+
+    keymaps =
+      let
+        mkKeymap = mode: key: action: desc: {
+          inherit mode;
+          inherit key action desc;
+        };
+        n = mkKeymap "n"; # normal mode
+      in
+      [
+        # UI
+        (n "<leader>e" ":lua require('snacks').explorer()<CR>" "File Explorer")
+        # Find Files
+        (n "<leader><space>" ":lua require('snacks').picker.smart()<CR>" "Smart Find Files")
+        (n "<leader>f" ":lua require('snacks').picker.grep()<CR>" "Grep Files")
+        # Lsp
+        (n "K" ":Lspsaga hover_doc<CR>" "Hover docs")
+        (n "lr" ":lua vim.lsp.buf.rename()<CR>" "Rename")
+        (n "gd" ":lua vim.lsp.buf.definition()<CR>" "Go to Definition")
+        (n "gD" ":lua vim.lsp.buf.declaration()<CR>" "Go to Declaration")
+      ];
+  };
 }

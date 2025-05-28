@@ -3,8 +3,8 @@
 {
   # packages for all machines
   environment.systemPackages = with pkgs; [
+    git
   ];
-  # services for all machines
 
   # configuration for shared modules.
   # all custom options in 'shared' for clarity.
