@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   services = {
     avahi = {
       enable = true;
@@ -24,6 +23,7 @@
 
     desktopManager.cosmic.enable = true;
     displayManager.cosmic-greeter.enable = true;
+    desktopManager.cosmic.xwayland.enable = true;
 
     # Auto mount devices
     udisks2 = {
@@ -40,7 +40,7 @@
     # Enable CUPS to print documents.
     printing = {
       enable = true;
-      drivers = [ pkgs.brlaser ]; # Brother printer driver
+      drivers = [pkgs.brlaser]; # Brother printer driver
     };
 
     pipewire = {
@@ -55,7 +55,7 @@
 
     openssh = {
       enable = true;
-      ports = [ 22 ];
+      ports = [22];
       settings = {
         PasswordAuthentication = true;
         UseDns = true;

@@ -3,8 +3,7 @@
   user,
   host,
   ...
-}:
-{
+}: {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -18,7 +17,7 @@
       enable = true;
       # Certain features, including CLI integration and system authentication support,
       # require enabling PolKit integration on some desktop environments (e.g. Plasma).
-      polkitPolicyOwners = [ user.username ];
+      polkitPolicyOwners = [user.username];
     };
 
     noisetorch.enable = true;
@@ -35,7 +34,7 @@
 
     steam = {
       enable = true;
-      package = with pkgs; steam.override { extraPkgs = pkgs: [ attr ]; };
+      package = with pkgs; steam.override {extraPkgs = pkgs: [attr];};
     };
 
     git = {
@@ -59,7 +58,7 @@
 
   xdg.portal = {
     enable = true;
-    extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
+    extraPortals = with pkgs; [xdg-desktop-portal-gtk];
   };
   virtualisation = {
     containers.enable = true;
@@ -84,16 +83,14 @@
       hybrid-sleep.enable = false;
     };
 
-    packages = [ pkgs.observatory ];
-
-    services.monitord.wantedBy = [ "multi-user.target" ];
+    services.monitord.wantedBy = ["multi-user.target"];
   };
 
   i18n = {
     # Select internationalisation properties.
     defaultLocale = "en_US.UTF-8";
 
-    supportedLocales = [ "all" ];
+    supportedLocales = ["all"];
 
     extraLocaleSettings = {
       LC_ADDRESS = "en_US.UTF-8";
@@ -148,7 +145,10 @@
     ];
   };
   environment = {
-    sessionVariables.COSMIC_DATA_CONTROL_ENABLED = 1;
+    sessionVariables = {
+      COSMIC_DATA_CONTROL_ENABLED = 1;
+      NIXOS_OZONE_WL = "1";
+    };
     variables.EDITOR = "nvim";
 
     systemPackages = with pkgs; [
@@ -170,7 +170,7 @@
     };
     interfaces.enp11s0.wakeOnLan = {
       enable = true;
-      policy = [ "magic" ];
+      policy = ["magic"];
     };
   };
 
