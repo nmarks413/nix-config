@@ -3,7 +3,8 @@
   lib,
   host,
   ...
-}: {
+}:
+{
   # based on default options from upstream:
   # https://github.com/NotAShelf/nvf/blob/main/configuration.nix
   #
@@ -108,7 +109,7 @@
           explorer.replace_netrw = true;
           dashboard = {
             sections = [
-              {section = "header";}
+              { section = "header"; }
               {
                 icon = " ";
                 title = "Keymaps";
@@ -132,12 +133,15 @@
               }
             ];
           };
-          image.enable = true;
+          image = {
+            enable = true;
+            math.enabled = false;
+          };
           notifier.timeout = 3000;
           picker = {
             enable = true;
             sources = {
-              explorer = {};
+              explorer = { };
             };
           };
         };

@@ -2,7 +2,7 @@
 # particular architecture.
 {
   nixpkgs,
-  lix-module,
+  # lix-module,
   overlays,
   inputs,
   mkNeovim,
@@ -89,7 +89,7 @@ systemFunc {
 
       # Use lix (alternative nix implementation)
       # https://lix.systems/add-to-config/#flake-based-configurations
-      lix-module.nixosModules.default
+      # lix-module.nixosModules.default
       # (getInputModule "lix-module" "default")
 
       # Modules shared between nix-darwin and NixOS

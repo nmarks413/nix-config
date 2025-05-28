@@ -15,5 +15,10 @@
     sessionPath = [
       "$HOME/.emacs.d/bin"
     ];
+
+    packages = with pkgs; [
+      #PDF viewer for VimTeX
+      skimpdf
+    ];
   };
 }

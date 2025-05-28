@@ -39,12 +39,24 @@
     tabline = {
       nvimBufferline.enable = true;
     };
-
+    # nvf versions is VERY outdated
+    # pluginOverrides = {
+    #   hardtime-nvim = pkgs.fetchFromGitHub {
+    #     owner = "m4xshen";
+    #     repo = "hardtime.nvim";
+    #     rev = "v1.0.1";
+    #     hash = "sha256-5tqiSuGvBJcr8l6anEBojXEaaxFS1P5T1ROr46ylVhk=";
+    #   };
+    # };
+    startPlugins = [
+      "nui-nvim"
+    ];
     binds = {
       hardtime-nvim = {
         enable = true;
         setupOpts = {
-          restriction_mode = "block";
+          disable_mouse = false;
+          restriction_mode = "warn";
         };
       };
     };

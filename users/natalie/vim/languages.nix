@@ -110,6 +110,12 @@ in
           tex = [ "chktex" ];
           haskell = [ "hlint" ];
         };
+
+        linters = {
+          chktex = {
+            ignore_exitcode = true;
+          };
+        };
       };
     };
     treesitter = {
