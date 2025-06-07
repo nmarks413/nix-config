@@ -1,5 +1,6 @@
 { ... }:
 {
+  vim.languages.astro.enable = true;
   vim.theme.extraConfig = ''
     if vim.g.neovide then
       vim.g.neovide_cursor_trail_size = 0.3

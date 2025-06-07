@@ -1,9 +1,12 @@
 {
   config,
+  pkgs,
   lib,
-  host,
   ...
 }:
+let
+  allowExe = config.shared.allowExe;
+in
 {
   # based on default options from upstream:
   # https://github.com/NotAShelf/nvf/blob/main/configuration.nix
@@ -13,7 +16,7 @@
   #
   # override level 999 is used to not conflict with mkDefault as used by nvf.
   # which allows user configurations to disable/override anything here.
-  vim = lib.mkOverride 999 {
+  config.vim = lib.mkOverride 999 {
     theme = {
       enable = true;
     };
@@ -34,7 +37,7 @@
     };
     lsp = {
       # Must be enabled for language modules to hook into the LSP API.
-      enable = true;
+      enable = allowExe;
       formatOnSave = true;
       # show errors inline
       # https://github.com/folke/trouble.nvim
@@ -48,29 +51,42 @@
     };
     debugger = {
       nvim-dap = {
-        enable = true;
+        enable = allowExe;
         ui.enable = true;
       };
     };
     languages = {
       enableFormat = true;
-      enableTreesitter = true;
+      enableTreesitter = allowExe;
       enableExtraDiagnostics = true;
 
       # sort-lines: on
-      assembly.enable = true;
-      bash.enable = true;
-      clang.enable = true;
-      css.enable = true;
-      html.enable = true;
-      nix.enable = true;
-      rust.crates.enable = true;
-      rust.enable = true;
-      ts.enable = true;
-      zig.enable = true;
+      assembly.enable = allowExe;
+      bash.enable = allowExe;
+      clang.enable = allowExe;
+      css.enable = allowExe;
+      html.enable = allowExe;
+      nix.enable = allowExe;
+      rust.crates.enable = allowExe;
+      rust.enable = allowExe;
+      ts.enable = allowExe;
+      zig.enable = allowExe;
       # sort-lines: off
 
+      ts.format.enable = false; # deno fmt is enabled elsewhere
       nix.format.type = "nixfmt"; # looks so much nicer
+    };
+    formatter.conform-nvim = {
+      enable = true;
+      setupOpts.formatters_by_ft = {
+        typescript = [ "deno_fmt" ];
+        typescriptreact = [ "deno_fmt" ];
+        javascript = [ "deno_fmt" ];
+        javascriptreact = [ "deno_fmt" ];
+      };
+      setupOpts.formatters.deno_fmt = {
+        command = lib.meta.getExe pkgs.deno;
+      };
     };
     filetree = {
       neo-tree = {
@@ -81,7 +97,7 @@
       nvimBufferline.enable = true;
     };
     autocomplete = {
-      blink-cmp.enable = true;
+      blink-cmp.enable = allowExe;
     };
     statusline = {
       lualine = {
@@ -132,8 +148,8 @@
       todo-comments.enable = true;
     };
     git = {
-      enable = true;
-      gitsigns.enable = true;
+      enable = allowExe;
+      gitsigns.enable = allowExe;
       gitsigns.codeActions.enable = false; # throws an annoying debug message
     };
   };

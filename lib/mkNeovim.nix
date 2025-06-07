@@ -4,9 +4,10 @@
   overlays,
   inputs,
 }:
-user: system:
+configPath: system:
 let
   darwin = nixpkgs.lib.strings.hasSuffix "-darwin" system;
+  user = builtins.elemAt (builtins.split "/" configPath) 0;
 
   host = {
     inherit darwin;
@@ -19,7 +20,7 @@ in
 (inputs.nvf.lib.neovimConfiguration {
   pkgs = nixpkgs.legacyPackages.${system};
   modules = builtins.filter (f: f != null) [
-    (../users + ("/" + user + "/vim.nix"))
+    (../users + ("/" + configPath + "/vim.nix"))
     ../modules/neovim
   ];
   extraSpecialArgs = {

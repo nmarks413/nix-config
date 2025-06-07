@@ -13,6 +13,7 @@ in
           ffmpeg
           ripgrep
           uv
+          nh
         ];
         # packages to install for desktop environments (non-server)
         desktop = [
@@ -36,8 +37,30 @@ in
     btop.enable = true;
     fd.enable = true;
     hyfetch.enable = true;
-    zsh.enable = true;
     # sort-lines:end
+
+    # zsh is the shell i use
+    zsh = {
+      enable = true;
+      enableCompletion = true;
+      autosuggestion.enable = true;
+      syntaxHighlighting.enable = true;
+
+      history.size = 10000;
+
+      shellAliases = {
+        switch = "nh darwin switch ~/config";
+      };
+      profileExtra = ''
+        function python() {
+          dirname=$(dirname $1 2>/dev/null)
+          if [ -z "$dirname" ]; then
+            dirname=$(pwd)
+          fi
+          uv run --project "$dirname" "$@"
+        }
+      '';
+    };
 
     # use a git-specific email
     git.userEmail = "git@paperclover.net";

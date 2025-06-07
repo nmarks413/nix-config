@@ -4,8 +4,6 @@
   # packages for all machines
   environment.systemPackages = with pkgs; [
   ];
-  # services for all machines
-  services.karabiner-elements.enable = true;
 
   # configuration for shared modules.
   # all custom options in 'shared' for clarity.
