@@ -10,6 +10,8 @@
     macAppStoreApps = [ "wireguard" ];
   };
 
+  system.defaults.NSGlobalDomain."com.apple.trackpad.scaling" = 1.0;
+
   # Create /etc/zshrc that loads the nix-darwin environment.
   programs = {
     gnupg.agent.enable = true;

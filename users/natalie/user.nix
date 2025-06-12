@@ -7,7 +7,7 @@ rec {
   browser = "firefox"; # Default browser; must select one from ./user/app/browser/
   term = "ghostty"; # Default terminal command;
   font = "iosevka"; # Selected font
-  editor = "neovim"; # Default editor;
+  editor = "nvim"; # Default editor;
   timeZone = "America/Los_Angeles";
   sexuality = "bisexual";
 }

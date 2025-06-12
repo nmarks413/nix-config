@@ -4,6 +4,10 @@
     ./vim/default.nix
   ];
   vim = {
+    #enable python provider
+    withPython3 = true;
+    python3Packages = [ "pynvim" ];
+
     options = {
       tabstop = 2;
       softtabstop = 2;
