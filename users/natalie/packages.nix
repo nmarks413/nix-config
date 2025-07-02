@@ -24,6 +24,7 @@ with pkgs;
   qemu
   podman
   docker
+  devenv
 
   #productivity
   glance
