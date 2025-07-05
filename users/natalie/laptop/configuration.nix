@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   environment.systemPackages = with pkgs; [
     pinentry_mac
   ];
@@ -6,8 +7,10 @@
   # Custom configuration modules in "modules" are shared between users,
   # and can be configured in this "shared" namespace
   shared.darwin = {
-    macAppStoreApps = ["wireguard"];
+    macAppStoreApps = [ "wireguard" ];
   };
+
+  system.defaults.NSGlobalDomain."com.apple.trackpad.scaling" = 1.0;
 
   # Create /etc/zshrc that loads the nix-darwin environment.
   programs = {

@@ -1,6 +1,7 @@
 # Packages installed with home-manager
-{pkgs, ...}:
-with pkgs; [
+{ pkgs, ... }:
+with pkgs;
+[
   #general development
   just
   pkg-config
@@ -23,6 +24,7 @@ with pkgs; [
   qemu
   podman
   docker
+  devenv
 
   #productivity
   glance
@@ -33,9 +35,10 @@ with pkgs; [
   #nix tools
   direnv
   nh
+  (lix.override { aws-sdk-cpp = null; })
 
   #terminal stuff
-  (btop.override {cudaSupport = true;})
+  (btop.override { cudaSupport = true; })
   tmux
   zellij
   lazygit
@@ -62,15 +65,9 @@ with pkgs; [
 
   #media
   spotify
-  zathura
 
   #language servers
   typst-live
-  lua-language-server
-  nil
-  nixd
-  texlab
-  texlivePackages.chktex
 
   #formatters/linters
   stylua
@@ -79,14 +76,10 @@ with pkgs; [
 
   #neovim deps
   # TODO: from clo, maybe u can remove all of these? i don't wanna break tho
-  lua51Packages.lua
-  lua51Packages.luarocks-nix
-  codespell
   tree-sitter
-
+  zathura
   #python
   pyright
-  basedpyright
   ruff
   python312Packages.python
   python312Packages.pynvim
@@ -107,7 +100,6 @@ with pkgs; [
 
   #math
   texlive.combined.scheme-full
-  zathura
 
   #fun things
   cowsay

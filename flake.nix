@@ -2,7 +2,11 @@
   description = "multi device configuration flake";
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "nixpkgs/nixos-23.11";
+
+    lix-module = {
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.93.0.tar.gz";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -22,15 +26,13 @@
     zig.url = "github:mitchellh/zig-overlay";
     zls.url = "github:zigtools/zls?rev=a26718049a8657d4da04c331aeced1697bc7652b";
 
-    stylix.url = "github:danth/stylix";
-    stylix.inputs.nixpkgs.follows = "nixpkgs";
-
     moonlight.url = "github:moonlight-mod/moonlight"; # Add `/develop` to the flake URL to use nightly.
     moonlight.inputs.nixpkgs.follows = "nixpkgs";
 
-    nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
-    nixos-cosmic.inputs.nixpkgs.follows = "nixpkgs";
-
+    zen-browser = {
+      url = "github:youwen5/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nh.url = "github:viperML/nh";
     nh.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -43,7 +45,7 @@
     {
       self,
       nixpkgs,
-      nixos-cosmic,
+      lix-module,
       darwin,
       ...
     }@inputs:
@@ -92,6 +94,7 @@
         inherit
           overlays
           nixpkgs
+          lix-module
           inputs
           mkNeovim
           ;
@@ -127,7 +130,6 @@
         host = "desktop";
         system = "x86_64-linux";
         extraModules = [
-          nixos-cosmic.nixosModules.default
         ];
       };
       # natalie's laptop

@@ -86,8 +86,8 @@ in
         };
       shellInit = ''
         batman --export-env | source
+        test -r '/Users/${user.username}/.opam/opam-init/init.fish' && source '/Users/${user.username}/.opam/opam-init/init.fish' > /dev/null 2> /dev/null; or true
       '';
-      ##test -r '/Users/${user.username}/.opam/opam-init/init.fish' && source '/Users/${user.username}/.opam/opam-init/init.fish' > /dev/null 2> /dev/null; or true
     };
   };
 }

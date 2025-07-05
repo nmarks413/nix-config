@@ -170,7 +170,10 @@
               }
             ];
           };
-          image.enable = true;
+          image = {
+            enable = true;
+            math.enabled = false;
+          };
           notifier.timeout = 3000;
           picker = {
             enable = true;

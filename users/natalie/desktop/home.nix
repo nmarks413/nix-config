@@ -8,6 +8,7 @@
   ...
 }:
 {
+  programs.mangohud.enable = true;
   home = {
     stateVersion = "23.05"; # Please read the comment before changing.
 
@@ -29,6 +30,7 @@
       wineWowPackages.stable
       winetricks
       (prismlauncher.override { gamemodeSupport = true; })
+      umu-launcher
 
       #window manager stuff
       wofi
@@ -50,8 +52,8 @@
       signal-desktop
       inputs.zls.packages.x86_64-linux.zls
       rust-bin.stable.latest.default
+      inputs.zen-browser.packages.x86_64-linux.default
     ];
-    # programs.mangohud.enable = true;
   };
 
   # xdg.mimeApps.defaultApplications."inode/directory" = "dolphin.desktop";

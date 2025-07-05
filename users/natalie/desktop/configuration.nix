@@ -84,8 +84,6 @@
       hybrid-sleep.enable = false;
     };
 
-    packages = [ pkgs.observatory ];
-
     services.monitord.wantedBy = [ "multi-user.target" ];
   };
 
@@ -148,7 +146,10 @@
     ];
   };
   environment = {
-    sessionVariables.COSMIC_DATA_CONTROL_ENABLED = 1;
+    sessionVariables = {
+      COSMIC_DATA_CONTROL_ENABLED = 1;
+      NIXOS_OZONE_WL = "1";
+    };
     variables.EDITOR = "nvim";
 
     systemPackages = with pkgs; [

@@ -2,7 +2,8 @@
   pkgs,
   lib,
   ...
-} @ args: {
+}@args:
+{
   programs = {
     # sort-lines:start
     atuin.enable = true;

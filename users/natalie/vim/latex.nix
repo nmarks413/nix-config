@@ -1,22 +1,29 @@
-{pkgs, ...}: {
+{ pkgs, host, ... }:
+{
   vim = {
+    lazy.plugins.cmp-vimtex = {
+      enabled = true;
+      package = pkgs.vimPlugins.cmp-vimtex;
+      lazy = false;
+
+    };
     lazy.plugins.vimtex = {
       enabled = true;
       package = pkgs.vimPlugins.vimtex;
-      lazy = true;
-      ft = "tex";
+      lazy = false;
     };
 
     globals = {
       tex_flavor = "latex";
       maplocalleader = "\\";
       vimtex_compiler_method = "latexmk";
-      vimtex_view_method = "zathura";
+      vimtex_view_method = if host.darwin then "skim" else "zathura";
+      vimtex_view_automatic = 1;
       vimtex_compiler_latexmk = {
         callback = 1;
         continuous = 1;
         executable = "latexmk";
-        hooks = [];
+        hooks = [ ];
         options = [
           "-verbose"
           "-file-line-error"
@@ -37,12 +44,65 @@
       ];
     };
 
+    autocomplete.blink-cmp = {
+      sourcePlugins = {
+        "blink.compat" = {
+          enable = true;
+          package = "blink-compat";
+          module = "blink.compat.source";
+        };
+      };
+      setupOpts = {
+        sources = {
+          default = [ "vimtex" ];
+          providers = {
+            vimtex = {
+              name = "vimtex";
+              module = "blink.compat.source";
+              score_offset = 100;
+            };
+          };
+        };
+      };
+    };
+
+    augroups = [
+      {
+        name = "VimTeX Events";
+      }
+    ];
+    autocmds = [
+      {
+        pattern = [ "VimtexEventViewReverse" ];
+        event = [ "User" ];
+        desc = "Return to nvim after reverse search";
+        command = "call b:vimtex.viewer.xdo_focus_vim()";
+        group = "VimTeX Events";
+      }
+      {
+        pattern = [ "VimtexEventQuit" ];
+        event = [ "User" ];
+        desc = "Close pdf after exiting nvim";
+        command = "VimtexClean";
+        group = "VimTeX Events";
+      }
+
+      {
+        pattern = [ "VimtexEventInitPost" ];
+        event = [ "User" ];
+        desc = "Start compiling when opening nvim to a tex file";
+        command = "VimtexCompile";
+        group = "VimTeX Events";
+      }
+
+    ];
+
     lsp = {
       servers = {
         texlab = {
           enable = true;
-          cmd = ["${pkgs.texlab}/bin/texlab"];
-          filetypes = ["tex"];
+          cmd = [ "${pkgs.texlab}/bin/texlab" ];
+          filetypes = [ "tex" ];
         };
       };
     };
