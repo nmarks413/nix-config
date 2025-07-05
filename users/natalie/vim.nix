@@ -3,6 +3,7 @@
   imports = [
     ./vim/default.nix
   ];
+
   vim = {
     #enable python provider
     withPython3 = true;
@@ -57,7 +58,7 @@
     ];
     binds = {
       hardtime-nvim = {
-        enable = true;
+        enable = false;
         setupOpts = {
           disable_mouse = false;
           restriction_mode = "warn";

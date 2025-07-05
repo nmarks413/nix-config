@@ -12,6 +12,7 @@
       nixd
     ];
     lsp = {
+      formatOnSave = true;
       lightbulb.enable = false;
       # lspsaga = {
       #   enable = true;
@@ -88,6 +89,7 @@
           enable = true;
         };
       };
+      nix.format.enable = true;
     };
 
     formatter.conform-nvim = {
