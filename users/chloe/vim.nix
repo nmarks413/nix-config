@@ -1,5 +1,6 @@
 _: {
   vim = {
+    languages.astro.enable = true;
     options = {
       tabstop = 2;
       softtabstop = 2;
@@ -13,7 +14,6 @@ _: {
       foldenable = true;
       linebreak = true;
     };
-
     binds = {
       hardtime-nvim.setupOpts = {
         restriction_mode = "block";
@@ -33,7 +33,6 @@ _: {
         };
       };
     };
-
     keymaps =
       let
         mkKeymap = mode: key: action: desc: {

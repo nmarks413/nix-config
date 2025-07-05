@@ -1,4 +1,9 @@
-{ config, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 {
   # based on default options from upstream:
   # https://github.com/NotAShelf/nvf/blob/main/configuration.nix
@@ -8,7 +13,7 @@
   #
   # override level 999 is used to not conflict with mkDefault as used by nvf.
   # which allows user configurations to disable/override anything here.
-  vim = lib.mkOverride 999 {
+  config.vim = lib.mkOverride 999 {
     theme = {
       enable = true;
     };
@@ -70,7 +75,20 @@
       zig.enable = true;
       # sort-lines: off
 
+      ts.format.enable = false; # deno fmt is enabled elsewhere
       nix.format.type = "nixfmt"; # looks so much nicer
+    };
+    formatter.conform-nvim = {
+      enable = true;
+      setupOpts.formatters_by_ft = {
+        typescript = [ "deno_fmt" ];
+        typescriptreact = [ "deno_fmt" ];
+        javascript = [ "deno_fmt" ];
+        javascriptreact = [ "deno_fmt" ];
+      };
+      setupOpts.formatters.deno_fmt = {
+        command = lib.meta.getExe pkgs.deno;
+      };
     };
     filetree = {
       neo-tree = {
