@@ -2,7 +2,6 @@
 # particular architecture.
 {
   nixpkgs,
-  lix-module,
   overlays,
   inputs,
   mkNeovim,
@@ -86,11 +85,6 @@ systemFunc {
       # to go through and apply our system type. We do this first so
       # the overlays are available globally.
       { nixpkgs.overlays = overlays; }
-
-      # Use lix (alternative nix implementation)
-      # https://lix.systems/add-to-config/#flake-based-configurations
-      lix-module.nixosModules.default
-      # (getInputModule "lix-module" "default")
 
       # Modules shared between nix-darwin and NixOS
       ../modules/shared
