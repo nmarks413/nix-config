@@ -144,6 +144,16 @@
         system = "aarch64-darwin";
       };
 
+      # julia's cattop
+      nixosConfigurations.cattop = mkSystem "cattop" {
+        user = "julia";
+        host = "cattop";
+        system = "x86_64-linux";
+        extraModules = [
+          nixos-cosmic.nixosModules.default
+        ];
+      };
+
       # generate checks for "nix flake check --all-systems --no-build"
       checks.aarch64-darwin = builtins.listToAttrs (
         builtins.map (

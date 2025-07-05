@@ -4,9 +4,6 @@
   lib,
   ...
 }:
-let
-  allowExe = config.shared.allowExe;
-in
 {
   # based on default options from upstream:
   # https://github.com/NotAShelf/nvf/blob/main/configuration.nix
@@ -37,7 +34,7 @@ in
     };
     lsp = {
       # Must be enabled for language modules to hook into the LSP API.
-      enable = allowExe;
+      enable = true;
       formatOnSave = true;
       # show errors inline
       # https://github.com/folke/trouble.nvim
@@ -51,26 +48,26 @@ in
     };
     debugger = {
       nvim-dap = {
-        enable = allowExe;
+        enable = true;
         ui.enable = true;
       };
     };
     languages = {
       enableFormat = true;
-      enableTreesitter = allowExe;
+      enableTreesitter = true;
       enableExtraDiagnostics = true;
 
       # sort-lines: on
-      assembly.enable = allowExe;
-      bash.enable = allowExe;
-      clang.enable = allowExe;
-      css.enable = allowExe;
-      html.enable = allowExe;
-      nix.enable = allowExe;
-      rust.crates.enable = allowExe;
-      rust.enable = allowExe;
-      ts.enable = allowExe;
-      zig.enable = allowExe;
+      assembly.enable = true;
+      bash.enable = true;
+      clang.enable = true;
+      css.enable = true;
+      html.enable = true;
+      nix.enable = true;
+      rust.crates.enable = true;
+      rust.enable = true;
+      ts.enable = true;
+      zig.enable = true;
       # sort-lines: off
 
       ts.format.enable = false; # deno fmt is enabled elsewhere
@@ -97,7 +94,7 @@ in
       nvimBufferline.enable = true;
     };
     autocomplete = {
-      blink-cmp.enable = allowExe;
+      blink-cmp.enable = true;
     };
     statusline = {
       lualine = {
@@ -148,8 +145,8 @@ in
       todo-comments.enable = true;
     };
     git = {
-      enable = allowExe;
-      gitsigns.enable = allowExe;
+      enable = true;
+      gitsigns.enable = true;
       gitsigns.codeActions.enable = false; # throws an annoying debug message
     };
   };
