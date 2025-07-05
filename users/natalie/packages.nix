@@ -85,7 +85,6 @@ with pkgs;
   python312Packages.pip
 
   #programming languages
-  R
   deno
   ruby
   nodePackages.npm
@@ -98,7 +97,7 @@ with pkgs;
   firefox
 
   #math
-  texlive.combined.scheme-full
+  # texlive.combined.scheme-full
 
   #fun things
   cowsay
