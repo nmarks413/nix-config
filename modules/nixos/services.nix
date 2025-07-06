@@ -22,10 +22,6 @@
       };
     };
 
-    desktopManager.cosmic.enable = true;
-    displayManager.cosmic-greeter.enable = true;
-    desktopManager.cosmic.xwayland.enable = true;
-
     # Auto mount devices
     udisks2 = {
       enable = true;

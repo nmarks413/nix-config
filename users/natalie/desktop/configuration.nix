@@ -121,6 +121,11 @@
 
   # Enable sound with pipewire.
   security.rtkit.enable = true;
+  services = {
+    desktopManager.cosmic.enable = true;
+    displayManager.cosmic-greeter.enable = true;
+    desktopManager.cosmic.xwayland.enable = true;
+  };
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
