@@ -17,6 +17,24 @@
     theme = {
       enable = true;
     };
+
+    options = {
+      tabstop = 2;
+      softtabstop = 2;
+      shiftwidth = 2;
+      undofile = true;
+      swapfile = false;
+      showmode = false;
+      foldlevel = 99;
+      foldcolumn = "1";
+      foldlevelstart = 99;
+      foldenable = true;
+      foldmethod = "expr";
+      #Default to treesitter folding
+      foldexpr = "v:lua.vim.treesitter.foldexpr()";
+    };
+
+
     visuals = {
       # notification system
       # https://github.com/j-hui/fidget.nvim
@@ -26,7 +44,7 @@
       highlight-undo.enable = true;
       # indentation guides
       # https://github.com/lukas-reineke/indent-blankline.nvim
-      indent-blankline.enable = false;
+      indent-blankline.enable = true;
       # extra icons
       nvim-web-devicons.enable = true;
       # https://github.com/petertriho/nvim-scrollbar
@@ -35,16 +53,41 @@
     lsp = {
       # Must be enabled for language modules to hook into the LSP API.
       enable = true;
+      # enable debug adapter protocal by default
+      enableDAP = true;
+
       formatOnSave = true;
       # show errors inline
       # https://github.com/folke/trouble.nvim
       trouble.enable = true;
       # show lightbulb icon in gutter to indicate code actions
       # https://github.com/kosayoda/nvim-lightbulb
-      lightbulb.enable = true;
+      lightbulb.enable = false;
       # show icons in auto-completion menu
       # https://github.com/onsails/lspkind.nvim
       lspkind.enable = config.vim.autocomplete.blink-cmp.enable;
+      # Enables inlay hints (types info in rust and shit)
+      inlayHints.enable = true;
+      #Nice mappings that i use :3
+      mappings = {
+        codeAction = "<leader>ca";
+        goToDeclaration = "gD";
+        goToDefinition = "gd";
+        listReferences = "gr";
+        goToType = "gy";
+        hover = "K";
+        nextDiagnostic = "<leader>d";
+        openDiagnosticFloat = "<leader>df";
+        renameSymbol = "rn";
+        documentHighlight = null;
+        listDocumentSymbols = null;
+        listImplementations = null;
+        listWorkspaceFolders = null;
+        previousDiagnostic = null;
+        removeWorkspaceFolder = null;
+        signatureHelp = null;
+        toggleFormatOnSave = null;
+      };
     };
     treesitter = {
       enable = true;
@@ -73,6 +116,7 @@
       rust.enable = true;
       ts.enable = true;
       zig.enable = true;
+      lua.enable = true;
       # sort-lines: off
 
       ts.format.enable = false; # deno fmt is enabled elsewhere
@@ -206,6 +250,12 @@
       enable = true;
       gitsigns.enable = true;
       gitsigns.codeActions.enable = false; # throws an annoying debug message
+    };
+    # Better help docs
+    lazy.plugins."helpview.nvim" = {
+      enabled = true;
+      package = pkgs.vimPlugins.helpview-nvim;
+      lazy = false;
     };
   };
 }

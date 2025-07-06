@@ -9,21 +9,6 @@
     withPython3 = true;
     python3Packages = [ "pynvim" ];
 
-    options = {
-      tabstop = 2;
-      softtabstop = 2;
-      shiftwidth = 2;
-      undofile = true;
-      swapfile = false;
-      showmode = false;
-      foldlevel = 99;
-      foldcolumn = "1";
-      foldlevelstart = 99;
-      foldenable = true;
-      foldmethod = "expr";
-      #Default to treesitter folding
-      foldexpr = "v:lua.vim.treesitter.foldexpr()";
-    };
 
     autocmds = [
       #Autocommand to fall back to treesitter folding if LSP doesnt support it
@@ -44,28 +29,9 @@
     tabline = {
       nvimBufferline.enable = true;
     };
-    # nvf versions is VERY outdated
-    # pluginOverrides = {
-    #   hardtime-nvim = pkgs.fetchFromGitHub {
-    #     owner = "m4xshen";
-    #     repo = "hardtime.nvim";
-    #     rev = "v1.0.1";
-    #     hash = "sha256-5tqiSuGvBJcr8l6anEBojXEaaxFS1P5T1ROr46ylVhk=";
-    #   };
-    # };
     startPlugins = [
       "nui-nvim"
     ];
-    binds = {
-      hardtime-nvim = {
-        enable = false;
-        setupOpts = {
-          disable_mouse = false;
-          restriction_mode = "warn";
-        };
-      };
-    };
-
     theme = {
       name = "catppuccin";
       style = "mocha";

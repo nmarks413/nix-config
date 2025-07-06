@@ -12,17 +12,6 @@
       nixd
     ];
     lsp = {
-      formatOnSave = true;
-      lightbulb.enable = false;
-      # lspsaga = {
-      #   enable = true;
-      #   setupOpts = {
-      #     lightbulb = {
-      #       virtual_text = false;
-      #     };
-      #   };
-      # };
-      inlayHints.enable = true;
       servers = {
         nil = {
           settings.nil.nix.flake = {
@@ -58,30 +47,8 @@
           };
         };
       };
-      mappings = {
-        codeAction = "<leader>ca";
-        goToDeclaration = "gD";
-        goToDefinition = "gd";
-        listReferences = "gr";
-        goToType = "gy";
-        hover = "K";
-        nextDiagnostic = "<leader>d";
-        openDiagnosticFloat = "<leader>df";
-        renameSymbol = "rn";
-        documentHighlight = null;
-        listDocumentSymbols = null;
-        listImplementations = null;
-        listWorkspaceFolders = null;
-        previousDiagnostic = null;
-        removeWorkspaceFolder = null;
-        signatureHelp = null;
-        toggleFormatOnSave = null;
-      };
     };
     languages = {
-      enableDAP = true;
-      lua.enable = true;
-      python.enable = true;
       python.format.type = "ruff";
       markdown = {
         enable = true;

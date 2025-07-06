@@ -1,17 +1,6 @@
 _: {
   vim = {
-    languages.astro.enable = true;
     options = {
-      tabstop = 2;
-      softtabstop = 2;
-      shiftwidth = 2;
-      undofile = true;
-      swapfile = false;
-      showmode = false;
-      foldlevel = 99;
-      foldcolumn = "1";
-      foldlevelstart = 99;
-      foldenable = true;
       linebreak = true;
     };
     git = {
@@ -41,11 +30,6 @@ _: {
         # Find Files
         (n "<leader><space>" ":lua require('snacks').picker.smart()<CR>" "Smart Find Files")
         (n "<leader>f" ":lua require('snacks').picker.grep()<CR>" "Grep Files")
-        # Lsp
-        (n "K" ":Lspsaga hover_doc<CR>" "Hover docs")
-        (n "lr" ":lua vim.lsp.buf.rename()<CR>" "Rename")
-        (n "gd" ":lua vim.lsp.buf.definition()<CR>" "Go to Definition")
-        (n "gD" ":lua vim.lsp.buf.declaration()<CR>" "Go to Declaration")
       ];
   };
 }
