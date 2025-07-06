@@ -16,7 +16,14 @@ in
   imports = mainHomeImports ++ [
     ./macos/sketchybar.nix
   ];
-  programs = {
+  options = {
+    programs.ghostty.shader = lib.mkOption {
+      type = lib.types.str;
+      default = { };
+      description = "set the ghostty shader, relative to 'files/ghostty'";
+    };
+  };
+  config.programs = {
     home-manager.enable = true;
     nix-index.enable = true;
 
@@ -89,5 +96,9 @@ in
         test -r '/Users/${user.username}/.opam/opam-init/init.fish' && source '/Users/${user.username}/.opam/opam-init/init.fish' > /dev/null 2> /dev/null; or true
       '';
     };
+
+    ghostty.settings.custom-shader = lib.mkIf (
+      cfg.ghostty.shader != null
+    ) "${../../files/ghostty}/${cfg.ghostty.shader}";
   };
 }

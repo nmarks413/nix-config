@@ -10,7 +10,9 @@ in
       let
         # packages to always install
         all = [
-          ffmpeg
+          (ffmpeg.override {
+            withSvtav1 = true;
+          })
           ripgrep
           uv
           nh
@@ -33,11 +35,25 @@ in
   };
   programs = {
     # sort-lines:start
-    bat.enable = true;
+    # bat.enable = true;
     btop.enable = true;
     fd.enable = true;
     hyfetch.enable = true;
     # sort-lines:end
+
+    ghostty = {
+      enable = true;
+      shader = "cursor-smear-black.glsl";
+      package = null;
+      settings = {
+        theme = "catppuccin-latte";
+        font-family = "AT Name Mono";
+        adjust-cursor-thickness = 1;
+        minimum-contrast = 1.1;
+        background-opacity = 0.9;
+        background-blur = true;
+      };
+    };
 
     # zsh is the shell i use
     zsh = {
