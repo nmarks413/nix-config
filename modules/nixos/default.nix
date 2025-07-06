@@ -7,7 +7,6 @@
   imports = [
     ./boot.nix
     ./ld.nix
-    ./nvidia.nix
     ./services.nix
   ];
   # make 'shared.darwin' not an error to define.
