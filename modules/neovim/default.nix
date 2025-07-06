@@ -53,8 +53,6 @@
     lsp = {
       # Must be enabled for language modules to hook into the LSP API.
       enable = true;
-      # enable debug adapter protocal by default
-      enableDAP = true;
 
       formatOnSave = true;
       # show errors inline
@@ -103,6 +101,8 @@
       enableFormat = true;
       enableTreesitter = true;
       enableExtraDiagnostics = true;
+      # enable debug adapter protocol by default
+      enableDAP = true;
 
       # sort-lines: on
       bash.enable = true;
