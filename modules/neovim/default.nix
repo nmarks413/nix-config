@@ -184,17 +184,9 @@
         };
       };
     };
-
     binds = {
       whichKey.enable = true;
       cheatsheet.enable = true;
-      # discourages bad keyboard habit, e.g. disables arrow keys, explains better binds
-      # https://github.com/m4xshen/hardtime.nvim
-      hardtime-nvim.enable = true;
-      hardtime-nvim.setupOpts = {
-        disable_mouse = false;
-        restriction_mode = "hint"; # default behavior is lenient
-      };
     };
     ui = {
       borders.enable = true;
@@ -205,19 +197,6 @@
       breadcrumbs = {
         enable = false;
         navbuddy.enable = config.vim.ui.breadcrumbs.enable;
-      };
-      smartcolumn = {
-        enable = true;
-        setupOpts.custom_colorcolumn = {
-          # this is a freeform module, it's `buftype = int;` for configuring column position
-          nix = "110";
-          ruby = "120";
-          java = "130";
-          go = [
-            "90"
-            "130"
-          ];
-        };
       };
     };
     notes = {

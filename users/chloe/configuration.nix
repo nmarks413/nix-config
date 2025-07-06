@@ -6,6 +6,8 @@
     git
   ];
 
+  services.tailscale.enable = true;
+
   # configuration for shared modules.
   # all custom options in 'shared' for clarity.
   shared.darwin = {

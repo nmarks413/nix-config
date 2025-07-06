@@ -14,12 +14,6 @@ _: {
       foldenable = true;
       linebreak = true;
     };
-    binds = {
-      hardtime-nvim.setupOpts = {
-        restriction_mode = "block";
-        disable_mouse = false;
-      };
-    };
     git = {
       gitsigns.setupOpts = {
         current_line_blame = true;
