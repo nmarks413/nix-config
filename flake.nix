@@ -44,7 +44,7 @@
       ...
     }@inputs:
     let
-      lib = nixpkgs.lib;
+      inherit (nixpkgs) lib;
       # TODO: apply these overlays sooner and remove uses of legacyPackages elsewhere.
       overlays = [
         inputs.zig.overlays.default
@@ -110,10 +110,11 @@
         {
           nvim-chloe = mkNeovim "chloe" system;
           nvim-natalie = mkNeovim "natalie" system;
+          nvim-julia = mkNeovim "julia" system;
         }
         // lib.optionalAttrs (system == "aarch64-darwin") {
           # "nix run .#darwin-rebuild"
-          darwin-rebuild = darwin.packages.aarch64-darwin.darwin-rebuild;
+          inherit (darwin.packages.aarch64-darwin) darwin-rebuild;
         }
       );
 
