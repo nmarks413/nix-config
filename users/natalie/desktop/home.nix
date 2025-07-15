@@ -31,6 +31,9 @@
       winetricks
       (prismlauncher.override { gamemodeSupport = true; })
       umu-launcher
+      limo
+      nexusmods-app-unfree
+      protontricks
 
       #window manager stuff
       wofi

@@ -57,9 +57,10 @@ with pkgs;
   imagemagick
 
   #chatting apps
-  (discord.override {
-    withMoonlight = true;
-  })
+  discord
+  # (discord.override {
+  #   withMoonlight = true;
+  # })
   vesktop
 
   #media
