@@ -50,6 +50,7 @@
         inputs.zig.overlays.default
         inputs.rust-overlay.overlays.default
         inputs.nh.overlays.default
+        inputs.moonlight.overlays.default
 
         # https://github.com/LnL7/nix-darwin/issues/1041
         (_: prev: {

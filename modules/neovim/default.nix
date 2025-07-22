@@ -18,11 +18,12 @@
       enable = true;
     };
 
+    undoFile.enable = true;
+
     options = {
       tabstop = 2;
       softtabstop = 2;
       shiftwidth = 2;
-      undofile = true;
       swapfile = false;
       showmode = false;
       foldlevel = 99;
@@ -53,7 +54,6 @@
     lsp = {
       # Must be enabled for language modules to hook into the LSP API.
       enable = true;
-
       formatOnSave = true;
       # show errors inline
       # https://github.com/folke/trouble.nvim
@@ -119,7 +119,7 @@
       lua.enable = true;
       # sort-lines: off
 
-      ts.format.enable = false; # deno fmt is enabled elsewhere
+      ts.format.enable = true; # deno fmt is enabled elsewhere
       nix.format.type = "nixfmt"; # looks so much nicer
     };
     formatter.conform-nvim = {

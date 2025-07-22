@@ -15,6 +15,8 @@ with pkgs;
   clang
   cmake
   gnupg
+  typescript-language-server
+  deno
 
   #ides
   zed-editor

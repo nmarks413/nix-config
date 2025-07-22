@@ -7,7 +7,7 @@ let
   nvidiaDriverChannel = config.boot.kernelPackages.nvidiaPackages.latest;
 in
 {
-  services.xserver.videoDrivers = [ "nvidia" ];
+  services.xserver.videoDrivers = [ "nvidia" "amdgpu"];
 
   nixpkgs.config = {
     nvidia.acceptLicense = true;
@@ -42,9 +42,20 @@ in
       modesetting.enable = true;
 
       powerManagement = {
-        enable = false; # Power management
-        # finegrained = true; # More precise power consumption control
+        enable = true; # Power management
+        finegrained = true; # More precise power consumption control
       };
+
+        prime = {
+                offload = {
+                        enable = true;
+                        enableOffloadCmd = true;
+                };
+
+                nvidiaBusId = "PCI:1:0:0";
+                amdgpuBusId = "PCI:15:0:0";
+
+        };
 
       # Use the NVidia open source kernel module (not to be confused with the
       # independent third-party "nouveau" open source driver).
@@ -59,8 +70,8 @@ in
 
       package = nvidiaDriverChannel;
 
-      #Fixes a glitch
-      nvidiaPersistenced = true;
+      # #Fixes a glitch
+      # nvidiaPersistenced = true;
     };
     nvidia-container-toolkit.enable = true;
 
