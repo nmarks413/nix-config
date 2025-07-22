@@ -101,7 +101,7 @@
       lua.enable = true;
       # sort-lines: off
 
-      ts.format.enable = false; # deno fmt is enabled elsewhere
+      ts.format.enable = true; # deno fmt is enabled elsewhere
       nix = {
         enable = true;
         format.type = "nixfmt"; # looks so much nicer
