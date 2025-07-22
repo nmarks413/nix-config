@@ -5,6 +5,7 @@
   ...
 }:
 {
+  imports = [ ./options.nix ];
   # based on default options from upstream:
   # https://github.com/NotAShelf/nvf/blob/main/configuration.nix
   #
@@ -17,23 +18,6 @@
     theme = {
       enable = true;
     };
-
-    options = {
-      tabstop = 2;
-      softtabstop = 2;
-      shiftwidth = 2;
-      undofile = true;
-      swapfile = false;
-      showmode = false;
-      foldlevel = 99;
-      foldcolumn = "1";
-      foldlevelstart = 99;
-      foldenable = true;
-      foldmethod = "expr";
-      #Default to treesitter folding
-      foldexpr = "v:lua.vim.treesitter.foldexpr()";
-    };
-
 
     visuals = {
       # notification system
@@ -110,7 +94,6 @@
       css.enable = true;
       html.enable = true;
       markdown.enable = true;
-      nix.enable = true;
       python.enable = true;
       rust.crates.enable = true;
       rust.enable = true;
@@ -120,7 +103,11 @@
       # sort-lines: off
 
       ts.format.enable = false; # deno fmt is enabled elsewhere
-      nix.format.type = "nixfmt"; # looks so much nicer
+      nix = {
+        enable = true;
+        format.type = "nixfmt"; # looks so much nicer
+        lsp.options.autoArchive = true;
+      };
     };
     formatter.conform-nvim = {
       enable = true;
