@@ -19,6 +19,7 @@ in
         ];
         # packages to install for desktop environments (non-server)
         desktop = [
+          git-town
         ];
         # packages to install on all servers
         server = [ ];
@@ -46,7 +47,7 @@ in
       shader = "cursor-smear-black.glsl";
       package = null;
       settings = {
-        theme = "catppuccin-latte";
+        theme = "light:catppuccin-latte,dark:catppuccin-macchiato";
         font-family = "AT Name Mono";
         adjust-cursor-thickness = 1;
         minimum-contrast = 1.1;
