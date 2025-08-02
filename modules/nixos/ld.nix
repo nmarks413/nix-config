@@ -63,7 +63,7 @@
     nss
     openssl
     pango
-    # pipewire
+    pipewire
     stdenv.cc.cc
     systemd
     vulkan-loader
@@ -82,5 +82,13 @@
     xorg.libxkbfile
     xorg.libxshmfence
     zlib
+    libxslt
+
+    # Stolen from https://github.com/Mic92/dotfiles/blob/57cf7fdf8705a5362fc19114b8395cdbf7668e94/nixos/modules/nix-ld.nix#L6-L58
+    flite
+    gtk2
+    gtk2-x11
+    libsecret
+    xorg.libXinerama
   ];
 }

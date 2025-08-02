@@ -23,82 +23,85 @@ in
       description = "set the ghostty shader, relative to 'files/ghostty'";
     };
   };
-  config.programs = {
-    home-manager.enable = true;
-    nix-index.enable = true;
+  config = {
+    home.shell = {
+      enableShellIntegration = true;
+    };
+    programs = {
+      home-manager.enable = true;
+      nix-index.enable = true;
 
-    direnv = {
-      enableZshIntegration = true;
-      nix-direnv.enable = config.programs.direnv.enable;
-    };
+      direnv = {
+        nix-direnv.enable = config.programs.direnv.enable;
+      };
 
-    git = {
-      enable = true;
-      userName = lib.mkDefault user.name;
-      userEmail = lib.mkDefault user.email;
-      ignores = [
-        (lib.mkIf host.darwin ".DS_Store") # When using Finder
-        (lib.mkIf host.darwin "._*") # When using non-APFS drives
-        # ViM and Neovim
-        ".*.swp"
-        ".nvimlog"
-      ];
-    };
+      git = {
+        enable = true;
+        userName = lib.mkDefault user.name;
+        userEmail = lib.mkDefault user.email;
+        ignores = [
+          (lib.mkIf host.darwin ".DS_Store") # When using Finder
+          (lib.mkIf host.darwin "._*") # When using non-APFS drives
+          # ViM and Neovim
+          ".*.swp"
+          ".nvimlog"
+        ];
+      };
 
-    atuin = {
-      enableBashIntegration = true;
-      enableFishIntegration = true;
-      daemon.enable = cfg.atuin.enable;
-    };
-    bat = {
-      extraPackages = with pkgs.bat-extras; [
-        batdiff
-        batman
-        batgrep
-        batwatch
-        batpipe
-        prettybat
-      ];
-    };
-    hyfetch = {
-      settings = {
-        backend = "fastfetch";
-        preset = user.sexuality;
-        mode = "rgb";
-        light_dark = "dark";
-        lightness = {
-        };
-        color_align = {
-          mode = "horizontal";
+      atuin = {
+        daemon.enable = cfg.atuin.enable;
+      };
+
+      bat = {
+        extraPackages = with pkgs.bat-extras; [
+          batdiff
+          batman
+          batgrep
+          batwatch
+          batpipe
+          prettybat
+        ];
+      };
+      hyfetch = {
+        settings = {
+          backend = "fastfetch";
+          preset = user.sexuality;
+          mode = "rgb";
+          light_dark = "dark";
+          lightness = {
+          };
+          color_align = {
+            mode = "horizontal";
+          };
         };
       };
-    };
-    fastfetch.enable = cfg.hyfetch.enable;
+      fastfetch.enable = cfg.hyfetch.enable;
 
-    fish = {
-      plugins = [
-        {
-          name = "tide";
-          inherit (pkgs.fishPlugins.tide) src;
+      fish = {
+        plugins = [
+          {
+            name = "tide";
+            inherit (pkgs.fishPlugins.tide) src;
+          }
+          {
+            name = "!!";
+            inherit (pkgs.fishPlugins.bang-bang) src;
+          }
+        ];
+        shellAliases = {
         }
-        {
-          name = "!!";
-          inherit (pkgs.fishPlugins.bang-bang) src;
-        }
-      ];
-      shellAliases =
-        { }
         // lib.optionalAttrs (!host.darwin) {
           reboot-windows = "sudo efibootmgr --bootnext 0000; sudo reboot -h now";
         };
-      shellInit = ''
-        batman --export-env | source
-        test -r '/Users/${user.username}/.opam/opam-init/init.fish' && source '/Users/${user.username}/.opam/opam-init/init.fish' > /dev/null 2> /dev/null; or true
-      '';
-    };
+        shellInit = ''
+          batman --export-env | source
+          test -r '/Users/${user.username}/.opam/opam-init/init.fish' && source '/Users/${user.username}/.opam/opam-init/init.fish' > /dev/null 2> /dev/null; or true
+        '';
+      };
 
-    ghostty.settings.custom-shader = lib.mkIf (
-      cfg.ghostty.shader != null
-    ) "${../../files/ghostty}/${cfg.ghostty.shader}";
+      ghostty.settings.custom-shader = lib.mkIf (
+        cfg.ghostty.shader != null
+      ) "${../../files/ghostty}/${cfg.ghostty.shader}";
+    };
   };
 }
