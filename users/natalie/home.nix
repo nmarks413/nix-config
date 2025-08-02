@@ -12,6 +12,7 @@
     direnv.enable = true;
     fish.enable = true;
     man.generateCaches = false;
+    lsd.enable = true;
     # sort-lines:end
   };
 

@@ -69,6 +69,7 @@
         signatureHelp = null;
         toggleFormatOnSave = null;
       };
+      servers.nixd.init_options.autoArchive = true;
     };
     treesitter = {
       enable = true;

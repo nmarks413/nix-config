@@ -16,6 +16,36 @@ _: {
         };
       };
     };
+    autocomplete.blink-cmp = {
+      enable = true;
+      mappings = {
+        close = null;
+        complete = null;
+        confirm = null;
+        next = null;
+        previous = null;
+        scrollDocsDown = null;
+        scrollDocsUp = null;
+      };
+
+      setupOpts = {
+        keymap = {
+          preset = "super-tab";
+        };
+        completion = {
+          ghost_text.enabled = false;
+          list.selection.preselect = true;
+          trigger = {
+            show_in_snippet = true;
+          };
+          accept.auto_brackets.enabled = true;
+        };
+        signature = {
+          enabled = true;
+        };
+      };
+    };
+
     keymaps =
       let
         mkKeymap = mode: key: action: desc: {

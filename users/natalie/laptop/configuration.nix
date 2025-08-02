@@ -28,6 +28,7 @@
       fi
     '';
   };
+  programs.fish.enable = true;
 
   # Use homebrew to install casks
   homebrew = {

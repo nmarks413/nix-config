@@ -26,7 +26,6 @@ with pkgs;
   qemu
   podman
   docker
-  devenv
 
   #productivity
   glance
@@ -59,10 +58,7 @@ with pkgs;
   imagemagick
 
   #chatting apps
-  discord
-  # (discord.override {
-  #   withMoonlight = true;
-  # })
+  (discord.override { withMoonlight = true; })
   vesktop
 
   #media
@@ -90,9 +86,8 @@ with pkgs;
   #programming languages
   deno
   ruby
-  nodePackages.npm
+  # nodePackages.npm
   go
-  coq
   elan
 
   #browsers
