@@ -69,6 +69,7 @@
         signatureHelp = null;
         toggleFormatOnSave = null;
       };
+      servers.nixd.init_options.autoArchive = true;
     };
     treesitter = {
       enable = true;
@@ -105,7 +106,6 @@
       nix = {
         enable = true;
         format.type = "nixfmt"; # looks so much nicer
-        lsp.options.autoArchive = true;
       };
     };
     formatter.conform-nvim = {
