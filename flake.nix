@@ -28,8 +28,6 @@
       url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nh.url = "github:viperML/nh";
-    nh.inputs.nixpkgs.follows = "nixpkgs";
 
     nix-options-search.url = "github:madsbv/nix-options-search";
 
@@ -49,8 +47,6 @@
       overlays = [
         inputs.zig.overlays.default
         inputs.rust-overlay.overlays.default
-        inputs.nh.overlays.default
-        inputs.moonlight.overlays.default
 
         # https://github.com/LnL7/nix-darwin/issues/1041
         (_: prev: {

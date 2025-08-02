@@ -25,31 +25,32 @@
           settings.nixd = {
             nixpkgs.expr = ''import "${flake.inputs.nixpkgs}" { }'';
 
-            options =
-              {
-                home-manager = {
-                  expr = ''(let pkgs = import "${flake.inputs.nixpkgs}" { }; lib = import "${flake.inputs.home-manager}/modules/lib/stdlib-extended.nix" pkgs.lib; in (lib.evalModules { modules =  (import "${flake.inputs.home-manager}/modules/modules.nix") { inherit lib pkgs;check = false;}; })).options'';
-                  # (builtins.getFlake "${flakePath}").${darwin}Configurations.${hostname}.options.home-manager.users.type.getSubOptions [ ]'';
-                };
-              }
-              // pkgs.lib.optionalAttrs host.darwin {
-                nix-darwin = {
-                  expr = ''(let pkgs = import "${flake.inputs.nixpkgs}" { }; in (pkgs.lib.evalModules { modules =  (import "${flake.inputs.darwin}/modules/module-list.nix"); check = false;})).options'';
-                  # (builtins.getFlake "${flakePath}").darwinConfigurations.${hostname}.options'';
-                };
-              }
-              // pkgs.lib.optionalAttrs host.linux {
-                nixos = {
-                  expr = ''(let pkgs = import "${flake.inputs.nixpkgs}" { }; in (pkgs.lib.evalModules { modules =  (import "${flake.inputs.nixpkgs}/nixos/modules/module-list.nix"); check = false;})).options'';
-                  # (builtins.getFlake "${flakePath}").nixosConfigurations.${hostname}.options'';
-                };
+            options = {
+              home-manager = {
+                expr = ''(let pkgs = import "${flake.inputs.nixpkgs}" { }; lib = import "${flake.inputs.home-manager}/modules/lib/stdlib-extended.nix" pkgs.lib; in (lib.evalModules { modules =  (import "${flake.inputs.home-manager}/modules/modules.nix") { inherit lib pkgs;check = false;}; })).options'';
+                # (builtins.getFlake "${flakePath}").${darwin}Configurations.${hostname}.options.home-manager.users.type.getSubOptions [ ]'';
               };
+            }
+            // pkgs.lib.optionalAttrs host.darwin {
+              nix-darwin = {
+                expr = ''(let pkgs = import "${flake.inputs.nixpkgs}" { }; in (pkgs.lib.evalModules { modules =  (import "${flake.inputs.darwin}/modules/module-list.nix"); check = false;})).options'';
+                # (builtins.getFlake "${flakePath}").darwinConfigurations.${hostname}.options'';
+              };
+            }
+            // pkgs.lib.optionalAttrs host.linux {
+              nixos = {
+                expr = ''(let pkgs = import "${flake.inputs.nixpkgs}" { }; in (pkgs.lib.evalModules { modules =  (import "${flake.inputs.nixpkgs}/nixos/modules/module-list.nix"); check = false;})).options'';
+                # (builtins.getFlake "${flakePath}").nixosConfigurations.${hostname}.options'';
+              };
+            };
           };
         };
       };
     };
     languages = {
-      python.format.type = "ruff";
+      python = {
+        format.type = "ruff";
+      };
       markdown = {
         enable = true;
         extensions.render-markdown-nvim = {
