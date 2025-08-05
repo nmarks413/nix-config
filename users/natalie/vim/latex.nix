@@ -1,6 +1,9 @@
 { pkgs, host, ... }:
 {
   vim = {
+    extraPackages = with pkgs; [
+      texliveFull
+    ];
     lazy.plugins.cmp-vimtex = {
       enabled = true;
       package = pkgs.vimPlugins.cmp-vimtex;
