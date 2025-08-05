@@ -13,6 +13,10 @@
     fish.enable = true;
     man.generateCaches = false;
     lsd.enable = true;
+    nvf = {
+      enable = true;
+      enableManpages = true;
+    };
     # sort-lines:end
   };
 

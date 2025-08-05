@@ -74,6 +74,7 @@ let
         (mkNeovim user system)
       ];
     }
+    inputs.nvf.homeManagerModules.default
   ];
 in
 systemFunc {
