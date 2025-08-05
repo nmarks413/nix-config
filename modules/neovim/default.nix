@@ -102,7 +102,6 @@
       lua.enable = true;
       # sort-lines: off
 
-      ts.format.enable = true; # deno fmt is enabled elsewhere
       nix = {
         enable = true;
         format.type = "nixfmt"; # looks so much nicer
@@ -110,14 +109,16 @@
     };
     formatter.conform-nvim = {
       enable = true;
-      setupOpts.formatters_by_ft = {
+      setupOpts = {
+      formatters_by_ft = {
         typescript = [ "deno_fmt" ];
         typescriptreact = [ "deno_fmt" ];
         javascript = [ "deno_fmt" ];
         javascriptreact = [ "deno_fmt" ];
       };
-      setupOpts.formatters.deno_fmt = {
+     formatters.deno_fmt = {
         command = lib.meta.getExe pkgs.deno;
+      };
       };
     };
     filetree = {
