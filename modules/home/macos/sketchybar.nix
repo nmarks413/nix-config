@@ -63,7 +63,7 @@
               source "$ITEM_DIR/calendar.sh"
 
               # Right
-              source $ITEM_DIR/calendar.sh
+              # source $ITEM_DIR/calendar.sh
               source $ITEM_DIR/wifi.sh
               source $ITEM_DIR/battery.sh
               source $ITEM_DIR/volume.sh
@@ -322,7 +322,7 @@
                     label.color=$ITEM_COLOR \
                     icon.color=$ITEM_COLOR
                 else
-                  sketchybar --set space.$sid background.drawing=off \
+                  sketchybar --set space.$sid background.drawing=off\
                     label.color=$ACCENT_COLOR \
                     icon.color=$ACCENT_COLOR
                 fi

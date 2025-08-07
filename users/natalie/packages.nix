@@ -86,9 +86,16 @@ with pkgs;
   #programming languages
   deno
   ruby
+  pnpm
+  nodejs_24
   # nodePackages.npm
   go
   elan
+
+  #expo deps
+  watchman
+  zulu17
+  android-tools
 
   #browsers
   tor
