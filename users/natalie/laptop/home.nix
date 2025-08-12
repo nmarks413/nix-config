@@ -16,6 +16,9 @@
       "$HOME/.emacs.d/bin"
     ];
 
+    sessionVariables = {
+    };
+
     packages = with pkgs; [
       #PDF viewer for VimTeX
       skimpdf

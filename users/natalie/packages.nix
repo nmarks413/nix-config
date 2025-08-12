@@ -95,7 +95,6 @@ with pkgs;
   #expo deps
   watchman
   zulu17
-  android-tools
 
   #browsers
   tor

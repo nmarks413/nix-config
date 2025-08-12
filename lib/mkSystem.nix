@@ -75,6 +75,7 @@ let
       ];
     }
     inputs.nvf.homeManagerModules.default
+    inputs.android-nixpkgs.hmModule
   ];
 in
 systemFunc {

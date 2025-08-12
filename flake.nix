@@ -29,6 +29,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    android-nixpkgs = {
+      url = "github:tadfisher/android-nixpkgs/stable";
+      inputs.nixpkgs.follows = "nixpkgs";
+
+    };
+
     nix-options-search.url = "github:madsbv/nix-options-search";
 
     nix-index-database.url = "github:nix-community/nix-index-database";
@@ -47,6 +53,7 @@
       overlays = [
         inputs.zig.overlays.default
         inputs.rust-overlay.overlays.default
+        inputs.android-nixpkgs.overlays.default
 
         # https://github.com/LnL7/nix-darwin/issues/1041
         (_: prev: {
@@ -128,6 +135,8 @@
         user = "natalie";
         host = "laptop";
         system = "aarch64-darwin";
+        extraModules = [
+        ];
       };
 
       # chloe's mac studio "sandwich"

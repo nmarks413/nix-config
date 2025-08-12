@@ -1,9 +1,11 @@
 {
   pkgs,
   lib,
+  options,
   ...
 }@args:
 {
+
   programs = {
     # sort-lines:start
     atuin.enable = true;
@@ -13,6 +15,7 @@
     fish.enable = true;
     man.generateCaches = false;
     lsd.enable = true;
+    android-sdk.enable = true;
     # sort-lines:end
   };
 

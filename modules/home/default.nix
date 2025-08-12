@@ -22,8 +22,40 @@ in
       default = { };
       description = "set the ghostty shader, relative to 'files/ghostty'";
     };
+    programs.android-sdk.enable = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
+      description = "enable android sdk stuff";
+    };
   };
   config = {
+    android-sdk = {
+      enable = config.programs.android-sdk.enable;
+      packages =
+        sdk:
+        with sdk;
+        [
+          build-tools-35-0-0
+          cmdline-tools-latest
+          emulator
+          platform-tools
+          platforms-android-35
+          sources-android-35
+          ndk-27-1-12297006
+          cmake-3-22-1
+        ]
+        ++ lib.optionals host.darwin [
+          system-images-android-35-google-apis-arm64-v8a
+          system-images-android-35-google-apis-playstore-arm64-v8a
+        ]
+        ++ lib.optionals host.linux [
+          system-images-android-35-google-apis-arm64-v8a
+          system-images-android-3-google-apis-playstore-arm64-v8a
+        ];
+    };
+    xdg = {
+      enable = true;
+    };
     home.shell = {
       enableShellIntegration = true;
     };
