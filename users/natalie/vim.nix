@@ -9,7 +9,6 @@
     withPython3 = true;
     python3Packages = [ "pynvim" ];
 
-
     autocmds = [
       #Autocommand to fall back to treesitter folding if LSP doesnt support it
       {

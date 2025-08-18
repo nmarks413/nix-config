@@ -1,10 +1,10 @@
 { ... }:
-      let
-        mkKeymap = mode: key: action: desc: {
-          inherit mode;
-          inherit key action desc;
-        };
-        n = mkKeymap "n"; # normal mode
+let
+  mkKeymap = mode: key: action: desc: {
+    inherit mode;
+    inherit key action desc;
+  };
+  n = mkKeymap "n"; # normal mode
 in
 {
   vim = {

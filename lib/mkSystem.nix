@@ -1,7 +1,6 @@
 # This function creates a NixOS system based on our VM setup for a
 # particular architecture.
 {
-  nixpkgs,
   overlays,
   inputs,
   mkNeovim,
@@ -14,11 +13,11 @@ name:
   extraModules ? [ ],
 }:
 let
-  darwin = nixpkgs.lib.strings.hasSuffix "-darwin" system;
+  darwin = inputs.nixpkgs.lib.strings.hasSuffix "-darwin" system;
   getInputModule = a: b: inputs.${a}.${if darwin then "darwinModules" else "nixosModules"}.${b};
 
   # NixOS vs nix-darwin functions
-  systemFunc = if darwin then inputs.darwin.lib.darwinSystem else nixpkgs.lib.nixosSystem;
+  systemFunc = if darwin then inputs.darwin.lib.darwinSystem else inputs.nixpkgs.lib.nixosSystem;
 
   userDir = ../users + "/${user}";
   userConfig = import (userDir + "/user.nix");
@@ -69,11 +68,12 @@ let
   mainHomeImports = builtins.filter (f: f != null) [
     (pathOrNull userHomePath)
     (pathOrNull hostHomePath)
-    {
-      home.packages = [
-        (mkNeovim user system)
-      ];
-    }
+    (
+      { pkgs, ... }:
+      {
+        home.packages = [ (mkNeovim user pkgs) ];
+      }
+    )
     inputs.nvf.homeManagerModules.default
     inputs.android-nixpkgs.hmModule
   ];

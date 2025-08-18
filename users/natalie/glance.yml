@@ -62,8 +62,8 @@ pages:
             location: London, United Kingdom
             units: metric # alternatively "imperial"
             hour-format: 12h # alternatively "24h"
-            # Optionally hide the location from being displayed in the widget
-            # hide-location: true
+          # Optionally hide the location from being displayed in the widget
+          # hide-location: true
 
           - type: markets
             # The link to go to when clicking on the symbol in the UI,

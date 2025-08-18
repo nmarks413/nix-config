@@ -16,6 +16,7 @@ in
           ripgrep
           uv
           nh
+          pkgs.autofmt
         ];
         # packages to install for desktop environments (non-server)
         desktop = [
