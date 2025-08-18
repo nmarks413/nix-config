@@ -1,11 +1,11 @@
 #!/bin/sh
 username="$(id -u -n)"
 if [ "$username" = "clo" ]; then
-  name="chloe"
+  name="clover"
 elif [ "$username" = "nmarks" ]; then
   name="natalie"
 elif [ "$username" = "fish" ]; then
-  name="julia"
+  name="fish"
 fi
 if [ -z "$name" ]; then
   echo "Configure this wrapper script with your name." >&2

@@ -1,7 +1,7 @@
 # nix config
 
-this setup allows natalie and chloe to share common configuration between their
-machines, but also share useful modules between each other.
+this setup allows natalie, clover, and more to share common configuration
+between their machines, but also share useful modules between each other.
 
 ```
 lib/ # reusable functions
@@ -12,7 +12,7 @@ modules/ # reusable modules
     +-- nixos/   # linux configurations
     +-- shared/  # shared between nixos-rebuild & darwin-rebuild
 users/
-    +-- chloe/
+    +-- clover/
     |   +-- user.nix               # info about her
     |   +-- configuration.nix      # for all hosts (system)
     |   +-- home.nix               # for all hosts (userspace)
