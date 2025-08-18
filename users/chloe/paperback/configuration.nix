@@ -1,6 +1,9 @@
 _: {
   homebrew = {
     enable = true;
-    casks = [ "eloston-chromium" ];
+    casks = [
+      "eloston-chromium"
+      "db-browser-for-sqlite"
+    ];
   };
 }
