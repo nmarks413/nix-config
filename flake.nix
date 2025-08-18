@@ -49,7 +49,7 @@
     }@inputs:
     let
       inherit (nixpkgs) lib;
-      # TODO: apply these overlays sooner and remove uses of legacyPackages elsewhere.
+
       overlays = [
         inputs.zig.overlays.default
         inputs.rust-overlay.overlays.default
@@ -66,55 +66,42 @@
             };
           });
         })
+
+        # custom packages
+        (_: pkgs: {
+          autofmt = pkgs.callPackage ./packages/autofmt.nix { };
+        })
       ];
 
-      # Users of this flake currently use x86_64 Linux and Apple Silicon
-      systems = [
-        "x86_64-linux"
-        "aarch64-darwin"
-      ];
+      # We only use x86_64 on Linux and Apple Silicon Macs
+      # Overlays are applied here, as early as possible.
+      getNixPkgs = system: import nixpkgs { inherit system overlays; };
+      systems = {
+        "x86_64-linux" = getNixPkgs "x86_64-linux";
+        "aarch64-darwin" = getNixPkgs "aarch64-darwin";
+      };
       forAllSystems =
         f:
-        builtins.listToAttrs (
-          builtins.map (system: {
-            name = system;
-            value = f (
-              inputs
-              // {
-                inherit system;
-                pkgs = nixpkgs.legacyPackages.${system};
-              }
-            );
-          }) systems
-        );
+        builtins.mapAttrs # #
+          (system: pkgs: f (inputs // { inherit system pkgs; }))
+          systems;
 
-      mkSystem = import ./lib/mkSystem.nix {
-        inherit
-          overlays
-          nixpkgs
-          inputs
-          mkNeovim
-          ;
-      };
-      mkNeovim = import ./lib/mkNeovim.nix {
-        inherit
-          self
-          overlays
-          nixpkgs
-          inputs
-          ;
-      };
+      # Library Functions
+      mkNeovim = import ./lib/mkNeovim.nix { inherit self inputs; };
+      mkSystem = import ./lib/mkSystem.nix { inherit inputs mkNeovim overlays; };
     in
     rec {
       inherit self;
       # "nix fmt"
-      formatter = forAllSystems (inputs: inputs.pkgs.nixfmt-tree);
+      formatter = forAllSystems (inputs: inputs.pkgs.autofmt);
       packages = forAllSystems (
-        { system, ... }:
+        { system, pkgs, ... }:
         {
-          nvim-chloe = mkNeovim "chloe" system;
-          nvim-natalie = mkNeovim "natalie" system;
-          nvim-julia = mkNeovim "julia" system;
+          nvim-chloe = mkNeovim "chloe" pkgs;
+          nvim-natalie = mkNeovim "natalie" pkgs;
+          nvim-julia = mkNeovim "julia" pkgs;
+
+          inherit (pkgs) autofmt;
         }
         // lib.optionalAttrs (system == "aarch64-darwin") {
           # "nix run .#darwin-rebuild"
@@ -127,16 +114,12 @@
         user = "natalie";
         host = "desktop";
         system = "x86_64-linux";
-        extraModules = [
-        ];
       };
       # natalie's laptop
       darwinConfigurations."Natalies-MacBook-Air" = mkSystem "Natalies-MacBook-Air" {
         user = "natalie";
         host = "laptop";
         system = "aarch64-darwin";
-        extraModules = [
-        ];
       };
 
       # chloe's mac studio "sandwich"

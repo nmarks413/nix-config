@@ -5,7 +5,10 @@
   ...
 }:
 {
-  imports = [ ./options.nix ];
+  imports = [
+    ./options.nix
+    ./formatter.nix
+  ];
   # based on default options from upstream:
   # https://github.com/NotAShelf/nvf/blob/main/configuration.nix
   #
@@ -107,20 +110,6 @@
         format.type = "nixfmt"; # looks so much nicer
       };
     };
-    formatter.conform-nvim = {
-      enable = true;
-      setupOpts = {
-      formatters_by_ft = {
-        typescript = [ "deno_fmt" ];
-        typescriptreact = [ "deno_fmt" ];
-        javascript = [ "deno_fmt" ];
-        javascriptreact = [ "deno_fmt" ];
-      };
-     formatters.deno_fmt = {
-        command = lib.meta.getExe pkgs.deno;
-      };
-      };
-    };
     filetree = {
       neo-tree = {
         enable = false;
@@ -154,7 +143,6 @@
         enable = true;
         setupOpts = {
           bigfile.enable = true;
-          explorer.replace_netrw = true;
           dashboard = {
             preset.keys = [
               {
@@ -209,7 +197,6 @@
           picker = {
             enable = true;
             sources = {
-              explorer = { };
             };
           };
         };

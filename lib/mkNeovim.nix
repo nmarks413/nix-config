@@ -1,13 +1,7 @@
-{
-  self,
-  nixpkgs,
-  # TODO: apply overlays here
-  overlays,
-  inputs,
-}:
-user: system:
+{ self, inputs }:
+user: pkgs:
 let
-  darwin = nixpkgs.lib.strings.hasSuffix "-darwin" system;
+  darwin = pkgs.lib.strings.hasSuffix "-darwin" pkgs.system;
 
   host = {
     inherit darwin;
@@ -18,7 +12,7 @@ let
   userConfig = import (userDir + "/user.nix");
 in
 (inputs.nvf.lib.neovimConfiguration {
-  pkgs = nixpkgs.legacyPackages.${system};
+  inherit pkgs;
   modules = builtins.filter (f: f != null) [
     (../users + ("/" + user + "/vim.nix"))
     ../modules/neovim

@@ -78,4 +78,3 @@ configuration.
 nix run .#nvim-natalie  # run by user
 ./nvim                  # run based on your username
 ```
-
