@@ -1,4 +1,4 @@
-# Configuration applied to all of chloe's machines
+# Configuration applied to all of clover's machines
 { pkgs, ... }:
 {
   # packages for all machines

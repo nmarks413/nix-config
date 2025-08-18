@@ -1,18 +1,11 @@
 # This definition is used by modules to customize as needed.
 {
   username = "clo"; # username
-  name = "chloe caruso";
+  name = "clover caruso";
   email = "account@paperclover.net";
   timeZone = "America/Los_Angeles";
-
   dotfilesDir = "~/config"; # absolute path of the local repo
-
-  # Stylix/Theming
-  theme = null;
-  #font
   sexuality = "lesbian"; # hyfetch
-
-  # Default terminal command. NOTE: ghostty is not installed for you
   term = "ghostty"; # preferred $TERMINAL
   editor = "nvim"; # preferred $EDITOR
 }

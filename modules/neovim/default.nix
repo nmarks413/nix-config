@@ -6,8 +6,9 @@
 }:
 {
   imports = [
-    ./options.nix
     ./formatter.nix
+    ./keybind.nix
+    ./options.nix
   ];
   # based on default options from upstream:
   # https://github.com/NotAShelf/nvf/blob/main/configuration.nix
@@ -18,6 +19,10 @@
   # override level 999 is used to not conflict with mkDefault as used by nvf.
   # which allows user configurations to disable/override anything here.
   config.vim = lib.mkOverride 999 {
+    extraLuaFiles = [
+      ./lib.lua
+    ];
+
     theme = {
       enable = true;
     };
@@ -60,8 +65,8 @@
         listReferences = "gr";
         goToType = "gy";
         hover = "K";
-        nextDiagnostic = "<leader>d";
-        openDiagnosticFloat = "<leader>df";
+        nextDiagnostic = null; # ]d
+        openDiagnosticFloat = "<leader>d";
         renameSymbol = "rn";
         documentHighlight = null;
         listDocumentSymbols = null;
@@ -78,11 +83,9 @@
       enable = true;
       addDefaultGrammars = true;
     };
-    debugger = {
-      nvim-dap = {
-        enable = true;
-        ui.enable = true;
-      };
+    debugger.nvim-dap = {
+      enable = true;
+      ui.enable = true;
     };
     languages = {
       enableFormat = true;
@@ -96,36 +99,58 @@
       clang.enable = true;
       css.enable = true;
       html.enable = true;
+      lua.enable = true;
       markdown.enable = true;
+      nix.enable = true;
       python.enable = true;
       rust.crates.enable = true;
       rust.enable = true;
       ts.enable = true;
       zig.enable = true;
-      lua.enable = true;
       # sort-lines: off
-
-      nix = {
-        enable = true;
-        format.type = "nixfmt"; # looks so much nicer
+    };
+    filetree.neo-tree = {
+      enable = true;
+      setupOpts = {
+        enable_cursor_hijack = true;
+        git_status_async = true;
       };
     };
-    filetree = {
-      neo-tree = {
-        enable = false;
+    fzf-lua = {
+      enable = true;
+      setupOpts = {
+        fzf_colors = true;
       };
     };
-    tabline = {
-      nvimBufferline.enable = true;
-    };
-    autocomplete = {
-      blink-cmp = {
-        enable = true;
-        sourcePlugins = {
-          ripgrep.enable = true;
+    autocomplete.blink-cmp = {
+      enable = true;
+      mappings = {
+        close = null;
+        complete = null;
+        confirm = null;
+        next = null;
+        previous = null;
+        scrollDocsDown = null;
+        scrollDocsUp = null;
+      };
+      setupOpts = {
+        keymap = {
+          preset = "super-tab";
         };
-        friendly-snippets.enable = true;
+        completion = {
+          ghost_text.enabled = false;
+          list.selection.preselect = true;
+          trigger = {
+            show_in_snippet = true;
+          };
+          accept.auto_brackets.enabled = true;
+        };
+        signature.enabled = true;
       };
+      sourcePlugins = {
+        ripgrep.enable = true;
+      };
+      friendly-snippets.enable = true;
     };
     statusline = {
       lualine = {
@@ -134,71 +159,6 @@
           statusline = 100;
           tabline = 100;
           winbar = 100;
-        };
-      };
-    };
-
-    utility = {
-      snacks-nvim = {
-        enable = true;
-        setupOpts = {
-          bigfile.enable = true;
-          dashboard = {
-            preset.keys = [
-              {
-                icon = " ";
-                key = "n";
-                desc = "New File";
-                action = ":ene | startinsert";
-              }
-              {
-                icon = " ";
-                key = "r";
-                desc = "Recent Files";
-                action = ":lua Snacks.dashboard.pick('oldfiles')";
-              }
-            ];
-            sections = [
-              { section = "header"; }
-              {
-                section = "keys";
-                indent = 2;
-                padding = 1;
-              }
-              {
-                icon = " ";
-                title = "Projects";
-                section = "projects";
-                indent = 2;
-                padding = 1;
-              }
-              {
-                icon = " ";
-                title = "Git";
-                section = "terminal";
-                enabled = lib.options.literalExpression ''
-                  function()
-                    return Snacks.git.get_root() ~= nil
-                  end
-                '';
-                cmd = "git status --short --branch --renames";
-                height = 10;
-                padding = 1;
-                ttl = 5 * 60;
-                indent = 3;
-              }
-            ];
-          };
-          image = {
-            enable = true;
-            math.enabled = false;
-          };
-          notifier.timeout = 3000;
-          picker = {
-            enable = true;
-            sources = {
-            };
-          };
         };
       };
     };

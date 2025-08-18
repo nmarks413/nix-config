@@ -21,6 +21,7 @@ in
         # packages to install for desktop environments (non-server)
         desktop = [
           git-town
+          lazygit
         ];
         # packages to install on all servers
         server = [ ];

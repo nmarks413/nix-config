@@ -97,9 +97,9 @@
       packages = forAllSystems (
         { system, pkgs, ... }:
         {
-          nvim-chloe = mkNeovim "chloe" pkgs;
+          nvim-clover = mkNeovim "clover" pkgs;
+          nvim-fish = mkNeovim "fish" pkgs;
           nvim-natalie = mkNeovim "natalie" pkgs;
-          nvim-julia = mkNeovim "julia" pkgs;
 
           inherit (pkgs) autofmt;
         }
@@ -122,22 +122,22 @@
         system = "aarch64-darwin";
       };
 
-      # chloe's mac studio "sandwich"
+      # clover's mac studio "sandwich"
       darwinConfigurations.sandwich = mkSystem "sandwich" {
-        user = "chloe";
+        user = "clover";
         host = "sandwich";
         system = "aarch64-darwin";
       };
-      # chloe's macbook air "paperback"
+      # clover's macbook air "paperback"
       darwinConfigurations.paperback = mkSystem "paperback" {
-        user = "chloe";
+        user = "clover";
         host = "paperback";
         system = "aarch64-darwin";
       };
 
-      # julia's cattop
+      # fish's cattop
       nixosConfigurations.cattop = mkSystem "cattop" {
-        user = "julia";
+        user = "fish";
         host = "cattop";
         system = "x86_64-linux";
       };

@@ -4,7 +4,6 @@
   # most of these are needed for my work environment.
   programs = {
     bun.enable = true;
-    zed-editor.enable = true;
     zsh.profileExtra = ''
       _bun() {
         local context state line
@@ -14,6 +13,7 @@
   };
   home.packages = with pkgs; [
     doppler
+    deno
     nodejs_22
     rustup
     typescript
