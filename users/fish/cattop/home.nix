@@ -17,23 +17,14 @@
       ghostty
       stremio
       julia
-      qbittorrent
       calibre
       mpv
       signal-desktop
       python3
       gh
+      spotify
 
       # Gaming
-      bottles
-      lutris
-      mangohud
-      dxvk_2
-      steam-run
-      vulkan-tools
-      path-of-building
-      wineWowPackages.stable
-      winetricks
       (prismlauncher.override { gamemodeSupport = true; })
 
       # System & desktop tools
@@ -47,18 +38,17 @@
       grub2
       efibootmgr
       distrobox
+      pqiv
 
       # Dev tools
       legcord
       hyfetch
-      arduino-cli
-      rust-bin.stable.latest.default
-      tytools
-      inputs.zls.packages.x86_64-linux.zls
-      platformio
-      usbutils
-      teensy-loader-cli
-      teensyduino
+      kicad
+
+      # Unsorted
+      ripgrep
+      busybox
+      imagemagick
     ];
   };
 

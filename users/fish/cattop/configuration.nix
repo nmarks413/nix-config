@@ -44,6 +44,25 @@
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
+  environment.gnome.excludePackages = (
+    with pkgs;
+    [
+      atomix
+      cheese
+      epiphany
+      geary
+      gedit
+      gnome-characters
+      gnome-music
+      gnome-photos
+      gnome-terminal
+      gnome-tour
+      hitori
+      iagno
+      totem
+
+    ]
+  );
 
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";
@@ -66,7 +85,10 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.fish = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [
+      "wheel" # Enable ‘sudo’ for the user.
+      "dialout" # Enable serial access for the user.
+    ];
     packages = with pkgs; [
       tree
       git
@@ -77,6 +99,7 @@
   };
 
   programs.firefox.enable = true;
+  programs.neovim.defaultEditor.enable = true;
 
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
