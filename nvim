@@ -11,4 +11,4 @@ if [ -z "$name" ]; then
   echo "Configure this wrapper script with your name." >&2
   exit 1
 fi
-exec nix run ".#nvim-$name" -- "$@"
+exec nix run "$(dirname "$0")#nvim-$name" -- "$@"

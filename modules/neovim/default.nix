@@ -120,6 +120,9 @@
       enable = true;
       setupOpts = {
         fzf_colors = true;
+        keymap.fzf = {
+          "ctrl-q" = "select-all+accept";
+        };
       };
     };
     autocomplete.blink-cmp = {
