@@ -10,5 +10,5 @@ pkgs.writeShellApplication {
     zig
     clang-tools
   ];
-  text = ''exec deno run -A ${../files/autofmt.js} "$@"'';
+  text = ''exec deno run -A ${./autofmt.js} "$@"'';
 }
