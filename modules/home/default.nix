@@ -49,8 +49,8 @@ in
           system-images-android-35-google-apis-playstore-arm64-v8a
         ]
         ++ lib.optionals host.linux [
-          system-images-android-35-google-apis-arm64-v8a
-          system-images-android-3-google-apis-playstore-arm64-v8a
+          system-images-android-35-google-apis-x86-64
+          system-images-android-35-google-apis-playstore-x86-64
         ];
     };
     xdg = {

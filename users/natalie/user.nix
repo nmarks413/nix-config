@@ -1,6 +1,6 @@
 rec {
   username = "nmarks"; # username
-  name = "Natalie"; # name/identifier
+  name = "Natalie Marks"; # name/identifier
   email = "nmarks413@gmail.com"; # email (used for certain configurations)
   dotfilesDir = "~/.dotfiles"; # absolute path of the local repo
   theme = null; # name of theme that stylix will use
