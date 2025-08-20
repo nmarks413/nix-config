@@ -11,6 +11,7 @@
       python312Packages.pylatexenc
     ];
     languages = {
+      lua.lsp.lazydev.enable = true;
       python = {
         format.type = "ruff";
       };
