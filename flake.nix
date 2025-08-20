@@ -69,7 +69,7 @@
 
         # custom packages
         (_: pkgs: {
-          autofmt = pkgs.callPackage ./packages/autofmt.nix { };
+          autofmt = pkgs.callPackage ./packages/autofmt { };
         })
       ];
 

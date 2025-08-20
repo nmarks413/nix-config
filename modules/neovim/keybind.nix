@@ -24,11 +24,12 @@ in
 
     # pickers
     pick-file = keyCmd "n" "<leader><leader>" "FzfLua files";
+    pick-buffer = keyCmd "n" "<leader>b" "FzfLua buffers";
     pick-mark = keyCmd "n" "<leader>'" "FzfLua marks";
-    #pick-buffer = keyCmd "n" "<leader>b" "FzfLua buffers";
-    pick-grep = keyCmd "n" "<leader>ff" "FzfLua grep_project";
     pick-recent-command = keyCmd "n" "<leader>fc" "FzfLua command_history";
-    pick-other = keyCmd "n" "<leader>f?" "FzfLua builtin"; # picker of Fzf pickers
+    pick-other = keyCmd "n" "<leader><tab>" "FzfLua builtin"; # picker of Fzf pickers
+    find-fuzzy = keyCmd "n" "<leader>ff" "FzfLua grep_project";
+    find-grep = keyCmd "n" "<leader>fg" "FzfLua live_grep";
 
     # lsp
     code-action =
@@ -38,7 +39,7 @@ in
     # subtle nice features
     visual-dedent = keyRemap "v" "<" "<gv"; # keep selection
     visual-indent = keyRemap "v" ">" ">gv"; # keep selection
-    clear-search-highlights = keyRemap "n" "<esc" ":noh<Return><esc>";
+    clear-search-highlights = keyRemap "n" "<esc>" ":noh<Return><esc>";
   };
 
   # implementation

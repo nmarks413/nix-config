@@ -1,5 +1,6 @@
 #!/usr/bin/env node
-// autofmt v1 - https://paperclover.dev/nix/config/src/branch/main/files/autofmt.js
+// autofmt v1 by paper clover
+// https://paperclover.dev/nix/config/src/branch/main/packages/autofmt/autofmt.js
 //
 // Different codebases use different formatters. Autofmt looks for project
 // configuration to pick the correct formatter, allowing an editor to simply

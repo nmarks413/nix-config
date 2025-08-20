@@ -1,7 +1,7 @@
 rec {
   username = "fish"; # username
   name = "Fish"; # name/identifier
-  email = "fish@fishcat.fish"; # email (used for certain configurations)
+  email = "77413091+JulianBarbera@users.noreply.github.com"; # email (used for certain configurations)
   dotfilesDir = "~/config"; # absolute path of the local repo
   theme = "catppuccin-mocha"; # name of theme that stylix will use
   browser = "firefox"; # Default browser; must select one from ./user/app/browser/
